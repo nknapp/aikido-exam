@@ -28,6 +28,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "lint": "eslint --cache .",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
@@ -54,7 +55,7 @@
     "prettier": "^2.3.2"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.{ts,tsx,js}": "eslint --cache --fix --max-warnings=0",
+    "*.{ts,tsx,js,css,md}": "prettier --write"
   }
 }
