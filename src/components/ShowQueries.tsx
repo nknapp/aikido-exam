@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import React from "react";
 import { PlayCircle } from "react-bootstrap-icons";
 
-const DIFFERENT_VALUE_CLASS = "fs-3";
+const DIFFERENT_VALUE_CLASS = "";
 const SAME_VALUE_CLASS = "text-muted";
 
 function cellClass(
@@ -30,7 +30,9 @@ export const ShowQueries: React.FC<{
     <Table bordered={true}>
       <thead>
         <tr>
-          <th> </th>
+          <th className={"text-muted"}>
+            <PlayCircle />
+          </th>
           <th>{t("examTable.header.execution")}</th>
           <th>{t("examTable.header.attack")}</th>
           <th>{t("examTable.header.technique")}</th>

@@ -1,0 +1,46 @@
+@import "src/assets/styles/styles";
+
+.reader {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr;
+  grid-template-rows: 10rem 20rem;
+
+  grid-gap: 0.5rem;
+
+  grid-template-areas:
+     "back  play repeat forward"
+     "query query query query";
+
+  @include media-breakpoint-up(md) {
+    grid-template-columns: 1fr 1fr 4fr;
+    grid-template-rows: 3rem 10rem 10rem;
+
+    grid-template-areas:
+     "back forward query"
+     "play play query"
+     "repeat repeat query";
+
+  }
+}
+
+.backButton {
+  grid-area: back;
+}
+
+.forwardButton {
+  grid-area: forward;
+}
+
+.repeatButton {
+  grid-area: repeat;
+
+}
+
+.stopPlayButton {
+  grid-area: play;
+}
+
+.queryDisplay {
+  grid-area: query;
+  height: 100%;
+}

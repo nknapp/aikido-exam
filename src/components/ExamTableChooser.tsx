@@ -99,11 +99,12 @@ export const ExamTableChooser: React.FC<ExamTableChooserProps> = ({
 
   const { t } = useTranslation();
   return (
-    <Row>
+    <Row xs={3} sm={4} md={4} lg={8}>
       {buttons.map((buttonName) => {
         return (
           <Col key={buttonName} className={"mb-1"}>
             <ToggleButton
+              className={"w-100"}
               id={"toggle-" + buttonName}
               onChange={(event) => {
                 console.log("change", event);
