@@ -13,6 +13,7 @@ import { dan2 } from "../exam-tables/dan2";
 import { kyu2 } from "../exam-tables/kyu2";
 import { kyu3 } from "../exam-tables/kyu3";
 import { CheckSquare, Square } from "react-bootstrap-icons";
+import { additional } from "../exam-tables/additional";
 
 export interface ExamTableChooserProps {
   onChoice(queries: Announcement[]): void;
@@ -24,6 +25,7 @@ const buttons = [
   "kyu3",
   "kyu2",
   "kyu1",
+  "additional",
   "dan1",
   "dan2",
   "dan3",
@@ -60,6 +62,10 @@ const ButtonDetails: Record<ButtonName, ButtonSpec> = {
   kyu1: {
     labelKey: "chooser.button.kyu1",
     table: kyu1,
+  },
+  additional: {
+    labelKey: "chooser.button.additional",
+    table: additional,
   },
   dan1: {
     labelKey: "chooser.button.dan1",

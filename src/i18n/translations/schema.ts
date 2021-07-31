@@ -1,5 +1,6 @@
 export interface TranslationSchema {
   "app.title": string;
+  "chooser.button.additional": string;
   "chooser.button.kyu5": string;
   "chooser.button.kyu4": string;
   "chooser.button.kyu3": string;

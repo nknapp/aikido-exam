@@ -2,6 +2,7 @@ import { TranslationSchema } from "./schema";
 
 export const de: TranslationSchema = {
   "app.title": "Aikido-Prüfung",
+  "chooser.button.additional": "+X",
   "chooser.button.dan1": "1.DAN",
   "chooser.button.dan2": "2.DAN",
   "chooser.button.dan3": "3.DAN",

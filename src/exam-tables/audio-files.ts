@@ -31,8 +31,10 @@ import tachi_waza from "src/assets/audio/tachi-waza.mp3";
 import tanto_dori from "src/assets/audio/tanto-dori.mp3";
 import tenchi_nage from "src/assets/audio/tenchi-nage.mp3";
 import uchi_kaiten_nage from "src/assets/audio/uchi-kaiten-nage.mp3";
+import uchi_kaiten_sankyo from "src/assets/audio/uchi-kaiten-sankyo.mp3";
 import soto_kaiten_nage from "src/assets/audio/soto-kaiten-nage.mp3";
 import ude_kime_nage from "src/assets/audio/ude-kime-nage.mp3";
+import ude_garami from "src/assets/audio/ude-garami.mp3";
 import ushiro_eri_dori from "src/assets/audio/ushiro-eri-dori.mp3";
 import ushiro_katate_dori_kube_shime from "src/assets/audio/ushiro-katate-dori-kube-shime.mp3";
 import ushiro_ryo_hiji_dori from "src/assets/audio/ushiro-ryo-hiji-dori.mp3";
@@ -42,6 +44,15 @@ import yokomen_uchi from "src/assets/audio/yokomen-uchi.mp3";
 import yonkyo from "src/assets/audio/yonkyo.mp3";
 import omote from "src/assets/audio/omote.mp3";
 import ura from "src/assets/audio/ura.mp3";
+import sumi_otoshi from "src/assets/audio/sumi-otoshi.mp3";
+import aiki_otoshi from "src/assets/audio/aiki-otoshi.mp3";
+import juji_garami from "src/assets/audio/juji-garami.mp3";
+import hiji_kime_osae from "src/assets/audio/hiji-kime-osae.mp3";
+import shomen_uchi_gyaku_te from "src/assets/audio/shomen-uchi-gyaku-te.mp3";
+import shomen_uchi_hon_te from "src/assets/audio/shomen-uchi-hon-te.mp3";
+import yokomen_uchi_gyaku_te from "src/assets/audio/yokomen-uchi-gyaku-te.mp3";
+import yokomen_uchi_hon_te from "src/assets/audio/yokomen-uchi-hon-te.mp3";
+import ai_hanmi_ryote_dori from "src/assets/audio/ai-hanmi-ryote-dori.mp3";
 
 export const executions = {
   "suwari waza": suwari_waza,
@@ -71,6 +82,11 @@ export const attacks = {
   "ushiro ryo kata dori": ushiro_ryo_kata_dori,
   "ushiro katate dori kubi shime": ushiro_katate_dori_kube_shime,
   "ushiro eri dori": ushiro_eri_dori,
+  "shomen uchi gyaku-te": shomen_uchi_gyaku_te,
+  "shomen uchi hon-te": shomen_uchi_hon_te,
+  "yokomen uchi gyaku-te": yokomen_uchi_gyaku_te,
+  "yokomen uchi hon-te": yokomen_uchi_hon_te,
+  "ai hanmi ryote dori": ai_hanmi_ryote_dori,
 };
 
 export const techniques = {
@@ -83,6 +99,7 @@ export const techniques = {
   "kokyu nage": kokyu_nage,
   "shiho nage": shiho_nage,
   "ude kime nage": ude_kime_nage,
+  "ude garami": ude_garami,
   "sokumen irimi nage": sokumen_irimi_nage,
   "uchi kaiten nage": uchi_kaiten_nage,
   "soto kaiten nage": soto_kaiten_nage,
@@ -90,6 +107,11 @@ export const techniques = {
   "koshi nage": koshi_nage,
   "kote gaeshi": kote_gaeshi,
   "kokyu ho": kokyu_hoo,
+  "sumi otoshi": sumi_otoshi,
+  "aiki otoshi": aiki_otoshi,
+  "juji garami": juji_garami,
+  "hiji kimo oase": hiji_kime_osae,
+  "uchi kaiten sankyo": uchi_kaiten_sankyo,
 };
 
 export const directions = {

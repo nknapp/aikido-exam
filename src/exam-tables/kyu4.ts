@@ -28,6 +28,16 @@ export const kyu4: ExamTable = {
         "ude kime nage": ["omote", "ura"],
         "tenchi nage": ["omote", "ura"],
       },
+      "ryote dori": {
+        "tenchi nage": ["omote", "ura"],
+      },
+      "kata dori": {
+        ikkyo: ["omote", "ura"],
+        nikyo: ["omote", "ura"],
+      },
+      "shomen uchi": {
+        nikyo: ["omote", "ura"],
+      },
     },
   },
 };
