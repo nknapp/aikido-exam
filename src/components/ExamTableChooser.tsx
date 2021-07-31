@@ -108,7 +108,7 @@ export const ExamTableChooser: React.FC<ExamTableChooserProps> = ({
     <Row xs={3} sm={4} md={4} lg={8}>
       {buttons.map((buttonName) => {
         return (
-          <Col key={buttonName} className={"mb-1"}>
+          <Col key={buttonName} className={"mb-2"}>
             <ToggleButton
               className={"w-100"}
               id={"toggle-" + buttonName}

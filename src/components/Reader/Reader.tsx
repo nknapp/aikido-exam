@@ -11,6 +11,7 @@ import {
 import { useAudioPlayer } from "../../utils/hooks/useAudioPlayer";
 import css from "./Reader.module.scss";
 import { CurrentQuery } from "./CurrentQuery";
+import { NoQuery } from "./NoQuery";
 
 export const Reader: React.FC<{
   queries: Announcement[];
@@ -23,6 +24,8 @@ export const Reader: React.FC<{
   const { playing, play, audioRef, stop } = useAudioPlayer();
 
   useEffect(() => stop(), [queries, stop]);
+
+  useEffect(() => setNextQueryIndex(0), [queries]);
   useEffect(
     () => nextQueryChanged(nextQueryIndex),
     [nextQueryIndex, nextQueryChanged]
@@ -54,7 +57,11 @@ export const Reader: React.FC<{
   return (
     <div className={css.reader}>
       <audio ref={audioRef} style={{ display: "none" }} />
-      <Button onClick={back} className={css.backButton}>
+      <Button
+        onClick={back}
+        className={css.backButton}
+        disabled={nextQueryIndex <= 0}
+      >
         <ChevronDoubleLeft />
       </Button>
       {playing ? (
@@ -78,11 +85,17 @@ export const Reader: React.FC<{
       >
         <ArrowClockwise /> Repeat
       </Button>
-      <Button onClick={forward} className={css.forwardButton}>
+      <Button
+        onClick={forward}
+        className={css.forwardButton}
+        disabled={nextQueryIndex >= queries.length - 1}
+      >
         <ChevronDoubleRight />
       </Button>
-      {nextQuery != null && (
+      {nextQuery != null ? (
         <CurrentQuery query={nextQuery} className={css.queryDisplay} />
+      ) : (
+        <NoQuery className={css.queryDisplay} />
       )}
     </div>
   );

@@ -8,18 +8,17 @@
   grid-gap: 0.5rem;
 
   grid-template-areas:
-     "back  play repeat forward"
-     "query query query query";
+    "back  play repeat forward"
+    "query query query query";
 
   @include media-breakpoint-up(md) {
     grid-template-columns: 1fr 1fr 4fr;
     grid-template-rows: 3rem 10rem 10rem;
 
     grid-template-areas:
-     "back forward query"
-     "play play query"
-     "repeat repeat query";
-
+      "back forward query"
+      "play play query"
+      "repeat repeat query";
   }
 }
 
@@ -33,11 +32,20 @@
 
 .repeatButton {
   grid-area: repeat;
+  font-size: 3rem;
 
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
 .stopPlayButton {
   grid-area: play;
+  font-size: 3rem;
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
 .queryDisplay {
