@@ -24,10 +24,16 @@
 
 .backButton {
   grid-area: back;
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
 .forwardButton {
   grid-area: forward;
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
 .repeatButton {

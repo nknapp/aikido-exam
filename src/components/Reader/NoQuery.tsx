@@ -17,7 +17,7 @@ export const NoQuery: React.FC<{
     >
       <Logo height={"50%"} />
       <div className={"fs-2 text-center"}>
-        Bitte wähle eine oder mehrere Prüfungen aus.
+        Bitte wähle eine oder mehrere Techniklisten aus.
       </div>
     </Alert>
   );
