@@ -12,4 +12,8 @@ describe("resolve-exam-tables", () => {
       ["tachi waza", "ai hanmi katate dori", "irimi nage"],
     ]);
   });
+
+  it("Returns an empty list of no tables are selected", () => {
+    expect(resolveExamTables([])).toEqual([]);
+  });
 });

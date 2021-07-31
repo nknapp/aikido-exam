@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "src/assets/styles/styles.scss";
 import { DefaultLayout } from "./layout/DefaultLayout";
-import i18n from "i18next";
+import { ExamTableChooser } from "./components/ExamTableChooser";
+import { Announcement } from "./utils/resolve-exam-tables";
+import { ShowQueries } from "./components/ShowQueries";
+import { Reader } from "./components/Reader";
 
 function App(): JSX.Element {
-  return <DefaultLayout>{i18n.language}</DefaultLayout>;
+  const [queries, setQueries] = useState<Announcement[]>([]);
+  const [currentQuery, setCurrentQuery] = useState(-1);
+  return (
+    <DefaultLayout>
+      <div className={"mt-2"}>
+        <ExamTableChooser onChoice={setQueries} />
+      </div>
+      <Reader queries={queries} onStartPlaying={setCurrentQuery} />
+      <ShowQueries queries={queries} currentQuery={currentQuery} />
+    </DefaultLayout>
+  );
 }
 
 export default App;

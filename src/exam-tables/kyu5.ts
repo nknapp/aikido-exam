@@ -11,7 +11,13 @@ export const kyu5: ExamTable = {
       "ai hanmi katate dori": {
         ikkyo: ["omote", "ura"],
         "shiho nage": ["omote", "ura"],
-        "irimi nage": []
+        "irimi nage": [],
+        "kote gaeshi": [],
+      },
+      "shomen uchi": {
+        ikkyo: ["omote", "ura"],
+        "irimi nage": [],
+        "kote gaeshi": [],
       },
     },
   },

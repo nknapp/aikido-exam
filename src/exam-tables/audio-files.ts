@@ -1,6 +1,6 @@
 // noinspection SpellCheckingInspection
 
-import ai_hanmi_katate_dori from "@/assets/audio/ai-hanmi-katate-dori.mp3";
+import ai_hanmi_katate_dori from "src/assets/audio/ai-hanmi-katate-dori.mp3";
 import chudan_tsuki from "src/assets/audio/chudan-tsuki.mp3";
 import gokyo from "src/assets/audio/gokyo.mp3";
 import gyuako_hanmi_katate_dori from "src/assets/audio/gyuako-hanmi-katate-dori.mp3";
@@ -101,7 +101,7 @@ export const audioFiles = {
   ...executions,
   ...attacks,
   ...techniques,
-  ...directions
+  ...directions,
 } as const;
 
 export type Execution = keyof typeof executions;

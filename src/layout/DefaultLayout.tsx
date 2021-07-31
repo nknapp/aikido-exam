@@ -8,7 +8,7 @@ export const DefaultLayout: React.FC = ({ children }) => {
   const { t } = useTranslation();
   return (
     <>
-      <Navbar bg={"light"}>
+      <Navbar variant={"dark"} bg={"dark"}>
         <Container>
           <Navbar.Brand>
             <img width="30" height="30" src={logo} alt={t("app.title")} />{" "}

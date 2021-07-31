@@ -10,7 +10,8 @@ import merge from "lodash/merge";
 export type Announcement = [Execution, Attack, Technique, Direction?];
 
 export function resolveExamTables(examTables: ExamTable[]): Announcement[] {
-  const mergedTables: ExamTable = merge({}, ...examTables);
+  const emptyTable: ExamTable = { techniques: {} };
+  const mergedTables: ExamTable = merge(emptyTable, ...examTables);
   const result: Announcement[] = [];
   Object.entries(mergedTables.techniques).forEach(([execution, attacks]) => {
     if (attacks == null) {
