@@ -1,14 +1,10 @@
-import React from 'react';
-import "src/assets/styles/styles.scss"
-import {DefaultLayout} from "./layout/DefaultLayout";
+import React, { ReactNode } from "react";
+import "src/assets/styles/styles.scss";
+import { DefaultLayout } from "./layout/DefaultLayout";
 import i18n from "i18next";
 
-function App() {
-  return (
-    <DefaultLayout>
-      {i18n.language}
-    </DefaultLayout>
-  );
+function App(): JSX.Element {
+  return <DefaultLayout>{i18n.language}</DefaultLayout>;
 }
 
 export default App;
