@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.904edfc1.chunk.css",
-    "main.js": "/static/js/main.c5089acd.chunk.js",
-    "main.js.map": "/static/js/main.c5089acd.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.b5c01459.js",
-    "runtime-main.js.map": "/static/js/runtime-main.b5c01459.js.map",
-    "static/js/2.3bc45dda.chunk.js": "/static/js/2.3bc45dda.chunk.js",
-    "static/js/2.3bc45dda.chunk.js.map": "/static/js/2.3bc45dda.chunk.js.map",
-    "static/js/3.0fb9f730.chunk.js": "/static/js/3.0fb9f730.chunk.js",
-    "static/js/3.0fb9f730.chunk.js.map": "/static/js/3.0fb9f730.chunk.js.map",
+    "main.css": "/static/css/main.8f5cea2c.chunk.css",
+    "main.js": "/static/js/main.ebb98c6b.chunk.js",
+    "main.js.map": "/static/js/main.ebb98c6b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.8498d3d9.js",
+    "runtime-main.js.map": "/static/js/runtime-main.8498d3d9.js.map",
+    "static/js/2.06752beb.chunk.js": "/static/js/2.06752beb.chunk.js",
+    "static/js/2.06752beb.chunk.js.map": "/static/js/2.06752beb.chunk.js.map",
+    "static/js/3.d4b02371.chunk.js": "/static/js/3.d4b02371.chunk.js",
+    "static/js/3.d4b02371.chunk.js.map": "/static/js/3.d4b02371.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.904edfc1.chunk.css.map": "/static/css/main.904edfc1.chunk.css.map",
-    "static/js/2.3bc45dda.chunk.js.LICENSE.txt": "/static/js/2.3bc45dda.chunk.js.LICENSE.txt",
+    "static/css/main.8f5cea2c.chunk.css.map": "/static/css/main.8f5cea2c.chunk.css.map",
+    "static/js/2.06752beb.chunk.js.LICENSE.txt": "/static/js/2.06752beb.chunk.js.LICENSE.txt",
     "static/media/ai-hanmi-katate-dori.924b539c.mp3": "/static/media/ai-hanmi-katate-dori.924b539c.mp3",
     "static/media/ai-hanmi-ryote-dori.8145e9b9.mp3": "/static/media/ai-hanmi-ryote-dori.8145e9b9.mp3",
     "static/media/aiki-otoshi.2d24d1b3.mp3": "/static/media/aiki-otoshi.2d24d1b3.mp3",
@@ -34,6 +34,7 @@
     "static/media/koshi-nage.62455304.mp3": "/static/media/koshi-nage.62455304.mp3",
     "static/media/kote-gaeshi.30e8db8f.mp3": "/static/media/kote-gaeshi.30e8db8f.mp3",
     "static/media/logo.35fd12aa.svg": "/static/media/logo.35fd12aa.svg",
+    "static/media/logo_Aikidofoederation_schwarz.d95f413e.svg": "/static/media/logo_Aikidofoederation_schwarz.d95f413e.svg",
     "static/media/mae-ryo-kata-dori.682b953e.mp3": "/static/media/mae-ryo-kata-dori.682b953e.mp3",
     "static/media/muna-dori.d02f839f.mp3": "/static/media/muna-dori.d02f839f.mp3",
     "static/media/nikyo.6a46b50f.mp3": "/static/media/nikyo.6a46b50f.mp3",
@@ -68,9 +69,9 @@
     "static/media/yonkyo.0712d7af.mp3": "/static/media/yonkyo.0712d7af.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.b5c01459.js",
-    "static/js/2.3bc45dda.chunk.js",
-    "static/css/main.904edfc1.chunk.css",
-    "static/js/main.c5089acd.chunk.js"
+    "static/js/runtime-main.8498d3d9.js",
+    "static/js/2.06752beb.chunk.js",
+    "static/css/main.8f5cea2c.chunk.css",
+    "static/js/main.ebb98c6b.chunk.js"
   ]
 }
