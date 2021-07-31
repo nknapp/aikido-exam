@@ -49,6 +49,12 @@ export const DefaultLayout: React.FC = ({ children }) => {
             <a href="https://github.com/nknapp">Github-Profil</a>)
           </p>
           <hr />
+          <p>Was ich noch einbauen will:</p>
+          <ul>
+            <li>Zufallsauswahl der Techniken</li>
+            <li>Zeitbasiertes Auto-Play</li>
+          </ul>
+          <hr />
           <p style={{ fontSize: "70%" }}>
             <strong>Verantwortlich für die Inhalte dieser Seite ist</strong>
             <br />
