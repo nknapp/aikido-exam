@@ -16,5 +16,5 @@ export function relevantQueryParts(
       return query.slice(i);
     }
   }
-  return [];
+  return query;
 }

@@ -12,6 +12,7 @@ import { useAudioPlayer } from "../../utils/hooks/useAudioPlayer";
 import css from "./Reader.module.scss";
 import { CurrentQuery } from "./CurrentQuery";
 import { NoQuery } from "./NoQuery";
+import { useMediaSessionIfPresent } from "../../utils/hooks/useMediaSession";
 
 export const Reader: React.FC<{
   queries: Announcement[];
@@ -53,6 +54,13 @@ export const Reader: React.FC<{
   const forward = useCallback(() => {
     setNextQueryIndex((currentQueryIndex) => currentQueryIndex + 1);
   }, []);
+
+  useMediaSessionIfPresent({
+    playing,
+    onPlayEvent: playCurrentQuery,
+    onStopEvent: stop,
+    title: (queries && queries[nextQueryIndex]?.join(" ")) || "",
+  });
 
   return (
     <div className={css.reader}>
