@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.342ab1f6.chunk.css",
-    "main.js": "/static/js/main.1907e725.chunk.js",
-    "main.js.map": "/static/js/main.1907e725.chunk.js.map",
+    "main.js": "/static/js/main.20124ba4.chunk.js",
+    "main.js.map": "/static/js/main.20124ba4.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.b5c01459.js",
     "runtime-main.js.map": "/static/js/runtime-main.b5c01459.js.map",
     "static/js/2.b4c76088.chunk.js": "/static/js/2.b4c76088.chunk.js",
@@ -44,6 +44,7 @@
     "static/media/shomen-uchi-gyaku-te.543c69a4.mp3": "/static/media/shomen-uchi-gyaku-te.543c69a4.mp3",
     "static/media/shomen-uchi-hon-te.89397dd1.mp3": "/static/media/shomen-uchi-hon-te.89397dd1.mp3",
     "static/media/shomen-uchi.0cd98244.mp3": "/static/media/shomen-uchi.0cd98244.mp3",
+    "static/media/silence.65bb67d2.mp3": "/static/media/silence.65bb67d2.mp3",
     "static/media/sokumen-irimi-nage.bedde90c.mp3": "/static/media/sokumen-irimi-nage.bedde90c.mp3",
     "static/media/soto-kaiten-nage.a2388971.mp3": "/static/media/soto-kaiten-nage.a2388971.mp3",
     "static/media/sumi-otoshi.81447d76.mp3": "/static/media/sumi-otoshi.81447d76.mp3",
@@ -71,6 +72,6 @@
     "static/js/runtime-main.b5c01459.js",
     "static/js/2.b4c76088.chunk.js",
     "static/css/main.342ab1f6.chunk.css",
-    "static/js/main.1907e725.chunk.js"
+    "static/js/main.20124ba4.chunk.js"
   ]
 }
