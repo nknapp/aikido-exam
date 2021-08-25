@@ -1,14 +1,17 @@
-import { Alert, Container, Navbar } from "react-bootstrap";
+import { Alert, Container, Form, Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import React from "react";
+import React, { ReactNode } from "react";
 import logo from "src/assets/logo.svg";
+import { CheckSquare, Square } from "react-bootstrap-icons";
 
-export const DefaultLayout: React.FC = ({ children }) => {
-  console.log(logo);
+export const DefaultLayout: React.FC<{ navbuttons: ReactNode }> = ({
+  children,
+  navbuttons,
+}) => {
   const { t } = useTranslation();
   return (
     <>
-      <Navbar bg={"primary"} expand="md">
+      <Navbar expand="md">
         <Container>
           <Navbar.Brand>
             <img width="30" height="30" src={logo} alt={t("app.title")} />{" "}
@@ -16,6 +19,7 @@ export const DefaultLayout: React.FC = ({ children }) => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="navbar-nav">
+            <Form className={"form-inline ms-auto"}>{navbuttons}</Form>
             <Navbar.Text className={"ms-auto"}>
               © Nils Knappmeier (2021)
             </Navbar.Text>
@@ -51,8 +55,12 @@ export const DefaultLayout: React.FC = ({ children }) => {
           <hr />
           <p>Was ich noch einbauen will:</p>
           <ul>
-            <li>Zufallsauswahl der Techniken</li>
-            <li>Zeitbasiertes Auto-Play</li>
+            <li>
+              Zufallsauswahl der Techniken <CheckSquare />
+            </li>
+            <li>
+              Zeitbasiertes Auto-Play <Square />
+            </li>
           </ul>
           <hr />
           <p style={{ fontSize: "70%" }}>

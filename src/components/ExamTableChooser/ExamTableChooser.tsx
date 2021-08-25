@@ -1,19 +1,22 @@
-import { Announcement, resolveExamTables } from "../utils/resolve-exam-tables";
+import {
+  Announcement,
+  resolveExamTables,
+} from "../../utils/resolve-exam-tables";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Col, Row, ToggleButton } from "react-bootstrap";
-import { TranslationSchema } from "../i18n/translations/schema";
-import { ExamTable } from "../exam-tables/baseTypes";
-import { kyu5 } from "../exam-tables/kyu5";
-import { kyu1 } from "../exam-tables/kyu1";
-import { dan3 } from "../exam-tables/dan3";
-import { dan1 } from "../exam-tables/dan1";
-import { kyu4 } from "../exam-tables/kyu4";
-import { dan2 } from "../exam-tables/dan2";
-import { kyu2 } from "../exam-tables/kyu2";
-import { kyu3 } from "../exam-tables/kyu3";
-import { CheckSquare, Square } from "react-bootstrap-icons";
-import { additional } from "../exam-tables/additional";
+import { Col, Row } from "react-bootstrap";
+import { TranslationSchema } from "../../i18n/translations/schema";
+import { ExamTable } from "../../exam-tables/baseTypes";
+import { kyu5 } from "../../exam-tables/kyu5";
+import { kyu1 } from "../../exam-tables/kyu1";
+import { dan3 } from "../../exam-tables/dan3";
+import { dan1 } from "../../exam-tables/dan1";
+import { kyu4 } from "../../exam-tables/kyu4";
+import { dan2 } from "../../exam-tables/dan2";
+import { kyu2 } from "../../exam-tables/kyu2";
+import { kyu3 } from "../../exam-tables/kyu3";
+import { additional } from "../../exam-tables/additional";
+import { CheckButton } from "../CheckButton";
 
 export interface ExamTableChooserProps {
   onChoice(queries: Announcement[]): void;
@@ -109,20 +112,18 @@ export const ExamTableChooser: React.FC<ExamTableChooserProps> = ({
       {buttons.map((buttonName) => {
         return (
           <Col key={buttonName} className={"mb-2"}>
-            <ToggleButton
+            <CheckButton
               className={"w-100"}
               id={"toggle-" + buttonName}
               onChange={(event) => {
-                console.log("change", event);
                 updateState(buttonName, event.currentTarget.checked);
               }}
               type="checkbox"
               value={buttonName}
               checked={buttonState[buttonName] || false}
             >
-              {buttonState[buttonName] ? <CheckSquare /> : <Square />}{" "}
               {t(ButtonDetails[buttonName].labelKey)}
-            </ToggleButton>
+            </CheckButton>
           </Col>
         );
       })}

@@ -1,10 +1,13 @@
 import React from "react";
 import { Alert } from "react-bootstrap";
 import { ReactComponent as Logo } from "src/assets/logo.svg";
+import { Announcement } from "../../utils/resolve-exam-tables";
+import { CreateExamButton } from "../ExamTableChooser/CreateExamButton";
 
 export const NoQuery: React.FC<{
   className?: string;
-}> = ({ className }) => {
+  onQueryChoice?: (queries: Announcement[]) => void;
+}> = ({ className, onQueryChoice }) => {
   return (
     <Alert
       variant={"warning"}
@@ -15,9 +18,12 @@ export const NoQuery: React.FC<{
         " align-items-center"
       }
     >
-      <Logo height={"50%"} />
+      <Logo width="10rem" height="10rem" />
       <div className={"fs-2 text-center"}>
         Bitte wähle eine oder mehrere Techniklisten aus.
+      </div>
+      <div>
+        {onQueryChoice != null && <CreateExamButton onChoice={onQueryChoice} />}
       </div>
     </Alert>
   );
