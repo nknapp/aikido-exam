@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.85e1509d.chunk.css",
-    "main.js": "/static/js/main.46960fee.chunk.js",
-    "main.js.map": "/static/js/main.46960fee.chunk.js.map",
+    "main.js": "/static/js/main.816ad2f4.chunk.js",
+    "main.js.map": "/static/js/main.816ad2f4.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.eb184fdb.js",
     "runtime-main.js.map": "/static/js/runtime-main.eb184fdb.js.map",
-    "static/js/2.45244058.chunk.js": "/static/js/2.45244058.chunk.js",
-    "static/js/2.45244058.chunk.js.map": "/static/js/2.45244058.chunk.js.map",
+    "static/js/2.818445ef.chunk.js": "/static/js/2.818445ef.chunk.js",
+    "static/js/2.818445ef.chunk.js.map": "/static/js/2.818445ef.chunk.js.map",
     "static/js/3.947bf8f0.chunk.js": "/static/js/3.947bf8f0.chunk.js",
     "static/js/3.947bf8f0.chunk.js.map": "/static/js/3.947bf8f0.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.85e1509d.chunk.css.map": "/static/css/main.85e1509d.chunk.css.map",
-    "static/js/2.45244058.chunk.js.LICENSE.txt": "/static/js/2.45244058.chunk.js.LICENSE.txt",
+    "static/js/2.818445ef.chunk.js.LICENSE.txt": "/static/js/2.818445ef.chunk.js.LICENSE.txt",
     "static/media/ai-hanmi-katate-dori.924b539c.mp3": "/static/media/ai-hanmi-katate-dori.924b539c.mp3",
     "static/media/ai-hanmi-ryote-dori.8145e9b9.mp3": "/static/media/ai-hanmi-ryote-dori.8145e9b9.mp3",
     "static/media/aiki-otoshi.2d24d1b3.mp3": "/static/media/aiki-otoshi.2d24d1b3.mp3",
@@ -70,8 +70,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.eb184fdb.js",
-    "static/js/2.45244058.chunk.js",
+    "static/js/2.818445ef.chunk.js",
     "static/css/main.85e1509d.chunk.css",
-    "static/js/main.46960fee.chunk.js"
+    "static/js/main.816ad2f4.chunk.js"
   ]
 }
