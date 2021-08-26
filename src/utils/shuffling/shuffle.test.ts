@@ -31,8 +31,8 @@ describe("shuffle", () => {
       ["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"],
       ["suwari waza", "katate ryote dori", "shiho nage", "ura"],
       ["tachi waza", "kata dori", "shiho nage", "ura"],
-      ["tachi waza", "kata dori", "irimi nage", "ura"],
       ["tachi waza", "kata dori", "shiho nage", "omote"],
+      ["tachi waza", "kata dori", "irimi nage", "ura"],
     ]);
   });
 

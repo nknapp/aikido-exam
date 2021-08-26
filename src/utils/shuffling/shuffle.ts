@@ -26,5 +26,10 @@ function regroupByExecutions(queries: Announcement[]): Announcement[] {
 
 function regroupByAttack(queries: Announcement[]): Announcement[] {
   const byExecution = groupBy(queries, (query) => query[1]);
+  return flatMap(Object.values(byExecution), regroupByTechnique);
+}
+
+function regroupByTechnique(queries: Announcement[]): Announcement[] {
+  const byExecution = groupBy(queries, (query) => query[2]);
   return flatMap(Object.values(byExecution), (queries) => queries);
 }
