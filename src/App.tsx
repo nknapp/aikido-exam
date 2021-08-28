@@ -18,7 +18,18 @@ function App(): JSX.Element {
   return (
     <DefaultLayout
       navbuttons={
-        queries.length > 0 && <CreateExamButton onChoice={setQueries} />
+        queries.length > 0 && (
+          <>
+            <CreateExamButton onChoice={setQueries} />
+            <Button
+              className={"ms-2"}
+              variant={"outline-secondary"}
+              onClick={() => window.print()}
+            >
+              <Printer /> Print
+            </Button>
+          </>
+        )
       }
     >
       <div className={"mt-1"}>
@@ -30,17 +41,6 @@ function App(): JSX.Element {
               <Reader queries={queries} nextQueryChanged={setCurrentQuery} />
             </div>
             <div className={"mt-4"}>
-              <div className={"no-print"}>
-                <div className={"d-flex justify-content-end"}>
-                  <Button
-                    variant={"outline-secondary"}
-                    size={"sm"}
-                    onClick={() => window.print()}
-                  >
-                    <Printer /> Print
-                  </Button>
-                </div>
-              </div>
               <ShowExamTable
                 examTable={examTable}
                 currentQuery={queries[currentQuery]}
