@@ -8,6 +8,8 @@ import { NoQuery } from "./components/Reader/NoQuery";
 import css from "./components/Reader/Reader.module.scss";
 import { ShowExamTable } from "./components/ShowExamTable/ShowExamTable";
 import { buildExamTable } from "./utils/mapper/examtable";
+import { Button } from "react-bootstrap";
+import { Printer } from "react-bootstrap-icons";
 
 function App(): JSX.Element {
   const [queries, setQueries] = useState<Announcement[]>([]);
@@ -19,18 +21,31 @@ function App(): JSX.Element {
         queries.length > 0 && <CreateExamButton onChoice={setQueries} />
       }
     >
-      <div className={"mt-1 no-print"}>
+      <div className={"mt-1"}>
         {queries.length === 0 ? (
           <NoQuery className={css.queryDisplay} onQueryChoice={setQueries} />
         ) : (
-          <Reader queries={queries} nextQueryChanged={setCurrentQuery} />
+          <>
+            <div className={"no-print"}>
+              <Reader queries={queries} nextQueryChanged={setCurrentQuery} />
+            </div>
+            <div className={"mt-4"}>
+              <div className={"no-print d-flex justify-content-end"}>
+                <Button
+                  variant={"outline-secondary"}
+                  size={"sm"}
+                  onClick={() => window.print()}
+                >
+                  <Printer /> Print
+                </Button>
+              </div>
+              <ShowExamTable
+                examTable={examTable}
+                currentQuery={queries[currentQuery]}
+              />
+            </div>
+          </>
         )}
-      </div>
-      <div className={"mt-4"}>
-        <ShowExamTable
-          examTable={examTable}
-          currentQuery={queries[currentQuery]}
-        />
       </div>
     </DefaultLayout>
   );
