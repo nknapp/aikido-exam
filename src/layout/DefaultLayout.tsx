@@ -11,6 +11,12 @@ export const DefaultLayout: React.FC<{ navbuttons: ReactNode }> = ({
   const { t } = useTranslation();
   return (
     <>
+      <div className={"only-print"}>
+        <div className={"d-flex justify-content-between"}>
+          <div>{t("app.title")}</div>
+          <div>{document.location.origin}</div>
+        </div>
+      </div>
       <Navbar expand="md" className={"no-print"}>
         <Container>
           <Navbar.Brand>

@@ -36,6 +36,12 @@ $hightlighQueryBg: change-color($primary, $alpha: 0.3);
 
 .no-print {
   @media print {
-    display: none;
+    display: none !important;
+  }
+}
+
+.only-print {
+  @media not print {
+    display: none !important;
   }
 }

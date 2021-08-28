@@ -30,14 +30,16 @@ function App(): JSX.Element {
               <Reader queries={queries} nextQueryChanged={setCurrentQuery} />
             </div>
             <div className={"mt-4"}>
-              <div className={"no-print d-flex justify-content-end"}>
-                <Button
-                  variant={"outline-secondary"}
-                  size={"sm"}
-                  onClick={() => window.print()}
-                >
-                  <Printer /> Print
-                </Button>
+              <div className={"no-print"}>
+                <div className={"d-flex justify-content-end"}>
+                  <Button
+                    variant={"outline-secondary"}
+                    size={"sm"}
+                    onClick={() => window.print()}
+                  >
+                    <Printer /> Print
+                  </Button>
+                </div>
               </div>
               <ShowExamTable
                 examTable={examTable}
