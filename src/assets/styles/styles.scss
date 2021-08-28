@@ -1,16 +1,41 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 
+$primary: #55aa77;
+$info: #66bb33;
 $theme-colors: (
-        "primary":    #55aa77,
-        "secondary":  $secondary,
-        "success":    $success,
-        "info":       #66bb33,
-        "warning":    $warning,
-        "danger":     $danger,
-        "light":      $light,
-        "dark":       $dark
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
 );
 
-
 @import "~bootstrap";
+
+$hightlighQueryBg: change-color($primary, $alpha: 0.3);
+.highlighted-query {
+  @media screen {
+    margin: -5px;
+    padding: 5px;
+    background-color: $hightlighQueryBg;
+    box-shadow: 0 0 10px 0 $hightlighQueryBg;
+    border-radius: 5px;
+    color: darken(map-get($theme-colors, "primary"), 20%);
+  }
+}
+
+@media print {
+  @page {
+    margin: 2cm;
+  }
+}
+
+.no-print {
+  @media print {
+    display: none;
+  }
+}

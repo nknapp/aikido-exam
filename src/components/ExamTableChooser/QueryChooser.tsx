@@ -2,11 +2,12 @@ import { Announcement } from "../../utils/resolve-exam-tables";
 import { ExamTableChooser } from "./ExamTableChooser";
 import { Col, Row } from "react-bootstrap";
 import { CheckButton } from "../CheckButton";
-import { ShowQueries } from "../ShowQueries";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { shuffleAndSelect } from "../../utils/shuffling/shuffle";
 import FormRange from "react-bootstrap/FormRange";
 import { useDebouncedEffect } from "src/utils/hooks/useDebouncedEffect";
+import { buildExamTable } from "../../utils/mapper/examtable";
+import { ShowExamTable } from "../ShowExamTable/ShowExamTable";
 
 export interface ExamTableChooserProps {
   onChoice(queries: Announcement[]): void;
@@ -16,6 +17,7 @@ export const QueryChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) => {
   const [allQueries, setAllQueries] = useState<Announcement[]>([]);
   const [shouldShuffle, setShouldShuffle] = useState(true);
   const [queries, setQueries] = useState<Announcement[]>([]);
+  const examTable = useMemo(() => buildExamTable(queries), [queries]);
   const [coverage, setCoverage] = useState(100);
 
   const updateQueries = useCallback((chosenQueries) => {
@@ -65,7 +67,7 @@ export const QueryChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) => {
         </Col>
       </Row>
       <hr />
-      <ShowQueries queries={queries} currentQuery={-1} />
+      <ShowExamTable examTable={examTable} />
     </>
   );
 };

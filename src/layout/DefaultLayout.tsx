@@ -11,7 +11,7 @@ export const DefaultLayout: React.FC<{ navbuttons: ReactNode }> = ({
   const { t } = useTranslation();
   return (
     <>
-      <Navbar expand="md">
+      <Navbar expand="md" className={"no-print"}>
         <Container>
           <Navbar.Brand>
             <img width="30" height="30" src={logo} alt={t("app.title")} />{" "}
@@ -30,7 +30,7 @@ export const DefaultLayout: React.FC<{ navbuttons: ReactNode }> = ({
         {children}
 
         <hr />
-        <Alert variant={"info"}>
+        <Alert variant={"info"} className={"no-print"}>
           <p>
             Die Inhalte dieser Seite basieren auf dem{" "}
             <a
