@@ -13,6 +13,7 @@ import css from "./Reader.module.scss";
 import { CurrentQuery } from "./CurrentQuery";
 import { NoQuery } from "./NoQuery";
 import { useMediaSessionIfPresent } from "../../utils/hooks/useMediaSession";
+import { HandTracker } from "../HandTracker/HandTracker";
 
 export const Reader: React.FC<{
   queries: Announcement[];
@@ -100,6 +101,11 @@ export const Reader: React.FC<{
       >
         <ChevronDoubleRight />
       </Button>
+      <HandTracker
+        className={css.handGestures}
+        playing={playing}
+        onPointGesture={playCurrentQuery}
+      />
       {nextQuery != null ? (
         <CurrentQuery query={nextQuery} className={css.queryDisplay} />
       ) : (
