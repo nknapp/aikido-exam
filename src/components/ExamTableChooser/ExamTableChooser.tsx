@@ -96,7 +96,8 @@ export const ExamTableChooser: React.FC<ExamTableChooserProps> = ({
     const tables: ExamTable[] = selectedButtons.map(
       (buttonName) => ButtonDetails[buttonName].table
     );
-    onChoice(resolveExamTables(tables));
+    const selectedQueries: Announcement[] = resolveExamTables(tables);
+    onChoice(selectedQueries);
   }, [buttonState, onChoice]);
 
   function updateState(key: ButtonName, checked: boolean): void {

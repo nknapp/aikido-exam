@@ -1,13 +1,13 @@
 import { Announcement } from "../../utils/resolve-exam-tables";
 import { ExamTableChooser } from "./ExamTableChooser";
-import { Col, Row } from "react-bootstrap";
-import { CheckButton } from "../CheckButton";
-import { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { shuffleAndSelect } from "../../utils/shuffling/shuffle";
-import FormRange from "react-bootstrap/FormRange";
 import { useDebouncedEffect } from "src/utils/hooks/useDebouncedEffect";
 import { buildExamTable } from "../../utils/mapper/examtable";
 import { ShowExamTable } from "../ShowExamTable/ShowExamTable";
+import { filterQueries, QueryFilters } from "../../utils/query-filters";
+import { ShowQueryFilters } from "./ShowQueryFilters";
+import { ShowShuffleControls, ShuffleControls } from "./ShuffleControls";
 
 export interface ExamTableChooserProps {
   onChoice(queries: Announcement[]): void;
@@ -15,10 +15,15 @@ export interface ExamTableChooserProps {
 
 export const QueryChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) => {
   const [allQueries, setAllQueries] = useState<Announcement[]>([]);
-  const [shouldShuffle, setShouldShuffle] = useState(true);
   const [queries, setQueries] = useState<Announcement[]>([]);
   const examTable = useMemo(() => buildExamTable(queries), [queries]);
-  const [coverage, setCoverage] = useState(100);
+  const [shuffleControls, setShuffleControls] = useState<ShuffleControls>({
+    shouldShuffle: true,
+    coverage: 100,
+  });
+  const [queryFilters, setQueryFilters] = useState<QueryFilters>({
+    badKnees: false,
+  });
 
   const updateQueries = useCallback((chosenQueries) => {
     setAllQueries(chosenQueries);
@@ -26,12 +31,15 @@ export const QueryChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) => {
 
   useDebouncedEffect(
     useCallback(() => {
-      const newQueries = shouldShuffle
-        ? shuffleAndSelect(allQueries, { coverage: coverage / 100 })
+      let newQueries = shuffleControls.shouldShuffle
+        ? shuffleAndSelect(allQueries, {
+            coverage: shuffleControls.coverage / 100,
+          })
         : allQueries;
+      newQueries = filterQueries(newQueries, queryFilters);
       setQueries(newQueries);
       onChoice(newQueries);
-    }, [shouldShuffle, allQueries, coverage, onChoice]),
+    }, [shuffleControls, allQueries, onChoice, queryFilters]),
     200
   );
 
@@ -39,33 +47,13 @@ export const QueryChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) => {
     <>
       <ExamTableChooser onChoice={updateQueries} />
       <hr />
-      <Row className={"d-flex align-items-center"}>
-        <Col md={2}>
-          <CheckButton
-            id={"toggle-should-shuffle"}
-            onChange={(event) => {
-              setShouldShuffle(event.currentTarget.checked);
-            }}
-            value={"Should shuffle"}
-            checked={shouldShuffle}
-          >
-            Zufällige Auswahl:
-          </CheckButton>
-        </Col>
-        <Col>
-          <FormRange
-            disabled={!shouldShuffle}
-            onChange={(event) => setCoverage(Number(event.currentTarget.value))}
-            value={coverage}
-          />
-        </Col>
-        <Col md={3}>
-          <label>
-            Anzahl Techniken: {queries.length}{" "}
-            {shouldShuffle && "(" + coverage + "%)"}
-          </label>
-        </Col>
-      </Row>
+      <ShowQueryFilters value={queryFilters} onChange={setQueryFilters} />
+      <hr />
+      <ShowShuffleControls
+        value={shuffleControls}
+        onChange={setShuffleControls}
+        nrQueries={queries.length}
+      />
       <hr />
       <ShowExamTable examTable={examTable} />
     </>
