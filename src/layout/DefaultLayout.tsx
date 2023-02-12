@@ -79,6 +79,10 @@ export const DefaultLayout: React.FC<{ navbuttons: ReactNode }> = ({
             64289 Darmstadt
             <br />
           </p>
+          <p>
+            Anonymous, cookieless tracking with{" "}
+            <a href="https://plausible.io">plausible.io</a>
+          </p>
         </Alert>
       </Container>
     </>
