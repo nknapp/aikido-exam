@@ -2,26 +2,23 @@ import { ExamTableChooser } from "./ExamTableChooser";
 import React, { useCallback, useMemo, useState } from "react";
 import { shuffleAndSelect } from "../../utils/shuffling/shuffle";
 import { useDebouncedEffect } from "src/utils/hooks/useDebouncedEffect";
-import { buildExamTable } from "../../utils/mapper/examtable";
 import { ShowExamTable } from "../ShowExamTable/ShowExamTable";
-import {
-  filterTechniques,
-  TechniqueFilters,
-} from "../../utils/technique-filters";
+import { filterTechniques, TechniqueFilters } from "../../utils/technique-filters";
 import { ShowTechniqueFilters } from "./ShowTechniqueFilters";
 import { ShowShuffleControls, ShuffleControls } from "./ShuffleControls";
 import { Technique } from "../../model/Technique";
+import { TechniqueList } from "../../model/TechniqueList";
 
 export interface ExamTableChooserProps {
   onChoice(techniques: Technique[]): void;
 }
 
-export const TechniqueChooser: React.FC<ExamTableChooserProps> = ({
-  onChoice,
-}) => {
-  const [alltechniques, setAlltechniques] = useState<Technique[]>([]);
-  const [techniques, settechniques] = useState<Technique[]>([]);
-  const examTable = useMemo(() => buildExamTable(techniques), [techniques]);
+export const TechniqueChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) => {
+  const [allTechniques, setAllTechniques] = useState<Technique[]>([]);
+
+  const [techniques, setTechniques] = useState<Technique[]>([]);
+  const examTable = useMemo(() => new TechniqueList(techniques), [techniques]);
+
   const [shuffleControls, setShuffleControls] = useState<ShuffleControls>({
     shouldShuffle: true,
     coverage: 100,
@@ -31,20 +28,21 @@ export const TechniqueChooser: React.FC<ExamTableChooserProps> = ({
   });
 
   const updatetechniques = useCallback((chosentechniques) => {
-    setAlltechniques(chosentechniques);
+    setAllTechniques(chosentechniques);
   }, []);
 
   useDebouncedEffect(
     useCallback(() => {
-      let newtechniques = shuffleControls.shouldShuffle
-        ? shuffleAndSelect(alltechniques, {
+      let newTechniques = shuffleControls.shouldShuffle
+        ? shuffleAndSelect(allTechniques, {
             coverage: shuffleControls.coverage / 100,
           })
-        : alltechniques;
-      newtechniques = filterTechniques(newtechniques, techniqueFilters);
-      settechniques(newtechniques);
-      onChoice(newtechniques);
-    }, [shuffleControls, alltechniques, onChoice, techniqueFilters]),
+        : allTechniques;
+      newTechniques = filterTechniques(newTechniques, techniqueFilters);
+      console.log(newTechniques);
+      setTechniques(newTechniques);
+      onChoice(newTechniques);
+    }, [shuffleControls, allTechniques, onChoice, techniqueFilters]),
     200
   );
 
@@ -52,18 +50,11 @@ export const TechniqueChooser: React.FC<ExamTableChooserProps> = ({
     <>
       <ExamTableChooser onChoice={updatetechniques} />
       <hr />
-      <ShowTechniqueFilters
-        value={techniqueFilters}
-        onChange={setTechniqueFilters}
-      />
+      <ShowTechniqueFilters value={techniqueFilters} onChange={setTechniqueFilters} />
       <hr />
-      <ShowShuffleControls
-        value={shuffleControls}
-        onChange={setShuffleControls}
-        nrtechniques={techniques.length}
-      />
+      <ShowShuffleControls value={shuffleControls} onChange={setShuffleControls} nrtechniques={techniques.length} />
       <hr />
-      <ShowExamTable examTable={examTable} />
+      <ShowExamTable techniques={examTable} />
     </>
   );
 };

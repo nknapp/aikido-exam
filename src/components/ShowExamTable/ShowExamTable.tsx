@@ -1,93 +1,67 @@
 import React from "react";
-import { Attacks, ExamTable, Defences } from "../../exam-tables/baseTypes";
 import { Col, Row } from "react-bootstrap";
-import {
-  Attack,
-  Direction,
-  Execution,
-  Defence,
-} from "../../exam-tables/audio-files";
+import { Attack, Defence, Execution } from "../../exam-tables/audio-files";
 import { Technique } from "../../model/Technique";
+import { TechniqueList } from "../../model/TechniqueList";
 
-const Directions: React.FC<{
-  directions: Direction[];
+const ShowDirections: React.FC<{
+  techniques: TechniqueList;
   highlightedTechnique?: Technique;
-}> = ({ directions, highlightedTechnique }) => {
-  return directions.length > 0 ? (
+}> = ({ techniques, highlightedTechnique }) => {
+  return (
     <div>
       (
-      {directions.map((direction, index) => {
-        const isHighlighted =
-          techniqueIfMatching(highlightedTechnique, 3, direction) != null;
+      {techniques.map((technique, index) => {
         return (
-          <React.Fragment key={direction + "-" + index}>
+          <React.Fragment key={technique.direction + "-" + index}>
             {index > 0 && ", "}
-            <span className={isHighlighted ? "highlighted-technique" : ""}>
-              {direction}
+            <span className={technique === highlightedTechnique ? "highlighted-technique" : ""}>
+              {technique.direction}
             </span>
           </React.Fragment>
         );
       })}
       )
     </div>
-  ) : (
-    <></>
   );
 };
 
 const ShowDefence: React.FC<{
   defence: Defence;
-  directions: Direction[];
+  techniques: TechniqueList;
   highlightedTechnique?: Technique;
-}> = ({ defence, directions, highlightedTechnique }) => {
+}> = ({ defence, techniques, highlightedTechnique }) => {
   return (
     <div className={"me-5 d-flex"} style={{ whiteSpace: "nowrap" }}>
       <div className={"me-2 "}>
-        <span
-          className={
-            highlightedTechnique != null ? "highlighted-technique" : ""
-          }
-        >
-          {defence}
-        </span>
+        <span className={techniques.includes(highlightedTechnique) ? "highlighted-technique" : ""}>{defence}</span>
       </div>
-      <Directions
-        directions={directions}
-        highlightedTechnique={highlightedTechnique}
-      />
+      {techniques.hasDirections && (
+        <ShowDirections techniques={techniques} highlightedTechnique={highlightedTechnique} />
+      )}
     </div>
   );
 };
 
 const ShowAttack: React.FC<{
   attack: Attack;
-  defences: Defences;
+  techniques: TechniqueList;
   highlightedTechnique?: Technique;
-}> = ({ attack, defences, highlightedTechnique }) => {
+}> = ({ attack, techniques, highlightedTechnique }) => {
   return (
     <Row className={"mb-2"}>
       <Col sm={5} md={4}>
-        <span
-          className={
-            highlightedTechnique != null ? "highlighted-technique" : ""
-          }
-        >
-          {attack}
-        </span>
+        <span className={techniques.includes(highlightedTechnique) ? "highlighted-technique" : ""}>{attack}</span>
       </Col>
       <Col className={"ps-5 ps-sm-0"}>
         <div className={"d-flex flex-wrap"}>
-          {Object.entries(defences).map(([defence, directions]) => {
+          {techniques.groupBy("defence").map((defence) => {
             return (
               <ShowDefence
-                key={defence}
-                defence={defence as Defence}
-                directions={directions}
-                highlightedTechnique={techniqueIfMatching(
-                  highlightedTechnique,
-                  2,
-                  defence as Defence
-                )}
+                key={defence.name}
+                defence={defence.name}
+                techniques={defence.items}
+                highlightedTechnique={highlightedTechnique}
               />
             );
           })}
@@ -99,23 +73,19 @@ const ShowAttack: React.FC<{
 
 const ShowExecution: React.FC<{
   execution: Execution;
-  attacks: Attacks;
+  techniques: TechniqueList;
   highlightedTechnique?: Technique;
-}> = ({ execution, attacks, highlightedTechnique }) => {
+}> = ({ execution, techniques, highlightedTechnique }) => {
   return (
     <div className={"mb-4"}>
       <h5>{execution}</h5>
-      {Object.entries(attacks).map(([attack, defences]) => {
+      {techniques.groupBy("attack").map((attack) => {
         return (
           <ShowAttack
-            key={attack}
-            attack={attack as Attack}
-            defences={defences}
-            highlightedTechnique={techniqueIfMatching(
-              highlightedTechnique,
-              1,
-              attack as Attack
-            )}
+            key={attack.name}
+            attack={attack.name}
+            techniques={attack.items}
+            highlightedTechnique={highlightedTechnique}
           />
         );
       })}
@@ -124,38 +94,21 @@ const ShowExecution: React.FC<{
 };
 
 export const ShowExamTable: React.FC<{
-  examTable: ExamTable;
+  techniques: TechniqueList;
   currentTechnique?: Technique;
-}> = ({ examTable, currentTechnique }) => {
+}> = ({ techniques, currentTechnique }) => {
   return (
     <div>
-      {Object.entries(examTable.techniques).map(([execution, attacks]) => {
+      {techniques.groupBy("execution").map((execution) => {
         return (
           <ShowExecution
-            key={execution}
-            execution={execution as Execution}
-            attacks={attacks}
-            highlightedTechnique={techniqueIfMatching(
-              currentTechnique,
-              0,
-              execution as Execution
-            )}
+            key={execution.name}
+            execution={execution.name}
+            techniques={execution.items}
+            highlightedTechnique={currentTechnique}
           />
         );
       })}
     </div>
   );
 };
-
-function techniqueIfMatching<T extends keyof Technique["definition"]>(
-  technique: Technique | undefined,
-  index: T,
-  match: Technique["definition"][T]
-): Technique | undefined {
-  console.log({ technique, index, match });
-  if (technique != null && technique.definition[index] === match) {
-    console.log("technique", true);
-    return technique;
-  }
-  return undefined;
-}

@@ -59,5 +59,8 @@
   "lint-staged": {
     "*.{ts,tsx,js}": "eslint --cache --fix --max-warnings=0",
     "*.{ts,tsx,js,css,md}": "prettier --write"
+  },
+  "prettier": {
+    "printWidth": 120
   }
 }

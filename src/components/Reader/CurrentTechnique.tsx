@@ -7,7 +7,7 @@ export const CurrentTechnique: React.FC<{
   className?: string;
   technique: Technique;
 }> = ({ technique, className }) => {
-  const [execution, attack, defence, direction] = technique.definition;
+  const { execution, attack, defence, direction } = technique;
   return (
     <Alert variant={"info"} className={className}>
       <div className={css.execution}>{execution}</div>
