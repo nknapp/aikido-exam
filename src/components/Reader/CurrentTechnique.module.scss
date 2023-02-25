@@ -1,13 +1,13 @@
 @import "src/assets/styles/styles";
 
-.queryPart {
+.techniquePart {
 }
 
 .execution {
   font-size: 1.5rem;
 }
 
-.queryParts {
+.techniqueParts {
   font-size: 2rem;
   @include media-breakpoint-up(sm) {
     font-size: 2.5rem;

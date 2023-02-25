@@ -1,13 +1,13 @@
 import { MutableRefObject, useCallback, useRef, useState } from "react";
 import { AudioFile } from "../../exam-tables/audio-files";
-import { relevantQueryParts } from "../relevant-query-parts";
+import { relevantTechniqueParts } from "../relevant-technique-parts";
 import { playAudioFile } from "../playAudioFile";
 import { Technique } from "../../model/Technique";
 
 interface UseAudioPlayerResult {
   audioRef: MutableRefObject<HTMLAudioElement | null>;
   playing: boolean;
-  play(query: Technique, lastQuery?: Technique): Promise<void>;
+  play(technique: Technique, lastTechnique?: Technique): Promise<void>;
   stop(): void;
 }
 
@@ -49,8 +49,8 @@ export function useAudioPlayer(): UseAudioPlayerResult {
   }, [setPlaying]);
 
   return {
-    async play(query: Technique, lastQuery?: Technique): Promise<void> {
-      await playAudioFiles(relevantQueryParts(query, lastQuery));
+    async play(technique: Technique, lastTechnique?: Technique): Promise<void> {
+      await playAudioFiles(relevantTechniqueParts(technique, lastTechnique));
     },
     audioRef,
     playing,

@@ -1,7 +1,7 @@
 import { resolveExamTables } from "./resolve-exam-tables";
 
 describe("resolve-exam-tables", () => {
-  it("creates a list of queries", () => {
+  it("creates a list of techniques", () => {
     const actual = resolveExamTables([
       {
         techniques: {
@@ -35,8 +35,8 @@ describe("resolve-exam-tables", () => {
       ["tachi waza", "ai hanmi katate dori", "shiho nage", "omote"],
       ["tachi waza", "ai hanmi katate dori", "shiho nage", "ura"],
       ["tachi waza", "ai hanmi katate dori", "irimi nage"],
-    ].forEach((query) => {
-      expect(actual).toContainEqual(query);
+    ].forEach((technique) => {
+      expect(actual).toContainEqual(technique);
     });
     expect(actual).toHaveLength(6);
   });

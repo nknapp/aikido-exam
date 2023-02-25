@@ -12,11 +12,11 @@ jest.mock("lodash/shuffle", () => {
 });
 
 beforeEach(() => {
-  mockShuffle.mockImplementation((queries) => queries);
+  mockShuffle.mockImplementation((techniques) => techniques);
 });
 
 describe("shuffle", () => {
-  const queries: Technique[] = [
+  const techniques: Technique[] = [
     new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"]),
     new Technique(["tachi waza", "kata dori", "shiho nage", "ura"]),
     new Technique(["tachi waza", "kata dori", "irimi nage", "ura"]),
@@ -25,8 +25,8 @@ describe("shuffle", () => {
     new Technique(["tachi waza", "kata dori", "shiho nage", "omote"]),
   ];
 
-  it("shuffles and regroups queries", () => {
-    expect(shuffleAndSelect(queries, { coverage: 1 })).toEqual([
+  it("shuffles and regroups techniques", () => {
+    expect(shuffleAndSelect(techniques, { coverage: 1 })).toEqual([
       new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"]),
       new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"]),
       new Technique(["suwari waza", "katate ryote dori", "shiho nage", "ura"]),
@@ -36,8 +36,8 @@ describe("shuffle", () => {
     ]);
   });
 
-  it("only returns the requested coverage of queries", () => {
-    expect(shuffleAndSelect(queries, { coverage: 0.8 })).toEqual([
+  it("only returns the requested coverage of techniques", () => {
+    expect(shuffleAndSelect(techniques, { coverage: 0.8 })).toEqual([
       new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"]),
       new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"]),
       new Technique(["suwari waza", "katate ryote dori", "shiho nage", "ura"]),

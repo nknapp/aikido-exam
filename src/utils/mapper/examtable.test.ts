@@ -3,8 +3,8 @@ import { buildExamTable } from "./examtable";
 import { Technique } from "../../model/Technique";
 
 describe("buildExamtable", () => {
-  it("converts a list of queries into the examtable structure", () => {
-    const queries: Technique[] = [
+  it("converts a list of techniques into the examtable structure", () => {
+    const techniques: Technique[] = [
       new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"]),
       new Technique(["tachi waza", "kata dori", "shiho nage", "ura"]),
       new Technique(["tachi waza", "kata dori", "irimi nage", "ura"]),
@@ -14,7 +14,7 @@ describe("buildExamtable", () => {
       new Technique(["tachi waza", "shomen uchi", "irimi nage"]),
     ];
 
-    expect(buildExamTable(queries)).toEqual({
+    expect(buildExamTable(techniques)).toEqual({
       defences: {
         "suwari waza": {
           "ai hanmi katate dori": {
@@ -38,7 +38,7 @@ describe("buildExamtable", () => {
   });
 
   it("iterates in the correct order", () => {
-    const queries: Technique[] = [
+    const techniques: Technique[] = [
       new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"]),
       new Technique(["tachi waza", "kata dori", "shiho nage", "ura"]),
       new Technique(["tachi waza", "kata dori", "irimi nage", "ura"]),
@@ -56,7 +56,7 @@ describe("buildExamtable", () => {
       new Technique(["tachi waza", "kata dori", "irimi nage", "ura"]),
       new Technique(["tachi waza", "shomen uchi", "irimi nage"]),
     ];
-    const table = buildExamTable(queries);
+    const table = buildExamTable(techniques);
     const resolved = resolveExamTables([table]);
     expect(resolved).toEqual(expected);
   });

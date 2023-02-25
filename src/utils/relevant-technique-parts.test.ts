@@ -1,10 +1,10 @@
-import { relevantQueryParts } from "./relevant-query-parts";
+import { relevantTechniqueParts } from "./relevant-technique-parts";
 import { Technique } from "../model/Technique";
 
-describe("relevantQueryParts", () => {
+describe("relevantTechniqueParts", () => {
   it("uses only direction if everything else is equal", () => {
     expect(
-      relevantQueryParts(
+      relevantTechniqueParts(
         new Technique(["suwari waza", "kata dori", "ikkyo", "ura"]),
         new Technique(["suwari waza", "kata dori", "ikkyo", "omote"])
       )
@@ -13,7 +13,7 @@ describe("relevantQueryParts", () => {
 
   it("uses direction and defence, if execution and attack is equal", () => {
     expect(
-      relevantQueryParts(
+      relevantTechniqueParts(
         new Technique(["suwari waza", "kata dori", "ikkyo", "ura"]),
         new Technique(["suwari waza", "kata dori", "nikyo", "omote"])
       )
@@ -22,7 +22,7 @@ describe("relevantQueryParts", () => {
 
   it("uses attach, direction and defence, if execution is equal", () => {
     expect(
-      relevantQueryParts(
+      relevantTechniqueParts(
         new Technique(["suwari waza", "kata dori", "ikkyo", "ura"]),
         new Technique([
           "suwari waza",
@@ -36,7 +36,7 @@ describe("relevantQueryParts", () => {
 
   it("works with defences that have no direction", () => {
     expect(
-      relevantQueryParts(
+      relevantTechniqueParts(
         new Technique(["suwari waza", "kata dori", "irimi nage"]),
         new Technique(["suwari waza", "kata dori", "ikkyo", "ura"])
       )

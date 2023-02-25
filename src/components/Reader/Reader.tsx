@@ -10,57 +10,59 @@ import {
 import { useAudioPlayer } from "../../utils/hooks/useAudioPlayer";
 import css from "./Reader.module.scss";
 import { CurrentTechnique } from "./CurrentTechnique";
-import { NoQuery } from "./NoQuery";
+import { NoTechniquesChosen } from "./NoTechniquesChosen";
 import { useMediaSessionIfPresent } from "../../utils/hooks/useMediaSession";
 import { HandTracker } from "../HandTracker/HandTracker";
 import { Technique } from "../../model/Technique";
 
 export const Reader: React.FC<{
-  queries: Technique[];
-  nextQueryChanged: (index: number) => void;
-}> = ({ queries, nextQueryChanged }) => {
-  const [lastQuery, setLastQuery] = useState<Technique>();
-  const [nextQueryIndex, setNextQueryIndex] = useState<number>(0);
-  const nextQuery = queries[nextQueryIndex];
+  techniques: Technique[];
+  nextTechniqueChanged: (index: number) => void;
+}> = ({ techniques, nextTechniqueChanged }) => {
+  const [lastTechnique, setLastTechnique] = useState<Technique>();
+  const [nextTechniqueIndex, setNextTechniqueIndex] = useState<number>(0);
+  const nextTechnique = techniques[nextTechniqueIndex];
 
   const { playing, play, audioRef, stop } = useAudioPlayer();
 
-  useEffect(() => stop(), [queries, stop]);
+  useEffect(() => stop(), [techniques, stop]);
 
-  useEffect(() => setNextQueryIndex(0), [queries]);
+  useEffect(() => setNextTechniqueIndex(0), [techniques]);
   useEffect(
-    () => nextQueryChanged(nextQueryIndex),
-    [nextQueryIndex, nextQueryChanged]
+    () => nextTechniqueChanged(nextTechniqueIndex),
+    [nextTechniqueIndex, nextTechniqueChanged]
   );
 
-  const playCurrentQuery = useCallback(async () => {
-    if (nextQuery == null) {
+  const playCurrentTechnique = useCallback(async () => {
+    if (nextTechnique == null) {
       return;
     }
-    await play(nextQuery, lastQuery);
-    setNextQueryIndex((currentQueryIndex) => currentQueryIndex + 1);
-    setLastQuery(nextQuery);
-  }, [nextQuery, lastQuery, play]);
+    await play(nextTechnique, lastTechnique);
+    setNextTechniqueIndex((currentTechniqueIndex) => currentTechniqueIndex + 1);
+    setLastTechnique(nextTechnique);
+  }, [nextTechnique, lastTechnique, play]);
 
   const playAgain = useCallback(async () => {
-    if (lastQuery != null) {
-      await play(lastQuery);
+    if (lastTechnique != null) {
+      await play(lastTechnique);
     }
-  }, [play, lastQuery]);
+  }, [play, lastTechnique]);
 
   const back = useCallback(() => {
-    setNextQueryIndex((currentQueryIndex) => currentQueryIndex - 1);
+    setNextTechniqueIndex((currentTechniqueIndex) => currentTechniqueIndex - 1);
   }, []);
 
   const forward = useCallback(() => {
-    setNextQueryIndex((currentQueryIndex) => currentQueryIndex + 1);
+    setNextTechniqueIndex((currentTechniqueIndex) => currentTechniqueIndex + 1);
   }, []);
 
   useMediaSessionIfPresent({
     playing,
-    onPlayEvent: playCurrentQuery,
+    onPlayEvent: playCurrentTechnique,
     onStopEvent: stop,
-    title: (queries && queries[nextQueryIndex]?.definition.join(" ")) || "",
+    title:
+      (techniques && techniques[nextTechniqueIndex]?.definition.join(" ")) ||
+      "",
   });
 
   return (
@@ -69,7 +71,7 @@ export const Reader: React.FC<{
       <Button
         onClick={back}
         className={css.backButton}
-        disabled={nextQueryIndex <= 0}
+        disabled={nextTechniqueIndex <= 0}
       >
         <ChevronDoubleLeft />
       </Button>
@@ -79,8 +81,8 @@ export const Reader: React.FC<{
         </Button>
       ) : (
         <Button
-          onClick={playCurrentQuery}
-          disabled={nextQuery == null}
+          onClick={playCurrentTechnique}
+          disabled={nextTechnique == null}
           className={css.stopPlayButton}
         >
           <Play /> Play
@@ -88,7 +90,7 @@ export const Reader: React.FC<{
       )}
       <Button
         onClick={playAgain}
-        disabled={lastQuery == null || playing}
+        disabled={lastTechnique == null || playing}
         title={"Play again"}
         className={css.repeatButton}
       >
@@ -97,19 +99,22 @@ export const Reader: React.FC<{
       <Button
         onClick={forward}
         className={css.forwardButton}
-        disabled={nextQueryIndex >= queries.length - 1}
+        disabled={nextTechniqueIndex >= techniques.length - 1}
       >
         <ChevronDoubleRight />
       </Button>
       <HandTracker
         className={css.handGestures}
         playing={playing}
-        onPointGesture={playCurrentQuery}
+        onPointGesture={playCurrentTechnique}
       />
-      {nextQuery != null ? (
-        <CurrentTechnique technique={nextQuery} className={css.queryDisplay} />
+      {nextTechnique != null ? (
+        <CurrentTechnique
+          technique={nextTechnique}
+          className={css.techniqueDisplay}
+        />
       ) : (
-        <NoQuery className={css.queryDisplay} />
+        <NoTechniquesChosen className={css.techniqueDisplay} />
       )}
     </div>
   );

@@ -1,11 +1,11 @@
-import { QueryFilters } from "../../utils/query-filters";
+import { TechniqueFilters } from "../../utils/technique-filters";
 import React from "react";
 import { CheckButton } from "../CheckButton";
 import { Col, Row } from "react-bootstrap";
 
-export const ShowQueryFilters: React.FC<{
-  value: QueryFilters;
-  onChange: (filters: QueryFilters) => void;
+export const ShowTechniqueFilters: React.FC<{
+  value: TechniqueFilters;
+  onChange: (filters: TechniqueFilters) => void;
 }> = ({ value, onChange }) => {
   return (
     <Row className={"d-flex align-items-center"}>

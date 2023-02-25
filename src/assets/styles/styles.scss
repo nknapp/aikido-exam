@@ -16,13 +16,13 @@ $theme-colors: (
 
 @import "~bootstrap";
 
-$hightlighQueryBg: change-color($primary, $alpha: 0.3);
-.highlighted-query {
+$hightlighTechniqueBg: change-color($primary, $alpha: 0.3);
+.highlighted-technique {
   @media screen {
     margin: -5px;
     padding: 5px;
-    background-color: $hightlighQueryBg;
-    box-shadow: 0 0 10px 0 $hightlighQueryBg;
+    background-color: $hightlighTechniqueBg;
+    box-shadow: 0 0 10px 0 $hightlighTechniqueBg;
     border-radius: 5px;
     color: darken(map-get($theme-colors, "primary"), 20%);
   }

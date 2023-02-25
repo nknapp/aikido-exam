@@ -9,7 +9,7 @@
 
   grid-template-areas:
     "back  play repeat forward"
-    "query query query query"
+    "technique technique technique technique"
     "hand hand hand hand";
 
   @include media-breakpoint-up(md) {
@@ -17,9 +17,9 @@
     grid-template-rows: 3rem 10rem 10rem 6rem;
 
     grid-template-areas:
-      "back forward query"
-      "play play query"
-      "repeat repeat query"
+      "back forward technique"
+      "play play technique"
+      "repeat repeat technique"
       "hand hand hand";
   }
 }
@@ -60,7 +60,7 @@
   grid-area: hand
 }
 
-.queryDisplay {
-  grid-area: query;
+.techniqueDisplay {
+  grid-area: technique;
   height: 100%;
 }

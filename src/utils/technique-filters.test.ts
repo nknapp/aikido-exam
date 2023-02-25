@@ -1,9 +1,9 @@
-import { filterQueries } from "./query-filters";
+import { filterTechniques } from "./technique-filters";
 import { Technique } from "../model/Technique";
 
-describe("filterQueries", () => {
+describe("filtertechniques", () => {
   it("removes suwari and hamni handachi defences if the badKnees-filter is set", () => {
-    const filtered = filterQueries(
+    const filtered = filterTechniques(
       [
         new Technique(["suwari waza", "shomen uchi", "irimi nage", "ura"]),
         new Technique([
@@ -22,7 +22,7 @@ describe("filterQueries", () => {
   });
 
   it("returns the whole list, if all filters are disabled", () => {
-    const filtered = filterQueries(
+    const filtered = filterTechniques(
       [
         new Technique(["suwari waza", "shomen uchi", "irimi nage", "ura"]),
         new Technique([

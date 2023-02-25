@@ -4,10 +4,10 @@ import { ReactComponent as Logo } from "src/assets/logo.svg";
 import { CreateExamButton } from "../ExamTableChooser/CreateExamButton";
 import { Technique } from "../../model/Technique";
 
-export const NoQuery: React.FC<{
+export const NoTechniquesChosen: React.FC<{
   className?: string;
-  onQueryChoice?: (queries: Technique[]) => void;
-}> = ({ className, onQueryChoice }) => {
+  onTechniqueChoice?: (techniques: Technique[]) => void;
+}> = ({ className, onTechniqueChoice }) => {
   return (
     <Alert
       variant={"warning"}
@@ -23,7 +23,9 @@ export const NoQuery: React.FC<{
         Bitte wähle eine oder mehrere Techniklisten aus.
       </div>
       <div>
-        {onQueryChoice != null && <CreateExamButton onChoice={onQueryChoice} />}
+        {onTechniqueChoice != null && (
+          <CreateExamButton onChoice={onTechniqueChoice} />
+        )}
       </div>
     </Alert>
   );

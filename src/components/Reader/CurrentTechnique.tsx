@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./CurrentQuery.module.scss";
+import css from "./CurrentTechnique.module.scss";
 import { Alert } from "react-bootstrap";
 import { Technique } from "../../model/Technique";
 
@@ -11,10 +11,10 @@ export const CurrentTechnique: React.FC<{
   return (
     <Alert variant={"info"} className={className}>
       <div className={css.execution}>{execution}</div>
-      <div className={css.queryParts}>
-        <div className={css.queryPart}>{attack}</div>
-        <div className={css.queryPart}>{defence}</div>
-        <div className={css.queryPart}>{direction}</div>
+      <div className={css.techniqueParts}>
+        <div className={css.techniquePart}>{attack}</div>
+        <div className={css.techniquePart}>{defence}</div>
+        <div className={css.techniquePart}>{direction}</div>
       </div>
     </Alert>
   );

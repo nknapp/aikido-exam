@@ -2,12 +2,12 @@ import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import css from "./CreateExamButton.module.scss";
-import { QueryChooser } from "./QueryChooser";
+import { TechniqueChooser } from "./TechniqueChooser";
 import { PencilFill } from "react-bootstrap-icons";
 import { Technique } from "../../model/Technique";
 
 export interface ExamTableChooserProps {
-  onChoice(queries: Technique[]): void;
+  onChoice(techniques: Technique[]): void;
 }
 
 export const CreateExamButton: React.FC<ExamTableChooserProps> = ({
@@ -15,7 +15,7 @@ export const CreateExamButton: React.FC<ExamTableChooserProps> = ({
 }) => {
   const [showModal, setShowModal] = useState(false);
   const { t } = useTranslation();
-  const [queries, setQueries] = useState<Technique[]>([]);
+  const [techniques, settechniques] = useState<Technique[]>([]);
 
   return (
     <>
@@ -35,10 +35,10 @@ export const CreateExamButton: React.FC<ExamTableChooserProps> = ({
             Close
           </Button>
           <Button
-            disabled={queries.length === 0}
+            disabled={techniques.length === 0}
             variant="primary"
             onClick={() => {
-              onChoice(queries);
+              onChoice(techniques);
               setShowModal(false);
             }}
           >
@@ -47,7 +47,7 @@ export const CreateExamButton: React.FC<ExamTableChooserProps> = ({
         </Modal.Footer>
 
         <Modal.Body>
-          <QueryChooser onChoice={setQueries} />
+          <TechniqueChooser onChoice={settechniques} />
         </Modal.Body>
 
         <Modal.Footer>
@@ -55,10 +55,10 @@ export const CreateExamButton: React.FC<ExamTableChooserProps> = ({
             Close
           </Button>
           <Button
-            disabled={queries.length === 0}
+            disabled={techniques.length === 0}
             variant="primary"
             onClick={() => {
-              onChoice(queries);
+              onChoice(techniques);
               setShowModal(false);
             }}
           >

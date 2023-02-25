@@ -8,19 +8,21 @@ export function buildExamTable(technique: Technique[]): ExamTable {
   return {
     techniques: groupAndMap(
       technique.map((technique) => technique.definition),
-      (query) => query[0],
-      (queries) =>
+      (technique) => technique[0],
+      (techniques) =>
         groupAndMap(
-          queries,
-          (query) => query[1],
-          (queries) =>
+          techniques,
+          (technique) => technique[1],
+          (techniques) =>
             groupAndMap(
-              queries,
-              (query) => query[2],
-              (queries) =>
-                queries
-                  .map((query) => query[3])
-                  .filter((query): query is Direction => query != null)
+              techniques,
+              (technique) => technique[2],
+              (techniques) =>
+                techniques
+                  .map((technique) => technique[3])
+                  .filter(
+                    (technique): technique is Direction => technique != null
+                  )
             )
         )
     ),
@@ -28,9 +30,9 @@ export function buildExamTable(technique: Technique[]): ExamTable {
 }
 
 function groupAndMap<T extends string, VIN, VOUT>(
-  queries: VIN[],
-  keyFn: (query: VIN) => T,
-  mapFn: (query: VIN[]) => VOUT
+  techniques: VIN[],
+  keyFn: (technique: VIN) => T,
+  mapFn: (technique: VIN[]) => VOUT
 ): Record<T, VOUT> {
-  return mapValues(groupBy(queries, keyFn), mapFn) as Record<T, VOUT>;
+  return mapValues(groupBy(techniques, keyFn), mapFn) as Record<T, VOUT>;
 }

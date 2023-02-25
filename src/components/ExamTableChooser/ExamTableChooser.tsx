@@ -17,7 +17,7 @@ import { CheckButton } from "../CheckButton";
 import { Technique } from "../../model/Technique";
 
 export interface ExamTableChooserProps {
-  onChoice(queries: Technique[]): void;
+  onChoice(techniques: Technique[]): void;
 }
 
 const buttons = [
@@ -94,8 +94,8 @@ export const ExamTableChooser: React.FC<ExamTableChooserProps> = ({
     const tables: ExamTable[] = selectedButtons.map(
       (buttonName) => ButtonDetails[buttonName].table
     );
-    const selectedQueries: Technique[] = resolveExamTables(tables);
-    onChoice(selectedQueries);
+    const selectedtechniques: Technique[] = resolveExamTables(tables);
+    onChoice(selectedtechniques);
   }, [buttonState, onChoice]);
 
   function updateState(key: ButtonName, checked: boolean): void {

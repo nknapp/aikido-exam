@@ -11,18 +11,18 @@ import { Technique } from "../../model/Technique";
 
 const Directions: React.FC<{
   directions: Direction[];
-  highlightedQuery?: Technique;
-}> = ({ directions, highlightedQuery }) => {
+  highlightedTechnique?: Technique;
+}> = ({ directions, highlightedTechnique }) => {
   return directions.length > 0 ? (
     <div>
       (
       {directions.map((direction, index) => {
         const isHighlighted =
-          queryIfMatching(highlightedQuery, 3, direction) != null;
+          techniqueIfMatching(highlightedTechnique, 3, direction) != null;
         return (
           <React.Fragment key={direction + "-" + index}>
             {index > 0 && ", "}
-            <span className={isHighlighted ? "highlighted-query" : ""}>
+            <span className={isHighlighted ? "highlighted-technique" : ""}>
               {direction}
             </span>
           </React.Fragment>
@@ -44,14 +44,16 @@ const ShowDefence: React.FC<{
     <div className={"me-5 d-flex"} style={{ whiteSpace: "nowrap" }}>
       <div className={"me-2 "}>
         <span
-          className={highlightedTechnique != null ? "highlighted-query" : ""}
+          className={
+            highlightedTechnique != null ? "highlighted-technique" : ""
+          }
         >
           {defence}
         </span>
       </div>
       <Directions
         directions={directions}
-        highlightedQuery={highlightedTechnique}
+        highlightedTechnique={highlightedTechnique}
       />
     </div>
   );
@@ -66,7 +68,9 @@ const ShowAttack: React.FC<{
     <Row className={"mb-2"}>
       <Col sm={5} md={4}>
         <span
-          className={highlightedTechnique != null ? "highlighted-query" : ""}
+          className={
+            highlightedTechnique != null ? "highlighted-technique" : ""
+          }
         >
           {attack}
         </span>
@@ -79,7 +83,7 @@ const ShowAttack: React.FC<{
                 key={defence}
                 defence={defence as Defence}
                 directions={directions}
-                highlightedTechnique={queryIfMatching(
+                highlightedTechnique={techniqueIfMatching(
                   highlightedTechnique,
                   2,
                   defence as Defence
@@ -96,8 +100,8 @@ const ShowAttack: React.FC<{
 const ShowExecution: React.FC<{
   execution: Execution;
   attacks: Attacks;
-  highlightedQuery?: Technique;
-}> = ({ execution, attacks, highlightedQuery }) => {
+  highlightedTechnique?: Technique;
+}> = ({ execution, attacks, highlightedTechnique }) => {
   return (
     <div className={"mb-4"}>
       <h5>{execution}</h5>
@@ -107,8 +111,8 @@ const ShowExecution: React.FC<{
             key={attack}
             attack={attack as Attack}
             defences={defences}
-            highlightedTechnique={queryIfMatching(
-              highlightedQuery,
+            highlightedTechnique={techniqueIfMatching(
+              highlightedTechnique,
               1,
               attack as Attack
             )}
@@ -121,8 +125,8 @@ const ShowExecution: React.FC<{
 
 export const ShowExamTable: React.FC<{
   examTable: ExamTable;
-  currentQuery?: Technique;
-}> = ({ examTable, currentQuery }) => {
+  currentTechnique?: Technique;
+}> = ({ examTable, currentTechnique }) => {
   return (
     <div>
       {Object.entries(examTable.techniques).map(([execution, attacks]) => {
@@ -131,8 +135,8 @@ export const ShowExamTable: React.FC<{
             key={execution}
             execution={execution as Execution}
             attacks={attacks}
-            highlightedQuery={queryIfMatching(
-              currentQuery,
+            highlightedTechnique={techniqueIfMatching(
+              currentTechnique,
               0,
               execution as Execution
             )}
@@ -143,15 +147,15 @@ export const ShowExamTable: React.FC<{
   );
 };
 
-function queryIfMatching<T extends keyof Technique["definition"]>(
-  query: Technique | undefined,
+function techniqueIfMatching<T extends keyof Technique["definition"]>(
+  technique: Technique | undefined,
   index: T,
   match: Technique["definition"][T]
 ): Technique | undefined {
-  console.log({ query, index, match });
-  if (query != null && query.definition[index] === match) {
-    console.log("query", true);
-    return query;
+  console.log({ technique, index, match });
+  if (technique != null && technique.definition[index] === match) {
+    console.log("technique", true);
+    return technique;
   }
   return undefined;
 }
