@@ -1,4 +1,4 @@
-import { Technique, resolveExamTables } from "../../utils/resolve-exam-tables";
+import { resolveExamTables } from "../../utils/resolve-exam-tables";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Col, Row } from "react-bootstrap";
@@ -14,6 +14,7 @@ import { kyu2 } from "../../exam-tables/kyu2";
 import { kyu3 } from "../../exam-tables/kyu3";
 import { additional } from "../../exam-tables/additional";
 import { CheckButton } from "../CheckButton";
+import { Technique } from "../../model/Technique";
 
 export interface ExamTableChooserProps {
   onChoice(queries: Technique[]): void;

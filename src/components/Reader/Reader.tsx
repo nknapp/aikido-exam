@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Technique } from "../../utils/resolve-exam-tables";
 import { Button } from "react-bootstrap";
 import {
   ArrowClockwise,
@@ -10,10 +9,11 @@ import {
 } from "react-bootstrap-icons";
 import { useAudioPlayer } from "../../utils/hooks/useAudioPlayer";
 import css from "./Reader.module.scss";
-import { CurrentQuery } from "./CurrentQuery";
+import { CurrentTechnique } from "./CurrentTechnique";
 import { NoQuery } from "./NoQuery";
 import { useMediaSessionIfPresent } from "../../utils/hooks/useMediaSession";
 import { HandTracker } from "../HandTracker/HandTracker";
+import { Technique } from "../../model/Technique";
 
 export const Reader: React.FC<{
   queries: Technique[];
@@ -60,7 +60,7 @@ export const Reader: React.FC<{
     playing,
     onPlayEvent: playCurrentQuery,
     onStopEvent: stop,
-    title: (queries && queries[nextQueryIndex]?.join(" ")) || "",
+    title: (queries && queries[nextQueryIndex]?.definition.join(" ")) || "",
   });
 
   return (
@@ -107,7 +107,7 @@ export const Reader: React.FC<{
         onPointGesture={playCurrentQuery}
       />
       {nextQuery != null ? (
-        <CurrentQuery query={nextQuery} className={css.queryDisplay} />
+        <CurrentTechnique technique={nextQuery} className={css.queryDisplay} />
       ) : (
         <NoQuery className={css.queryDisplay} />
       )}

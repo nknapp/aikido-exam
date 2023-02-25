@@ -1,8 +1,8 @@
 import { Execution, executions } from "src/exam-tables/audio-files";
-import { Technique } from "../resolve-exam-tables";
 import shuffle from "lodash/shuffle";
 import groupBy from "lodash/groupBy";
 import flatMap from "lodash/flatMap";
+import { Technique } from "../../model/Technique";
 
 export function shuffleAndSelect(
   queries: Technique[],
@@ -16,7 +16,7 @@ export function shuffleAndSelect(
 }
 
 function regroupByExecutions(queries: Technique[]): Technique[] {
-  const byExecution = groupBy(queries, (query) => query[0]);
+  const byExecution = groupBy(queries, (query) => query.definition[0]);
   const executionNames = Object.keys(executions) as Execution[];
   return flatMap(executionNames, (execution) => {
     const executionQueries = byExecution[execution] || [];
@@ -25,11 +25,11 @@ function regroupByExecutions(queries: Technique[]): Technique[] {
 }
 
 function regroupByAttack(queries: Technique[]): Technique[] {
-  const byExecution = groupBy(queries, (query) => query[1]);
+  const byExecution = groupBy(queries, (query) => query.definition[1]);
   return flatMap(Object.values(byExecution), regroupByDefence);
 }
 
 function regroupByDefence(queries: Technique[]): Technique[] {
-  const byExecution = groupBy(queries, (query) => query[2]);
+  const byExecution = groupBy(queries, (query) => query.definition[2]);
   return flatMap(Object.values(byExecution), (queries) => queries);
 }

@@ -1,6 +1,6 @@
 // noinspection RedundantIfStatementJS
 
-import { Technique } from "./resolve-exam-tables";
+import { Technique } from "../model/Technique";
 
 export interface QueryFilters {
   badKnees: boolean;
@@ -21,5 +21,8 @@ function queryMatchesFilter(query: Technique, filters: QueryFilters): boolean {
 }
 
 function kneeFriendly(query: Technique): boolean {
-  return query[0] !== "suwari waza" && query[0] !== "hanmi handachi waza";
+  return (
+    query.definition[0] !== "suwari waza" &&
+    query.definition[0] !== "hanmi handachi waza"
+  );
 }

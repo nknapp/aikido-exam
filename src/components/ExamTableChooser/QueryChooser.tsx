@@ -1,4 +1,3 @@
-import { Technique } from "../../utils/resolve-exam-tables";
 import { ExamTableChooser } from "./ExamTableChooser";
 import React, { useCallback, useMemo, useState } from "react";
 import { shuffleAndSelect } from "../../utils/shuffling/shuffle";
@@ -8,6 +7,7 @@ import { ShowExamTable } from "../ShowExamTable/ShowExamTable";
 import { filterQueries, QueryFilters } from "../../utils/query-filters";
 import { ShowQueryFilters } from "./ShowQueryFilters";
 import { ShowShuffleControls, ShuffleControls } from "./ShuffleControls";
+import { Technique } from "../../model/Technique";
 
 export interface ExamTableChooserProps {
   onChoice(queries: Technique[]): void;

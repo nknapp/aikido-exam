@@ -1,13 +1,13 @@
-import { Technique } from "../resolve-exam-tables";
 import { ExamTable } from "../../exam-tables/baseTypes";
 import mapValues from "lodash/mapValues";
 import groupBy from "lodash/groupBy";
 import { Direction } from "../../exam-tables/audio-files";
+import { Technique } from "../../model/Technique";
 
-export function buildExamTable(queries: Technique[]): ExamTable {
+export function buildExamTable(technique: Technique[]): ExamTable {
   return {
     techniques: groupAndMap(
-      queries,
+      technique.map((technique) => technique.definition),
       (query) => query[0],
       (queries) =>
         groupAndMap(

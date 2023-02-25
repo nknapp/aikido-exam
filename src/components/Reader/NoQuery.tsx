@@ -1,8 +1,8 @@
 import React from "react";
 import { Alert } from "react-bootstrap";
 import { ReactComponent as Logo } from "src/assets/logo.svg";
-import { Technique } from "../../utils/resolve-exam-tables";
 import { CreateExamButton } from "../ExamTableChooser/CreateExamButton";
+import { Technique } from "../../model/Technique";
 
 export const NoQuery: React.FC<{
   className?: string;

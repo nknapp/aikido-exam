@@ -1,13 +1,13 @@
 import React from "react";
-import { Technique } from "../../utils/resolve-exam-tables";
 import css from "./CurrentQuery.module.scss";
 import { Alert } from "react-bootstrap";
+import { Technique } from "../../model/Technique";
 
-export const CurrentQuery: React.FC<{
+export const CurrentTechnique: React.FC<{
   className?: string;
-  query: Technique;
-}> = ({ query, className }) => {
-  const [execution, attack, defence, direction] = query;
+  technique: Technique;
+}> = ({ technique, className }) => {
+  const [execution, attack, defence, direction] = technique.definition;
   return (
     <Alert variant={"info"} className={className}>
       <div className={css.execution}>{execution}</div>

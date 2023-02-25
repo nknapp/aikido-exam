@@ -1,16 +1,17 @@
-import { Technique, resolveExamTables } from "../resolve-exam-tables";
+import { resolveExamTables } from "../resolve-exam-tables";
 import { buildExamTable } from "./examtable";
+import { Technique } from "../../model/Technique";
 
 describe("buildExamtable", () => {
   it("converts a list of queries into the examtable structure", () => {
     const queries: Technique[] = [
-      ["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"],
-      ["tachi waza", "kata dori", "shiho nage", "ura"],
-      ["tachi waza", "kata dori", "irimi nage", "ura"],
-      ["suwari waza", "katate ryote dori", "shiho nage", "ura"],
-      ["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"],
-      ["tachi waza", "kata dori", "shiho nage", "omote"],
-      ["tachi waza", "shomen uchi", "irimi nage"],
+      new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"]),
+      new Technique(["tachi waza", "kata dori", "shiho nage", "ura"]),
+      new Technique(["tachi waza", "kata dori", "irimi nage", "ura"]),
+      new Technique(["suwari waza", "katate ryote dori", "shiho nage", "ura"]),
+      new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"]),
+      new Technique(["tachi waza", "kata dori", "shiho nage", "omote"]),
+      new Technique(["tachi waza", "shomen uchi", "irimi nage"]),
     ];
 
     expect(buildExamTable(queries)).toEqual({
@@ -38,22 +39,22 @@ describe("buildExamtable", () => {
 
   it("iterates in the correct order", () => {
     const queries: Technique[] = [
-      ["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"],
-      ["tachi waza", "kata dori", "shiho nage", "ura"],
-      ["tachi waza", "kata dori", "irimi nage", "ura"],
-      ["suwari waza", "katate ryote dori", "shiho nage", "ura"],
-      ["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"],
-      ["tachi waza", "kata dori", "shiho nage", "omote"],
-      ["tachi waza", "shomen uchi", "irimi nage"],
+      new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"]),
+      new Technique(["tachi waza", "kata dori", "shiho nage", "ura"]),
+      new Technique(["tachi waza", "kata dori", "irimi nage", "ura"]),
+      new Technique(["suwari waza", "katate ryote dori", "shiho nage", "ura"]),
+      new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"]),
+      new Technique(["tachi waza", "kata dori", "shiho nage", "omote"]),
+      new Technique(["tachi waza", "shomen uchi", "irimi nage"]),
     ];
     const expected: Technique[] = [
-      ["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"],
-      ["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"],
-      ["suwari waza", "katate ryote dori", "shiho nage", "ura"],
-      ["tachi waza", "kata dori", "shiho nage", "ura"],
-      ["tachi waza", "kata dori", "shiho nage", "omote"],
-      ["tachi waza", "kata dori", "irimi nage", "ura"],
-      ["tachi waza", "shomen uchi", "irimi nage"],
+      new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"]),
+      new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"]),
+      new Technique(["suwari waza", "katate ryote dori", "shiho nage", "ura"]),
+      new Technique(["tachi waza", "kata dori", "shiho nage", "ura"]),
+      new Technique(["tachi waza", "kata dori", "shiho nage", "omote"]),
+      new Technique(["tachi waza", "kata dori", "irimi nage", "ura"]),
+      new Technique(["tachi waza", "shomen uchi", "irimi nage"]),
     ];
     const table = buildExamTable(queries);
     const resolved = resolveExamTables([table]);

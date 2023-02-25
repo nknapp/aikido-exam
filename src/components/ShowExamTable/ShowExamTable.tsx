@@ -7,7 +7,7 @@ import {
   Execution,
   Defence,
 } from "../../exam-tables/audio-files";
-import { Technique } from "../../utils/resolve-exam-tables";
+import { Technique } from "../../model/Technique";
 
 const Directions: React.FC<{
   directions: Direction[];
@@ -38,16 +38,21 @@ const Directions: React.FC<{
 const ShowDefence: React.FC<{
   defence: Defence;
   directions: Direction[];
-  highlightedQuery?: Technique;
-}> = ({ defence, directions, highlightedQuery }) => {
+  highlightedTechnique?: Technique;
+}> = ({ defence, directions, highlightedTechnique }) => {
   return (
     <div className={"me-5 d-flex"} style={{ whiteSpace: "nowrap" }}>
       <div className={"me-2 "}>
-        <span className={highlightedQuery != null ? "highlighted-query" : ""}>
+        <span
+          className={highlightedTechnique != null ? "highlighted-query" : ""}
+        >
           {defence}
         </span>
       </div>
-      <Directions directions={directions} highlightedQuery={highlightedQuery} />
+      <Directions
+        directions={directions}
+        highlightedQuery={highlightedTechnique}
+      />
     </div>
   );
 };
@@ -55,12 +60,14 @@ const ShowDefence: React.FC<{
 const ShowAttack: React.FC<{
   attack: Attack;
   defences: Defences;
-  highlightedQuery?: Technique;
-}> = ({ attack, defences, highlightedQuery }) => {
+  highlightedTechnique?: Technique;
+}> = ({ attack, defences, highlightedTechnique }) => {
   return (
     <Row className={"mb-2"}>
       <Col sm={5} md={4}>
-        <span className={highlightedQuery != null ? "highlighted-query" : ""}>
+        <span
+          className={highlightedTechnique != null ? "highlighted-query" : ""}
+        >
           {attack}
         </span>
       </Col>
@@ -72,8 +79,8 @@ const ShowAttack: React.FC<{
                 key={defence}
                 defence={defence as Defence}
                 directions={directions}
-                highlightedQuery={queryIfMatching(
-                  highlightedQuery,
+                highlightedTechnique={queryIfMatching(
+                  highlightedTechnique,
                   2,
                   defence as Defence
                 )}
@@ -100,7 +107,7 @@ const ShowExecution: React.FC<{
             key={attack}
             attack={attack as Attack}
             defences={defences}
-            highlightedQuery={queryIfMatching(
+            highlightedTechnique={queryIfMatching(
               highlightedQuery,
               1,
               attack as Attack
@@ -136,13 +143,13 @@ export const ShowExamTable: React.FC<{
   );
 };
 
-function queryIfMatching<T extends keyof Technique>(
+function queryIfMatching<T extends keyof Technique["definition"]>(
   query: Technique | undefined,
   index: T,
-  match: Technique[T]
+  match: Technique["definition"][T]
 ): Technique | undefined {
   console.log({ query, index, match });
-  if (query != null && query[index] === match) {
+  if (query != null && query.definition[index] === match) {
     console.log("query", true);
     return query;
   }

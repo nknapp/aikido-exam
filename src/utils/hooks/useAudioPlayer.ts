@@ -1,8 +1,8 @@
-import { Technique } from "../resolve-exam-tables";
 import { MutableRefObject, useCallback, useRef, useState } from "react";
 import { AudioFile } from "../../exam-tables/audio-files";
 import { relevantQueryParts } from "../relevant-query-parts";
 import { playAudioFile } from "../playAudioFile";
+import { Technique } from "../../model/Technique";
 
 interface UseAudioPlayerResult {
   audioRef: MutableRefObject<HTMLAudioElement | null>;

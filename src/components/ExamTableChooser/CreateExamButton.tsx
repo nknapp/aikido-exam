@@ -1,10 +1,10 @@
 import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
-import { Technique } from "../../utils/resolve-exam-tables";
 import { useTranslation } from "react-i18next";
 import css from "./CreateExamButton.module.scss";
 import { QueryChooser } from "./QueryChooser";
 import { PencilFill } from "react-bootstrap-icons";
+import { Technique } from "../../model/Technique";
 
 export interface ExamTableChooserProps {
   onChoice(queries: Technique[]): void;
