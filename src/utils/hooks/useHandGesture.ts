@@ -7,11 +7,7 @@ interface UseHandGestureArgs {
   onPointGesture: () => void;
 }
 
-export function useHandGesture({
-  playing,
-  active,
-  onPointGesture,
-}: UseHandGestureArgs): void {
+export function useHandGesture({ playing, active, onPointGesture }: UseHandGestureArgs): void {
   const handDetectorRef = useRef<HandDetector | null>(null);
   useEffect(() => {
     if (active) {
@@ -25,7 +21,6 @@ export function useHandGesture({
   }, [active]);
 
   useEffect(() => {
-    console.log("effect", { playing, active, onPointGesture });
     const handDetector = handDetectorRef.current;
     if (handDetector != null) {
       if (!playing && active) {

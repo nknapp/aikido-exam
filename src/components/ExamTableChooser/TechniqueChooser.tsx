@@ -39,7 +39,6 @@ export const TechniqueChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) 
           })
         : allTechniques;
       newTechniques = filterTechniques(newTechniques, techniqueFilters);
-      console.log(newTechniques);
       setTechniques(newTechniques);
       onChoice(newTechniques);
     }, [shuffleControls, allTechniques, onChoice, techniqueFilters]),
