@@ -1,4 +1,4 @@
-import { Announcement } from "../../utils/resolve-exam-tables";
+import { Technique } from "../../utils/resolve-exam-tables";
 import { ExamTableChooser } from "./ExamTableChooser";
 import React, { useCallback, useMemo, useState } from "react";
 import { shuffleAndSelect } from "../../utils/shuffling/shuffle";
@@ -10,12 +10,12 @@ import { ShowQueryFilters } from "./ShowQueryFilters";
 import { ShowShuffleControls, ShuffleControls } from "./ShuffleControls";
 
 export interface ExamTableChooserProps {
-  onChoice(queries: Announcement[]): void;
+  onChoice(queries: Technique[]): void;
 }
 
 export const QueryChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) => {
-  const [allQueries, setAllQueries] = useState<Announcement[]>([]);
-  const [queries, setQueries] = useState<Announcement[]>([]);
+  const [allQueries, setAllQueries] = useState<Technique[]>([]);
+  const [queries, setQueries] = useState<Technique[]>([]);
   const examTable = useMemo(() => buildExamTable(queries), [queries]);
   const [shuffleControls, setShuffleControls] = useState<ShuffleControls>({
     shouldShuffle: true,

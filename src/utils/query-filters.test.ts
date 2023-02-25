@@ -1,7 +1,7 @@
 import { filterQueries } from "./query-filters";
 
 describe("filterQueries", () => {
-  it("removes suwari and hamni handachi techniques if the badKnees-filter is set", () => {
+  it("removes suwari and hamni handachi defences if the badKnees-filter is set", () => {
     const filtered = filterQueries(
       [
         ["suwari waza", "shomen uchi", "irimi nage", "ura"],

@@ -1,17 +1,17 @@
 import React from "react";
-import { Attacks, ExamTable, Techniques } from "../../exam-tables/baseTypes";
+import { Attacks, ExamTable, Defences } from "../../exam-tables/baseTypes";
 import { Col, Row } from "react-bootstrap";
 import {
   Attack,
   Direction,
   Execution,
-  Technique,
+  Defence,
 } from "../../exam-tables/audio-files";
-import { Announcement } from "../../utils/resolve-exam-tables";
+import { Technique } from "../../utils/resolve-exam-tables";
 
 const Directions: React.FC<{
   directions: Direction[];
-  highlightedQuery?: Announcement;
+  highlightedQuery?: Technique;
 }> = ({ directions, highlightedQuery }) => {
   return directions.length > 0 ? (
     <div>
@@ -35,16 +35,16 @@ const Directions: React.FC<{
   );
 };
 
-const ShowTechnique: React.FC<{
-  technique: Technique;
+const ShowDefence: React.FC<{
+  defence: Defence;
   directions: Direction[];
-  highlightedQuery?: Announcement;
-}> = ({ technique, directions, highlightedQuery }) => {
+  highlightedQuery?: Technique;
+}> = ({ defence, directions, highlightedQuery }) => {
   return (
     <div className={"me-5 d-flex"} style={{ whiteSpace: "nowrap" }}>
       <div className={"me-2 "}>
         <span className={highlightedQuery != null ? "highlighted-query" : ""}>
-          {technique}
+          {defence}
         </span>
       </div>
       <Directions directions={directions} highlightedQuery={highlightedQuery} />
@@ -54,9 +54,9 @@ const ShowTechnique: React.FC<{
 
 const ShowAttack: React.FC<{
   attack: Attack;
-  techniques: Techniques;
-  highlightedQuery?: Announcement;
-}> = ({ attack, techniques, highlightedQuery }) => {
+  defences: Defences;
+  highlightedQuery?: Technique;
+}> = ({ attack, defences, highlightedQuery }) => {
   return (
     <Row className={"mb-2"}>
       <Col sm={5} md={4}>
@@ -66,16 +66,16 @@ const ShowAttack: React.FC<{
       </Col>
       <Col className={"ps-5 ps-sm-0"}>
         <div className={"d-flex flex-wrap"}>
-          {Object.entries(techniques).map(([technique, directions]) => {
+          {Object.entries(defences).map(([defence, directions]) => {
             return (
-              <ShowTechnique
-                key={technique}
-                technique={technique as Technique}
+              <ShowDefence
+                key={defence}
+                defence={defence as Defence}
                 directions={directions}
                 highlightedQuery={queryIfMatching(
                   highlightedQuery,
                   2,
-                  technique as Technique
+                  defence as Defence
                 )}
               />
             );
@@ -89,17 +89,17 @@ const ShowAttack: React.FC<{
 const ShowExecution: React.FC<{
   execution: Execution;
   attacks: Attacks;
-  highlightedQuery?: Announcement;
+  highlightedQuery?: Technique;
 }> = ({ execution, attacks, highlightedQuery }) => {
   return (
     <div className={"mb-4"}>
       <h5>{execution}</h5>
-      {Object.entries(attacks).map(([attack, techniques]) => {
+      {Object.entries(attacks).map(([attack, defences]) => {
         return (
           <ShowAttack
             key={attack}
             attack={attack as Attack}
-            techniques={techniques}
+            defences={defences}
             highlightedQuery={queryIfMatching(
               highlightedQuery,
               1,
@@ -114,7 +114,7 @@ const ShowExecution: React.FC<{
 
 export const ShowExamTable: React.FC<{
   examTable: ExamTable;
-  currentQuery?: Announcement;
+  currentQuery?: Technique;
 }> = ({ examTable, currentQuery }) => {
   return (
     <div>
@@ -136,11 +136,11 @@ export const ShowExamTable: React.FC<{
   );
 };
 
-function queryIfMatching<T extends keyof Announcement>(
-  query: Announcement | undefined,
+function queryIfMatching<T extends keyof Technique>(
+  query: Technique | undefined,
   index: T,
-  match: Announcement[T]
-): Announcement | undefined {
+  match: Technique[T]
+): Technique | undefined {
   console.log({ query, index, match });
   if (query != null && query[index] === match) {
     console.log("query", true);

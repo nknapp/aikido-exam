@@ -1,9 +1,9 @@
-import { Announcement, resolveExamTables } from "../resolve-exam-tables";
+import { Technique, resolveExamTables } from "../resolve-exam-tables";
 import { buildExamTable } from "./examtable";
 
 describe("buildExamtable", () => {
   it("converts a list of queries into the examtable structure", () => {
-    const queries: Announcement[] = [
+    const queries: Technique[] = [
       ["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"],
       ["tachi waza", "kata dori", "shiho nage", "ura"],
       ["tachi waza", "kata dori", "irimi nage", "ura"],
@@ -14,7 +14,7 @@ describe("buildExamtable", () => {
     ];
 
     expect(buildExamTable(queries)).toEqual({
-      techniques: {
+      defences: {
         "suwari waza": {
           "ai hanmi katate dori": {
             ikkyo: ["omote", "ura"],
@@ -37,7 +37,7 @@ describe("buildExamtable", () => {
   });
 
   it("iterates in the correct order", () => {
-    const queries: Announcement[] = [
+    const queries: Technique[] = [
       ["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"],
       ["tachi waza", "kata dori", "shiho nage", "ura"],
       ["tachi waza", "kata dori", "irimi nage", "ura"],
@@ -46,7 +46,7 @@ describe("buildExamtable", () => {
       ["tachi waza", "kata dori", "shiho nage", "omote"],
       ["tachi waza", "shomen uchi", "irimi nage"],
     ];
-    const expected: Announcement[] = [
+    const expected: Technique[] = [
       ["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"],
       ["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"],
       ["suwari waza", "katate ryote dori", "shiho nage", "ura"],

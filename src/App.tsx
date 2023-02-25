@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import "src/assets/styles/styles.scss";
 import { DefaultLayout } from "./layout/DefaultLayout";
-import { Announcement } from "./utils/resolve-exam-tables";
+import { Technique } from "./utils/resolve-exam-tables";
 import { Reader } from "./components/Reader/Reader";
 import { CreateExamButton } from "./components/ExamTableChooser/CreateExamButton";
 import { NoQuery } from "./components/Reader/NoQuery";
@@ -12,7 +12,7 @@ import { Button } from "react-bootstrap";
 import { Printer } from "react-bootstrap-icons";
 
 function App(): JSX.Element {
-  const [queries, setQueries] = useState<Announcement[]>([]);
+  const [queries, setQueries] = useState<Technique[]>([]);
   const examTable = useMemo(() => buildExamTable(queries), [queries]);
   const [currentQuery, setCurrentQuery] = useState(-1);
   return (

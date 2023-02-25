@@ -10,7 +10,7 @@ describe("relevantQueryParts", () => {
     ).toEqual(["ura"]);
   });
 
-  it("uses direction and technique, if execution and attack is equal", () => {
+  it("uses direction and defence, if execution and attack is equal", () => {
     expect(
       relevantQueryParts(
         ["suwari waza", "kata dori", "ikkyo", "ura"],
@@ -19,7 +19,7 @@ describe("relevantQueryParts", () => {
     ).toEqual(["ikkyo", "ura"]);
   });
 
-  it("uses attach, direction and technique, if execution is equal", () => {
+  it("uses attach, direction and defence, if execution is equal", () => {
     expect(
       relevantQueryParts(
         ["suwari waza", "kata dori", "ikkyo", "ura"],
@@ -28,7 +28,7 @@ describe("relevantQueryParts", () => {
     ).toEqual(["kata dori", "ikkyo", "ura"]);
   });
 
-  it("works with techniques that have no direction", () => {
+  it("works with defences that have no direction", () => {
     expect(
       relevantQueryParts(
         ["suwari waza", "kata dori", "irimi nage"],

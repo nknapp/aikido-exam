@@ -1,12 +1,12 @@
 import React from "react";
 import { Alert } from "react-bootstrap";
 import { ReactComponent as Logo } from "src/assets/logo.svg";
-import { Announcement } from "../../utils/resolve-exam-tables";
+import { Technique } from "../../utils/resolve-exam-tables";
 import { CreateExamButton } from "../ExamTableChooser/CreateExamButton";
 
 export const NoQuery: React.FC<{
   className?: string;
-  onQueryChoice?: (queries: Announcement[]) => void;
+  onQueryChoice?: (queries: Technique[]) => void;
 }> = ({ className, onQueryChoice }) => {
   return (
     <Alert

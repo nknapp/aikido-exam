@@ -1,13 +1,13 @@
 import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
-import { Announcement } from "../../utils/resolve-exam-tables";
+import { Technique } from "../../utils/resolve-exam-tables";
 import { useTranslation } from "react-i18next";
 import css from "./CreateExamButton.module.scss";
 import { QueryChooser } from "./QueryChooser";
 import { PencilFill } from "react-bootstrap-icons";
 
 export interface ExamTableChooserProps {
-  onChoice(queries: Announcement[]): void;
+  onChoice(queries: Technique[]): void;
 }
 
 export const CreateExamButton: React.FC<ExamTableChooserProps> = ({
@@ -15,7 +15,7 @@ export const CreateExamButton: React.FC<ExamTableChooserProps> = ({
 }) => {
   const [showModal, setShowModal] = useState(false);
   const { t } = useTranslation();
-  const [queries, setQueries] = useState<Announcement[]>([]);
+  const [queries, setQueries] = useState<Technique[]>([]);
 
   return (
     <>

@@ -2,26 +2,26 @@ import {
   Attack,
   Direction,
   Execution,
-  Technique,
+  Defence,
 } from "src/exam-tables/audio-files";
 import { ExamTable } from "src/exam-tables/baseTypes";
 import merge from "lodash/merge";
 
-export type Announcement = [Execution, Attack, Technique, Direction?];
+export type Technique = [Execution, Attack, Defence, Direction?];
 
-export function resolveExamTables(examTables: ExamTable[]): Announcement[] {
+export function resolveExamTables(examTables: ExamTable[]): Technique[] {
   const emptyTable: ExamTable = { techniques: {} };
   const mergedTables: ExamTable = merge(emptyTable, ...examTables);
-  const result: Announcement[] = [];
+  const result: Technique[] = [];
   Object.entries(mergedTables.techniques).forEach(([execution, attacks]) => {
     if (attacks == null) {
       return;
     }
-    Object.entries(attacks).forEach(([attack, techniques]) => {
-      if (techniques == null) {
+    Object.entries(attacks).forEach(([attack, defences]) => {
+      if (defences == null) {
         return;
       }
-      Object.entries(techniques).forEach(([technique, directions]) => {
+      Object.entries(defences).forEach(([defence, directions]) => {
         if (directions == null) {
           return;
         }
@@ -29,14 +29,14 @@ export function resolveExamTables(examTables: ExamTable[]): Announcement[] {
           result.push([
             execution as Execution,
             attack as Attack,
-            technique as Technique,
+            defence as Defence,
           ]);
         } else {
           directions.forEach((direction) => {
             result.push([
               execution as Execution,
               attack as Attack,
-              technique as Technique,
+              defence as Defence,
               direction as Direction,
             ]);
           });

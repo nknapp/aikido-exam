@@ -47,7 +47,7 @@ export const HandTracker: React.FC<{
         </div>
         <div className={css.label}>
           {active
-            ? `Hand gestures are enabled, show your pointing finger to the camera to play the next technique.`
+            ? `Hand gestures are enabled, show your pointing finger to the camera to play the next defence.`
             : `Hand gestures are disabled`}
         </div>
       </div>

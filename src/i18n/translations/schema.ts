@@ -12,6 +12,6 @@ export interface TranslationSchema {
   "chooser.button.dan3": string;
   "examTable.header.execution": string;
   "examTable.header.attack": string;
-  "examTable.header.technique": string;
+  "examTable.header.defence": string;
   "examTable.header.direction": string;
 }

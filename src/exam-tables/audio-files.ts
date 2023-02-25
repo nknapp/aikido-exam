@@ -89,7 +89,7 @@ export const attacks = {
   "ai hanmi ryote dori": ai_hanmi_ryote_dori,
 };
 
-export const techniques = {
+export const defences = {
   ikkyo: ikkyo,
   nikyo: nikyo,
   sankyo: sankyo,
@@ -122,12 +122,12 @@ export const directions = {
 export const audioFiles = {
   ...executions,
   ...attacks,
-  ...techniques,
+  ...defences,
   ...directions,
 } as const;
 
 export type Execution = keyof typeof executions;
 export type Attack = keyof typeof attacks;
-export type Technique = keyof typeof techniques;
+export type Defence = keyof typeof defences;
 export type Direction = keyof typeof directions;
 export type AudioFile = keyof typeof audioFiles;

@@ -1,5 +1,5 @@
 import { shuffleAndSelect } from "./shuffle";
-import { Announcement } from "../resolve-exam-tables";
+import { Technique } from "../resolve-exam-tables";
 import shuffle from "lodash/shuffle";
 
 const mockShuffle = shuffle as jest.MockedFunction<typeof shuffle>;
@@ -16,7 +16,7 @@ beforeEach(() => {
 });
 
 describe("shuffle", () => {
-  const queries: Announcement[] = [
+  const queries: Technique[] = [
     ["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"],
     ["tachi waza", "kata dori", "shiho nage", "ura"],
     ["tachi waza", "kata dori", "irimi nage", "ura"],

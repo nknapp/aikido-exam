@@ -1,7 +1,4 @@
-import {
-  Announcement,
-  resolveExamTables,
-} from "../../utils/resolve-exam-tables";
+import { Technique, resolveExamTables } from "../../utils/resolve-exam-tables";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Col, Row } from "react-bootstrap";
@@ -19,7 +16,7 @@ import { additional } from "../../exam-tables/additional";
 import { CheckButton } from "../CheckButton";
 
 export interface ExamTableChooserProps {
-  onChoice(queries: Announcement[]): void;
+  onChoice(queries: Technique[]): void;
 }
 
 const buttons = [
@@ -96,7 +93,7 @@ export const ExamTableChooser: React.FC<ExamTableChooserProps> = ({
     const tables: ExamTable[] = selectedButtons.map(
       (buttonName) => ButtonDetails[buttonName].table
     );
-    const selectedQueries: Announcement[] = resolveExamTables(tables);
+    const selectedQueries: Technique[] = resolveExamTables(tables);
     onChoice(selectedQueries);
   }, [buttonState, onChoice]);
 

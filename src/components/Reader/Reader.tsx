@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Announcement } from "../../utils/resolve-exam-tables";
+import { Technique } from "../../utils/resolve-exam-tables";
 import { Button } from "react-bootstrap";
 import {
   ArrowClockwise,
@@ -16,10 +16,10 @@ import { useMediaSessionIfPresent } from "../../utils/hooks/useMediaSession";
 import { HandTracker } from "../HandTracker/HandTracker";
 
 export const Reader: React.FC<{
-  queries: Announcement[];
+  queries: Technique[];
   nextQueryChanged: (index: number) => void;
 }> = ({ queries, nextQueryChanged }) => {
-  const [lastQuery, setLastQuery] = useState<Announcement>();
+  const [lastQuery, setLastQuery] = useState<Technique>();
   const [nextQueryIndex, setNextQueryIndex] = useState<number>(0);
   const nextQuery = queries[nextQueryIndex];
 

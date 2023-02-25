@@ -1,4 +1,4 @@
-import { Announcement } from "../resolve-exam-tables";
+import { Technique } from "../resolve-exam-tables";
 import { MutableRefObject, useCallback, useRef, useState } from "react";
 import { AudioFile } from "../../exam-tables/audio-files";
 import { relevantQueryParts } from "../relevant-query-parts";
@@ -7,7 +7,7 @@ import { playAudioFile } from "../playAudioFile";
 interface UseAudioPlayerResult {
   audioRef: MutableRefObject<HTMLAudioElement | null>;
   playing: boolean;
-  play(query: Announcement, lastQuery?: Announcement): Promise<void>;
+  play(query: Technique, lastQuery?: Technique): Promise<void>;
   stop(): void;
 }
 
@@ -49,7 +49,7 @@ export function useAudioPlayer(): UseAudioPlayerResult {
   }, [setPlaying]);
 
   return {
-    async play(query: Announcement, lastQuery?: Announcement): Promise<void> {
+    async play(query: Technique, lastQuery?: Technique): Promise<void> {
       await playAudioFiles(relevantQueryParts(query, lastQuery));
     },
     audioRef,

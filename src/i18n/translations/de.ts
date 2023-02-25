@@ -13,7 +13,7 @@ export const de: TranslationSchema = {
   "chooser.button.kyu4": "4.Kyu",
   "chooser.button.kyu5": "5.Kyu",
   "examTable.header.attack": "Angriff",
+  "examTable.header.defence": "Technik",
   "examTable.header.direction": "Richtung",
   "examTable.header.execution": "Auführung",
-  "examTable.header.technique": "Technik",
 };
