@@ -1,14 +1,10 @@
-import {
-  Attack,
-  Direction,
-  Execution,
-  Defence,
-} from "src/exam-tables/audio-files";
+import { Attack, Direction, Execution, Defence } from "src/exam-tables/audio-files";
 import { ExamTable } from "src/exam-tables/baseTypes";
 import merge from "lodash/merge";
 import { Technique } from "../model/Technique";
+import { TechniqueList } from "../model/TechniqueList";
 
-export function resolveExamTables(examTables: ExamTable[]): Technique[] {
+export function resolveExamTables(examTables: ExamTable[]): TechniqueList {
   const emptyTable: ExamTable = { techniques: {} };
   const mergedTables: ExamTable = merge(emptyTable, ...examTables);
   const result: Technique[] = [];
@@ -25,27 +21,16 @@ export function resolveExamTables(examTables: ExamTable[]): Technique[] {
           return;
         }
         if (directions.length === 0) {
-          result.push(
-            new Technique([
-              execution as Execution,
-              attack as Attack,
-              defence as Defence,
-            ])
-          );
+          result.push(new Technique([execution as Execution, attack as Attack, defence as Defence]));
         } else {
           directions.forEach((direction) => {
             result.push(
-              new Technique([
-                execution as Execution,
-                attack as Attack,
-                defence as Defence,
-                direction as Direction,
-              ])
+              new Technique([execution as Execution, attack as Attack, defence as Defence, direction as Direction])
             );
           });
         }
       });
     });
   });
-  return result;
+  return new TechniqueList(result);
 }

@@ -4,16 +4,16 @@ import { useTranslation } from "react-i18next";
 import css from "./CreateExamButton.module.scss";
 import { TechniqueChooser } from "./TechniqueChooser";
 import { PencilFill } from "react-bootstrap-icons";
-import { Technique } from "../../model/Technique";
+import { TechniqueList } from "../../model/TechniqueList";
 
 export interface ExamTableChooserProps {
-  onChoice(techniques: Technique[]): void;
+  onChoice(techniques: TechniqueList): void;
 }
 
 export const CreateExamButton: React.FC<ExamTableChooserProps> = ({ onChoice }) => {
   const [showModal, setShowModal] = useState(false);
   const { t } = useTranslation();
-  const [techniques, setTechniques] = useState<Technique[]>([]);
+  const [currentChoice, setCurrentChoice] = useState<TechniqueList>(new TechniqueList());
 
   return (
     <>
@@ -22,17 +22,17 @@ export const CreateExamButton: React.FC<ExamTableChooserProps> = ({ onChoice }) 
       </Button>
       <Modal show={showModal} dialogClassName={css.chooseExamTableModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Create exam table</Modal.Title>
+          <Modal.Title>Techniken auswählen</Modal.Title>
         </Modal.Header>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Close
+            Abbrechen
           </Button>
           <Button
-            disabled={techniques.length === 0}
+            disabled={currentChoice.length === 0}
             variant="primary"
             onClick={() => {
-              onChoice(techniques);
+              onChoice(currentChoice);
               setShowModal(false);
             }}
           >
@@ -41,18 +41,18 @@ export const CreateExamButton: React.FC<ExamTableChooserProps> = ({ onChoice }) 
         </Modal.Footer>
 
         <Modal.Body>
-          <TechniqueChooser onChoice={setTechniques} />
+          <TechniqueChooser onChoice={setCurrentChoice} />
         </Modal.Body>
 
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Close
+            Abbrechen
           </Button>
           <Button
-            disabled={techniques.length === 0}
+            disabled={currentChoice.length === 0}
             variant="primary"
             onClick={() => {
-              onChoice(techniques);
+              onChoice(currentChoice);
               setShowModal(false);
             }}
           >

@@ -14,23 +14,13 @@ import { kyu2 } from "../../exam-tables/kyu2";
 import { kyu3 } from "../../exam-tables/kyu3";
 import { additional } from "../../exam-tables/additional";
 import { CheckButton } from "../CheckButton";
-import { Technique } from "../../model/Technique";
+import { TechniqueList } from "../../model/TechniqueList";
 
 export interface ExamTableChooserProps {
-  onChoice(techniques: Technique[]): void;
+  onChoice(techniques: TechniqueList): void;
 }
 
-const buttons = [
-  "kyu5",
-  "kyu4",
-  "kyu3",
-  "kyu2",
-  "kyu1",
-  "additional",
-  "dan1",
-  "dan2",
-  "dan3",
-] as const;
+const buttons = ["kyu5", "kyu4", "kyu3", "kyu2", "kyu1", "additional", "dan1", "dan2", "dan3"] as const;
 
 type ButtonName = typeof buttons[number];
 
@@ -82,19 +72,13 @@ const ButtonDetails: Record<ButtonName, ButtonSpec> = {
   },
 };
 
-export const ExamTableChooser: React.FC<ExamTableChooserProps> = ({
-  onChoice,
-}) => {
+export const ExamTableChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) => {
   const [buttonState, setButtonState] = useState<ButtonState>({});
 
   useEffect(() => {
-    const selectedButtons = buttons.filter(
-      (buttonName) => buttonState[buttonName] === true
-    );
-    const tables: ExamTable[] = selectedButtons.map(
-      (buttonName) => ButtonDetails[buttonName].table
-    );
-    const selectedtechniques: Technique[] = resolveExamTables(tables);
+    const selectedButtons = buttons.filter((buttonName) => buttonState[buttonName] === true);
+    const tables: ExamTable[] = selectedButtons.map((buttonName) => ButtonDetails[buttonName].table);
+    const selectedtechniques: TechniqueList = resolveExamTables(tables);
     onChoice(selectedtechniques);
   }, [buttonState, onChoice]);
 

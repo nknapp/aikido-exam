@@ -11,8 +11,8 @@ export interface ShuffleControls {
 export const ShowShuffleControls: React.FC<{
   value: ShuffleControls;
   onChange: (newValue: ShuffleControls) => void;
-  nrtechniques: number;
-}> = ({ value, onChange, nrtechniques }) => {
+  techniqueCount: number;
+}> = ({ value, onChange, techniqueCount }) => {
   return (
     <Row className={"d-flex align-items-center"}>
       <Col md={2}>
@@ -44,8 +44,7 @@ export const ShowShuffleControls: React.FC<{
       </Col>
       <Col md={3}>
         <label>
-          Anzahl Techniken: {nrtechniques}{" "}
-          {value.shouldShuffle && "(" + value.coverage + "%)"}
+          Anzahl Techniken: {techniqueCount} {value.shouldShuffle && "(" + value.coverage + "%)"}
         </label>
       </Col>
     </Row>

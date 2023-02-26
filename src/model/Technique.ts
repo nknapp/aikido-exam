@@ -30,4 +30,8 @@ export class Technique {
       (direction == null || direction === this.direction)
     );
   }
+
+  get [Symbol.toStringTag](): string {
+    return this.definition.join(" ");
+  }
 }

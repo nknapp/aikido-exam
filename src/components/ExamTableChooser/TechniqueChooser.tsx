@@ -1,59 +1,52 @@
 import { ExamTableChooser } from "./ExamTableChooser";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { shuffleAndSelect } from "../../utils/shuffling/shuffle";
 import { useDebouncedEffect } from "src/utils/hooks/useDebouncedEffect";
 import { ShowExamTable } from "../ShowExamTable/ShowExamTable";
-import { filterTechniques, TechniqueFilters } from "../../utils/technique-filters";
+import { TechniqueFilters, techniquePredicate } from "../../utils/technique-filters";
 import { ShowTechniqueFilters } from "./ShowTechniqueFilters";
 import { ShowShuffleControls, ShuffleControls } from "./ShuffleControls";
-import { Technique } from "../../model/Technique";
 import { TechniqueList } from "../../model/TechniqueList";
 
 export interface ExamTableChooserProps {
-  onChoice(techniques: Technique[]): void;
+  onChoice(techniques: TechniqueList): void;
 }
 
 export const TechniqueChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) => {
-  const [allTechniques, setAllTechniques] = useState<Technique[]>([]);
-
-  const [techniques, setTechniques] = useState<Technique[]>([]);
-  const examTable = useMemo(() => new TechniqueList(techniques), [techniques]);
+  const [chosenTechniques, setChosenTechniques] = useState<TechniqueList>(new TechniqueList());
+  const [result, setResult] = useState<TechniqueList>(new TechniqueList());
 
   const [shuffleControls, setShuffleControls] = useState<ShuffleControls>({
     shouldShuffle: true,
     coverage: 100,
   });
-  const [techniqueFilters, setTechniqueFilters] = useState<TechniqueFilters>({
+  const [filters, setFilters] = useState<TechniqueFilters>({
     badKnees: false,
   });
-
-  const updatetechniques = useCallback((chosentechniques) => {
-    setAllTechniques(chosentechniques);
-  }, []);
 
   useDebouncedEffect(
     useCallback(() => {
       let newTechniques = shuffleControls.shouldShuffle
-        ? shuffleAndSelect(allTechniques, {
+        ? shuffleAndSelect(chosenTechniques, {
             coverage: shuffleControls.coverage / 100,
           })
-        : allTechniques;
-      newTechniques = filterTechniques(newTechniques, techniqueFilters);
-      setTechniques(newTechniques);
+        : chosenTechniques;
+      newTechniques = newTechniques.filter(techniquePredicate(filters));
+      setResult(newTechniques);
       onChoice(newTechniques);
-    }, [shuffleControls, allTechniques, onChoice, techniqueFilters]),
+    }, [shuffleControls, chosenTechniques, onChoice, filters]),
     200
   );
 
   return (
     <>
-      <ExamTableChooser onChoice={updatetechniques} />
+      <ExamTableChooser onChoice={setChosenTechniques} />
       <hr />
-      <ShowTechniqueFilters value={techniqueFilters} onChange={setTechniqueFilters} />
+      <ShowTechniqueFilters value={filters} onChange={setFilters} />
       <hr />
-      <ShowShuffleControls value={shuffleControls} onChange={setShuffleControls} nrtechniques={techniques.length} />
+      <ShowShuffleControls value={shuffleControls} onChange={setShuffleControls} techniqueCount={result.length} />
       <hr />
-      <ShowExamTable techniques={examTable} />
+      <ShowExamTable techniques={result} />
     </>
   );
 };

@@ -1,22 +1,27 @@
 import { Technique } from "./Technique";
+import shuffle from "lodash/shuffle";
 
-type TechniquePart = "execution" | "attack" | "defence";
+export type TechniquePart = "execution" | "attack" | "defence";
 
-type Group<K, V> = {
+export type Group<K, V> = {
   name: K;
   items: V;
 };
 
 export class TechniqueList {
   techniques: Technique[];
-  constructor(techniques: Technique[]) {
+
+  static concat(lists: TechniqueList[]): TechniqueList {
+    return new TechniqueList(lists.flatMap((list) => list.techniques));
+  }
+  constructor(techniques: Technique[] = []) {
     this.techniques = techniques;
   }
 
-  groupBy<T extends TechniquePart>(part: T): Array<Group<Technique[T], TechniqueList>> {
+  groupBy<T extends TechniquePart>(groupProperty: T): Array<Group<Technique[T], TechniqueList>> {
     const grouper: Grouper<Technique[T], Technique> = new Grouper();
     for (const technique of this.techniques) {
-      grouper.getOrCreate(technique[part]).push(technique);
+      grouper.getOrCreate(technique[groupProperty]).push(technique);
     }
     return grouper.groups((techniques) => new TechniqueList(techniques));
   }
@@ -25,12 +30,32 @@ export class TechniqueList {
     return this.techniques.map(mapFn);
   }
 
+  filter(predicate: (technique: Technique) => boolean): TechniqueList {
+    return new TechniqueList(this.techniques.filter(predicate));
+  }
+
   includes(technique?: Technique): boolean {
     return technique != null && this.techniques.includes(technique);
   }
 
   get hasDirections(): boolean {
     return this.techniques.some((technique) => technique.direction != null);
+  }
+
+  shuffle(): TechniqueList {
+    return new TechniqueList(shuffle(this.techniques));
+  }
+
+  takeFirst(percent: number): TechniqueList {
+    const sliceEnd = Math.ceil(percent * this.techniques.length);
+    return new TechniqueList(this.techniques.slice(0, sliceEnd));
+  }
+
+  at(index: number): Technique {
+    return this.techniques[index];
+  }
+  get length(): number {
+    return this.techniques.length;
   }
 }
 

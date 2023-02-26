@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import "src/assets/styles/styles.scss";
 import { DefaultLayout } from "./layout/DefaultLayout";
 import { Reader } from "./components/Reader/Reader";
@@ -8,13 +8,11 @@ import css from "./components/Reader/Reader.module.scss";
 import { ShowExamTable } from "./components/ShowExamTable/ShowExamTable";
 import { Button } from "react-bootstrap";
 import { Printer } from "react-bootstrap-icons";
-import { Technique } from "./model/Technique";
 import { TechniqueList } from "./model/TechniqueList";
 
 function App(): JSX.Element {
-  const [techniques, setTechniques] = useState<Technique[]>([]);
-  const examTable = useMemo(() => new TechniqueList(techniques), [techniques]);
-  const [currentTechnique, setCurrentTechnique] = useState(-1);
+  const [techniques, setTechniques] = useState<TechniqueList>(new TechniqueList());
+  const [currentTechniqueIndex, setCurrentTechniqueIndex] = useState(-1);
   return (
     <DefaultLayout
       navbuttons={
@@ -34,10 +32,10 @@ function App(): JSX.Element {
         ) : (
           <>
             <div className={"no-print"}>
-              <Reader techniques={techniques} nextTechniqueChanged={setCurrentTechnique} />
+              <Reader techniques={techniques.techniques} nextTechniqueChanged={setCurrentTechniqueIndex} />
             </div>
             <div className={"mt-4"}>
-              <ShowExamTable techniques={examTable} currentTechnique={techniques[currentTechnique]} />
+              <ShowExamTable techniques={techniques} currentTechnique={techniques.at(currentTechniqueIndex)} />
             </div>
           </>
         )}

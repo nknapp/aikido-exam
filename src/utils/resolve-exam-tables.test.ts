@@ -1,4 +1,6 @@
 import { resolveExamTables } from "./resolve-exam-tables";
+import { Technique } from "../model/Technique";
+import { TechniqueList } from "../model/TechniqueList";
 
 describe("resolve-exam-tables", () => {
   it("creates a list of techniques", () => {
@@ -29,19 +31,19 @@ describe("resolve-exam-tables", () => {
       },
     ]);
     [
-      ["suwari waza", "ryote dori", "kokyu ho"],
-      ["tachi waza", "ai hanmi katate dori", "ikkyo", "omote"],
-      ["tachi waza", "ai hanmi katate dori", "ikkyo", "ura"],
-      ["tachi waza", "ai hanmi katate dori", "shiho nage", "omote"],
-      ["tachi waza", "ai hanmi katate dori", "shiho nage", "ura"],
-      ["tachi waza", "ai hanmi katate dori", "irimi nage"],
+      new Technique(["suwari waza", "ryote dori", "kokyu ho"]),
+      new Technique(["tachi waza", "ai hanmi katate dori", "ikkyo", "omote"]),
+      new Technique(["tachi waza", "ai hanmi katate dori", "ikkyo", "ura"]),
+      new Technique(["tachi waza", "ai hanmi katate dori", "shiho nage", "omote"]),
+      new Technique(["tachi waza", "ai hanmi katate dori", "shiho nage", "ura"]),
+      new Technique(["tachi waza", "ai hanmi katate dori", "irimi nage"]),
     ].forEach((technique) => {
-      expect(actual).toContainEqual(technique);
+      expect(actual.techniques).toContainEqual(technique);
     });
-    expect(actual).toHaveLength(6);
+    expect(actual.techniques).toHaveLength(6);
   });
 
   it("Returns an empty list of no tables are selected", () => {
-    expect(resolveExamTables([])).toEqual([]);
+    expect(resolveExamTables([])).toEqual(new TechniqueList([]));
   });
 });
