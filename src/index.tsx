@@ -5,9 +5,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { initI18Next } from "./i18n/i18n";
 import i18n from "i18next";
+import { initCurrentDojo } from "./exam-tables";
 
 async function initialize() {
   await initI18Next();
+  await initCurrentDojo();
 }
 
 initialize().then(() => {

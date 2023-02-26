@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@nanostores/react": "^0.4.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -15,6 +16,7 @@
     "handtrackjs": "^0.1.5",
     "i18next": "^20.3.5",
     "lodash": "^4.17.21",
+    "nanostores": "^0.7.4",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.4",
     "react-bootstrap-icons": "^1.5.0",

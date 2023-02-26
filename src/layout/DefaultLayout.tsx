@@ -4,10 +4,7 @@ import React, { ReactNode } from "react";
 import logo from "src/assets/logo.svg";
 import { CheckSquare, Square } from "react-bootstrap-icons";
 
-export const DefaultLayout: React.FC<{ navbuttons: ReactNode }> = ({
-  children,
-  navbuttons,
-}) => {
+export const DefaultLayout: React.FC<{ navbuttons: ReactNode }> = ({ children, navbuttons }) => {
   const { t } = useTranslation();
   return (
     <>
@@ -20,15 +17,12 @@ export const DefaultLayout: React.FC<{ navbuttons: ReactNode }> = ({
       <Navbar expand="md" className={"no-print"}>
         <Container>
           <Navbar.Brand>
-            <img width="30" height="30" src={logo} alt={t("app.title")} />{" "}
-            {t("app.title")}
+            <img width="30" height="30" src={logo} alt={t("app.title")} /> {t("app.title")}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="navbar-nav">
             <Form className={"form-inline ms-auto"}>{navbuttons}</Form>
-            <Navbar.Text className={"ms-auto"}>
-              © Nils Knappmeier (2021)
-            </Navbar.Text>
+            <Navbar.Text className={"ms-auto"}>© Nils Knappmeier (2021)</Navbar.Text>
           </Navbar.Collapse>
         </Container>
       </Navbar>
@@ -39,23 +33,12 @@ export const DefaultLayout: React.FC<{ navbuttons: ReactNode }> = ({
         <Alert variant={"info"} className={"no-print"}>
           <p>
             Die Inhalte dieser Seite basieren auf dem{" "}
-            <a
-              href={
-                "https://www.aikido-foederation.de/wp-content/uploads/AFD-Pruefungsordnung-052014.pdf"
-              }
-            >
+            <a href={"https://www.aikido-foederation.de/wp-content/uploads/AFD-Pruefungsordnung-052014.pdf"}>
               Prüfungsprogramm
             </a>{" "}
-            der{" "}
-            <a href={"https://www.aikido-foederation.de/"}>
-              Aikido-Föderation Deutschland
-            </a>
-            . Ich übernehme keine Garantie für die Richtigkeit und Aktualität
-            der Daten. Fehler könnt ihr mir gerne über{" "}
-            <a href={"https://github.com/nknapp/aikido-exam/issues"}>
-              Github-Issues
-            </a>{" "}
-            oder per Mail schicken (siehe{" "}
+            der <a href={"https://www.aikido-foederation.de/"}>Aikido-Föderation Deutschland</a>. Ich übernehme keine
+            Garantie für die Richtigkeit und Aktualität der Daten. Fehler könnt ihr mir gerne über{" "}
+            <a href={"https://github.com/nknapp/aikido-exam/issues"}>Github-Issues</a> oder per Mail schicken (siehe{" "}
             <a href="https://github.com/nknapp">Github-Profil</a>)
           </p>
           <hr />
@@ -80,8 +63,7 @@ export const DefaultLayout: React.FC<{ navbuttons: ReactNode }> = ({
             <br />
           </p>
           <p>
-            Anonymous, cookieless tracking with{" "}
-            <a href="https://plausible.io">plausible.io</a>
+            Anonymous, cookieless tracking with <a href="https://plausible.io">plausible.io</a>
           </p>
         </Alert>
       </Container>
