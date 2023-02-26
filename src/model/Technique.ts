@@ -31,6 +31,10 @@ export class Technique {
     );
   }
 
+  withDirection(direction: Direction): Technique {
+    return new Technique([this.execution, this.attack, this.defence, direction]);
+  }
+
   get [Symbol.toStringTag](): string {
     return this.definition.join(" ");
   }

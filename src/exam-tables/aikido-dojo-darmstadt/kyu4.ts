@@ -29,6 +29,7 @@ export const kyu4: ExamTable = {
       "ai hanmi katate dori": {
         nikyo: ["omote", "ura"],
         "uchi kaiten sankyo": [],
+        "kote gaeshi": [],
         "ude kime nage": ["omote", "ura"],
       },
       "shomen uchi": {

@@ -51,7 +51,18 @@ export const TechniqueChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) 
       <DojoChooser />
       <hr />
       <ExamTableChooser key={dojo.name} onChoice={setChosenTechniques} />
-      {dojoLazy.additionalText && <Alert variant={"warning"}>{dojoLazy.additionalText}</Alert>}
+
+      {dojoLazy.additionalText && (
+        <Alert variant={"warning"}>
+          <Alert.Heading>Hinweis</Alert.Heading>
+          {dojoLazy.additionalText}
+        </Alert>
+      )}
+      {dojoLazy.sourceLink && (
+        <p>
+          Quelle: <a href={dojoLazy.sourceLink}>{dojoLazy.sourceLink}</a>
+        </p>
+      )}
       <hr />
       <ShowTechniqueFilters value={filters} onChange={setFilters} />
       <hr />

@@ -1,4 +1,4 @@
-import { ExamTable } from "./baseTypes";
+import { ExamTable } from "../baseTypes";
 
 export const additional: ExamTable = {
   techniques: {

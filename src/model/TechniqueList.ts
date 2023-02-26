@@ -59,7 +59,7 @@ export class TechniqueList {
   }
 }
 
-class Grouper<K, V> {
+class Grouper<K extends string, V> {
   readonly map = new Map<K, V[]>();
 
   getOrCreate(key: K): V[] {

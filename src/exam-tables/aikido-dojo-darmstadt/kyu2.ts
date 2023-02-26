@@ -36,6 +36,7 @@ export const kyu2: ExamTable = {
     "tachi waza": {
       "kata dori men uchi": {
         ikkyo: ["omote", "ura"],
+        nikyo: ["omote", "ura"],
         sankyo: ["omote", "ura"],
         yonkyo: ["omote", "ura"],
         "kote gaeshi": [],
@@ -48,6 +49,7 @@ export const kyu2: ExamTable = {
         nikyo: ["omote", "ura"],
         sankyo: ["omote", "ura"],
         "sokumen irimi nage": [],
+        "kokyu nage": [],
       },
       "kata dori": {
         sankyo: ["omote", "ura"],
@@ -61,7 +63,7 @@ export const kyu2: ExamTable = {
         "koshi nage": [],
       },
       "shomen uchi": {
-        "shiho nage": ["omote"],
+        "shiho nage": [],
         "soto kaiten nage": ["omote", "ura"],
         "uchi kaiten nage": ["omote", "ura"],
         "kokyu nage": [],
@@ -90,12 +92,15 @@ export const kyu2: ExamTable = {
       "chudan tsuki": {
         ikkyo: ["omote", "ura"],
         "irimi nage": [],
+        "kokyu nage": [],
       },
       "jodan tsuki": {
         "hiji kimo oase": [],
+        "kokyu nage": [],
       },
       "ushiro ryo hiji dori": {
         ikkyo: ["omote", "ura"],
+        "kokyu nage": [],
       },
       "mae ryo kata dori": {
         "sokumen irimi nage": [],

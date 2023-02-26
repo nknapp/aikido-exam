@@ -17,6 +17,7 @@ export type ExamSpec = {
 export interface DojoLazyData {
   exams: Record<string, ExamSpec>;
   additionalText?: string;
+  sourceLink?: string;
 }
 
 export interface Dojo {

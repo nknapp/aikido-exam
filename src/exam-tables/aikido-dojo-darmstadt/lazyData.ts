@@ -4,6 +4,8 @@ import { kyu4 } from "./kyu4";
 import { kyu3 } from "./kyu3";
 import { kyu2 } from "./kyu2";
 import { kyu1 } from "./kyu1";
+import { additional } from "./additional";
+import { dan1 } from "./dan1";
 
 export default dojoLazyData({
   exams: {
@@ -27,6 +29,16 @@ export default dojoLazyData({
       labelKey: "chooser.button.kyu1",
       table: kyu1,
     },
+    dan1: {
+      labelKey: "chooser.button.dan1",
+      table: dan1,
+    },
+    additional: {
+      labelKey: "chooser.button.additional",
+      table: additional,
+    },
   },
-  additionalText: "Diese Prüfungsordnung ist noch in Arbeit",
+  additionalText:
+    "Die Techniken in der Gruppe 1.DAN sind Techniken, die im Programm der Aikido-Föderation vorkommen, aber nicht im Programm des Aikido-Dojo Darmstadt.",
+  sourceLink: "http://aikidokompendium.de/#",
 });

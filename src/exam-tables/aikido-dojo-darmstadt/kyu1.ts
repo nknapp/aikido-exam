@@ -25,6 +25,7 @@ export const kyu1: ExamTable = {
         nikyo: ["omote", "ura"],
         sankyo: ["omote", "ura"],
         yonkyo: ["omote", "ura"],
+        "kokyu nage": [],
       },
     },
     "tachi waza": {

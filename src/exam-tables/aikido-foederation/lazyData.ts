@@ -4,7 +4,7 @@ import { kyu4 } from "./kyu4";
 import { kyu3 } from "./kyu3";
 import { kyu2 } from "./kyu2";
 import { kyu1 } from "./kyu1";
-import { additional } from "../additional";
+import { additional } from "./additional";
 import { dan1 } from "./dan1";
 import { dan2 } from "./dan2";
 import { dan3 } from "./dan3";
@@ -48,4 +48,7 @@ export default dojoLazyData({
       table: dan3,
     },
   },
+  additionalText:
+    "+X sind Techniken, an die ich (Nils) mich erinnere, die aber nicht im Program der Aikido Föderation vorkommen.",
+  sourceLink: "https://www.aikido-foederation.de/wp-content/uploads/AFD-Pruefungsordnung-052014.pdf",
 });

@@ -46,6 +46,7 @@ export const kyu3: ExamTable = {
         ikkyo: ["omote", "ura"],
         nikyo: ["omote", "ura"],
         sankyo: ["omote", "ura"],
+        yonkyo: ["omote", "ura"],
         "kote gaeshi": [],
         "irimi nage": [],
         "kokyu nage": [],
