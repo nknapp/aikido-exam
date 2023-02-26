@@ -1,17 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.0f38b89f.chunk.css",
-    "main.js": "/static/js/main.d9644be2.chunk.js",
-    "main.js.map": "/static/js/main.d9644be2.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.7ed41dd0.js",
-    "runtime-main.js.map": "/static/js/runtime-main.7ed41dd0.js.map",
-    "static/js/2.6b267ad1.chunk.js": "/static/js/2.6b267ad1.chunk.js",
-    "static/js/2.6b267ad1.chunk.js.map": "/static/js/2.6b267ad1.chunk.js.map",
-    "static/js/3.9fa9ef0d.chunk.js": "/static/js/3.9fa9ef0d.chunk.js",
-    "static/js/3.9fa9ef0d.chunk.js.map": "/static/js/3.9fa9ef0d.chunk.js.map",
+    "main.css": "/static/css/main.513e1d10.chunk.css",
+    "main.js": "/static/js/main.eb491533.chunk.js",
+    "main.js.map": "/static/js/main.eb491533.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.9bbe55ff.js",
+    "runtime-main.js.map": "/static/js/runtime-main.9bbe55ff.js.map",
+    "static/js/2.166157e5.chunk.js": "/static/js/2.166157e5.chunk.js",
+    "static/js/2.166157e5.chunk.js.map": "/static/js/2.166157e5.chunk.js.map",
+    "static/js/3.2a8fc1ff.chunk.js": "/static/js/3.2a8fc1ff.chunk.js",
+    "static/js/3.2a8fc1ff.chunk.js.map": "/static/js/3.2a8fc1ff.chunk.js.map",
+    "static/js/4.8fe6f4b3.chunk.js": "/static/js/4.8fe6f4b3.chunk.js",
+    "static/js/4.8fe6f4b3.chunk.js.map": "/static/js/4.8fe6f4b3.chunk.js.map",
+    "static/js/5.266d55c1.chunk.js": "/static/js/5.266d55c1.chunk.js",
+    "static/js/5.266d55c1.chunk.js.map": "/static/js/5.266d55c1.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.0f38b89f.chunk.css.map": "/static/css/main.0f38b89f.chunk.css.map",
-    "static/js/2.6b267ad1.chunk.js.LICENSE.txt": "/static/js/2.6b267ad1.chunk.js.LICENSE.txt",
+    "static/css/main.513e1d10.chunk.css.map": "/static/css/main.513e1d10.chunk.css.map",
+    "static/js/2.166157e5.chunk.js.LICENSE.txt": "/static/js/2.166157e5.chunk.js.LICENSE.txt",
     "static/media/ai-hanmi-katate-dori.924b539c.mp3": "/static/media/ai-hanmi-katate-dori.924b539c.mp3",
     "static/media/ai-hanmi-ryote-dori.8145e9b9.mp3": "/static/media/ai-hanmi-ryote-dori.8145e9b9.mp3",
     "static/media/aiki-otoshi.2d24d1b3.mp3": "/static/media/aiki-otoshi.2d24d1b3.mp3",
@@ -34,6 +38,7 @@
     "static/media/koshi-nage.62455304.mp3": "/static/media/koshi-nage.62455304.mp3",
     "static/media/kote-gaeshi.30e8db8f.mp3": "/static/media/kote-gaeshi.30e8db8f.mp3",
     "static/media/logo.35fd12aa.svg": "/static/media/logo.35fd12aa.svg",
+    "static/media/logo.7495b147.svg": "/static/media/logo.7495b147.svg",
     "static/media/mae-ryo-kata-dori.682b953e.mp3": "/static/media/mae-ryo-kata-dori.682b953e.mp3",
     "static/media/muna-dori.d02f839f.mp3": "/static/media/muna-dori.d02f839f.mp3",
     "static/media/nikyo.6a46b50f.mp3": "/static/media/nikyo.6a46b50f.mp3",
@@ -69,9 +74,9 @@
     "static/media/yonkyo.0712d7af.mp3": "/static/media/yonkyo.0712d7af.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.7ed41dd0.js",
-    "static/js/2.6b267ad1.chunk.js",
-    "static/css/main.0f38b89f.chunk.css",
-    "static/js/main.d9644be2.chunk.js"
+    "static/js/runtime-main.9bbe55ff.js",
+    "static/js/2.166157e5.chunk.js",
+    "static/css/main.513e1d10.chunk.css",
+    "static/js/main.eb491533.chunk.js"
   ]
 }
