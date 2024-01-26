@@ -2,10 +2,12 @@ import { Alert, Container, Form, Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import React, { ReactNode } from "react";
 import logo from "src/assets/logo.svg";
-import { CheckSquare, Square } from "react-bootstrap-icons";
+import { Square } from "react-bootstrap-icons";
+import { Impress } from "src/components/Impress/Imress";
 
 export const DefaultLayout: React.FC<{ navbuttons: ReactNode; children: ReactNode }> = ({ children, navbuttons }) => {
   const { t } = useTranslation();
+
   return (
     <>
       <div className={"only-print"}>
@@ -45,23 +47,12 @@ export const DefaultLayout: React.FC<{ navbuttons: ReactNode; children: ReactNod
           <p>Was ich noch einbauen will:</p>
           <ul>
             <li>
-              Zufallsauswahl der Techniken <CheckSquare />
-            </li>
-            <li>
               Zeitbasiertes Auto-Play <Square />
             </li>
           </ul>
           <hr />
-          <p style={{ fontSize: "70%" }}>
-            <strong>Verantwortlich für die Inhalte dieser Seite ist</strong>
-            <br />
-            Nils Knappmeier
-            <br />
-            Maria-Sevenich-Weg 11
-            <br />
-            64289 Darmstadt
-            <br />
-          </p>
+          <h6 style={{ fontSize: "12px" }}>Verantwortlich für die Inhalte dieser Seite ist</h6>
+          <Impress />
           <p>
             Anonymous, cookieless tracking with <a href="https://plausible.io">plausible.io</a>
           </p>
