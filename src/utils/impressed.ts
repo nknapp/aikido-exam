@@ -21,7 +21,6 @@ class ImpressFactory {
   }
 
   private drawText(text: string): this {
-    console.log(text);
     let y = 0;
     for (const line of text.split("\n")) {
       this.ctx.fillText(line, 0, (y += LINE_HEIGHT));
