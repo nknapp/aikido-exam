@@ -1,5 +1,5 @@
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
 
 $primary: #55aa77;
 $info: #66bb33;
@@ -14,7 +14,7 @@ $theme-colors: (
   "dark": $dark,
 );
 
-@import "~bootstrap";
+@import "bootstrap";
 
 $hightlighTechniqueBg: change-color($primary, $alpha: 0.3);
 .highlighted-technique {

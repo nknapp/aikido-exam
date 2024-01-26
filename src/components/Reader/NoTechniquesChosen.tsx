@@ -1,6 +1,7 @@
 import React from "react";
 import { Alert } from "react-bootstrap";
-import { ReactComponent as Logo } from "src/assets/logo.svg";
+import logo from "src/assets/logo.svg";
+import css from "./NoTechniquesChosen.module.scss";
 import { CreateExamButton } from "../ExamTableChooser/CreateExamButton";
 import { TechniqueList } from "../../model/TechniqueList";
 
@@ -10,7 +11,7 @@ export const NoTechniquesChosen: React.FC<{
 }> = ({ className, onTechniqueChoice }) => {
   return (
     <Alert variant={"warning"} className={`${className} d-flex flex-column justify-content-evenly align-items-center`}>
-      <Logo width="10rem" height="10rem" />
+      <img src={logo} className={css.logo} alt="Logo" />
       <div className={"fs-2 text-center"}>Bitte wähle eine oder mehrere Techniklisten aus.</div>
       <div>{onTechniqueChoice != null && <CreateExamButton onChoice={onTechniqueChoice} />}</div>
     </Alert>

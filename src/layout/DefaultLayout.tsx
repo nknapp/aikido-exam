@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 import logo from "src/assets/logo.svg";
 import { CheckSquare, Square } from "react-bootstrap-icons";
 
-export const DefaultLayout: React.FC<{ navbuttons: ReactNode }> = ({ children, navbuttons }) => {
+export const DefaultLayout: React.FC<{ navbuttons: ReactNode; children: ReactNode }> = ({ children, navbuttons }) => {
   const { t } = useTranslation();
   return (
     <>
