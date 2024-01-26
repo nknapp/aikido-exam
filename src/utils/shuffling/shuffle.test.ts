@@ -3,17 +3,18 @@ import shuffle from "lodash/shuffle";
 import { Technique } from "../../model/Technique";
 import { TechniqueList } from "../../model/TechniqueList";
 
-const mockShuffle = shuffle as jest.MockedFunction<typeof shuffle>;
-
-jest.mock("lodash/shuffle", () => {
+vi.mock("lodash/shuffle", () => {
   return {
     __esModule: true,
-    default: jest.fn(),
+    default: vi.fn(),
   };
 });
 
 beforeEach(() => {
-  mockShuffle.mockImplementation((techniques) => techniques);
+  if (!vi.isMockFunction(shuffle)) {
+    throw new Error("shuffle should be a mock");
+  }
+  shuffle.mockImplementation((techniques) => techniques);
 });
 
 describe("shuffle", () => {
@@ -35,7 +36,7 @@ describe("shuffle", () => {
         new Technique(["tachi waza", "kata dori", "shiho nage", "ura"]),
         new Technique(["tachi waza", "kata dori", "shiho nage", "omote"]),
         new Technique(["tachi waza", "kata dori", "irimi nage", "ura"]),
-      ])
+      ]),
     );
   });
 
@@ -47,7 +48,7 @@ describe("shuffle", () => {
         new Technique(["suwari waza", "katate ryote dori", "shiho nage", "ura"]),
         new Technique(["tachi waza", "kata dori", "shiho nage", "ura"]),
         new Technique(["tachi waza", "kata dori", "irimi nage", "ura"]),
-      ])
+      ]),
     );
   });
 });
