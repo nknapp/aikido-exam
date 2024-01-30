@@ -35,6 +35,7 @@
     "dev:unit": "vitest --ui",
     "dev:vitest-preview": "vitest-preview",
     "dev:ts": "tsc --project tsconfig.json --watch",
+    "dev:server": "vite",
     "dev": "run-p dev:*",
     "prepare": "husky install"
   },
