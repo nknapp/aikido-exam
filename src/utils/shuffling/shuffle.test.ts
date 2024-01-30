@@ -19,23 +19,23 @@ beforeEach(() => {
 
 describe("shuffle", () => {
   const techniques: TechniqueList = new TechniqueList([
-    new Technique(["tachi waza", "kata dori", "shiho nage", "ura"]),
-    new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"]),
-    new Technique(["tachi waza", "kata dori", "irimi nage", "ura"]),
-    new Technique(["suwari waza", "katate ryote dori", "shiho nage", "ura"]),
-    new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"]),
-    new Technique(["tachi waza", "kata dori", "shiho nage", "omote"]),
+    new Technique(["tachi waza", "kata dori", "shiho nage", "ura"], {}),
+    new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"], {}),
+    new Technique(["tachi waza", "kata dori", "irimi nage", "ura"], {}),
+    new Technique(["suwari waza", "katate ryote dori", "shiho nage", "ura"], {}),
+    new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"], {}),
+    new Technique(["tachi waza", "kata dori", "shiho nage", "omote"], {}),
   ]);
 
   it("shuffles and regroups techniques", () => {
     expect(shuffleAndSelect(techniques, { coverage: 1 })).toEqual(
       new TechniqueList([
-        new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"]),
-        new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"]),
-        new Technique(["suwari waza", "katate ryote dori", "shiho nage", "ura"]),
-        new Technique(["tachi waza", "kata dori", "shiho nage", "ura"]),
-        new Technique(["tachi waza", "kata dori", "shiho nage", "omote"]),
-        new Technique(["tachi waza", "kata dori", "irimi nage", "ura"]),
+        new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"], {}),
+        new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"], {}),
+        new Technique(["suwari waza", "katate ryote dori", "shiho nage", "ura"], {}),
+        new Technique(["tachi waza", "kata dori", "shiho nage", "ura"], {}),
+        new Technique(["tachi waza", "kata dori", "shiho nage", "omote"], {}),
+        new Technique(["tachi waza", "kata dori", "irimi nage", "ura"], {}),
       ]),
     );
   });
@@ -43,11 +43,11 @@ describe("shuffle", () => {
   it("only returns the requested coverage of techniques", () => {
     expect(shuffleAndSelect(techniques, { coverage: 0.8 })).toEqual(
       new TechniqueList([
-        new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"]),
-        new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"]),
-        new Technique(["suwari waza", "katate ryote dori", "shiho nage", "ura"]),
-        new Technique(["tachi waza", "kata dori", "shiho nage", "ura"]),
-        new Technique(["tachi waza", "kata dori", "irimi nage", "ura"]),
+        new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "omote"], {}),
+        new Technique(["suwari waza", "ai hanmi katate dori", "ikkyo", "ura"], {}),
+        new Technique(["suwari waza", "katate ryote dori", "shiho nage", "ura"], {}),
+        new Technique(["tachi waza", "kata dori", "shiho nage", "ura"], {}),
+        new Technique(["tachi waza", "kata dori", "irimi nage", "ura"], {}),
       ]),
     );
   });

@@ -114,10 +114,12 @@ export const defences = {
   "uchi kaiten sankyo": uchi_kaiten_sankyo,
 };
 
+export const SINGLE_DIRECTION = "single-direction";
+
 export const directions = {
   omote: omote,
   ura: ura,
-};
+} as const;
 
 export const audioFiles = {
   ...executions,
@@ -129,5 +131,5 @@ export const audioFiles = {
 export type Execution = keyof typeof executions;
 export type Attack = keyof typeof attacks;
 export type Defence = keyof typeof defences;
-export type Direction = keyof typeof directions;
+export type Direction = keyof typeof directions | typeof SINGLE_DIRECTION;
 export type AudioFile = keyof typeof audioFiles;

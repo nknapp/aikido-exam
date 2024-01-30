@@ -4,7 +4,7 @@ export const additional: ExamTable = {
   techniques: {
     "tachi waza": {
       "chudan tsuki": {
-        "shiho nage": ["omote", "ura"],
+        "shiho nage": { omote: {}, ura: {} },
       },
     },
   },

@@ -1,7 +1,11 @@
 import { Attack, Direction, Execution, Defence } from "src/exam-tables/audio-files";
 import { TranslationSchema } from "../i18n/translations/schema";
 
-export type Defences = Partial<Record<Defence, Direction[]>>;
+// To be extended
+export type Metadata = Record<never, unknown>;
+
+export type Directions = Partial<Record<Direction, Metadata>>;
+export type Defences = Partial<Record<Defence, Directions>>;
 export type Attacks = Partial<Record<Attack, Defences>>;
 export type Table = Partial<Record<Execution, Attacks>>;
 

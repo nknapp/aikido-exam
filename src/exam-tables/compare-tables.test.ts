@@ -29,7 +29,9 @@ async function resolveDojo(dojo: Dojo, { omitWeapons = false } = {}): Promise<Se
 function* difference(minuend: Set<Technique>, subtrahend: Set<Technique>): Iterable<Technique> {
   for (const item of minuend) {
     if (subtrahend.has(item)) continue;
-    if (item.direction == null && subtrahend.has(getUniqueTechnique(item.withDirection("omote")))) continue;
+    // Fallback in case not the exact direction is specified
+    if (item.direction === "single-direction" && subtrahend.has(getUniqueTechnique(item.withDirection("omote"))))
+      continue;
     yield item;
   }
 }

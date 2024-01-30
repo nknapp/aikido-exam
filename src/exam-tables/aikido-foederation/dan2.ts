@@ -4,25 +4,25 @@ export const dan2: ExamTable = {
   techniques: {
     "jo dori": {
       "chudan tsuki": {
-        ikkyo: ["omote"],
+        ikkyo: { omote: {} },
         // TODO: sankyo omote, ura?
-        sankyo: [],
-        "hiji kimo oase": [],
-        "kote gaeshi": [],
-        "shiho nage": ["omote"],
-        "irimi nage": [],
-        "sokumen irimi nage": [],
+        sankyo: { "single-direction": {} },
+        "hiji kimo oase": { "single-direction": {} },
+        "kote gaeshi": { "single-direction": {} },
+        "shiho nage": { omote: {} },
+        "irimi nage": { "single-direction": {} },
+        "sokumen irimi nage": { "single-direction": {} },
         // TODO: ude kime nage omote, ura?
-        "ude kime nage": [],
-        "kokyu nage": [],
+        "ude kime nage": { "single-direction": {} },
+        "kokyu nage": { "single-direction": {} },
       },
     },
     "jo nage": {
       "ai hanmi ryote dori": {
         // TODO: sankyo omote, ura?
-        sankyo: [],
-        "shiho nage": ["omote"],
-        "kokyu nage": [],
+        sankyo: { "single-direction": {} },
+        "shiho nage": { omote: {} },
+        "kokyu nage": { "single-direction": {} },
       },
     },
   },

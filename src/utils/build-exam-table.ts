@@ -1,6 +1,5 @@
-import { Attacks, Defences, ExamTable } from "../exam-tables/baseTypes";
+import { Attacks, Defences, Directions, ExamTable } from "../exam-tables/baseTypes";
 import { Technique } from "../model/Technique";
-import { Defence, Direction } from "../exam-tables/audio-files";
 
 export function buildExamTable(list: Iterable<Technique>): ExamTable {
   const examTable: ExamTable = { techniques: {} };
@@ -13,10 +12,8 @@ export function buildExamTable(list: Iterable<Technique>): ExamTable {
 function addTechniqueToTable(examTable: ExamTable, technique: Technique): void {
   const execution: Attacks = getOrCreate(examTable.techniques, technique.execution, createObject);
   const attack: Defences = getOrCreate(execution, technique.attack, createObject);
-  const defence: Direction[] = getOrCreate<Defence, Direction[]>(attack, technique.defence, createList);
-  if (technique.direction != null) {
-    defence.push(technique.direction);
-  }
+  const defence: Directions = getOrCreate(attack, technique.defence, createObject);
+  defence[technique.direction] = technique.metadata;
 }
 
 function getOrCreate<K extends string, V>(object: Partial<Record<K, V>>, key: K, createNew: () => V): V {
@@ -29,10 +26,6 @@ function getOrCreate<K extends string, V>(object: Partial<Record<K, V>>, key: K,
   return created;
 }
 
-function createObject<K extends string, V>(): Record<K, V> {
+function createObject<K extends string, V>(): Partial<Record<K, V>> {
   return {} as Record<K, V>;
-}
-
-function createList<T>(): Array<T> {
-  return [];
 }

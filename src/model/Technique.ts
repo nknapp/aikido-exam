@@ -1,10 +1,13 @@
+import { Metadata } from "src/exam-tables/baseTypes";
 import { Attack, Defence, Direction, Execution } from "../exam-tables/audio-files";
 
-export type Definition = [Execution, Attack, Defence, Direction?];
+export type Definition = [Execution, Attack, Defence, Direction];
 export class Technique {
-  definition: [Execution, Attack, Defence, Direction?];
-  constructor(definition: [Execution, Attack, Defence, Direction?]) {
+  definition: [Execution, Attack, Defence, Direction];
+  metadata: Metadata;
+  constructor(definition: [Execution, Attack, Defence, Direction], metadata: Metadata) {
     this.definition = definition;
+    this.metadata = metadata;
   }
 
   get execution(): Execution {
@@ -18,8 +21,8 @@ export class Technique {
   get defence(): Defence {
     return this.definition[2];
   }
-  get direction(): Direction | null {
-    return this.definition[3] ?? null;
+  get direction(): Direction {
+    return this.definition[3];
   }
 
   matches(execution: Execution, attack: Attack, defence?: Defence, direction?: Direction): boolean {
@@ -32,7 +35,7 @@ export class Technique {
   }
 
   withDirection(direction: Direction): Technique {
-    return new Technique([this.execution, this.attack, this.defence, direction]);
+    return new Technique([this.execution, this.attack, this.defence, direction], this.metadata);
   }
 
   get [Symbol.toStringTag](): string {

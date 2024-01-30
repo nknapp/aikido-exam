@@ -4,20 +4,20 @@ export const kyu5: ExamTable = {
   techniques: {
     "suwari waza": {
       "ryote dori": {
-        "kokyu ho": [],
+        "kokyu ho": { "single-direction": {} },
       },
     },
     "tachi waza": {
       "ai hanmi katate dori": {
-        ikkyo: ["omote", "ura"],
-        "shiho nage": ["omote", "ura"],
-        "irimi nage": [],
-        "kote gaeshi": [],
+        ikkyo: { omote: {}, ura: {} },
+        "shiho nage": { omote: {}, ura: {} },
+        "irimi nage": { "single-direction": {} },
+        "kote gaeshi": { "single-direction": {} },
       },
       "shomen uchi": {
-        ikkyo: ["omote", "ura"],
-        "irimi nage": [],
-        "kote gaeshi": [],
+        ikkyo: { omote: {}, ura: {} },
+        "irimi nage": { "single-direction": {} },
+        "kote gaeshi": { "single-direction": {} },
       },
     },
   },

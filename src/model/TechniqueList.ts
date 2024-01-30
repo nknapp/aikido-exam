@@ -1,3 +1,4 @@
+import { SINGLE_DIRECTION } from "src/exam-tables/audio-files";
 import { Technique } from "./Technique";
 import shuffle from "lodash/shuffle";
 
@@ -39,7 +40,7 @@ export class TechniqueList {
   }
 
   get hasDirections(): boolean {
-    return this.techniques.some((technique) => technique.direction != null);
+    return this.techniques.some((technique) => technique.direction !== SINGLE_DIRECTION);
   }
 
   shuffle(): TechniqueList {

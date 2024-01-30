@@ -9,13 +9,13 @@ describe("resolve-exam-tables", () => {
         techniques: {
           "suwari waza": {
             "ryote dori": {
-              "kokyu ho": [],
+              "kokyu ho": { "single-direction": {} },
             },
           },
           "tachi waza": {
             "ai hanmi katate dori": {
-              "shiho nage": ["omote", "ura"],
-              "irimi nage": [],
+              "shiho nage": { omote: {}, ura: {} },
+              "irimi nage": { "single-direction": {} },
             },
           },
         },
@@ -24,19 +24,19 @@ describe("resolve-exam-tables", () => {
         techniques: {
           "tachi waza": {
             "ai hanmi katate dori": {
-              ikkyo: ["omote", "ura"],
+              ikkyo: { omote: {}, ura: {} },
             },
           },
         },
       },
     ]);
     [
-      new Technique(["suwari waza", "ryote dori", "kokyu ho"]),
-      new Technique(["tachi waza", "ai hanmi katate dori", "ikkyo", "omote"]),
-      new Technique(["tachi waza", "ai hanmi katate dori", "ikkyo", "ura"]),
-      new Technique(["tachi waza", "ai hanmi katate dori", "shiho nage", "omote"]),
-      new Technique(["tachi waza", "ai hanmi katate dori", "shiho nage", "ura"]),
-      new Technique(["tachi waza", "ai hanmi katate dori", "irimi nage"]),
+      new Technique(["suwari waza", "ryote dori", "kokyu ho", "single-direction"], {}),
+      new Technique(["tachi waza", "ai hanmi katate dori", "ikkyo", "omote"], {}),
+      new Technique(["tachi waza", "ai hanmi katate dori", "ikkyo", "ura"], {}),
+      new Technique(["tachi waza", "ai hanmi katate dori", "shiho nage", "omote"], {}),
+      new Technique(["tachi waza", "ai hanmi katate dori", "shiho nage", "ura"], {}),
+      new Technique(["tachi waza", "ai hanmi katate dori", "irimi nage", "single-direction"], {}),
     ].forEach((technique) => {
       expect(actual.techniques).toContainEqual(technique);
     });
