@@ -21,7 +21,7 @@ describe("Technique", () => {
   });
 
   it("'matches' checks if a prefix is equal", () => {
-    const technique = new Technique(["jo dori", "gyuako hanmi katate dori", "ikkyo", "omote"], []);
+    const technique = new Technique(["jo dori", "gyuako hanmi katate dori", "ikkyo", "omote"], {});
 
     expect(technique.matches("jo dori", "gyuako hanmi katate dori")).toBe(true);
     expect(technique.matches("suwari waza", "gyuako hanmi katate dori")).toBe(false);
