@@ -2,7 +2,13 @@ import { Attack, Direction, Execution, Defence } from "src/exam-tables/audio-fil
 import { TranslationSchema } from "../i18n/translations/schema";
 
 // To be extended
-export type Metadata = Record<never, unknown>;
+export type Metadata = {
+  youtube?: {
+    videoId: string;
+    durationSeconds: number;
+    title: string;
+  };
+};
 
 export type Directions = Partial<Record<Direction, Metadata>>;
 export type Defences = Partial<Record<Defence, Directions>>;

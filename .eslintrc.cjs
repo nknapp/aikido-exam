@@ -14,5 +14,9 @@ module.exports = {
         "sort-keys": "warn",
       },
     },
+    {
+      files: "scripts/**/*.js",
+      env: { node: true },
+    },
   ],
 };
