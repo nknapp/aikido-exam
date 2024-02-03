@@ -1,13 +1,15 @@
 import { Attack, Direction, Execution, Defence } from "src/exam-tables/audio-files";
 import { TranslationSchema } from "../i18n/translations/schema";
 
+export interface YoutubeLink {
+  videoId: string;
+  durationSeconds: number;
+  title: string;
+}
+
 // To be extended
 export type Metadata = {
-  youtube?: {
-    videoId: string;
-    durationSeconds: number;
-    title: string;
-  };
+  youtube?: YoutubeLink | YoutubeLink[];
 };
 
 export type Directions = Partial<Record<Direction, Metadata>>;
