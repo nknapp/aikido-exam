@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { durationInSeconds } from "./fetch-video-metadata";
+import { durationInSeconds } from "./durationInSeconds";
 
 describe("parseDuration", () => {
   it.each([

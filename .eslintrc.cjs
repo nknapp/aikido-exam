@@ -15,8 +15,11 @@ module.exports = {
       },
     },
     {
-      files: "scripts/**/*.js",
+      files: "scripts/**/*",
       env: { node: true },
+      rules: {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
     },
   ],
 };

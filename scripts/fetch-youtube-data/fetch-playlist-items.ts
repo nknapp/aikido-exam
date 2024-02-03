@@ -19,7 +19,7 @@ export async function fetchPlaylistItems(playlistId: string): Promise<FetchPlayl
   });
 
   return {
-    items: result.items.map((item) => ({
+    items: result.items.map((item: any) => ({
       title: item.snippet.title,
       videoId: item.contentDetails.videoId,
     })),

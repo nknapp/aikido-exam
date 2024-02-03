@@ -1,6 +1,5 @@
+import { durationInSeconds } from "./durationInSeconds";
 import { fetchYoutube } from "./fetch-youtube";
-
-import { Temporal } from "@js-temporal/polyfill";
 
 type FetchPlaylistReturn = {
   videos: VideoItem[];
@@ -18,15 +17,10 @@ export async function fetchVideoMetadata(id: string): Promise<FetchPlaylistRetur
       id,
     },
   });
-  return result.items.map((item) => {
+  return result.items.map((item: any) => {
     return {
       id: item.id,
       durationSeconds: durationInSeconds(item.contentDetails.duration),
     };
   });
-}
-
-/* exported for testing */
-export function durationInSeconds(iso8601duration: string): number {
-  return Temporal.Duration.from(iso8601duration).total({ unit: "seconds" });
 }

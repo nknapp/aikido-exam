@@ -12,10 +12,12 @@ export default defineConfig(() => {
     resolve: {
       alias: {
         "src/": "/src/",
+        "scripts/": "/scripts/",
       },
     },
     test: {
       globals: true,
+      setupFiles: ["src/setupTests.ts"],
     },
   };
 });
