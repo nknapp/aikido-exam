@@ -1,9 +1,10 @@
 /// <reference types="vite/client" />
 
 import { URLSearchParams } from "url";
-import dotEnvRaw from "../../.env?raw";
 import { parseDotEnv } from "../utils/dotEnv";
+import { readFile } from "fs/promises";
 
+const dotEnvRaw = await readFile("./.env", "utf-8");
 const dotEnv = parseDotEnv(dotEnvRaw);
 
 const key = dotEnv.YOUTUBE_API_KEY;

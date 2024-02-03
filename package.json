@@ -39,7 +39,7 @@
     "dev:server": "vite",
     "dev": "run-p dev:*",
     "prepare": "husky install",
-    "fetch-youtube-playlists": "node --env-file .env scripts/fetch-youtube-data.mjs"
+    "fetch-youtube-playlists": "vite-node scripts/fetch-youtube-data.mjs"
   },
   "browserslist": {
     "production": [
