@@ -1,0 +1,58 @@
+@import "src/assets/styles/styles-include.scss";
+
+.homepage {
+    margin-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100vh;
+    @include media-breakpoint-up(lg) { 
+        max-width: 800px;
+    }
+}
+
+.subheader {
+    text-align: center;
+    font-size: 1.5rem;
+}
+.header {
+    text-align: center;
+}
+
+.logo {
+    text-align: center;
+    margin: 1rem;
+}
+
+.teaser {
+    // inline style in component
+    // --columns: ...;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    @include media-breakpoint-up(lg) { 
+        grid-template-columns: repeat(var(--columns), 1fr);
+    }
+}
+
+.action {
+    text-align: center;
+    margin: 2rem;
+}
+.actionButton {
+    border: 2px solid lighten($warning, 30%);
+    padding: 0.5rem;
+    color: darken($warning, 30%);
+    background-color: lighten($warning, 40%);
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+    &:hover {
+    background-color: lighten($warning, 10%);
+    }
+}
+
+.teaserItem {
+    background-color: lighten($primary, 40%);
+    padding: 1rem;
+    min-height: 200px;
+}

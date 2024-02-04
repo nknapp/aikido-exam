@@ -5,7 +5,11 @@ import logo from "src/assets/logo.svg";
 import { Square } from "react-bootstrap-icons";
 import { Impress } from "src/components/Impress/Imress";
 
-export const DefaultLayout: React.FC<{ navbuttons: ReactNode; children: ReactNode }> = ({ children, navbuttons }) => {
+export const DefaultLayout: React.FC<{ hideNavbar?: boolean; navbuttons?: ReactNode; children: ReactNode }> = ({
+  children,
+  navbuttons,
+  hideNavbar = false,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -16,18 +20,20 @@ export const DefaultLayout: React.FC<{ navbuttons: ReactNode; children: ReactNod
           <div>{document.location.origin}</div>
         </div>
       </div>
-      <Navbar expand="md" className={"no-print"}>
-        <Container>
-          <Navbar.Brand>
-            <img width="30" height="30" src={logo} alt={t("app.title")} /> {t("app.title")}
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbar-nav" />
-          <Navbar.Collapse id="navbar-nav">
-            <Form className={"form-inline ms-auto"}>{navbuttons}</Form>
-            <Navbar.Text className={"ms-auto"}>© Nils Knappmeier (2021)</Navbar.Text>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      {!hideNavbar && (
+        <Navbar expand="md" className={"no-print"}>
+          <Container>
+            <Navbar.Brand href="/">
+              <img width="30" height="30" src={logo} alt={t("app.title")} /> {t("app.title")}
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="navbar-nav" />
+            <Navbar.Collapse id="navbar-nav">
+              <Form className={"form-inline ms-auto"}>{navbuttons}</Form>
+              <Navbar.Text className={"ms-auto"}>© Nils Knappmeier (2021)</Navbar.Text>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+      )}
       <Container>
         {children}
 
@@ -38,8 +44,9 @@ export const DefaultLayout: React.FC<{ navbuttons: ReactNode; children: ReactNod
             <a href={"https://www.aikido-foederation.de/wp-content/uploads/AFD-Pruefungsordnung-052014.pdf"}>
               Prüfungsprogramm
             </a>{" "}
-            der <a href={"https://www.aikido-foederation.de/"}>Aikido-Föderation Deutschland</a>. Ich übernehme keine
-            Garantie für die Richtigkeit und Aktualität der Daten. Fehler könnt ihr mir gerne über{" "}
+            der <a href={"https://www.aikido-foederation.de/"}>Aikido-Föderation Deutschland</a> und des{" "}
+            <a href="https://aikidodarmstadt.de">Aikido-Dojo Darmnstadt</a> Ich übernehme keine Garantie für die
+            Richtigkeit und Aktualität der Daten. Fehler könnt ihr mir gerne über{" "}
             <a href={"https://github.com/nknapp/aikido-exam/issues"}>Github-Issues</a> oder per Mail schicken (siehe{" "}
             <a href="https://github.com/nknapp">Github-Profil</a>)
           </p>
