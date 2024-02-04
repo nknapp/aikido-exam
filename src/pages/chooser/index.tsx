@@ -15,7 +15,6 @@ export const Component: React.FC = () => {
 
   return (
     <DefaultLayout
-      hideNavbar={location.pathname === "/"}
       navbuttons={
         techniques.length > 0 && (
           <>

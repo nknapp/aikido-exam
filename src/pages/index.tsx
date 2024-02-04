@@ -1,8 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHref } from "react-router-dom";
 import { Logo } from "src/components/logo/Logo";
 import css from "./index.module.scss";
 import { DefaultLayout } from "src/layout/DefaultLayout";
+import { DojoChooser } from "src/components/DojoChooser";
+import { Button } from "react-bootstrap";
+import { ArrowRight } from "react-bootstrap-icons";
 
 function cssVar(name: string, value: string | number): React.CSSProperties {
   return {
@@ -11,8 +14,9 @@ function cssVar(name: string, value: string | number): React.CSSProperties {
 }
 
 export const Component = () => {
+  const chooserHref = useHref("/chooser");
   return (
-    <DefaultLayout hideNavbar={location.pathname === "/"}>
+    <DefaultLayout hideNavbar={true}>
       <div className={css.homepage}>
         <p className={css.subheader}>Besser vorbereitet auf deine</p>
         <h1 className={css.header}>Aikido-Prüfung</h1>
@@ -22,9 +26,10 @@ export const Component = () => {
         </div>
         <div className={css.reason}></div>
         <div className={css.action}>
-          <Link className={css.actionButton} to={"/chooser"}>
-            Gleich anfangen
-          </Link>
+          <DojoChooser />
+          <Button href={chooserHref} variant="outline-primary">
+            Los geht's! <ArrowRight />
+          </Button>
         </div>
         <div className={css.teaser} style={{ ...cssVar("--columns", 3) }}>
           <div className={css.teaserItem}>

@@ -35,20 +35,11 @@
 }
 
 .action {
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
     margin: 2rem;
-}
-.actionButton {
-    border: 2px solid lighten($warning, 30%);
-    padding: 0.5rem;
-    color: darken($warning, 30%);
-    background-color: lighten($warning, 40%);
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.2s ease-in-out;
-    &:hover {
-    background-color: lighten($warning, 10%);
-    }
 }
 
 .teaserItem {
