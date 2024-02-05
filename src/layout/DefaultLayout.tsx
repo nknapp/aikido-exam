@@ -29,7 +29,7 @@ export const DefaultLayout: React.FC<{ hideNavbar?: boolean; navbuttons?: ReactN
             <Navbar.Toggle aria-controls="navbar-nav" />
             <Navbar.Collapse id="navbar-nav">
               <Form className={"form-inline ms-auto"}>{navbuttons}</Form>
-              <Navbar.Text className={"ms-auto"}>© Nils Knappmeier (2021)</Navbar.Text>
+              <Navbar.Text className={"ms-auto"}>© Nils Knappmeier (2024)</Navbar.Text>
             </Navbar.Collapse>
           </Container>
         </Navbar>
