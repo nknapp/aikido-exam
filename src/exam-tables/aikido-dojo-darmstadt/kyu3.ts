@@ -4,71 +4,506 @@ export const kyu3: ExamTable = {
   techniques: {
     "suwari waza": {
       "gyuako hanmi katate dori": {
-        ikkyo: { omote: {}, ura: {} },
-        nikyo: { omote: {}, ura: {} },
+        ikkyo: {
+          omote: {
+            youtube: {
+              title: "suwari waza katate dori ikkyo omote",
+              videoId: "i3bgZsdTmyQ",
+              durationSeconds: 24,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "suwari waza katate dori ikkyo ura",
+              videoId: "dQF5oxxDD30",
+              durationSeconds: 24,
+            },
+          },
+        },
+        nikyo: {
+          omote: {
+            youtube: {
+              title: "suwari waza katate dori nikyo omote",
+              videoId: "ypXXzb2YHFY",
+              durationSeconds: 29,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "suwari waza katate dori nikyo ura",
+              videoId: "6JBCfxORKJQ",
+              durationSeconds: 29,
+            },
+          },
+        },
       },
       "kata dori": {
-        ikkyo: { omote: {}, ura: {} },
-        nikyo: { omote: {}, ura: {} },
+        ikkyo: {
+          omote: {
+            youtube: {
+              title: "suwari waza kata dori ikkyo omote",
+              videoId: "N7L2BI0PYeE",
+              durationSeconds: 24,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "suwari waza kata dori ikkyo ura",
+              videoId: "_Ap_QOoTlzY",
+              durationSeconds: 23,
+            },
+          },
+        },
+        nikyo: {
+          omote: {
+            youtube: {
+              title: "suwari waza kata dori nikyo omote",
+              videoId: "dMAiRF88oDc",
+              durationSeconds: 24,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "suwari waza kata dori nikyo ura",
+              videoId: "ZJPiqlLLVv4",
+              durationSeconds: 25,
+            },
+          },
+        },
       },
       "shomen uchi": {
-        nikyo: { omote: {}, ura: {} },
-        sankyo: { omote: {}, ura: {} },
-        yonkyo: { omote: {}, ura: {} },
-        "kote gaeshi": { "single-direction": {} },
+        nikyo: {
+          omote: {
+            youtube: {
+              title: "suwari waza shomen uchi nikyo omote",
+              videoId: "meNnP_iyjSY",
+              durationSeconds: 30,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "suwari waza shomen uchi nikyo ura",
+              videoId: "2gWlA-rMtic",
+              durationSeconds: 31,
+            },
+          },
+        },
+        sankyo: {
+          omote: {
+            youtube: {
+              title: "suwari waza shomen uchi sankyo omote",
+              videoId: "OaKRmnjJdK8",
+              durationSeconds: 29,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "suwari waza shomen uchi sankyo ura",
+              videoId: "f3gHuS8Bp3A",
+              durationSeconds: 29,
+            },
+          },
+        },
+        yonkyo: {
+          omote: {
+            youtube: {
+              title: "suwari waza shomen uchi yonkyo omote",
+              videoId: "X-fctXW0Lmg",
+              durationSeconds: 21,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "suwari waza shomen uchi yonkyo ura",
+              videoId: "a-jasPR2So0",
+              durationSeconds: 26,
+            },
+          },
+        },
+        "kote gaeshi": {
+          "single-direction": {
+            youtube: {
+              title: "suwari waza shomen uchi kote gaeshi",
+              videoId: "9HNkdOJmT3k",
+              durationSeconds: 28,
+            },
+          },
+        },
       },
     },
     "hanmi handachi waza": {
       "gyuako hanmi katate dori": {
-        "shiho nage": { omote: {}, ura: {} },
-        "uchi kaiten nage": { omote: {}, ura: {} },
+        "shiho nage": {
+          omote: {
+            youtube: {
+              title: "hanmi handachi waza katate dori shiho nage omote",
+              videoId: "Y2Ka7Zjpt1Q",
+              durationSeconds: 19,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "hanmi handachi waza katate dori shiho nage ura",
+              videoId: "fnAacJCkSAE",
+              durationSeconds: 16,
+            },
+          },
+        },
+        "uchi kaiten nage": {
+          omote: {
+            youtube: {
+              title: "hanmi handachi waza katate dori uchi kaiten nage omote",
+              videoId: "buCpYcLmYlA",
+              durationSeconds: 22,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "hanmi handachi waza katate dori uchi kaiten nage ura",
+              videoId: "jk9nnXxYJ4w",
+              durationSeconds: 22,
+            },
+          },
+        },
       },
       "shomen uchi": {
-        "irimi nage": { "single-direction": {} },
+        "irimi nage": {
+          "single-direction": {
+            youtube: {
+              title: "hanmi handachi waza shomen uchi irimi nage",
+              videoId: "1KahuOB4TIU",
+              durationSeconds: 20,
+            },
+          },
+        },
       },
     },
     "tachi waza": {
       "katate ryote dori": {
-        ikkyo: { omote: {}, ura: {} },
-        nikyo: { omote: {}, ura: {} },
-        "kote gaeshi": { "single-direction": {} },
-        "ude kime nage": { omote: {}, ura: {} },
-        "sokumen irimi nage": { "single-direction": {} },
-        "kokyu nage": { "single-direction": {} },
+        ikkyo: {
+          omote: {
+            youtube: {
+              title: "tachi waza katate ryote dori ikkyo omote",
+              videoId: "zNz8cIlvCEY",
+              durationSeconds: 30,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza katate ryote dori ikkyo ura",
+              videoId: "5RwHTHBPoPc",
+              durationSeconds: 28,
+            },
+          },
+        },
+        nikyo: {
+          omote: {
+            youtube: {
+              title: "tachi waza katate ryote dori nikyo omote",
+              videoId: "0sCP4X6nWwI",
+              durationSeconds: 34,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza katate ryote dori nikyo ura",
+              videoId: "xSYZ2SpIVSA",
+              durationSeconds: 33,
+            },
+          },
+        },
+        "kote gaeshi": {
+          "single-direction": {
+            youtube: {
+              title: "tachi waza katate ryote dori kote gaeshi",
+              videoId: "9g0usMCj3i4",
+              durationSeconds: 33,
+            },
+          },
+        },
+        "ude kime nage": {
+          omote: {
+            youtube: {
+              title: "tachi waza katate ryote dori ude kime nage omote",
+              videoId: "N6_mLTPRkFU",
+              durationSeconds: 15,
+            },
+          },
+        },
+        "sokumen irimi nage": {
+          "single-direction": {
+            youtube: {
+              title: "tachi waza katate ryote dori sokumen irimi nage",
+              videoId: "NsWp_lc5wkg",
+              durationSeconds: 28,
+            },
+          },
+        },
+        "kokyu nage": {
+          "single-direction": {},
+        },
       },
       "ryote dori": {
-        ikkyo: { omote: {}, ura: {} },
-        "shiho nage": { omote: {}, ura: {} },
-        "ude kime nage": { omote: {}, ura: {} },
-        "kokyu nage": { "single-direction": {} },
+        ikkyo: {
+          omote: {
+            youtube: {
+              title: "tachi waza ryote dori ikkyo omote",
+              videoId: "afQn85XeaU8",
+              durationSeconds: 26,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza ryote dori ikkyo ura",
+              videoId: "HudB-p-Zl5w",
+              durationSeconds: 24,
+            },
+          },
+        },
+        "shiho nage": {
+          omote: {
+            youtube: {
+              title: "tachi waza ryote dori shiho nage omote",
+              videoId: "W-XW1_nl66k",
+              durationSeconds: 21,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza ryote dori shiho nage ura",
+              videoId: "gZMo-JCALAk",
+              durationSeconds: 17,
+            },
+          },
+        },
+        "ude kime nage": {
+          omote: {
+            youtube: {
+              title: "tachi waza ryote dori ude kime nage omote",
+              videoId: "BK2ADY1jSvM",
+              durationSeconds: 14,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza ryote dori ude kime nage ura",
+              videoId: "MGyRZS8OdSE",
+              durationSeconds: 18,
+            },
+          },
+        },
+        "kokyu nage": {
+          "single-direction": {},
+        },
       },
       "ushiro ryote dori": {
-        ikkyo: { omote: {}, ura: {} },
-        nikyo: { omote: {}, ura: {} },
-        sankyo: { omote: {}, ura: {} },
-        yonkyo: { omote: {}, ura: {} },
-        "kote gaeshi": { "single-direction": {} },
-        "irimi nage": { "single-direction": {} },
-        "kokyu nage": { "single-direction": {} },
+        ikkyo: {
+          omote: {
+            youtube: {
+              title: "tachi waza ushiro ryote dori ikkyo omote",
+              videoId: "esFrZFBRVfU",
+              durationSeconds: 28,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza ushiro ryote dori ikkyo ura",
+              videoId: "6fXx4JG36Rw",
+              durationSeconds: 28,
+            },
+          },
+        },
+        nikyo: {
+          omote: {
+            youtube: {
+              title: "tachi waza ushiro ryote dori nikyo omote",
+              videoId: "A-GJGzF9y5c",
+              durationSeconds: 31,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza ushiro ryote dori nikyo ura",
+              videoId: "Ga-7V7aRMuU",
+              durationSeconds: 31,
+            },
+          },
+        },
+        yonkyo: {
+          omote: {
+            youtube: {
+              title: "tachi waza ushiro ryote dori yonkyo omote",
+              videoId: "XS7OXIAO1IQ",
+              durationSeconds: 25,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza ushiro ryote dori yonkyo ura",
+              videoId: "VoVH7kCM-iA",
+              durationSeconds: 27,
+            },
+          },
+        },
+        "kote gaeshi": {
+          "single-direction": {
+            youtube: {
+              title: "tachi waza ushiro ryote dori kote gaeshi",
+              videoId: "Cmc8YjYSwAY",
+              durationSeconds: 32,
+            },
+          },
+        },
+        "irimi nage": {
+          "single-direction": {
+            youtube: {
+              title: "tachi waza ushiro ryote dori irimi nage",
+              videoId: "lTtNUcbdcI4",
+              durationSeconds: 22,
+            },
+          },
+        },
+        "kokyu nage": {
+          "single-direction": {},
+        },
       },
       "yokomen uchi": {
-        ikkyo: { omote: {}, ura: {} },
-        nikyo: { omote: {}, ura: {} },
-        sankyo: { omote: {}, ura: {} },
-        yonkyo: { omote: {}, ura: {} },
-        "kote gaeshi": { "single-direction": {} },
-        "irimi nage": { "single-direction": {} },
+        ikkyo: {
+          omote: {
+            youtube: {
+              title: "tachi waza yokomen uchi ikkyo omote",
+              videoId: "aBU9kwaRDAI",
+              durationSeconds: 26,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza yokomen uchi ikkyo ura",
+              videoId: "OxpdecDIx4g",
+              durationSeconds: 25,
+            },
+          },
+        },
+        nikyo: {
+          omote: {
+            youtube: {
+              title: "tachi waza yokomen uchi nikyo omote",
+              videoId: "qdqVDdX_gjU",
+              durationSeconds: 31,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza yokomen uchi nikyo ura",
+              videoId: "6bTq9TDZ27s",
+              durationSeconds: 33,
+            },
+          },
+        },
+        sankyo: {
+          omote: {
+            youtube: {
+              title: "tachi waza yokomen uchi sankyo omote",
+              videoId: "8QYckaVxS0I",
+              durationSeconds: 42,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza yokomen uchi sankyo ura",
+              videoId: "nwhKvBON_ew",
+              durationSeconds: 33,
+            },
+          },
+        },
+        yonkyo: {
+          omote: {
+            youtube: {
+              title: "tachi waza yokomen uchi yonkyo omote",
+              videoId: "lDpYIMCo45A",
+              durationSeconds: 28,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza yokomen uchi yonkyo ura",
+              videoId: "T9E6KuKGzAQ",
+              durationSeconds: 26,
+            },
+          },
+        },
+        "kote gaeshi": {
+          "single-direction": {
+            youtube: {
+              title: "tachi waza yokomen uchi kote gaeshi",
+              videoId: "UUBkZgTeS1A",
+              durationSeconds: 28,
+            },
+          },
+        },
+        "irimi nage": {
+          "single-direction": {},
+        },
       },
       "shomen uchi": {
-        nikyo: { omote: {}, ura: {} },
-        sankyo: { omote: {}, ura: {} },
-        yonkyo: { omote: {}, ura: {} },
+        nikyo: {
+          omote: {
+            youtube: {
+              title: "tachi waza shomen uchi nikyo omote",
+              videoId: "DLeKNmWAeaQ",
+              durationSeconds: 29,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza shomen uchi nikyo ura",
+              videoId: "-jpi60tjS2g",
+              durationSeconds: 32,
+            },
+          },
+        },
+        sankyo: {
+          omote: {
+            youtube: {
+              title: "tachi waza shomen uchi sankyo omote",
+              videoId: "iUPTb2ZbxyA",
+              durationSeconds: 41,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza shomen uchi sankyo ura",
+              videoId: "x1x_tIfkbkM",
+              durationSeconds: 31,
+            },
+          },
+        },
+        yonkyo: {
+          omote: {
+            youtube: {
+              title: "tachi waza shomen uchi yonkyo omote",
+              videoId: "J_Rb7w6K4cY",
+              durationSeconds: 25,
+            },
+          },
+          ura: {
+            youtube: {
+              title: "tachi waza shomen uchi yonkyo ura",
+              videoId: "2hvZBBGvFeY",
+              durationSeconds: 27,
+            },
+          },
+        },
       },
       "ai hanmi katate dori": {
-        "kokyu nage": { "single-direction": {} },
+        "kokyu nage": {
+          "single-direction": {},
+        },
       },
       "gyuako hanmi katate dori": {
-        "kokyu nage": { "single-direction": {} },
+        "kokyu nage": {
+          "single-direction": {},
+        },
       },
     },
   },

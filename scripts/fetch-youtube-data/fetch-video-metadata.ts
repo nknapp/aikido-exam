@@ -1,16 +1,14 @@
 import { durationInSeconds } from "./durationInSeconds";
 import { fetchYoutube } from "./fetch-youtube";
 
-type FetchPlaylistReturn = {
-  videos: VideoItem[];
-};
+type FetchVideosReturn = VideoItem[];
 
 interface VideoItem {
   id: string;
   durationSeconds: number;
 }
 
-export async function fetchVideoMetadata(id: string): Promise<FetchPlaylistReturn> {
+export async function fetchVideoMetadata(id: string): Promise<FetchVideosReturn> {
   const result = await fetchYoutube("videos", {
     query: {
       part: "id,contentDetails",

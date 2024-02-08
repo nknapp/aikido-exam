@@ -3,6 +3,7 @@
 import { fetchPlaylistItems } from "./fetch-youtube-data/fetch-playlist-items"
 import { fetchVideoMetadata } from "./fetch-youtube-data/fetch-video-metadata"
 import { keyBy } from "lodash"
+import {fetchPlaylistItemsWithDuration} from "./fetch-youtube-data/fetchPlaylistItemsWithDuration";
 
 
 const playlists= {
@@ -17,13 +18,7 @@ const playlists= {
 let result = {}
 for (const [name, playlistId] of Object.entries(playlists)) {
     
-    const playlistItems = await fetchPlaylistItems(playlistId)
-    const byVideoId = keyBy(playlistItems.items, "videoId")
-    
-    const videos = await fetchVideoMetadata(playlistItems.items.map(item => item.videoId).join(","))
-    for (const video of videos) {
-        byVideoId[video.id].durationSeconds = video.durationSeconds
-    }
+    const playlistItems = await fetchPlaylistItemsWithDuration(playlistId)
     result[name] = playlistItems
 }
 
