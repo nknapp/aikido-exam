@@ -110,7 +110,7 @@ export const defences = {
   "sumi otoshi": sumi_otoshi,
   "aiki otoshi": aiki_otoshi,
   "juji garami": juji_garami,
-  "hiji kimo oase": hiji_kime_osae,
+  "hiji kimo osae": hiji_kime_osae,
   "uchi kaiten sankyo": uchi_kaiten_sankyo,
 };
 

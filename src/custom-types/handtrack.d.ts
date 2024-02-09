@@ -41,7 +41,7 @@ declare module "handtrackjs" {
       predictions: Prediction[],
       canvas: HTMLCanvasElement,
       context: CanvasRenderingContext2D,
-      mediasource: HTMLMediaElement
+      mediasource: HTMLMediaElement,
     ): void;
 
     dispose(): void;

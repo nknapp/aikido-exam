@@ -6,13 +6,13 @@ export const dan1: ExamTable = {
       "chudan tsuki": {
         ikkyo: { omote: {}, ura: {} },
         "uchi kaiten sankyo": { "single-direction": {} },
-        "hiji kimo oase": { "single-direction": {} },
+        "hiji kimo osae": { "single-direction": {} },
         "kote gaeshi": { "single-direction": {} },
         "irimi nage": { "single-direction": {} },
       },
       "shomen uchi hon-te": {
         gokyo: { ura: {} },
-        "hiji kimo oase": { "single-direction": {} },
+        "hiji kimo osae": { "single-direction": {} },
         "kote gaeshi": { "single-direction": {} },
         "irimi nage": { "single-direction": {} },
       },

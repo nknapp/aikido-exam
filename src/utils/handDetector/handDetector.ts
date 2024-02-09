@@ -1,11 +1,4 @@
-import {
-  Label,
-  load,
-  ObjectDetection,
-  Prediction,
-  startVideo,
-  stopVideo,
-} from "handtrackjs";
+import { Label, load, ObjectDetection, Prediction, startVideo, stopVideo } from "handtrackjs";
 
 export class HandDetector {
   private nextTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -26,15 +19,10 @@ export class HandDetector {
   }
 
   async detect(gesture: Label): Promise<boolean> {
-    const [, model] = await Promise.all([
-      this.startVideoPromise,
-      this.modelPromise,
-    ]);
+    const [, model] = await Promise.all([this.startVideoPromise, this.modelPromise]);
     this.pendingPredictions = model.detect(this.videoElement);
     const predictions = await this.pendingPredictions;
-    return (
-      predictions.findIndex((prediction) => prediction.label === gesture) >= 0
-    );
+    return predictions.findIndex((prediction) => prediction.label === gesture) >= 0;
   }
 
   async waitForGesture(gesture: Label): Promise<void> {
@@ -64,11 +52,9 @@ export class HandDetector {
 
   shutdown(): void {
     this.stop();
-    Promise.all([this.pendingPredictions, this.modelPromise]).then(
-      ([, model]) => {
-        model.dispose();
-      }
-    );
+    Promise.all([this.pendingPredictions, this.modelPromise]).then(([, model]) => {
+      model.dispose();
+    });
     this.startVideoPromise.then(() => stopVideo(this.videoElement));
     this.videoElement.remove();
   }

@@ -43,7 +43,7 @@ export const TechniqueChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) 
       setResult(newTechniques);
       onChoice(newTechniques);
     }, [shuffleControls, chosenTechniques, onChoice, filters]),
-    200
+    200,
   );
 
   return (

@@ -1,12 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import {
-  ArrowClockwise,
-  ChevronDoubleLeft,
-  ChevronDoubleRight,
-  Play,
-  Stop,
-} from "react-bootstrap-icons";
+import { ArrowClockwise, ChevronDoubleLeft, ChevronDoubleRight, Play, Stop } from "react-bootstrap-icons";
 import { useAudioPlayer } from "../../utils/hooks/useAudioPlayer";
 import css from "./Reader.module.scss";
 import { CurrentTechnique } from "./CurrentTechnique";
@@ -28,10 +22,7 @@ export const Reader: React.FC<{
   useEffect(() => stop(), [techniques, stop]);
 
   useEffect(() => setNextTechniqueIndex(0), [techniques]);
-  useEffect(
-    () => nextTechniqueChanged(nextTechniqueIndex),
-    [nextTechniqueIndex, nextTechniqueChanged]
-  );
+  useEffect(() => nextTechniqueChanged(nextTechniqueIndex), [nextTechniqueIndex, nextTechniqueChanged]);
 
   const playCurrentTechnique = useCallback(async () => {
     if (nextTechnique == null) {
@@ -60,19 +51,13 @@ export const Reader: React.FC<{
     playing,
     onPlayEvent: playCurrentTechnique,
     onStopEvent: stop,
-    title:
-      (techniques && techniques[nextTechniqueIndex]?.definition.join(" ")) ||
-      "",
+    title: (techniques && techniques[nextTechniqueIndex]?.definition.join(" ")) || "",
   });
 
   return (
     <div className={css.reader}>
       <audio ref={audioRef} style={{ display: "none" }} />
-      <Button
-        onClick={back}
-        className={css.backButton}
-        disabled={nextTechniqueIndex <= 0}
-      >
+      <Button onClick={back} className={css.backButton} disabled={nextTechniqueIndex <= 0}>
         <ChevronDoubleLeft />
       </Button>
       {playing ? (
@@ -80,11 +65,7 @@ export const Reader: React.FC<{
           <Stop /> Stop
         </Button>
       ) : (
-        <Button
-          onClick={playCurrentTechnique}
-          disabled={nextTechnique == null}
-          className={css.stopPlayButton}
-        >
+        <Button onClick={playCurrentTechnique} disabled={nextTechnique == null} className={css.stopPlayButton}>
           <Play /> Play
         </Button>
       )}
@@ -96,23 +77,12 @@ export const Reader: React.FC<{
       >
         <ArrowClockwise /> Repeat
       </Button>
-      <Button
-        onClick={forward}
-        className={css.forwardButton}
-        disabled={nextTechniqueIndex >= techniques.length - 1}
-      >
+      <Button onClick={forward} className={css.forwardButton} disabled={nextTechniqueIndex >= techniques.length - 1}>
         <ChevronDoubleRight />
       </Button>
-      <HandTracker
-        className={css.handGestures}
-        playing={playing}
-        onPointGesture={playCurrentTechnique}
-      />
+      <HandTracker className={css.handGestures} playing={playing} onPointGesture={playCurrentTechnique} />
       {nextTechnique != null ? (
-        <CurrentTechnique
-          technique={nextTechnique}
-          className={css.techniqueDisplay}
-        />
+        <CurrentTechnique technique={nextTechnique} className={css.techniqueDisplay} />
       ) : (
         <NoTechniquesChosen className={css.techniqueDisplay} />
       )}

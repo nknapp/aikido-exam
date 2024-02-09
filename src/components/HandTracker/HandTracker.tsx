@@ -51,11 +51,7 @@ export const HandTracker: React.FC<{
             : `Hand gestures are disabled`}
         </div>
       </div>
-      <Button
-        className={classes.join(" ")}
-        variant={"secondary"}
-        onClick={() => setActive(!active)}
-      >
+      <Button className={classes.join(" ")} variant={"secondary"} onClick={() => setActive(!active)}>
         {active ? "Disable" : "Enable"}
       </Button>
     </Alert>

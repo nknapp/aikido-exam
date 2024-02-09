@@ -33,7 +33,7 @@ export function useAudioPlayer(): UseAudioPlayerResult {
       }
       setPlaying(false);
     },
-    [playingRef, setPlaying]
+    [playingRef, setPlaying],
   );
 
   const stop = useCallback(() => {

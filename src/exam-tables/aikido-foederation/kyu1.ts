@@ -65,7 +65,7 @@ export const kyu1: ExamTable = {
         "irimi nage": { "single-direction": {} },
         "kote gaeshi": { "single-direction": {} },
         "soto kaiten nage": { omote: {}, ura: {} },
-        "hiji kimo oase": { "single-direction": {} },
+        "hiji kimo osae": { "single-direction": {} },
       },
       "chudan tsuki": {
         ikkyo: { omote: {}, ura: {} },

@@ -14,7 +14,6 @@ export async function initI18Next(): Promise<void> {
       escapeValue: false,
     },
   });
-
 }
 
 export default i18n;

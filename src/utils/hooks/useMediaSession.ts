@@ -15,12 +15,7 @@ interface UseMediaSessionArgs {
   onStopEvent: () => void;
 }
 
-function useMediaSession({
-  title,
-  playing,
-  onPlayEvent,
-  onStopEvent,
-}: UseMediaSessionArgs): void {
+function useMediaSession({ title, playing, onPlayEvent, onStopEvent }: UseMediaSessionArgs): void {
   useEffect(() => {
     if (playing) {
       chromeWorkAroundElement.play();

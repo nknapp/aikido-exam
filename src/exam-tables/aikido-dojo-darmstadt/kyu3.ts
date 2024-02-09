@@ -240,7 +240,25 @@ export const kyu3: ExamTable = {
           },
         },
         "kokyu nage": {
-          "single-direction": {},
+          "single-direction": {
+            youtube: [
+              {
+                title: "tachi waza katate ryote dori kokyu nage 01a",
+                videoId: "B5Vyd3jQhqk",
+                durationSeconds: 14,
+              },
+              {
+                title: "tachi waza katate ryote dori kokyu nage 01b",
+                videoId: "zyMmaHK0Fz8",
+                durationSeconds: 23,
+              },
+              {
+                title: "tachi waza katate ryote dori kokyu nage 02",
+                videoId: "OCFMAkIRX74",
+                durationSeconds: 13,
+              },
+            ],
+          },
         },
       },
       "ryote dori": {
@@ -293,7 +311,45 @@ export const kyu3: ExamTable = {
           },
         },
         "kokyu nage": {
-          "single-direction": {},
+          "single-direction": {
+            youtube: [
+              {
+                title: "tachi waza ryote dori kokyu nage 01",
+                videoId: "D03QJ5FVMTg",
+                durationSeconds: 15,
+              },
+              {
+                title: "tachi waza ryote dori kokyu nage 02",
+                videoId: "W0cJo4TE9EA",
+                durationSeconds: 14,
+              },
+              {
+                title: "tachi waza ryote dori kokyu nage 03",
+                videoId: "h68D-XdD4mY",
+                durationSeconds: 20,
+              },
+              {
+                title: "tachi waza ryote dori kokyu nage 04",
+                videoId: "gEwXOcJvzJQ",
+                durationSeconds: 14,
+              },
+              {
+                title: "tachi waza ryote dori kokyu nage 05",
+                videoId: "a1GeXI6TPjQ",
+                durationSeconds: 14,
+              },
+              {
+                title: "tachi waza ryote dori kokyu nage 06",
+                videoId: "Q3-LEq1xLBM",
+                durationSeconds: 15,
+              },
+              {
+                title: "tachi waza ryote dori kokyu nage 07",
+                videoId: "iw1-CHke6E4",
+                durationSeconds: 14,
+              },
+            ],
+          },
         },
       },
       "ushiro ryote dori": {
@@ -364,7 +420,25 @@ export const kyu3: ExamTable = {
           },
         },
         "kokyu nage": {
-          "single-direction": {},
+          "single-direction": {
+            youtube: [
+              {
+                title: "tachi waza ushiro ryote dori kokyu nage 01",
+                videoId: "lSXiuN7ZKvo",
+                durationSeconds: 16,
+              },
+              {
+                title: "tachi waza ushiro ryote dori kokyu nage 02",
+                videoId: "NLDzaKoOyHA",
+                durationSeconds: 18,
+              },
+              {
+                title: "tachi waza ushiro ryote dori kokyu nage 03",
+                videoId: "3sRvYDaQN9E",
+                durationSeconds: 13,
+              },
+            ],
+          },
         },
       },
       "yokomen uchi": {
@@ -442,7 +516,30 @@ export const kyu3: ExamTable = {
           },
         },
         "irimi nage": {
-          "single-direction": {},
+          "single-direction": {
+            youtube: [
+              {
+                title: "tachi waza yokomen uchi irimi nage 01",
+                videoId: "WUeoBoEA2WY",
+                durationSeconds: 25,
+              },
+              {
+                title: "tachi waza yokomen uchi irimi nage 02",
+                videoId: "H4aCVOo4SAM",
+                durationSeconds: 21,
+              },
+              {
+                title: "tachi waza yokomen uchi irimi nage 03",
+                videoId: "yQdAh-BD4c0",
+                durationSeconds: 16,
+              },
+              {
+                title: "tachi waza yokomen uchi irimi nage 04",
+                videoId: "iNY1cbwUIrE",
+                durationSeconds: 15,
+              },
+            ],
+          },
         },
       },
       "shomen uchi": {
@@ -497,12 +594,73 @@ export const kyu3: ExamTable = {
       },
       "ai hanmi katate dori": {
         "kokyu nage": {
-          "single-direction": {},
+          "single-direction": {
+            youtube: [
+              {
+                title: "tachi waza ai hanmi katate dori kokyu nage 01",
+                videoId: "z9UzvBgVjQ4",
+                durationSeconds: 15,
+              },
+              {
+                title: "tachi waza ai hanmi katate dori kokyu nage 02",
+                videoId: "U5q2eLL_Lqk",
+                durationSeconds: 15,
+              },
+              {
+                title: "tachi waza ai hanmi katate dori kokyu nage 03",
+                videoId: "1MTGKukD-EY",
+                durationSeconds: 16,
+              },
+              {
+                title: "tachi waza ai hanmi katate dori kokyu nage 04",
+                videoId: "QLnwGmHjZs8",
+                durationSeconds: 16,
+              },
+              {
+                title: "tachi waza ai hanmi katate dori kokyu nage 05",
+                videoId: "kDqr1JOLD6M",
+                durationSeconds: 19,
+              },
+            ],
+          },
         },
       },
       "gyuako hanmi katate dori": {
         "kokyu nage": {
-          "single-direction": {},
+          "single-direction": {
+            youtube: [
+              {
+                title: "tachi waza katate dori kokyu nage 01",
+                videoId: "sIMCbchcTbA",
+                durationSeconds: 16,
+              },
+              {
+                title: "tachi waza katate dori kokyu nage 02",
+                videoId: "N3WOhF74QGI",
+                durationSeconds: 14,
+              },
+              {
+                title: "tachi waza katate dori kokyu nage 03",
+                videoId: "hJP_KOU8zMI",
+                durationSeconds: 16,
+              },
+              {
+                title: "tachi waza katate dori kokyu nage 04",
+                videoId: "OreDX3cRAIQ",
+                durationSeconds: 17,
+              },
+              {
+                title: "tachi waza katate dori kokyu nage 05",
+                videoId: "RgI-Unqavgs",
+                durationSeconds: 14,
+              },
+              {
+                title: "tachi waza katate dori kokyu nage 06",
+                videoId: "6WYY66TtI3Q",
+                durationSeconds: 14,
+              },
+            ],
+          },
         },
       },
     },
