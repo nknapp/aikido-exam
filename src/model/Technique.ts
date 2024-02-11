@@ -41,4 +41,16 @@ export class Technique {
   get [Symbol.toStringTag](): string {
     return this.definition.join(" ");
   }
+
+  toJson(): unknown {
+    return {
+      definition: this.definition,
+      metadata: this.metadata,
+    };
+  }
+
+  static fromJson(json: unknown): Technique {
+    const j = json as Technique;
+    return new Technique(j.definition, j.metadata);
+  }
 }

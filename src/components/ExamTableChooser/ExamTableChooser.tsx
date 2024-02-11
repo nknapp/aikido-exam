@@ -1,5 +1,5 @@
 import { resolveExamTables } from "../../utils/resolve-exam-tables";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Col, Row } from "react-bootstrap";
 
@@ -7,15 +7,16 @@ import { ExamTable } from "../../exam-tables/baseTypes";
 import { CheckButton } from "../CheckButton";
 import { TechniqueList } from "../../model/TechniqueList";
 import { useStore } from "@nanostores/react";
-import { currentDojoLazyData } from "../../exam-tables";
+import { chooseExam, chosenExams } from "./store";
+import { useSelectedDojo } from "../../store/selectedDojo";
 
 export interface ExamTableChooserProps {
   onChoice(techniques: TechniqueList): void;
 }
 
 export const ExamTableChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) => {
-  const [buttonState, setButtonState] = useState<Record<string, boolean>>({});
-  const dojo = useStore(currentDojoLazyData);
+  const buttonState = useStore(chosenExams);
+  const { selectedDojoLazyData: dojo } = useSelectedDojo();
 
   useEffect(() => {
     const selectedButtons = Object.keys(dojo.exams).filter((buttonName) => buttonState[buttonName] === true);
@@ -23,13 +24,6 @@ export const ExamTableChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) 
     const selectedTechniques: TechniqueList = resolveExamTables(tables);
     onChoice(selectedTechniques);
   }, [buttonState, onChoice, dojo]);
-
-  function updateState(key: string, checked: boolean): void {
-    setButtonState((buttonState) => ({
-      ...buttonState,
-      [key]: checked,
-    }));
-  }
 
   const { t } = useTranslation();
   return (
@@ -41,7 +35,7 @@ export const ExamTableChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) 
               className={"w-100"}
               id={"toggle-" + buttonName}
               onChange={(event) => {
-                updateState(buttonName, event.currentTarget.checked);
+                chooseExam(buttonName, event.currentTarget.checked);
               }}
               type="checkbox"
               value={buttonName}

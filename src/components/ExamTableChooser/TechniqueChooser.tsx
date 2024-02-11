@@ -7,10 +7,9 @@ import { TechniqueFilters, techniquePredicate } from "../../utils/technique-filt
 import { ShowTechniqueFilters } from "./ShowTechniqueFilters";
 import { ShowShuffleControls, ShuffleControls } from "./ShuffleControls";
 import { TechniqueList } from "../../model/TechniqueList";
-import { useStore } from "@nanostores/react";
-import { currentDojo, currentDojoLazyData } from "../../exam-tables";
 import { Alert } from "react-bootstrap";
 import { DojoChooser } from "../DojoChooser";
+import { useSelectedDojo } from "../../store/selectedDojo";
 
 export interface ExamTableChooserProps {
   onChoice(techniques: TechniqueList): void;
@@ -19,10 +18,9 @@ export interface ExamTableChooserProps {
 export const TechniqueChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) => {
   const [chosenTechniques, setChosenTechniques] = useState<TechniqueList>(new TechniqueList());
   const [result, setResult] = useState<TechniqueList>(new TechniqueList());
-  const dojoLazy = useStore(currentDojoLazyData);
-  const dojo = useStore(currentDojo);
+  const { selectedDojo, selectedDojoLazyData } = useSelectedDojo();
 
-  useEffect(() => setResult(new TechniqueList()), [dojo]);
+  useEffect(() => setResult(new TechniqueList()), [selectedDojo]);
 
   const [shuffleControls, setShuffleControls] = useState<ShuffleControls>({
     shouldShuffle: true,
@@ -50,17 +48,17 @@ export const TechniqueChooser: React.FC<ExamTableChooserProps> = ({ onChoice }) 
     <>
       <DojoChooser />
       <hr />
-      <ExamTableChooser key={dojo.name} onChoice={setChosenTechniques} />
+      <ExamTableChooser key={selectedDojo.name} onChoice={setChosenTechniques} />
 
-      {dojoLazy.additionalText && (
+      {selectedDojoLazyData.additionalText && (
         <Alert variant={"warning"}>
           <Alert.Heading>Hinweis</Alert.Heading>
-          {dojoLazy.additionalText}
+          {selectedDojoLazyData.additionalText}
         </Alert>
       )}
-      {dojoLazy.sourceLink && (
+      {selectedDojoLazyData.sourceLink && (
         <p>
-          Quelle: <a href={dojoLazy.sourceLink}>{dojoLazy.sourceLink}</a>
+          Quelle: <a href={selectedDojoLazyData.sourceLink}>{selectedDojoLazyData.sourceLink}</a>
         </p>
       )}
       <hr />

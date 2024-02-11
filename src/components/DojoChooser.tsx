@@ -1,11 +1,11 @@
 import React from "react";
 import { Dropdown } from "react-bootstrap";
-import { currentDojo, dojos, selectDojo } from "../exam-tables";
+import { dojos } from "../exam-tables";
 import css from "./DojoChooser.module.scss";
-import { useStore } from "@nanostores/react";
+import { useSelectedDojo } from "../store/selectedDojo";
 
 export const DojoChooser: React.FC = () => {
-  const selectedDojo = useStore(currentDojo);
+  const { selectedDojo, selectDojo } = useSelectedDojo();
   return (
     <Dropdown>
       <Dropdown.Toggle variant={"success"} className={css.dropdownItem}>

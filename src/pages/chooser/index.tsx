@@ -6,11 +6,11 @@ import { NoTechniquesChosen } from "src/components/Reader/NoTechniquesChosen";
 import { Reader } from "src/components/Reader/Reader";
 import { ShowExamTable } from "src/components/ShowExamTable/ShowExamTable";
 import { DefaultLayout } from "src/layout/DefaultLayout";
-import { TechniqueList } from "src/model/TechniqueList";
 import css from "src/components/Reader/Reader.module.scss";
+import { useTechniqueList } from "src/store/techniqueList";
 
 export const Component: React.FC = () => {
-  const [techniques, setTechniques] = useState<TechniqueList>(new TechniqueList());
+  const [techniques, setTechniques] = useTechniqueList();
   const [currentTechniqueIndex, setCurrentTechniqueIndex] = useState(-1);
 
   return (

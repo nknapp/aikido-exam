@@ -58,6 +58,15 @@ export class TechniqueList {
   get length(): number {
     return this.techniques.length;
   }
+
+  toJson(): unknown {
+    return this.techniques.map((technique) => technique.toJson());
+  }
+
+  static fromJson(json: unknown): TechniqueList {
+    const array = json as Array<unknown>;
+    return new TechniqueList(array.map((item) => Technique.fromJson(item)));
+  }
 }
 
 class Grouper<K extends string, V> {
