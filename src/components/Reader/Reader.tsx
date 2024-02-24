@@ -8,6 +8,7 @@ import { NoTechniquesChosen } from "./NoTechniquesChosen";
 import { useMediaSessionIfPresent } from "../../utils/hooks/useMediaSession";
 import { HandTracker } from "../HandTracker/HandTracker";
 import { Technique } from "../../model/Technique";
+import { AutoPlay } from "../AutoPlay/AutoPlay";
 
 export const Reader: React.FC<{
   techniques: Technique[];
@@ -81,6 +82,12 @@ export const Reader: React.FC<{
         <ChevronDoubleRight />
       </Button>
       <HandTracker className={css.handGestures} playing={playing} onPointGesture={playCurrentTechnique} />
+      <AutoPlay
+        className={css.autoplay}
+        playing={playing}
+        lastTechnique={lastTechnique}
+        onWaitDone={playCurrentTechnique}
+      />
       {nextTechnique != null ? (
         <CurrentTechnique technique={nextTechnique} className={css.techniqueDisplay} />
       ) : (

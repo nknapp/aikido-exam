@@ -10,7 +10,7 @@
   grid-template-areas:
     "back  play repeat forward"
     "technique technique technique technique"
-    "hand hand hand hand";
+    "autoplay autoplay hand hand";
 
   @include media-breakpoint-up(md) {
     grid-template-columns: 1fr 1fr 4fr;
@@ -20,7 +20,7 @@
       "back forward technique"
       "play play technique"
       "repeat repeat technique"
-      "hand hand hand";
+      "autoplay autoplay hand";
   }
 }
 
@@ -59,6 +59,11 @@
 .handGestures {
   grid-area: hand;
 }
+
+.autoplay {
+  grid-area: autoplay;
+}
+
 
 .techniqueDisplay {
   grid-area: technique;

@@ -1,0 +1,15 @@
+@import "src/assets/styles/styles";
+
+.autoplay {
+    position: relative;
+}
+
+.progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $primary;
+    height: 5px;
+    z-index: 0;
+    transition: width 0.5s linear;
+}

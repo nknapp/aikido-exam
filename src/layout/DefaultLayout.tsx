@@ -2,7 +2,7 @@ import { Alert, Container, Form, Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import React, { ReactNode } from "react";
 import logo from "src/assets/logo.svg";
-import { Square } from "react-bootstrap-icons";
+import { CheckSquare } from "react-bootstrap-icons";
 import { Impress } from "src/components/Impress/Imress";
 
 export const DefaultLayout: React.FC<{ hideNavbar?: boolean; navbuttons?: ReactNode; children: ReactNode }> = ({
@@ -54,7 +54,7 @@ export const DefaultLayout: React.FC<{ hideNavbar?: boolean; navbuttons?: ReactN
           <p>Was ich noch einbauen will:</p>
           <ul>
             <li>
-              Zeitbasiertes Auto-Play <Square />
+              Zeitbasiertes Auto-Play <CheckSquare />
             </li>
           </ul>
           <hr />
