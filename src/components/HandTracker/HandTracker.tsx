@@ -46,9 +46,9 @@ export const HandTracker: React.FC<{
           )}
         </div>
         <div className={css.label}>
-          {active
-            ? `Hand gestures are enabled, point to your partner to get next technique`
-            : `Hand gestures are disabled`}
+          Hand-Gesten
+          <br />
+          <small>{active ? `An: Zeige nach oben für nächste Technik` : `Aus`}</small>
         </div>
       </div>
       <Button className={classes.join(" ")} variant={"secondary"} onClick={() => setActive(!active)}>

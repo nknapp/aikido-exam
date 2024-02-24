@@ -42,6 +42,10 @@ export class Technique {
     return this.definition.join(" ");
   }
 
+  joined() {
+    return this.definition.filter((name) => name != "single-direction").join(" ");
+  }
+
   toJson(): unknown {
     return {
       definition: this.definition,
