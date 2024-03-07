@@ -1,0 +1,28 @@
+---
+import DefaultLayout from "../../layouts/DefaultLayout.astro";
+---
+
+<DefaultLayout>
+  <h1>Impressum</h1>
+  <p>Verantwortlich für Inhalte laut § 5 TMG ist:</p>
+  <canvas id="impress"></canvas>
+  <h1>Datenschutz / Cookies</h1>
+  <p>
+    Diese Seite verwendet keine Cookies um Benutzer zu tracken. Ich verwende <a href="https://plausible.io"
+      >plausible.io</a
+    > um die Benutzung zu tracken. Plausible verwendet keine Cookies und sammelt keine persönlichen Daten.
+  </p>
+  <ul>
+    <li>
+      <a href="https://plausible.io/privacy-focused-web-analytics">Blog-Post</a> über die Datenschutz-Richtlinien von Plausible.
+    </li>
+    <li><a href="https://plausible.io/aikido-exam.knappi.org/">Das Tracking-Dashboard</a></li> zeigt, welche Daten gesammelt werden.
+  </ul>
+
+  <script>
+    import { createImpress } from "@/utils/impressed";
+
+    const canvas = document.getElementById("impress") as HTMLCanvasElement;
+    createImpress(canvas);
+  </script>
+</DefaultLayout>

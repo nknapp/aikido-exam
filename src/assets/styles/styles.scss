@@ -1,32 +1,31 @@
-@import "./styles-include.scss";
-@import "bootstrap";
-
-$hightlighTechniqueBg: change-color($primary, $alpha: 0.3);
-.highlighted-technique {
-  @media screen {
-    margin: -5px;
-    padding: 5px;
-    background-color: $hightlighTechniqueBg;
-    box-shadow: 0 0 10px 0 $hightlighTechniqueBg;
-    border-radius: 5px;
-    color: darken(map-get($theme-colors, "primary"), 20%);
-  }
+h1 {
+  @apply text-2xl mb-4 mt-6 print:mt-0
 }
+
+h2 {
+  @apply text-xl mb-3 mt-4
+}
+
+p {
+  @apply mb-4
+}
+
+a {
+  @apply text-primary-dark hover:underline underline-offset-2
+}
+
+ul {
+  @apply list-disc ml-8
+}
+
 
 @media print {
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+
   @page {
     margin: 2cm;
-  }
-}
-
-.no-print {
-  @media print {
-    display: none !important;
-  }
-}
-
-.only-print {
-  @media not print {
-    display: none !important;
   }
 }

@@ -1,0 +1,1 @@
+export { resolveExamTables } from "./resolveExamTables";

@@ -1,0 +1,62 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+interface Props {
+  title: string;
+  hero: string;
+  teaser: Array<{
+    title: string;
+    text: string;
+  }>;
+}
+
+const { title, hero, teaser = [] } = Astro.props;
+
+import Footer from "@/components/astro/Footer.astro";
+
+import "@/assets/styles/styles.scss";
+import { listDojos } from "../data/dojos";
+import LinkButton from "../components/astro/LinkButton.astro";
+import Brand from "../components/astro/header/Brand.astro";
+import LocaleSwitcher from "../components/astro/LocaleSwitcher.astro";
+import {t} from "@/i18n"
+import {l} from "astro-i18n"
+
+const dojos = await listDojos();
+---
+
+<BaseLayout title={title}>
+    <div slot="header" class="container flex justify-end items-center h-full">
+      <LocaleSwitcher />
+  </div>
+
+  <div class="flex flex-col items-center gap-8 mt-20">
+    <header class="text-3xl">{title}</header>
+    <img class="w-64" alt="Hero image" src={hero} />
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {
+        teaser.map((item) => {
+          return (
+            <div class="bg-primary-light p-2">
+              <header class="font-bold">{item.title}</header>
+              <p>{item.text}</p>
+            </div>
+          );
+        })
+      }
+    </div>
+    <header>{t("home.choose-dojo")}</header>
+    <div class="flex flex-col sm:flex-row flex-wrap gap-4 items-stretch">
+      {
+        dojos.map((dojo) => {
+          return (
+            <LinkButton href={l(`/${dojo.id}`)}>
+              <img class="h-4" alt="logo" src={dojo.logo} />
+              {dojo.name}
+            </LinkButton>
+          );
+        })
+      }
+    </div>
+  </div>
+  <Footer slot="footer" />
+</BaseLayout>

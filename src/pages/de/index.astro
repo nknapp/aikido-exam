@@ -1,0 +1,28 @@
+---
+import Home from "@/layouts/Home.astro";
+import logo from "@/assets/logo.svg?url";
+import {languages} from "@/i18n/server";
+import {multiplyParams} from "@/utils/multiplyParams";
+import { t } from "@/i18n"
+
+export async function getStaticPaths() {
+  return multiplyParams({ language: languages });
+}
+
+const teaser = [
+  {
+    title: "Warum?",
+    text: "Im Training üben wir Techniken und Prinzipien. Die Techniken werden in der Prüfung abgefragt. Dabei muss es manchmal schnell gehen. Du musst sofort wissen, welche Technik du machst. Das kann man üben:",
+  },
+  {
+    title: "Prüfungslisten erzeugen",
+    text: "Mit Aikido-Prüfung kannst du dir zufällige Listen aus deinen Prüfungen erzeugen. Damit kannst du dich beim freien Training abfragen lassen.",
+  },
+  {
+    title: "Vorlesen lassen",
+    text: 'Aikido-Prüfung kann die Techniken vorlesen, die ausgewählt hast. Du musst nur auf "Play" drücken.',
+  },
+];
+---
+
+<Home title={t("app.title")} hero={logo} teaser={teaser} />

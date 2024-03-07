@@ -1,0 +1,7 @@
+/*
+ In production, this file is not necessary, as tailwind is already imported by the astro integration
+ For vitest-preview, we need to include this.
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

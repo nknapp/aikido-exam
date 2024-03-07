@@ -1,0 +1,15 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Footer from "../components/astro/Footer.astro";
+import Header from "../components/astro/Header.astro";
+
+
+
+
+
+---
+<BaseLayout>
+    <Header slot="header" />
+    <slot />
+    <Footer slot="footer" />
+</BaseLayout>

@@ -1,0 +1,1 @@
+export { relevantTechniqueParts } from "./relevantTechniqueParts";

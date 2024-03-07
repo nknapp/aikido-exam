@@ -1,4 +1,5 @@
 {
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es2021",
@@ -15,7 +16,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
+    "paths": {
+      "@/*": ["src/*"],
+      "$core/*": ["src/core/*"]
+    },
+    "jsxImportSource": "solid-js",
+    "types": [
+      "vite-plugin-solid-svg/types"
+    ]
   },
-  "include": ["src", "scripts"],
+  "include": ["src", "scripts"]
 }

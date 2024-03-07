@@ -1,0 +1,33 @@
+---
+import { listDojos, loadDojo } from "@/data/dojos";
+import DefaultLayout from "@/layouts/DefaultLayout.astro";
+import Header from "@/components/astro/Header.astro";
+import { TechniqueChooser } from "src/components/solid/TechniqueChooser";
+import { t } from "@/i18n";
+
+import { multiplyParams } from "@/utils/multiplyParams";
+import { languages } from "@/i18n/server";
+
+export async function getStaticPaths() {
+  const dojos = await listDojos();
+  return multiplyParams({
+    language: languages,
+    dojoId: dojos.map((dojo) => dojo.id),
+  });
+}
+
+const id = Astro.params.dojoId;
+const dojo = await loadDojo(id);
+---
+
+<DefaultLayout>
+  <Header slot="header" />
+
+  <h1>{t("app.button.chooseExamTable.label")}</h1>
+  <p>{t("examChooser.exams-from")} <img class="inline h-[1.2em] me-2" alt="logo" src={dojo.info.logo} />{dojo.info.name}</p>
+  <p>{t("examChooser.source")}: <a href={dojo.details.sourceLink} ">{dojo.details.sourceLink}</a></p>
+  <p class="bg-info-light border-info border rounded p-5 print:p-1">{t(dojo.details.additionalText)}</p>
+  <TechniqueChooser dojo={dojo} client:load />
+
+
+</DefaultLayout>
