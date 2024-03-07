@@ -12,6 +12,8 @@ export default defineConfig(() => {
     resolve: {
       alias: {
         "src/": "/src/",
+        "@/": "/src/",
+        "$core/": "/src/core/",
         "scripts/": "/scripts/",
       },
     },

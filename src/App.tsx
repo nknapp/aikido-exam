@@ -10,6 +10,10 @@ export const router = createHashRouter([
     path: "/chooser",
     lazy: () => import("src/pages/chooser"),
   },
+  {
+    path: "/test/player",
+    lazy: () => import("./pages/test/player"),
+  },
 ]);
 
 function App(): JSX.Element {
