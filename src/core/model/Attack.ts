@@ -1,24 +1,26 @@
+export const attacks = [
+  "ai hanmi katate dori",
+  "gyuako hanmi katate dori",
+  "kata dori",
+  "ryote dori",
+  "katate ryote dori",
+  "muna dori",
+  "mae ryo kata dori",
+  "shomen uchi",
+  "yokomen uchi",
+  "chudan tsuki",
+  "jodan tsuki",
+  "kata dori men uchi",
+  "ushiro ryote dori",
+  "ushiro ryo hiji dori",
+  "ushiro ryo kata dori",
+  "ushiro katate dori kubi shime",
+  "ushiro eri dori",
+  "shomen uchi gyaku-te",
+  "shomen uchi hon-te",
+  "yokomen uchi gyaku-te",
+  "yokomen uchi hon-te",
+  "ai hanmi ryote dori",
+] as const;
 
-export type Attack =
-    | "ai hanmi katate dori"
-    | "gyuako hanmi katate dori"
-    | "kata dori"
-    | "ryote dori"
-    | "katate ryote dori"
-    | "muna dori"
-    | "mae ryo kata dori"
-    | "shomen uchi"
-    | "yokomen uchi"
-    | "chudan tsuki"
-    | "jodan tsuki"
-    | "kata dori men uchi"
-    | "ushiro ryote dori"
-    | "ushiro ryo hiji dori"
-    | "ushiro ryo kata dori"
-    | "ushiro katate dori kubi shime"
-    | "ushiro eri dori"
-    | "shomen uchi gyaku-te"
-    | "shomen uchi hon-te"
-    | "yokomen uchi gyaku-te"
-    | "yokomen uchi hon-te"
-    | "ai hanmi ryote dori";
+export type Attack = (typeof attacks)[number];

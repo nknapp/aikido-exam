@@ -1,1 +1,0 @@
-export {default as defaultSpeechPack} from "./default"

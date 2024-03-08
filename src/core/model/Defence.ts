@@ -1,24 +1,26 @@
+export const defences = [
+  "ikkyo",
+  "nikyo",
+  "sankyo",
+  "yonkyo",
+  "gokyo",
+  "irimi nage",
+  "kokyu nage",
+  "shiho nage",
+  "ude kime nage",
+  "ude garami",
+  "sokumen irimi nage",
+  "uchi kaiten nage",
+  "soto kaiten nage",
+  "tenchi nage",
+  "koshi nage",
+  "kote gaeshi",
+  "kokyu ho",
+  "sumi otoshi",
+  "aiki otoshi",
+  "juji garami",
+  "hiji kimo osae",
+  "uchi kaiten sankyo",
+] as const;
 
-export type Defence =
-    | "ikkyo"
-    | "nikyo"
-    | "sankyo"
-    | "yonkyo"
-    | "gokyo"
-    | "irimi nage"
-    | "kokyu nage"
-    | "shiho nage"
-    | "ude kime nage"
-    | "ude garami"
-    | "sokumen irimi nage"
-    | "uchi kaiten nage"
-    | "soto kaiten nage"
-    | "tenchi nage"
-    | "koshi nage"
-    | "kote gaeshi"
-    | "kokyu ho"
-    | "sumi otoshi"
-    | "aiki otoshi"
-    | "juji garami"
-    | "hiji kimo osae"
-    | "uchi kaiten sankyo";
+export type Defence = (typeof defences)[number];
