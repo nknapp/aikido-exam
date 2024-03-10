@@ -1,17 +1,17 @@
 import { SpeechPack } from "$core/model/SpeechPack";
-import { copyArrayBuffer } from "$core/utils/copyArrayBuffer";
-import { promiseWithResolvers } from "$core/utils/promiseWithResolvers";
 import { ResolvedSpeechPack, resolveSpeechPack } from "$core/player/resolveSpeechPack";
+import { AudioPlayer } from "$core/player/AudioPlayer";
+import { playArrayBuffer } from "$core/basic/playArrayBuffer";
 
 type AudioFile = keyof SpeechPack;
 
-export async function loadPlayer(speechPack: SpeechPack) {
+export async function loadSpeechPackPlayer(speechPack: SpeechPack) {
   const resolvedPack = await resolveSpeechPack(speechPack);
-  return new Player(resolvedPack);
+  return new SpeechPackPlayer(resolvedPack);
 }
 
-class Player {
-  private readonly context = new AudioContext();
+class SpeechPackPlayer {
+  private player = new AudioPlayer();
   private readonly speechPack: ResolvedSpeechPack;
   private cache: Partial<Record<AudioFile, Promise<ArrayBuffer>>> = {};
   constructor(speechPack: ResolvedSpeechPack) {
@@ -25,18 +25,10 @@ class Player {
   }
 
   private async playSingle(audioFile: AudioFile) {
-    const { resolve, promise } = promiseWithResolvers<void>();
-    const source = this.context.createBufferSource();
-    const audioCopy = copyArrayBuffer(this.speechPack[audioFile]);
-    source.buffer = await this.context.decodeAudioData(audioCopy);
-    source.connect(this.context.destination);
-
-    source.start();
-    source.addEventListener("ended", () => resolve());
-    return promise;
+    await playArrayBuffer(this.speechPack[audioFile]);
   }
 
   async close(): Promise<void> {
-    await this.context.close();
+    await this.player.close();
   }
 }

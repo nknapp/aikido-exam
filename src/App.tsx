@@ -4,15 +4,19 @@ import "src/assets/styles/styles.scss";
 export const router = createHashRouter([
   {
     path: "/",
-    lazy: () => import("src/pages"),
+    lazy: () => import("@/pages"),
   },
   {
     path: "/chooser",
-    lazy: () => import("src/pages/chooser"),
+    lazy: () => import("@/pages/chooser"),
   },
   {
     path: "/test/player",
-    lazy: () => import("./pages/test/player"),
+    lazy: () => import("@/pages/test/player"),
+  },
+  {
+    path: "/manual-tests",
+    lazy: () => import("@/pages/test/manual"),
   },
 ]);
 

@@ -6,3 +6,4 @@ import "@testing-library/jest-dom";
 import "@/test-utils/mock-api";
 
 vi.mock("scripts/config");
+vi.mock("@/core/player/AudioPlayer");

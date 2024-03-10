@@ -1,32 +1,15 @@
-import { loadPlayer } from "@/core";
-import React, { ReactNode, useCallback, useEffect, useState } from "react";
+import { loadSpeechPackPlayer } from "@/core";
+import React, { useCallback, useState } from "react";
 
 import speechPack from "@/adapter/speechpacks/default";
 
 import { SpeechFile } from "$core/model/SpeechPack";
 import { attacks, defences, directions, executions, SINGLE_DIRECTION } from "$core/model";
 import { Button, Spinner, ToggleButton } from "react-bootstrap";
-interface ShowAsyncProps<T> {
-  fallback: ReactNode;
-  loader: () => Promise<T>;
-  children: (value: T) => ReactNode;
-}
-
-function ShowAsync<T>({ fallback, loader, children }: ShowAsyncProps<T>): ReactNode {
-  const [value, setValue] = useState<T | null>(null);
-  useEffect(() => {
-    loader().then((resolvedValue) => {
-      setValue(resolvedValue);
-    });
-  }, [loader]);
-  if (value == null) {
-    return fallback;
-  }
-  return children(value);
-}
+import { ShowAsync } from "@/lib/ShowAsync";
 
 export const Component: React.FC = () => {
-  const loader = useCallback(() => loadPlayer(speechPack), []);
+  const loader = useCallback(() => loadSpeechPackPlayer(speechPack), []);
 
   const [execution, setExecution] = useState<SpeechFileOrSingleDirection>("suwari waza");
   const [attack, setAttack] = useState<SpeechFileOrSingleDirection>("ai hanmi katate dori");

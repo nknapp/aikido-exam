@@ -1,1 +1,1 @@
-export { loadPlayer } from "./Player";
+export { loadSpeechPackPlayer } from "./Player";
