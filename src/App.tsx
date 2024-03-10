@@ -12,7 +12,7 @@ export const router = createHashRouter([
   },
   {
     path: "/test/player",
-    lazy: () => import("@/pages/test/player"),
+    lazy: () => import("@/pages/test/player/PlayerTestPage"),
   },
   {
     path: "/manual-tests",

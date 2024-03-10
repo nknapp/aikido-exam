@@ -1,5 +1,5 @@
 import { describe } from "vitest";
-import { createMockSpeechPack } from "$core/model/SpeechPack.test-helper";
+import { createMockSpeechPack } from "./SpeechPack.test-helper";
 
 describe("createMockSpeechPack", () => {
   it("contains loadable urls", async () => {

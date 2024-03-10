@@ -1,4 +1,4 @@
-import { SpeechPack } from "$core/model/SpeechPack";
+import { SpeechPack } from "$core/slots";
 import ai_hanmi_katate_dori from "./audio/ai-hanmi-katate-dori.mp3";
 import chudan_tsuki from "./audio/chudan-tsuki.mp3";
 import gokyo from "./audio/gokyo.mp3";

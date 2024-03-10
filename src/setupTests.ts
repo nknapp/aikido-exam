@@ -3,7 +3,7 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom";
-import "@/test-utils/mock-api";
+import "$core/test-utils/mock-api";
 
 vi.mock("scripts/config");
 vi.mock("@/core/player/AudioPlayer");

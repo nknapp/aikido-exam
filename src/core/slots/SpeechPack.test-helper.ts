@@ -1,4 +1,4 @@
-import { SpeechPack } from "$core/model/SpeechPack";
+import { SpeechPack } from "$core/slots";
 import { attacks, defences, executions, directions } from "$core/model";
 
 export function createMockSpeechPack(partial: Partial<SpeechPack> = {}): SpeechPack {

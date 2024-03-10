@@ -1,12 +1,12 @@
 import React, { useCallback, useRef, useState } from "react";
 import { Button, Spinner } from "react-bootstrap";
 
-import defaultSpeechPack from "@/adapter/speechpacks/default";
-import { ShowAsync } from "@/lib/ShowAsync";
-import { playArrayBuffer } from "$core/basic/playArrayBuffer";
+import fixture from "./playArrayBuffer.fixture.mp3";
+import { ShowAsync } from "@/components/ShowAsync";
+import { playArrayBuffer } from "./playArrayBuffer";
 
 async function loadMp3() {
-  const response = await fetch(defaultSpeechPack["ai hanmi katate dori"]);
+  const response = await fetch(fixture);
   return await response.arrayBuffer();
 }
 

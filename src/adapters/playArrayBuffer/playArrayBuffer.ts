@@ -1,11 +1,8 @@
 import { promiseWithResolvers } from "$core/utils/promiseWithResolvers";
 import { copyArrayBuffer } from "$core/utils/copyArrayBuffer";
+import { PlayArrayBuffer } from "$core/slots";
 
-interface PlayArrayBufferOptions {
-  abortSignal?: AbortSignal;
-}
-
-export async function playArrayBuffer(arrayBuffer: ArrayBuffer, options: PlayArrayBufferOptions = {}) {
+export const playArrayBuffer: PlayArrayBuffer = async (arrayBuffer, options = {}) => {
   const context = getOrCeateContext();
 
   const { resolve, promise } = promiseWithResolvers<void>();
@@ -19,7 +16,7 @@ export async function playArrayBuffer(arrayBuffer: ArrayBuffer, options: PlayArr
   source.start();
   source.addEventListener("ended", () => resolve());
   return promise;
-}
+};
 
 let audioContext: AudioContext | null = null;
 function getOrCeateContext(): AudioContext {

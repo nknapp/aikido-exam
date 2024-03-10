@@ -1,15 +1,16 @@
 import { loadSpeechPackPlayer } from "@/core";
 import React, { useCallback, useState } from "react";
 
-import speechPack from "@/adapter/speechpacks/default";
+import speechPack from "@/speechpacks/default";
 
-import { SpeechFile } from "$core/model/SpeechPack";
+import { SpeechFile } from "$core/slots";
 import { attacks, defences, directions, executions, SINGLE_DIRECTION } from "$core/model";
 import { Button, Spinner, ToggleButton } from "react-bootstrap";
-import { ShowAsync } from "@/lib/ShowAsync";
+import { ShowAsync } from "@/components/ShowAsync";
+import { playArrayBuffer } from "@/adapters/playArrayBuffer";
 
 export const Component: React.FC = () => {
-  const loader = useCallback(() => loadSpeechPackPlayer(speechPack), []);
+  const loader = useCallback(() => loadSpeechPackPlayer(speechPack, playArrayBuffer), []);
 
   const [execution, setExecution] = useState<SpeechFileOrSingleDirection>("suwari waza");
   const [attack, setAttack] = useState<SpeechFileOrSingleDirection>("ai hanmi katate dori");
