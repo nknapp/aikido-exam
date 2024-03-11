@@ -20,6 +20,13 @@ module.exports = {
       },
     },
     {
+      files: ["src/**/*.d.ts"],
+      rules: {
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+      },
+    },
+    {
       files: ["scripts/**/*"],
       env: { node: true },
       rules: {

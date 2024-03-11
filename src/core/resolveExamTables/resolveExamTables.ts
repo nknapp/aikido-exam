@@ -1,9 +1,8 @@
 import { ExamTable } from "src/exam-tables/baseTypes";
 import merge from "lodash/merge";
-import { Technique } from "../model/Technique";
-import { TechniqueList } from "../model/TechniqueList";
+import { Technique } from "$core/model/Technique";
 
-export function resolveExamTables(examTables: ExamTable[]): TechniqueList {
+export function resolveExamTables(examTables: ExamTable[]): Technique[] {
   const emptyTable: ExamTable = { techniques: {} };
   const mergedTables: ExamTable = merge(emptyTable, ...examTables);
   const result: Technique[] = [];
@@ -11,12 +10,12 @@ export function resolveExamTables(examTables: ExamTable[]): TechniqueList {
     for (const [attack, defences] of entries(attacks)) {
       for (const [defence, directions] of entries(defences)) {
         for (const [direction, metadata] of entries(directions)) {
-          result.push(new Technique([execution, attack, defence, direction], metadata));
+          result.push({ execution, attack, defence, direction, metadata });
         }
       }
     }
   }
-  return new TechniqueList(result);
+  return result;
 }
 
 const entries = Object.entries as <K extends string, V>(object: Partial<Record<K, V>>) => [K, V][];
