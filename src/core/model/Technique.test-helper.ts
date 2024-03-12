@@ -9,3 +9,17 @@ export function createTechnique(
 ): Technique {
   return { execution, attack, defence, direction, metadata };
 }
+
+export function techniqueAsString(technique: Technique): string {
+  const { execution, attack, defence, direction } = technique;
+  return `${execution} ${attack} ${defence} ${direction}`;
+}
+
+export function techniqueComponentsAsString(
+  execution: Execution,
+  attack: Attack,
+  defence: Defence,
+  direction: Direction,
+) {
+  return `${execution} ${attack} ${defence} ${direction}`;
+}

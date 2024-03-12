@@ -4,11 +4,11 @@ import { SINGLE_DIRECTION } from "$core/model";
 import { findIndexOfFirstDifference } from "$core/relevantTechniqueParts/findIndexOfFirstDifference";
 
 export function relevantTechniqueParts(technique: Technique, lastTechnique?: Technique): SpeechFile[] {
-  const techniqueComponents = asArray(technique);
+  const techniqueComponents = asComponents(technique);
   if (lastTechnique == null) {
     return techniqueComponents;
   }
-  const lastTechniqueComponents = asArray(lastTechnique);
+  const lastTechniqueComponents = asComponents(lastTechnique);
   const firstDifference = findIndexOfFirstDifference(techniqueComponents, lastTechniqueComponents);
   if (firstDifference === -1) {
     throw new Error("All components of the previous technique equal the current one");
@@ -16,7 +16,7 @@ export function relevantTechniqueParts(technique: Technique, lastTechnique?: Tec
   return techniqueComponents.slice(firstDifference);
 }
 
-function asArray(technique: Technique): SpeechFile[] {
+function asComponents(technique: Technique): SpeechFile[] {
   if (technique.direction === SINGLE_DIRECTION) {
     return [technique.execution, technique.attack, technique.defence];
   }
