@@ -55,6 +55,7 @@
   },
   "devDependencies": {
     "@js-temporal/polyfill": "^0.4.4",
+    "@sentry/react": "^7.106.1",
     "@types/lodash": "^4.14.202",
     "@types/wicg-mediasession": "^1.1.8",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
