@@ -1,10 +1,9 @@
-import { ExamTable } from "src/exam-tables/baseTypes";
 import merge from "lodash/merge";
-import { Technique } from "$core/model/Technique";
+import { Technique, Exam } from "$core/model";
 
-export function resolveExamTables(examTables: ExamTable[]): Technique[] {
-  const emptyTable: ExamTable = { techniques: {} };
-  const mergedTables: ExamTable = merge(emptyTable, ...examTables);
+export function resolveExamTables(examTables: Exam[]): Technique[] {
+  const emptyTable: Exam = { techniques: {} };
+  const mergedTables: Exam = merge(emptyTable, ...examTables);
   const result: Technique[] = [];
   for (const [execution, attacks] of entries(mergedTables.techniques)) {
     for (const [attack, defences] of entries(attacks)) {
