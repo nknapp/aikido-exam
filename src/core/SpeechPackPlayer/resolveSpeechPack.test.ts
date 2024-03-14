@@ -1,8 +1,8 @@
-import { SpeechFile } from "$core/slots";
+import type { SpeechFile } from "$core/slots";
 import { useMockEndpoints } from "$core/test-utils/mock-api";
 import { http } from "msw";
 import { createMockSpeechPack } from "$core/slots/SpeechPack.test-helper";
-import { ResolvedSpeechPack, resolveSpeechPack } from "$core/SpeechPackPlayer/resolveSpeechPack";
+import { type ResolvedSpeechPack, resolveSpeechPack } from "$core/SpeechPackPlayer/resolveSpeechPack";
 
 const decoder = new TextDecoder();
 

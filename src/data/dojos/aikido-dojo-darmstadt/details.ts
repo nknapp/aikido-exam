@@ -5,7 +5,7 @@ import { kyu2 } from "./exams/kyu2";
 import { kyu1 } from "./exams/kyu1";
 import { additional } from "./exams/additional";
 import { dan1 } from "./exams/dan1";
-import { DojoDetails } from "$core/model/Dojo";
+import type { DojoDetails } from "$core/model/Dojo";
 
 export default {
   exams: {

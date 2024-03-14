@@ -1,5 +1,5 @@
-import { Technique } from "$core/model/Technique";
-import { SpeechFile } from "$core/slots";
+import type { Technique } from "$core/model/Technique";
+import type { SpeechFile } from "$core/slots";
 import { SINGLE_DIRECTION } from "$core/model";
 import { findIndexOfFirstDifference } from "$core/relevantTechniqueParts/findIndexOfFirstDifference";
 

@@ -1,4 +1,4 @@
-import { SpeechPack } from "$core/slots";
+import type { SpeechPack } from "$core/slots";
 
 export type ResolvedSpeechPack = Record<keyof SpeechPack, ArrayBuffer>;
 

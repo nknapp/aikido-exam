@@ -1,4 +1,4 @@
-import { Dojo, DojoDetails, DojoInfo } from "$core/model/Dojo";
+import type { Dojo, DojoDetails, DojoInfo } from "$core/model/Dojo";
 
 export async function listDojos(): Promise<DojoInfo[]> {
   const dojos = import.meta.glob<Dojo>("./*/index.ts", { eager: true, import: "default" });

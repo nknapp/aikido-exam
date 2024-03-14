@@ -1,9 +1,9 @@
-import { Direction } from "./Direction";
-import { TechniqueMetadata } from "./TechniqueMetadata";
-import { Defence } from "./Defence";
-import { Attack } from "./Attack";
-import { Execution } from "./Execution";
-import { TranslationSchema } from "./TranslationSchema";
+import type { Direction } from "./Direction";
+import type { TechniqueMetadata } from "./TechniqueMetadata";
+import type { Defence } from "./Defence";
+import type { Attack } from "./Attack";
+import type { Execution } from "./Execution";
+import type { TranslationSchema } from "./TranslationSchema";
 
 export type Directions = Partial<Record<Direction, TechniqueMetadata>>;
 export type Defences = Partial<Record<Defence, Directions>>;

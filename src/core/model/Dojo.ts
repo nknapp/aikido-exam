@@ -1,4 +1,4 @@
-import { Exam } from "$core/model/Exam";
+import type { Exam } from "$core/model/Exam";
 
 export interface Dojo {
   info: DojoInfo;

@@ -1,0 +1,13 @@
+---
+import DefaultLayout from "../../layouts/DefaultLayout.astro";
+---
+<DefaultLayout>
+    <canvas id="impress"></canvas>
+</DefaultLayout>
+
+<script>
+    import {createImpress} from "@/utils/impressed";
+
+    const canvas = document.getElementById("impress") as HTMLCanvasElement
+    createImpress(canvas)
+</script>

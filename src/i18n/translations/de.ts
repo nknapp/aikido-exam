@@ -1,4 +1,4 @@
-import { TranslationSchema } from "./schema";
+import type { TranslationSchema } from "./schema";
 
 export const de: TranslationSchema = {
   "app.button.chooseExamTable.label": "Techniken auswählen",

@@ -7,7 +7,7 @@ import { additional } from "./exams/additional";
 import { dan1 } from "./exams/dan1";
 import { dan2 } from "./exams/dan2";
 import { dan3 } from "./exams/dan3";
-import { DojoDetails } from "$core/model/Dojo";
+import type { DojoDetails } from "$core/model/Dojo";
 
 export default {
   exams: {

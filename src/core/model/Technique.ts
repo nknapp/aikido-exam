@@ -1,8 +1,8 @@
-import { Execution } from "./Execution";
-import { Attack } from "./Attack";
-import { Defence } from "./Defence";
-import { Direction } from "./Direction";
-import { TechniqueMetadata } from "./TechniqueMetadata";
+import type { Execution } from "./Execution";
+import type { Attack } from "./Attack";
+import type { Defence } from "./Defence";
+import type { Direction } from "./Direction";
+import type { TechniqueMetadata } from "./TechniqueMetadata";
 
 export interface Technique {
   execution: Execution;

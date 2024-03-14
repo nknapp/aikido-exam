@@ -1,4 +1,4 @@
-import { Exam } from "$core/model";
+import type { Exam } from "$core/model";
 
 export const additional: Exam = {
   labelKey: "chooser.button.additional",

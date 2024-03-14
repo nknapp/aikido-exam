@@ -1,5 +1,5 @@
-import logo from "./logo.svg";
-import { Dojo } from "$core/model/Dojo";
+import logo from "./logo.svg?url";
+import type { Dojo } from "$core/model/Dojo";
 
 export default {
   info: {

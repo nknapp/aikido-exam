@@ -1,4 +1,4 @@
-import { Exam } from "$core/model";
+import type { Exam } from "$core/model";
 
 export const dan3: Exam = {
   labelKey: "chooser.button.dan3",

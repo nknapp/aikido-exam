@@ -1,4 +1,4 @@
-import { Attacks, Defences, Directions, Table, Technique } from "$core/model";
+import type { Attacks, Defences, Directions, Table, Technique } from "$core/model";
 
 export function buildExamTable(list: Iterable<Technique>): Table {
   const examTable: Table = {};

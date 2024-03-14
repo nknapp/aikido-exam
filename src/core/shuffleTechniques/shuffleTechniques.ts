@@ -1,6 +1,6 @@
 import { shuffleList } from "$core/shuffleTechniques/shuffleList";
 import { groupBy } from "lodash";
-import { executions, Technique } from "$core/model";
+import { executions, type Technique } from "$core/model";
 
 export function shuffleTechniques(techniques: Technique[], { coverage = 0.8 } = {}): Technique[] {
   const shuffledTechniques: Technique[] = shuffleList(techniques);
@@ -19,11 +19,11 @@ function regroupByExecution(list: Technique[]) {
 }
 
 function regroupByAttack(list: Technique[]): Technique[] {
-  const groups = groupBy(list,"attack");
-  return Object.values(groups).flatMap(regroupByDefence)
+  const groups = groupBy(list, "attack");
+  return Object.values(groups).flatMap(regroupByDefence);
 }
 
 function regroupByDefence(list: Technique[]): Technique[] {
-  const groups = groupBy(list,"defence");
-  return Object.values(groups).flat()
+  const groups = groupBy(list, "defence");
+  return Object.values(groups).flat();
 }

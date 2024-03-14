@@ -1,4 +1,4 @@
-import { Direction, Execution, Attack, Defence, Technique, TechniqueMetadata } from "$core/model";
+import type { Direction, Execution, Attack, Defence, Technique, TechniqueMetadata } from "$core/model";
 
 export function createTechnique(
   execution: Execution,

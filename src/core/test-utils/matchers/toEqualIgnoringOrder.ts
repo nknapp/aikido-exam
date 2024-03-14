@@ -1,4 +1,4 @@
-import { RawMatcherFn } from "@vitest/expect";
+import type { RawMatcherFn } from "@vitest/expect";
 
 export const toEqualIgnoringOrder: RawMatcherFn = function toEqualIgnoringOrder(
   received: unknown[],

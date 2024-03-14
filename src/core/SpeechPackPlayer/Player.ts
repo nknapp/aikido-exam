@@ -1,5 +1,5 @@
-import { ResolvedSpeechPack, resolveSpeechPack } from "$core/SpeechPackPlayer/resolveSpeechPack";
-import { PlayArrayBuffer, SpeechFile, SpeechPack } from "$core/slots";
+import { type ResolvedSpeechPack, resolveSpeechPack } from "$core/SpeechPackPlayer/resolveSpeechPack";
+import type { PlayArrayBuffer, SpeechFile, SpeechPack } from "$core/slots";
 
 export async function loadSpeechPackPlayer(speechPack: SpeechPack, playArrayBuffer: PlayArrayBuffer) {
   return new SpeechPackPlayer(resolveSpeechPack(speechPack), playArrayBuffer);

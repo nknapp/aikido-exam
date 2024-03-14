@@ -1,6 +1,6 @@
 import { buildExamTable } from "./buildExamTable";
 import { createTechnique } from "$core/model/Technique.test-helper";
-import { Table } from "$core/model";
+import type { Table } from "$core/model";
 
 describe("toExamTable", () => {
   it("builds an ExamTable form a TechniqueList", () => {

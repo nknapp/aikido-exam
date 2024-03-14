@@ -5,6 +5,7 @@ describe("resolve-exam-tables", () => {
   it("creates a list of techniques", () => {
     const actual = resolveExamTables([
       {
+        labelKey: "chooser.button.dan2",
         techniques: {
           "suwari waza": {
             "ryote dori": {
@@ -20,6 +21,7 @@ describe("resolve-exam-tables", () => {
         },
       },
       {
+        labelKey: "chooser.button.dan3",
         techniques: {
           "tachi waza": {
             "ai hanmi katate dori": {

@@ -1,6 +1,6 @@
 import { promiseWithResolvers } from "$core/utils/promiseWithResolvers";
 import { copyArrayBuffer } from "$core/utils/copyArrayBuffer";
-import { PlayArrayBuffer } from "$core/slots";
+import type { PlayArrayBuffer } from "$core/slots";
 
 export const playArrayBuffer: PlayArrayBuffer = async (arrayBuffer, options = {}) => {
   const context = getOrCeateContext();

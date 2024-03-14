@@ -1,8 +1,8 @@
 import { resolveExamTables } from "$core/resolveExamTables";
 import { listDojos, loadDojoDetails } from "./index";
-import { Execution, SINGLE_DIRECTION, Technique } from "$core/model";
+import { type Execution, SINGLE_DIRECTION, type Technique } from "$core/model";
 import { buildExamTable } from "$core/buildExamTable";
-import { DojoDetails } from "$core/model/Dojo";
+import type { DojoDetails } from "$core/model/Dojo";
 import { techniqueAsString } from "$core/model/Technique.test-helper";
 
 const dojos = (await listDojos()).filter((dojo) => dojo.id !== "aifd");
