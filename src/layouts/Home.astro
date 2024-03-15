@@ -1,45 +1,37 @@
 ---
+import BaseLayout from "./BaseLayout.astro";
 interface Props {
+  title: string;
+  hero: string;
+  teaser: Array<{
     title: string;
-    hero: string
-    teaser: {
-        title: string
-        text: string
-    }[]
+    text: string;
+  }>;
 }
 
-const {title, hero, teaser = []} = Astro.props;
+const { title, hero, teaser = [] } = Astro.props;
 
-import Footer from "../components/astro/Footer.astro";
+import Footer from "@/components/astro/Footer.astro";
 
-import '@/assets/styles/styles.scss';
+import "@/assets/styles/styles.scss";
 ---
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{title}</title>
-</head>
-<body>
-<main class="container mx-auto">
-    <div class="flex flex-col items-center gap-8 mt-20">
-        <div>
-            <header class="text-3xl">{title}</header>
-        </div>
-        <img class="w-64" alt="Hero image" src={hero}/>
-        <div class="grid grid-cols-3 gap-4">
 
-            {teaser.map(item => {
-                return (
-                        <div class="bg-primary-light p-2">
-                            <header class="font-bold">{item.title}</header>
-                            <p>{item.text}}</p>
-                        </div>)
-            })}
-        </div>
+<BaseLayout title={title}>
+  <div class="flex flex-col items-center gap-8 mt-20">
+    <header class="text-3xl">{title}</header>
+    <img class="w-64" alt="Hero image" src={hero} />
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {
+        teaser.map((item) => {
+          return (
+            <div class="bg-primary-light p-2">
+              <header class="font-bold">{item.title}</header>
+              <p>{item.text}</p>
+            </div>
+          );
+        })
+      }
     </div>
-    <slot/>
-</main>
-<Footer/>
-</body>
-</html>
+  </div>
+  <Footer slot="footer" />
+</BaseLayout>

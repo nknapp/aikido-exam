@@ -1,0 +1,45 @@
+---
+import Footer from "../components/astro/Footer.astro";
+import "@/assets/styles/styles.scss"
+
+const headerHeight = "48px";
+const footerHeight = "48px";
+
+export interface Props {
+  title: string
+}
+
+const props = Astro.props
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{props.title}</title>
+  </head>
+  <body>
+    <header>
+      <slot name="header" />
+    </header>
+    <main class="container pt-8">
+      <slot />
+    </main>
+    <footer>
+      <slot name="footer" />
+    </footer>
+  </body>
+</html>
+<style define:vars={{ headerHeight, footerHeight }}>
+  header {
+    height: var(--headerHeight);
+  }
+
+  main {
+    min-height: calc(100vh - var(--headerHeight) - var(--footerHeight));
+  }
+
+  footer {
+    height: var(--footerHeight);
+  }
+</style>

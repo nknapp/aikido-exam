@@ -3,11 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es2021",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -22,17 +18,10 @@
     "noEmit": true,
     "jsx": "preserve",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "$core/*": [
-        "src/core/*"
-      ]
+      "@/*": ["src/*"],
+      "$core/*": ["src/core/*"]
     },
     "jsxImportSource": "solid-js"
   },
-  "include": [
-    "src",
-    "scripts"
-  ]
+  "include": ["src", "scripts"]
 }

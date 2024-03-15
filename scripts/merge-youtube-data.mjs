@@ -1,16 +1,16 @@
 import tables from "src/exam-tables/aikido-dojo-darmstadt/lazyData";
-import fs from "node:fs/promises"
+import fs from "node:fs/promises";
 
-const videos = JSON.parse(await fs.readFile("./aikido-kompendium-playlists.json", "utf-8"))
+const videos = JSON.parse(await fs.readFile("./aikido-kompendium-playlists.json", "utf-8"));
 
-const result = {}
+const result = {};
 for (const exam of Object.values(tables.exams)) {
   for (const [technique, metadata] of iterateTable(exam.table.techniques)) {
     if (metadata.youtube == null) {
       metadata.youtube = findVideo(technique);
     }
   }
-  result[exam.labelKey] = exam
+  result[exam.labelKey] = exam;
 }
 
 console.log(JSON.stringify(result, 0, 2));

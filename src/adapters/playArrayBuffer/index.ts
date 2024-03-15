@@ -1,1 +1,1 @@
-export {playArrayBuffer} from "./playArrayBuffer"
+export { playArrayBuffer } from "./playArrayBuffer";

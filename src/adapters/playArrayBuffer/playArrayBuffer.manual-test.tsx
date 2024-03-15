@@ -56,10 +56,6 @@ export const ManualTest: Component = () => {
         {mp3.loading && <p>Loading mp3</p>}
         <button onClick={() => play(mp3()!)}>{mp3.loading ? "Loading..." : "Play"}</button>
         <button onClick={() => stop()}>Stop</button>
-        {/*<ShowAsync loader={loadMp3} fallback={<Spinner />}>*/}
-        {/*  {(arrayBuffer) => <Button onClick={() => play(arrayBuffer)}>Play</Button>}*/}
-        {/*</ShowAsync>*/}
-        {/*<Button onClick={stop}>Stop</Button>*/}
         <div>{playing() > 0 && "Playing"}</div>
       </div>
     </div>
