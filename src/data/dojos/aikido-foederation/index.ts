@@ -3,7 +3,7 @@ import type { Dojo } from "$core/model/Dojo";
 
 export default {
   info: {
-    id: "aifd",
+    id: "aikido-foederation",
     name: "Aikido Föderation Darmstadt e.V.",
     logo: logo,
   },

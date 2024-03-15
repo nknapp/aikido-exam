@@ -14,6 +14,10 @@ const { title, hero, teaser = [] } = Astro.props;
 import Footer from "@/components/astro/Footer.astro";
 
 import "@/assets/styles/styles.scss";
+import { listDojos } from "../data/dojos";
+import LinkButton from "../components/astro/LinkButton.astro";
+
+const dojos = await listDojos();
 ---
 
 <BaseLayout title={title}>
@@ -32,6 +36,19 @@ import "@/assets/styles/styles.scss";
         })
       }
     </div>
+    <header>Wähle dein Dojo aus:</header>
+    <divc class="flex flex-col sm:flex-row flex-wrap gap-4 items-stretch">
+      {
+        dojos.map((dojo) => {
+          return (
+            <LinkButton href={`/${dojo.id}`}>
+              <img class="h-4" alt="logo" src={dojo.logo} />
+              {dojo.name}
+            </LinkButton>
+          );
+        })
+      }
+    </divc>
   </div>
   <Footer slot="footer" />
 </BaseLayout>
