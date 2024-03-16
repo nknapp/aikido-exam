@@ -15,9 +15,13 @@ export const Chooser: Component<{ dojo: DojoDetails }> = (props) => {
 
   return (
     <div class={"grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4 mb-4 "}>
-      {Object.keys(props.dojo.exams).map((name) => {
+      {Object.entries(props.dojo.exams).map(([name, exam]) => {
         return (
-          <CheckButton value={isSelected(name)} text={name} onChange={(newValue) => setSelected(name, newValue)} />
+          <CheckButton
+            value={isSelected(name)}
+            text={exam.labelKey}
+            onChange={(newValue) => setSelected(name, newValue)}
+          />
         );
       })}
     </div>

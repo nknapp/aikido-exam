@@ -1,14 +1,14 @@
 /// <reference types="vitest/config" />
 
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import solidPlugin from "vite-plugin-solid";
 
 export default defineConfig(() => {
   return {
     build: {
       outDir: "build",
     },
-    plugins: [react()],
+    plugins: [solidPlugin()],
     resolve: {
       alias: {
         "src/": "/src/",
@@ -21,6 +21,11 @@ export default defineConfig(() => {
       globals: true,
       setupFiles: ["src/setupTests.ts"],
       environment: "jsdom",
+      environmentOptions: {
+        jsdom: {
+          url: "http://localhost/",
+        },
+      },
     },
   };
 });

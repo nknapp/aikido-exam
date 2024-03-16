@@ -11,7 +11,7 @@ describe("dojos", () => {
           logo: "/src/data/dojos/aikido-dojo-darmstadt/logo.png",
         },
         {
-          id: "aifd",
+          id: "aikido-foederation",
           name: "Aikido Föderation Darmstadt e.V.",
           logo: "/src/data/dojos/aikido-foederation/logo.svg",
         },
