@@ -3,6 +3,7 @@ import { useMockEndpoints } from "$core/test-utils/mock-api";
 import { http } from "msw";
 import { createMockSpeechPack } from "$core/slots/SpeechPack.test-helper";
 import { type ResolvedSpeechPack, resolveSpeechPack } from "$core/SpeechPackPlayer/resolveSpeechPack";
+import { logWarn } from "$core/utils/logger";
 
 const decoder = new TextDecoder();
 
@@ -15,8 +16,10 @@ describe("resolveSpeechPack", () => {
   beforeEach(() => {});
 
   it("resolves 'omote' and 'ura'", async () => {
-    useMockEndpoints(http.get("/myspeech/omote", () => new Response("OMOTE WAZA")));
-    useMockEndpoints(http.get("/myspeech/ura", () => new Response("URA WAZA")));
+    useMockEndpoints(
+      http.get("/myspeech/omote", () => new Response("OMOTE WAZA")),
+      http.get("/myspeech/ura", () => new Response("URA WAZA")),
+    );
 
     const resolvedPack = await resolveSpeechPack(
       createMockSpeechPack({
@@ -59,5 +62,7 @@ describe("resolveSpeechPack", () => {
       }),
     );
     expect(decodeAsText(resolvedPack, "omote")).toEqual("OMOTE WAZA");
+    expect(logWarn).toHaveBeenCalledTimes(1);
+    expect(logWarn).toHaveBeenCalledWith("Retrying after ", new TypeError("Failed to fetch"));
   });
 });

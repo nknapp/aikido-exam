@@ -2,9 +2,8 @@
 // Install 'browser' versions for msw and @mswjs/interceptors
 
 import fs from "fs/promises";
-import { existsSync } from "fs";
-import cp from "child_process"
-import {execFileSync, execSync} from "node:child_process";
+import {existsSync} from "fs";
+import {execFileSync } from "node:child_process";
 
 async function patchPackageJson(filepath, mutator) {
   const original = filepath + ".original";
@@ -25,9 +24,25 @@ async function patchPackageJson(filepath, mutator) {
 }
 
 await patchPackageJson("node_modules/msw/package.json", (packageJson) => {
-  packageJson.exports["./node"].browser = packageJson.exports["./node"].default;
+  packageJson.exports["./node"] = {
+    "types": "./lib/node/index.d.ts",
+    "node": {
+      "require": "./lib/node/index.js",
+      "import": "./lib/node/index.mjs"
+    },
+    "browser": null,
+    "default": "./lib/node/index.mjs"
+  }
 });
 
 await patchPackageJson("node_modules/@mswjs/interceptors/package.json", (packageJson) => {
-  packageJson.exports["./ClientRequest"].browser = packageJson.exports["./ClientRequest"].default;
+  packageJson.exports["./ClientRequest"] = {
+    "types": "./lib/node/interceptors/ClientRequest/index.d.ts",
+    "node": {
+      "require": "./lib/node/interceptors/ClientRequest/index.js",
+      "import": "./lib/node/interceptors/ClientRequest/index.mjs"
+    },
+    "browser": null,
+    "default": "./lib/node/interceptors/ClientRequest/index.js"
+  }
 });

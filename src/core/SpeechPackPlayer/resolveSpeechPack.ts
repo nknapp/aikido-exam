@@ -1,4 +1,5 @@
 import type { SpeechPack } from "$core/slots";
+import { logWarn } from "$core/utils/logger.ts";
 
 export type ResolvedSpeechPack = Record<keyof SpeechPack, ArrayBuffer>;
 
@@ -10,8 +11,7 @@ export async function resolveSpeechPack(speechPack: SpeechPack): Promise<Resolve
         const response = await fetch(url);
         return await response.arrayBuffer();
       } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error("Retrying after ", error);
+        logWarn("Retrying after ", error);
       }
     }
     const url = new URL(value, window.location.href);
