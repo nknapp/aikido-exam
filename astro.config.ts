@@ -8,9 +8,17 @@ export default defineConfig({
   vite: {
     server: {
       watch: {
-        ignored: ["**/*.test.ts", "**/*.test-helper.ts", "src/core/test-utils/**"],
+        ignored: ["**/*.test.ts", "**/*.test-helper.ts", "src/core/test-utils"],
       },
     },
   },
   integrations: [tailwind(), solidJs()],
+  i18n: {
+    defaultLocale: "de",
+    locales: ["de"],
+    routing: {
+      prefixDefaultLocale: true,
+      redirectToDefaultLocale: true,
+    },
+  },
 });

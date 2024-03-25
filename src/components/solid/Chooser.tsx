@@ -1,6 +1,7 @@
 import { type Component, createSignal } from "solid-js";
 import type { DojoDetails } from "$core/model/Dojo.ts";
 import { CheckButton } from "@/components/solid/CheckButton.tsx";
+import { t } from "@/i18n";
 
 export const Chooser: Component<{ dojo: DojoDetails }> = (props) => {
   const [selection, setSelection] = createSignal<Record<string, boolean>>({});
@@ -19,7 +20,7 @@ export const Chooser: Component<{ dojo: DojoDetails }> = (props) => {
         return (
           <CheckButton
             value={isSelected(name)}
-            text={exam.labelKey}
+            text={t(exam.labelKey)}
             onChange={(newValue) => setSelected(name, newValue)}
           />
         );

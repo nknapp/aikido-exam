@@ -41,7 +41,7 @@ const dojos = await listDojos();
       {
         dojos.map((dojo) => {
           return (
-            <LinkButton href={`/${dojo.id}`}>
+            <LinkButton href={`${dojo.id}`}>
               <img class="h-4" alt="logo" src={dojo.logo} />
               {dojo.name}
             </LinkButton>
