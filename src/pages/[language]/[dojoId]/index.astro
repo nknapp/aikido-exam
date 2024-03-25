@@ -1,0 +1,32 @@
+---
+
+import { listDojos, loadDojoDetails } from "@/data/dojos";
+import DefaultLayout from "@/layouts/DefaultLayout.astro";
+import Header from "@/components/astro/Header.astro";
+import { Chooser } from "@/components/solid/Chooser";
+import { getTranslations } from "@/i18n";
+import { multiplyParams } from "../../../utils/multiplyParams";
+
+export async function getStaticPaths() {
+  const dojos = await listDojos();
+  const translations = Object.keys(getTranslations());
+  return multiplyParams({
+    language: translations,
+    dojoId: dojos.map((dojo) => dojo.id),
+  });
+}
+
+
+const id = Astro.params.dojoId;
+const dojoDetails = await loadDojoDetails(id);
+---
+
+<DefaultLayout>
+  <Header slot="header" />
+
+  <p>Welche Prüfungen möchtest du einbeziehen?</p>
+
+  <Chooser dojo={dojoDetails} client:only />
+
+  Quelle: <a href={dojoDetails.sourceLink} ">{dojoDetails.sourceLink}</a>
+</DefaultLayout>
