@@ -1,6 +1,4 @@
-import type { TranslationSchema } from "$core/model/TranslationSchema";
-
-export const de: TranslationSchema = {
+{
   "app.button.chooseExamTable.label": "Techniken auswählen",
   "app.title": "Aikido-Prüfung",
   "chooser.button.additional": "+X",
@@ -15,5 +13,5 @@ export const de: TranslationSchema = {
   "examTable.header.attack": "Angriff",
   "examTable.header.defence": "Technik",
   "examTable.header.direction": "Richtung",
-  "examTable.header.execution": "Auführung",
-};
+  "examTable.header.execution": "Auführung"
+}

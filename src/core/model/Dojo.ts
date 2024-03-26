@@ -5,6 +5,11 @@ export interface Dojo {
   details: () => Promise<{ default: DojoDetails }>;
 }
 
+export interface ResolvedDojo {
+  info: DojoInfo;
+  details: DojoDetails;
+}
+
 export interface DojoInfo {
   id: string;
   name: string;

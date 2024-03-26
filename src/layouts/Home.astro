@@ -37,18 +37,18 @@ const dojos = await listDojos();
       }
     </div>
     <header>Wähle dein Dojo aus:</header>
-    <divc class="flex flex-col sm:flex-row flex-wrap gap-4 items-stretch">
+    <div class="flex flex-col sm:flex-row flex-wrap gap-4 items-stretch">
       {
         dojos.map((dojo) => {
           return (
-            <LinkButton href={`${dojo.id}`}>
+            <LinkButton href={`./${dojo.id}`}>
               <img class="h-4" alt="logo" src={dojo.logo} />
               {dojo.name}
             </LinkButton>
           );
         })
       }
-    </divc>
+    </div>
   </div>
   <Footer slot="footer" />
 </BaseLayout>

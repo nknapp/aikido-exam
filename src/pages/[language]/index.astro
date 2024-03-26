@@ -2,11 +2,12 @@
 import { listDojos } from "../../data/dojos";
 import Home from "@/layouts/Home.astro";
 import logo from "@/assets/logo.svg?url";
-import {setLanguage} from "../../i18n";
+import {languages} from "../../i18n/server";
+import {multiplyParams} from "../../utils/multiplyParams";
+import { t } from "@/i18n"
 
-setLanguage(Astro.currentLocale)
 export async function getStaticPaths() {
-  return [{ params: { language: "de" } }];
+  return multiplyParams({ language: languages });
 }
 
 const teaser = [
@@ -25,4 +26,4 @@ const teaser = [
 ];
 ---
 
-<Home title="Aikido-Prüfung" hero={logo} teaser={teaser} />
+<Home title={t("app.title")} hero={logo} teaser={teaser} />

@@ -1,5 +1,5 @@
 import { resolveExamTables } from "$core/resolveExamTables";
-import { listDojos, loadDojoDetails } from "./index";
+import { listDojos, loadDojo } from "./index";
 import { type Execution, SINGLE_DIRECTION, type Technique } from "$core/model";
 import { buildExamTable } from "$core/buildExamTable";
 import type { DojoDetails } from "$core/model/Dojo";
@@ -8,9 +8,9 @@ import { techniqueAsString } from "$core/model/Technique.test-helper";
 const dojos = (await listDojos()).filter((dojo) => dojo.id !== "aifd");
 
 test.each(dojos)("no AiFD techniques are missing in $name", async ({ id }) => {
-  const dojo = await loadDojoDetails(id);
+  const dojo = await loadDojo(id);
   const dojoTechniques = await allTechniques(dojo);
-  const aifdTechniques = await allTechniques(await loadDojoDetails("aikido-foederation"), { omitWeapons: true });
+  const aifdTechniques = await allTechniques(await loadDojo("aikido-foederation"), { omitWeapons: true });
   const missingInDojo = difference(aifdTechniques, dojoTechniques);
   const missingTable = buildExamTable(missingInDojo);
   expect(missingTable).toEqual({});

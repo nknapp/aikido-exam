@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from "solid-testing-library";
-import { Chooser } from "@/components/solid/Chooser.tsx";
+import { ExamChooser } from "@/components/solid/ExamChooser.tsx";
 import type { DojoDetails } from "$core/model/Dojo.ts";
 import { createExam } from "$core/model/Exam.test-helper.ts";
 
@@ -14,7 +14,7 @@ describe("Chooser.test.tsx", async () => {
         kyu3: createExam({ labelKey: "chooser.button.kyu3" }),
       },
     };
-    render(() => <Chooser dojo={dojo} />);
+    render(() => <ExamChooser dojo={dojo} />);
     expect(screen.getByText("chooser.button.kyu5")).not.toBeNull();
     expect(screen.getByText("chooser.button.kyu4")).not.toBeNull();
     expect(screen.getByText("chooser.button.kyu3")).not.toBeNull();

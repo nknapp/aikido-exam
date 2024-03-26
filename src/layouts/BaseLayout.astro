@@ -1,9 +1,13 @@
 ---
 import "@/assets/styles/styles.scss"
+import {getTranslation} from "../i18n/server";
 
 export interface Props {
   title: string
 }
+
+const language = Astro.currentLocale
+const translations = getTranslation(language)
 
 const props = Astro.props
 const slots = Astro.slots
@@ -13,7 +17,7 @@ const footerHeight = "48px";
 
 ---
 
-<html lang="en">
+<html lang={language} data-translations={JSON.stringify(translations)}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
