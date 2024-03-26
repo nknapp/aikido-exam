@@ -29,3 +29,4 @@ yarn-error.log*
 youtube-api-settings.ts
 /aikido-kompendium-playlists.json
 /merged.json
+/dist
