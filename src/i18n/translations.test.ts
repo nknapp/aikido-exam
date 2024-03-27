@@ -1,10 +1,10 @@
-const translationFiles = import.meta.glob<Record<string, string>>("./translations/*.json", {
+const translationFiles = import.meta.glob<Record<string, string>>("./common/*.json", {
   eager: true,
   import: "default",
 });
 const translations = Object.fromEntries(
   Object.entries(translationFiles).map(([key, value]) => {
-    return [key.replace(/\.\/translations\/(\w+)\.json/, "$1"), value];
+    return [key.replace(/\.\/common\/(\w+)\.json/, "$1"), value];
   }),
 );
 
