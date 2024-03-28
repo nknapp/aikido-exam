@@ -14,6 +14,7 @@ export function resolveExamTables(examTables: Exam[]): Technique[] {
       }
     }
   }
+
   return result;
 }
 

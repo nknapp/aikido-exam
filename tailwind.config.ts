@@ -1,7 +1,7 @@
 import colors from "tailwindcss/colors";
 
 export default {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue,css}"],
   theme: {
     extend: {},
     container: {
@@ -23,6 +23,7 @@ export default {
       "info-dark": colors.amber["900"],
       secondary: colors.gray["400"],
       "secondary-light": colors.gray["300"],
+      "secondary-dark": colors.gray["700"],
     },
   },
   plugins: [],

@@ -3,7 +3,7 @@ import { createTechnique } from "$core/model/Technique.test-helper";
 import type { Table } from "$core/model";
 
 describe("toExamTable", () => {
-  it("builds an ExamTable form a TechniqueList", () => {
+  it("builds an ExamTable from a TechniqueList", () => {
     const input = [
       createTechnique("tachi waza", "ai hanmi katate dori", "ikkyo", "ura"),
       createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "ura"),
@@ -30,4 +30,6 @@ describe("toExamTable", () => {
     };
     expect(buildExamTable(input)).toEqual(expectedOutput);
   });
+
+  it.todo("Order of executions is fixed");
 });
