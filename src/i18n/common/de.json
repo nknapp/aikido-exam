@@ -18,5 +18,6 @@
   "examTable.header.attack": "Angriff",
   "examTable.header.defence": "Technik",
   "examTable.header.direction": "Richtung",
-  "examTable.header.execution": "Auführung"
+  "examTable.header.execution": "Auführung",
+  "home.choose-dojo": "Wähle dein Dojo aus:"
 }

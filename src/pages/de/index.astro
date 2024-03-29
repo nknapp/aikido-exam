@@ -1,9 +1,8 @@
 ---
-import { listDojos } from "../../data/dojos";
 import Home from "@/layouts/Home.astro";
 import logo from "@/assets/logo.svg?url";
-import {languages} from "../../i18n/server";
-import {multiplyParams} from "../../utils/multiplyParams";
+import {languages} from "@/i18n/server";
+import {multiplyParams} from "@/utils/multiplyParams";
 import { t } from "@/i18n"
 
 export async function getStaticPaths() {

@@ -1,1 +1,0 @@
-Astro-i18n requires this directory for the "showPrimaryLocale" option to work

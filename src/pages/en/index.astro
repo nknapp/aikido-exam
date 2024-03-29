@@ -1,0 +1,28 @@
+---
+import Home from "@/layouts/Home.astro";
+import logo from "@/assets/logo.svg?url";
+import {languages} from "@/i18n/server";
+import {multiplyParams} from "@/utils/multiplyParams";
+import { t } from "@/i18n"
+
+export async function getStaticPaths() {
+    return multiplyParams({ language: languages });
+}
+
+const teaser = [
+    {
+        title: "Why?",
+        text: "While practicing, we learn techniques and principals. Techniques are queried in the exams. You should instantly know the technique when ask, without thinking about it. That, you can practice as well.",
+    },
+    {
+        title: "Compile exams",
+        text: "Aikido-Exam creates random lists of the techniques that you need to learn for your next exam. You can use that to practice exam situations during free practicing sessions.",
+    },
+    {
+        title: "Read out loud.",
+        text: "Aikido-Exam can read the techniques to you. Just press 'play' and practice."
+    },
+];
+---
+
+<Home title={t("app.title")} hero={logo} teaser={teaser} />

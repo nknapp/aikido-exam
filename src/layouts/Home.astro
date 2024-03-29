@@ -18,6 +18,8 @@ import { listDojos } from "../data/dojos";
 import LinkButton from "../components/astro/LinkButton.astro";
 import Brand from "../components/astro/header/Brand.astro";
 import LocaleSwitcher from "../components/astro/LocaleSwitcher.astro";
+import {t} from "@/i18n"
+import {l} from "astro-i18n"
 
 const dojos = await listDojos();
 ---
@@ -42,12 +44,12 @@ const dojos = await listDojos();
         })
       }
     </div>
-    <header>Wähle dein Dojo aus:</header>
+    <header>{t("home.choose-dojo")}</header>
     <div class="flex flex-col sm:flex-row flex-wrap gap-4 items-stretch">
       {
         dojos.map((dojo) => {
           return (
-            <LinkButton href={`./${dojo.id}`}>
+            <LinkButton href={l(`/${dojo.id}`)}>
               <img class="h-4" alt="logo" src={dojo.logo} />
               {dojo.name}
             </LinkButton>
