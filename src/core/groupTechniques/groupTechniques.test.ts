@@ -11,7 +11,7 @@ describe("groupTechnique", () => {
     createTechnique("tachi waza", "kata dori", "shiho nage", "omote"),
   ];
   it("shuffles and regroups techniques", () => {
-    expect(groupTechniques(techniques, { canonicalExecution: true })).toEqual([
+    expect(groupTechniques(techniques, { canonicalExecutionOrder: true })).toEqual([
       createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "omote"),
       createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "ura"),
       createTechnique("suwari waza", "katate ryote dori", "shiho nage", "ura"),
@@ -22,7 +22,7 @@ describe("groupTechnique", () => {
   });
 
   it("keeps execution order random if specified", () => {
-    expect(groupTechniques(techniques, { canonicalExecution: false })).toEqual([
+    expect(groupTechniques(techniques, { canonicalExecutionOrder: false })).toEqual([
       createTechnique("tachi waza", "kata dori", "shiho nage", "ura"),
       createTechnique("tachi waza", "kata dori", "shiho nage", "omote"),
       createTechnique("tachi waza", "kata dori", "irimi nage", "ura"),

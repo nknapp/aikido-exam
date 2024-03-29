@@ -14,7 +14,7 @@ export const ExamChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
       .filter(([key]) => selection()[key])
       .map(([, value]) => value);
     const mergedTables = resolveExamTables(exams);
-    return groupTechniques(mergedTables, { canonicalExecution: true });
+    return groupTechniques(mergedTables, { canonicalExecutionOrder: true });
   });
   function setSelected(name: string, value: boolean) {
     setSelection((selection) => ({ ...selection, [name]: value }));

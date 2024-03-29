@@ -11,18 +11,6 @@ interface DirectionsProps {
   directions: Record<string, TechniqueMetadata>;
 }
 
-const ShowDirections: Component<DirectionsProps> = (props) => {
-  const keys = Object.keys(props.directions);
-  if (keys.length === 1 && keys[0] === SINGLE_DIRECTION) {
-    return null;
-  }
-  return (
-    <span class={"text-sm text-secondary"}>
-      ( <For each={keys}>{(key, index) => (index() > 0 ? [", ", <span>{key}</span>] : <span>{key}</span>)}</For> )
-    </span>
-  );
-};
-
 export const ExamSheet: Component<ExamSheetProps> = (props) => {
   return (
     <div class={"border-b border-1 border-secondary pb-4"}>
@@ -54,5 +42,17 @@ export const ExamSheet: Component<ExamSheetProps> = (props) => {
         )}
       </ForEntries>
     </div>
+  );
+};
+
+const ShowDirections: Component<DirectionsProps> = (props) => {
+  const keys = Object.keys(props.directions);
+  if (keys.length === 1 && keys[0] === SINGLE_DIRECTION) {
+    return null;
+  }
+  return (
+    <span class={"text-sm text-secondary"}>
+      ( <For each={keys}>{(key, index) => (index() > 0 ? [", ", <span>{key}</span>] : <span>{key}</span>)}</For> )
+    </span>
   );
 };
