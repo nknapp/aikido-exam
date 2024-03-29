@@ -23,3 +23,7 @@ export function techniqueComponentsAsString(
 ) {
   return `${execution} ${attack} ${defence} ${direction}`;
 }
+
+export function assertEqualTechniques(actual: Technique[], expected: Technique[]) {
+  expect(actual.map(techniqueAsString)).toEqual(expected.map(techniqueAsString));
+}

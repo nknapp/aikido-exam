@@ -1,27 +1,10 @@
-import { type Component, For, type JSX } from "solid-js";
-import { SINGLE_DIRECTION, type Table, type TechniqueMetadata } from "$core/model";
+import { type Component, For } from "solid-js";
+import { SINGLE_DIRECTION, type Technique, type TechniqueMetadata } from "$core/model";
+import { ForEntries } from "@/components/solid/ExamChooser/ForEntries.tsx";
+import { buildExamTable } from "$core/buildExamTable";
 
 export interface ExamSheetProps {
-  table: Table;
-}
-
-interface RenderGroupsProps<T> {
-  object: Record<string, T>;
-  separator?: JSX.Element;
-  children: (key: string, value: T) => JSX.Element;
-}
-
-function ForEntries<T>(props: RenderGroupsProps<T>): JSX.Element {
-  return (
-    <For each={Object.entries(props.object)}>
-      {(entry, index) => {
-        if (index() > 0) {
-          return [props.separator, props.children(entry[0], entry[1])];
-        }
-        return props.children(entry[0], entry[1]);
-      }}
-    </For>
-  );
+  techniques: Technique[];
 }
 
 interface DirectionsProps {
@@ -43,7 +26,7 @@ const ShowDirections: Component<DirectionsProps> = (props) => {
 export const ExamSheet: Component<ExamSheetProps> = (props) => {
   return (
     <div class={"border-b border-1 border-secondary pb-4"}>
-      <ForEntries object={props.table}>
+      <ForEntries object={buildExamTable(props.techniques)}>
         {(execution, attacks) => (
           <div>
             <h2 class={"border-b border-1 border-secondary"}>{execution}</h2>

@@ -4,8 +4,7 @@ import { CheckButton } from "@/components/solid/CheckButton.tsx";
 import { t } from "@/i18n";
 import { ExamSheet } from "@/components/solid/ExamChooser/ExamSheet.tsx";
 import { resolveExamTables } from "$core/resolveExamTables";
-import { normalizeExamTable } from "$core/normalizeExamTable/normalizeExamTable.ts";
-import { buildExamTable } from "$core/buildExamTable";
+import { groupTechniques } from "$core/groupTechniques/groupTechniques.ts";
 
 export const ExamChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
   const [selection, setSelection] = createSignal<Record<string, boolean>>({});
@@ -14,8 +13,8 @@ export const ExamChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
     const exams = Object.entries(props.dojo.details.exams)
       .filter(([key]) => selection()[key])
       .map(([, value]) => value);
-    const mergedTables = buildExamTable(resolveExamTables(exams));
-    return normalizeExamTable(mergedTables, { orderExecutions: true });
+    const mergedTables = resolveExamTables(exams);
+    return groupTechniques(mergedTables, { canonicalExecution: true });
   });
   function setSelected(name: string, value: boolean) {
     setSelection((selection) => ({ ...selection, [name]: value }));
@@ -39,7 +38,7 @@ export const ExamChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
         })}
       </div>
       <div class={"my-10"}>
-        <ExamSheet table={selectedTable()} />
+        <ExamSheet techniques={selectedTable()} />
       </div>
     </div>
   );
