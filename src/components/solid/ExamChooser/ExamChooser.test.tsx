@@ -118,7 +118,7 @@ describe("Chooser.test.tsx", async () => {
     expect(screen.getByText("ura")).toBeInTheDocument();
   });
 
-  it("does not shows 'single-direction", async () => {
+  it("does not show 'single-direction", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
         exams: {
@@ -139,5 +139,62 @@ describe("Chooser.test.tsx", async () => {
     await user.click(screen.getByText("5th Kyu"));
     showMe();
     expect(screen.queryByText("single-direction")).toBeNull();
+  });
+
+  it("orders executions", async () => {
+    const dojo = createResolvedDojo({
+      details: createDojoDetails({
+        exams: {
+          kyu5: createExam({
+            labelKey: "chooser.button.kyu5",
+            techniques: {
+              "hanmi handachi waza": {
+                "ai hanmi katate dori": {
+                  "irimi nage": { "single-direction": {} },
+                },
+              },
+              "suwari waza": {
+                "ai hanmi katate dori": {
+                  "irimi nage": { "single-direction": {} },
+                },
+              },
+            },
+          }),
+        },
+      }),
+    });
+    render(() => <ExamChooser dojo={dojo} />);
+    await user.click(screen.getByText("5th Kyu"));
+    showMe();
+    expect(screen.queryAllByText(/suwari waza|hanmi handachi waza/).map((el) => el.textContent)).toEqual([
+      "suwari waza",
+      "hanmi handachi waza",
+    ]);
+  });
+  it("only shows selected exams", async () => {
+    const dojo = createResolvedDojo({
+      details: createDojoDetails({
+        exams: {
+          kyu5: createExam({
+            labelKey: "chooser.button.kyu5",
+            techniques: {
+              "hanmi handachi waza": {
+                "ai hanmi katate dori": {
+                  "irimi nage": { "single-direction": {} },
+                },
+              },
+              "suwari waza": {
+                "ai hanmi katate dori": {
+                  "irimi nage": { "single-direction": {} },
+                },
+              },
+            },
+          }),
+        },
+      }),
+    });
+    render(() => <ExamChooser dojo={dojo} />);
+    showMe();
+    expect(screen.queryByText("suwari waza")).toBeNull();
   });
 });

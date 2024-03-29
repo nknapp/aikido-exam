@@ -11,6 +11,7 @@ export function shuffleTechniques(techniques: Technique[], { coverage = 0.8 } = 
 
 function regroupByExecution(list: Technique[]) {
   const groups = groupBy(list, "execution");
+  // TODO: This ordering is also done in "normalizeExamTable"
   const orderedGroups = executions
     .filter((execution) => groups[execution] != null)
     .flatMap((execution) => regroupByAttack(groups[execution]));

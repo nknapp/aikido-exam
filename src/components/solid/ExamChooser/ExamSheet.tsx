@@ -1,9 +1,8 @@
-import { type Component, createMemo, For, type JSX } from "solid-js";
-import { SINGLE_DIRECTION, type Technique, type TechniqueMetadata } from "$core/model";
-import { buildExamTable } from "$core/buildExamTable";
+import { type Component, For, type JSX } from "solid-js";
+import { SINGLE_DIRECTION, type Table, type TechniqueMetadata } from "$core/model";
 
 export interface ExamSheetProps {
-  techniques: Technique[];
+  table: Table;
 }
 
 interface RenderGroupsProps<T> {
@@ -35,20 +34,19 @@ const ShowDirections: Component<DirectionsProps> = (props) => {
     return null;
   }
   return (
-    <span class={"text-sm text-secondary-dark"}>
+    <span class={"text-sm text-secondary"}>
       ( <For each={keys}>{(key, index) => (index() > 0 ? [", ", <span>{key}</span>] : <span>{key}</span>)}</For> )
     </span>
   );
 };
 
 export const ExamSheet: Component<ExamSheetProps> = (props) => {
-  const table = createMemo(() => buildExamTable(props.techniques));
   return (
-    <div>
-      <ForEntries object={table()}>
+    <div class={"border-b border-1 border-secondary pb-4"}>
+      <ForEntries object={props.table}>
         {(execution, attacks) => (
           <div>
-            <h2>{execution}</h2>
+            <h2 class={"border-b border-1 border-secondary"}>{execution}</h2>
             <div>
               <ForEntries object={attacks}>
                 {(attack, defences) => (

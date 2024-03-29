@@ -3,8 +3,8 @@ export const executions = [
   "hanmi handachi waza",
   "tachi waza",
   "tanto dori",
-  "jo dori",
   "jo nage",
+  "jo dori",
   "tachi dori",
 ] as const;
 

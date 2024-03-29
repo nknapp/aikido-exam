@@ -4,11 +4,19 @@ import { CheckButton } from "@/components/solid/CheckButton.tsx";
 import { t } from "@/i18n";
 import { ExamSheet } from "@/components/solid/ExamChooser/ExamSheet.tsx";
 import { resolveExamTables } from "$core/resolveExamTables";
+import { normalizeExamTable } from "$core/normalizeExamTable/normalizeExamTable.ts";
+import { buildExamTable } from "$core/buildExamTable";
 
 export const ExamChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
   const [selection, setSelection] = createSignal<Record<string, boolean>>({});
 
-  const techniques = createMemo(() => resolveExamTables(Object.values(props.dojo.details.exams)));
+  const selectedTable = createMemo(() => {
+    const exams = Object.entries(props.dojo.details.exams)
+      .filter(([key]) => selection()[key])
+      .map(([, value]) => value);
+    const mergedTables = buildExamTable(resolveExamTables(exams));
+    return normalizeExamTable(mergedTables, { orderExecutions: true });
+  });
   function setSelected(name: string, value: boolean) {
     setSelection((selection) => ({ ...selection, [name]: value }));
   }
@@ -30,7 +38,9 @@ export const ExamChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
           );
         })}
       </div>
-      <ExamSheet techniques={techniques()} />
+      <div class={"my-10"}>
+        <ExamSheet table={selectedTable()} />
+      </div>
     </div>
   );
 };
