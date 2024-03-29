@@ -2,10 +2,11 @@
 import { listDojos, loadDojo } from "@/data/dojos";
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
 import Header from "@/components/astro/Header.astro";
-import { ExamChooser } from "../../../components/solid/ExamChooser";
+import { ExamChooser } from "@/components/solid/ExamChooser";
+import { t } from "@/i18n";
 
 import { multiplyParams } from "@/utils/multiplyParams";
-import {languages} from "@/i18n/server";
+import { languages } from "@/i18n/server";
 
 export async function getStaticPaths() {
   const dojos = await listDojos();
@@ -16,16 +17,15 @@ export async function getStaticPaths() {
 }
 
 const id = Astro.params.dojoId;
-const dojo = await loadDojo(id)
-
+const dojo = await loadDojo(id);
 ---
 
 <DefaultLayout>
   <Header slot="header" />
 
   <h1><img class="inline h-[1.2em] me-2" alt="logo" src={dojo.info.logo} />{dojo.info.name}</h1>
-  <p>Welche Prüfungen möchtest du einbeziehen?</p>
-  <p class="bg-info-light border-info border rounded p-5">{dojo.details.additionalText}</p>
+  <p>{t("examChooser.question")}</p>
+  <p class="bg-info-light border-info border rounded p-5">{t(dojo.details.additionalText)}</p>
   <ExamChooser dojo={dojo} client:load />
 
   Quelle: <a href={dojo.details.sourceLink} ">{dojo.details.sourceLink}</a>

@@ -17,7 +17,6 @@ export default {
     dan1,
     additional,
   },
-  additionalText:
-    "Die Techniken in der Gruppe 1.DAN sind Techniken, die im Programm der Aikido-Föderation vorkommen, aber nicht im Programm des Aikido-Dojo Darmstadt.",
+  additionalText: "dojo.darmstadt.additionalText",
   sourceLink: "http://aikidokompendium.de/#",
 } satisfies DojoDetails;

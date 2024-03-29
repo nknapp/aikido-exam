@@ -4,7 +4,6 @@ import type { DojoDetails, DojoInfo, ResolvedDojo } from "$core/model/Dojo.ts";
 import { createExam } from "$core/model/Exam.test-helper.ts";
 import { user } from "$core/test-utils/user.ts";
 import { getCheckButton } from "@/components/solid/CheckButton.test-helper.ts";
-import { showMe } from "@/debug/showMe.ts";
 
 afterEach(cleanup);
 
@@ -137,7 +136,6 @@ describe("Chooser.test.tsx", async () => {
     });
     render(() => <ExamChooser dojo={dojo} />);
     await user.click(screen.getByText("5th Kyu"));
-    showMe();
     expect(screen.queryByText("single-direction")).toBeNull();
   });
 
@@ -165,7 +163,6 @@ describe("Chooser.test.tsx", async () => {
     });
     render(() => <ExamChooser dojo={dojo} />);
     await user.click(screen.getByText("5th Kyu"));
-    showMe();
     expect(screen.queryAllByText(/suwari waza|hanmi handachi waza/).map((el) => el.textContent)).toEqual([
       "suwari waza",
       "hanmi handachi waza",
@@ -194,7 +191,6 @@ describe("Chooser.test.tsx", async () => {
       }),
     });
     render(() => <ExamChooser dojo={dojo} />);
-    showMe();
     expect(screen.queryByText("suwari waza")).toBeNull();
   });
 });

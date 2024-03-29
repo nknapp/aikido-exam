@@ -6,7 +6,7 @@ export default defineAstroI18nConfig({
   fallbackLocale: "de", // fallback locale (on missing translation)
   trailingSlash: "never", // "never" or "always"
   run: "client+server", // "client+server" or "server"
-  showPrimaryLocale: false, // "/en/about" vs "/about"
+  showPrimaryLocale: true, // "/en/about" vs "/about"
   translationLoadingRules: [], // per page group loading
   translationDirectory: {}, // translation directory names
   translations: {}, // { [translation_group1]: { [locale1]: {}, ... } }

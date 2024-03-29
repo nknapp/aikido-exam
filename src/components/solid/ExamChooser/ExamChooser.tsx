@@ -26,16 +26,19 @@ export const ExamChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
 
   return (
     <div>
-      <div class={"grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4 mb-4 "}>
-        {Object.entries(props.dojo.details.exams).map(([name, exam]) => {
-          return (
-            <CheckButton
-              value={isSelected(name)}
-              text={t(exam.labelKey)}
-              onChange={(newValue) => setSelected(name, newValue)}
-            />
-          );
-        })}
+      <div>
+        <header class="text-lg">{t("examChooser.exams.header")}</header>
+        <div class={"grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4 mb-4 "}>
+          {Object.entries(props.dojo.details.exams).map(([name, exam]) => {
+            return (
+              <CheckButton
+                value={isSelected(name)}
+                text={t(exam.labelKey)}
+                onChange={(newValue) => setSelected(name, newValue)}
+              />
+            );
+          })}
+        </div>
       </div>
       <div class={"my-10"}>
         <ExamSheet techniques={selectedTable()} />

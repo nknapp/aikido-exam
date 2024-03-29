@@ -16,11 +16,17 @@ import Footer from "@/components/astro/Footer.astro";
 import "@/assets/styles/styles.scss";
 import { listDojos } from "../data/dojos";
 import LinkButton from "../components/astro/LinkButton.astro";
+import Brand from "../components/astro/header/Brand.astro";
+import LocaleSwitcher from "../components/astro/LocaleSwitcher.astro";
 
 const dojos = await listDojos();
 ---
 
 <BaseLayout title={title}>
+    <div slot="header" class="container flex justify-end items-center h-full">
+      <LocaleSwitcher />
+  </div>
+
   <div class="flex flex-col items-center gap-8 mt-20">
     <header class="text-3xl">{title}</header>
     <img class="w-64" alt="Hero image" src={hero} />

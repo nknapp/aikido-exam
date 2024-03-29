@@ -21,7 +21,6 @@ export default {
     dan2,
     dan3,
   },
-  additionalText:
-    "+X sind Techniken, an die ich (Nils) mich erinnere, die aber nicht im Program der Aikido Föderation vorkommen.",
+  additionalText: "dojo.aikido-foederation.additionalText",
   sourceLink: "https://www.aikido-foederation.de/wp-content/uploads/AFD-Pruefungsordnung-052014.pdf",
 } satisfies DojoDetails;

@@ -3,10 +3,12 @@ import tailwind from "@astrojs/tailwind";
 
 import solidJs from "@astrojs/solid-js";
 import { languages } from "./src/i18n/server";
+import solidSvg from "vite-plugin-solid-svg";
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
+    plugins: [solidSvg()],
     server: {
       watch: {
         ignored: ["**/*.test.ts", "**/*.test-helper.ts", "src/core/test-utils"],

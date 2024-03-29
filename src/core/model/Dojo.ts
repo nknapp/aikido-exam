@@ -1,4 +1,5 @@
 import type { Exam } from "$core/model/Exam";
+import type { TranslationSchema } from "$core/model/TranslationSchema.ts";
 
 export interface Dojo {
   info: DojoInfo;
@@ -18,6 +19,6 @@ export interface DojoInfo {
 
 export interface DojoDetails {
   exams: Record<string, Exam>;
-  additionalText?: string;
+  additionalText?: keyof TranslationSchema;
   sourceLink?: string;
 }

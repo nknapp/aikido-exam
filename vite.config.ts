@@ -2,13 +2,14 @@
 
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
+import solidSvg from "vite-plugin-solid-svg";
 
 export default defineConfig(() => {
   return {
     build: {
       outDir: "build",
     },
-    plugins: [solidPlugin()],
+    plugins: [solidPlugin(), solidSvg()],
     resolve: {
       alias: {
         "src/": "/src/",
