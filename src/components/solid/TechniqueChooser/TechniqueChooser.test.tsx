@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from "solid-testing-library";
-import { ExamChooser } from "./ExamChooser.tsx";
+import { TechniqueChooser } from "./TechniqueChooser.tsx";
 import type { DojoDetails, DojoInfo, ResolvedDojo } from "$core/model/Dojo.ts";
 import { createExam } from "$core/model/Exam.test-helper.ts";
 import { user } from "$core/test-utils/user.ts";
@@ -53,7 +53,7 @@ describe("Chooser.test.tsx", async () => {
         },
       }),
     });
-    render(() => <ExamChooser dojo={dojo} />);
+    render(() => <TechniqueChooser dojo={dojo} />);
     expect(screen.getByText("5th Kyu")).not.toBeNull();
     expect(screen.getByText("4th Kyu")).not.toBeNull();
     expect(screen.getByText("3rd Kyu")).not.toBeNull();
@@ -67,7 +67,7 @@ describe("Chooser.test.tsx", async () => {
         },
       }),
     });
-    render(() => <ExamChooser dojo={dojo} />);
+    render(() => <TechniqueChooser dojo={dojo} />);
 
     const { button, checkbox } = getCheckButton("5th Kyu");
     expect(checkbox).not.toBeChecked();
@@ -83,7 +83,7 @@ describe("Chooser.test.tsx", async () => {
         },
       }),
     });
-    render(() => <ExamChooser dojo={dojo} />);
+    render(() => <TechniqueChooser dojo={dojo} />);
     const { button, checkbox } = getCheckButton("5th Kyu");
     expect(checkbox).not.toBeChecked();
     await user.click(button);
@@ -108,7 +108,7 @@ describe("Chooser.test.tsx", async () => {
         },
       }),
     });
-    render(() => <ExamChooser dojo={dojo} />);
+    render(() => <TechniqueChooser dojo={dojo} />);
     await user.click(screen.getByText("5th Kyu"));
 
     expect(screen.getByText("suwari waza")).toBeInTheDocument();
@@ -134,7 +134,7 @@ describe("Chooser.test.tsx", async () => {
         },
       }),
     });
-    render(() => <ExamChooser dojo={dojo} />);
+    render(() => <TechniqueChooser dojo={dojo} />);
     await user.click(screen.getByText("5th Kyu"));
     expect(screen.queryByText("single-direction")).toBeNull();
   });
@@ -161,7 +161,7 @@ describe("Chooser.test.tsx", async () => {
         },
       }),
     });
-    render(() => <ExamChooser dojo={dojo} />);
+    render(() => <TechniqueChooser dojo={dojo} />);
     await user.click(screen.getByText("5th Kyu"));
     expect(screen.queryAllByText(/suwari waza|hanmi handachi waza/).map((el) => el.textContent)).toEqual([
       "suwari waza",
@@ -190,7 +190,7 @@ describe("Chooser.test.tsx", async () => {
         },
       }),
     });
-    render(() => <ExamChooser dojo={dojo} />);
+    render(() => <TechniqueChooser dojo={dojo} />);
     expect(screen.queryByText("suwari waza")).toBeNull();
   });
 });

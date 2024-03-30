@@ -1,6 +1,6 @@
 import { type Component, For } from "solid-js";
 import { SINGLE_DIRECTION, type Technique, type TechniqueMetadata } from "$core/model";
-import { ForEntries } from "@/components/solid/ExamChooser/ForEntries.tsx";
+import { ForEntries } from "./ForEntries.tsx";
 import { buildExamTable } from "$core/buildExamTable";
 
 export interface ExamSheetProps {
