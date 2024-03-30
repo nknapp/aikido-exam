@@ -26,7 +26,7 @@ function createExams() {
 
 function createDojoDetails(partialDetails: Partial<DojoDetails> = {}): DojoDetails {
   return {
-    additionalText: "additional text",
+    additionalText: "dojo.darmstadt.additionalText",
     sourceLink: "https://example.com/sourceLink",
     exams: createExams(),
     ...partialDetails,
