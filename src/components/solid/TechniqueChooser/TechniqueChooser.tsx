@@ -26,9 +26,11 @@ export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
           onChange={setExamSelection}
         />
       </div>
-      <div class={"my-10"}>
-        <ExamSheet techniques={selectedTechniques()} />
-      </div>
+      {examSelection().size > 0 && (
+        <div class={"my-10"}>
+          <ExamSheet techniques={selectedTechniques()} />
+        </div>
+      )}
     </div>
   );
 };

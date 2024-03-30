@@ -8,7 +8,7 @@ import solidSvg from "vite-plugin-solid-svg";
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [solidSvg()],
+    plugins: [solidSvg({ defaultAsComponent: false })],
     server: {
       watch: {
         ignored: ["**/*.test.ts", "**/*.test-helper.ts", "src/core/test-utils"],

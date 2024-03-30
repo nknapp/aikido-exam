@@ -1,23 +1,20 @@
 ---
-import "@/assets/styles/styles.scss"
-import {getTranslation} from "../i18n/server";
+import "@/assets/styles/styles.scss";
 
 export interface Props {
-  title: string
+  title: string;
 }
 
-const language = Astro.currentLocale
-const translations = getTranslation(language)
+const language = Astro.currentLocale;
 
-const props = Astro.props
-const slots = Astro.slots
+const props = Astro.props;
+const slots = Astro.slots;
 
 const headerHeight = slots.has("header") ? "48px" : "0px";
 const footerHeight = "48px";
-
 ---
 
-<html lang={language} data-translations={JSON.stringify(translations)}>
+<html lang={language}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,7 +24,7 @@ const footerHeight = "48px";
     <header>
       <slot name="header" />
     </header>
-    <main class="container pt-4 pb-4">
+    <main class="container pt-4 pb-4 print:pb-0 print:pt-0">
       <slot />
     </main>
     <footer>
@@ -46,5 +43,19 @@ const footerHeight = "48px";
 
   footer {
     height: var(--footerHeight);
+  }
+
+  @media print {
+    header {
+      display: none;
+    }
+
+    main {
+      min-height: auto;
+    }
+
+    footer {
+      display: none;
+    }
   }
 </style>

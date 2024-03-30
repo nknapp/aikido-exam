@@ -1,9 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 h1 {
-  @apply text-2xl mb-4 mt-6
+  @apply text-2xl mb-4 mt-6 print:mt-0
 }
 
 h2 {
@@ -22,3 +18,14 @@ ul {
   @apply list-disc ml-8
 }
 
+
+@media print {
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+
+  @page {
+    margin: 2cm;
+  }
+}

@@ -21,7 +21,10 @@
       "@/*": ["src/*"],
       "$core/*": ["src/core/*"]
     },
-    "jsxImportSource": "solid-js"
+    "jsxImportSource": "solid-js",
+    "types": [
+      "vite-plugin-solid-svg/types"
+    ]
   },
   "include": ["src", "scripts"]
 }

@@ -1,9 +1,8 @@
 ---
 import { astroI18n, l } from "astro-i18n";
 import {languageLabel} from "../../i18n/server";
-import Translate from "@material-design-icons/svg/filled/translate.svg?component-solid"
 import {nanoid} from "nanoid";
-
+import {IconTranslate} from "@/icons";
 
 const params: Record<string, string> = {};
 for (const [key, value] of Object.entries(Astro.params)) {
@@ -23,7 +22,7 @@ const id = nanoid()
 ---
 
 <div class="flex items-center">
-  <label for={id}><Translate /></label>
+  <label for={id}><IconTranslate /></label>
   <select id={id} class="p-2 text-sm bg-white" onchange="window.location.href=this.value">
     {
       links.map(({ href, label }) => (
