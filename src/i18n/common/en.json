@@ -1,5 +1,4 @@
 {
-  "language.label": "English",
   "app.button.chooseExamTable.label": "Choose techniques",
   "app.title": "Aikido Exam",
   "chooser.button.additional": "+X",
@@ -19,5 +18,6 @@
   "examTable.header.defence": "Technique",
   "examTable.header.direction": "Direction",
   "examTable.header.execution": "Execution",
-  "home.choose-dojo": "Choose your dojo:"
+  "home.choose-dojo": "Choose your dojo:",
+  "language.label": "English"
 }

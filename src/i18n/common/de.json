@@ -1,5 +1,4 @@
 {
-  "language.label": "Deutsch",
   "app.button.chooseExamTable.label": "Techniken auswählen",
   "app.title": "Aikido-Prüfung",
   "chooser.button.additional": "+X",
@@ -19,5 +18,6 @@
   "examTable.header.defence": "Technik",
   "examTable.header.direction": "Richtung",
   "examTable.header.execution": "Auführung",
-  "home.choose-dojo": "Wähle dein Dojo aus:"
+  "home.choose-dojo": "Wähle dein Dojo aus:",
+  "language.label": "Deutsch"
 }
