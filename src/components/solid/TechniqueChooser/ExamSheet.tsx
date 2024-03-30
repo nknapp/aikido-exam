@@ -15,7 +15,7 @@ interface DirectionsProps {
 
 export const ExamSheet: Component<ExamSheetProps> = (props) => {
   return (
-    <div class={"border-b border-1 border-secondary pb-4"}>
+    <div>
       <div class="flex justify-end">
         <button
           class={"flex items-center bg-secondary-light p-2 text-sm print:hidden hover:bg-secondary"}
@@ -51,6 +51,9 @@ export const ExamSheet: Component<ExamSheetProps> = (props) => {
           </div>
         )}
       </ForEntries>
+      <div class={"mt-8 border-secondary border-t text-sm hidden print:block"}>
+        {t("examChooser.created-by", { url: window.location.origin })}
+      </div>
     </div>
   );
 };
