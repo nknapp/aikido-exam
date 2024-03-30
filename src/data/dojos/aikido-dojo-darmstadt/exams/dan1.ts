@@ -1,6 +1,7 @@
 import type { Exam } from "$core/model";
 
 export const dan1: Exam = {
+  id: "dan1",
   labelKey: "chooser.button.dan1",
   techniques: {
     "hanmi handachi waza": {

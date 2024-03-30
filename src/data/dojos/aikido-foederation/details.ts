@@ -10,17 +10,7 @@ import { dan3 } from "./exams/dan3";
 import type { DojoDetails } from "$core/model/Dojo";
 
 export default {
-  exams: {
-    kyu5,
-    kyu4,
-    kyu3,
-    kyu2,
-    kyu1,
-    additional,
-    dan1,
-    dan2,
-    dan3,
-  },
+  exams: [kyu5, kyu4, kyu3, kyu2, kyu1, additional, dan1, dan2, dan3],
   additionalText: "dojo.aikido-foederation.additionalText",
   sourceLink: "https://www.aikido-foederation.de/wp-content/uploads/AFD-Pruefungsordnung-052014.pdf",
 } satisfies DojoDetails;

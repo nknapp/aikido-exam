@@ -8,15 +8,7 @@ import { dan1 } from "./exams/dan1";
 import type { DojoDetails } from "$core/model/Dojo";
 
 export default {
-  exams: {
-    kyu5,
-    kyu4,
-    kyu3,
-    kyu2,
-    kyu1,
-    dan1,
-    additional,
-  },
+  exams: [kyu5, kyu4, kyu3, kyu2, kyu1, dan1, additional],
   additionalText: "dojo.darmstadt.additionalText",
   sourceLink: "http://aikidokompendium.de/#",
 } satisfies DojoDetails;

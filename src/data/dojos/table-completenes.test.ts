@@ -20,7 +20,7 @@ test.each(dojos)("no AiFD techniques are missing in $name", async ({ id }) => {
 const weapons = new Set<Execution>(["tanto dori", "jo dori", "jo nage", "tachi dori"]);
 
 async function allTechniques(dojoDetails: DojoDetails, { omitWeapons = false } = {}): Promise<Set<Technique>> {
-  const tables = Object.values(dojoDetails.exams);
+  const tables = dojoDetails.exams;
   let techniqueList = resolveExamTables(tables);
   if (omitWeapons) {
     techniqueList = techniqueList.filter((technique) => !weapons.has(technique.execution));

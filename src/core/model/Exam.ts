@@ -11,6 +11,7 @@ export type Attacks = Partial<Record<Attack, Defences>>;
 export type Table = Partial<Record<Execution, Attacks>>;
 
 export interface Exam {
+  id: string;
   labelKey: keyof TranslationSchema;
   techniques: Table;
 }

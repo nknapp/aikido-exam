@@ -1,6 +1,7 @@
 import type { Exam } from "$core/model";
 
 export const kyu3: Exam = {
+  id: "kyu3",
   labelKey: "chooser.button.kyu3",
   techniques: {
     "suwari waza": {

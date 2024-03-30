@@ -17,11 +17,11 @@ function createDojoInfo(partialInfo: Partial<DojoInfo> = {}): DojoInfo {
 }
 
 function createExams() {
-  return {
-    kyu5: createExam({ labelKey: "chooser.button.kyu5" }),
-    kyu4: createExam({ labelKey: "chooser.button.kyu4" }),
-    kyu3: createExam({ labelKey: "chooser.button.kyu3" }),
-  };
+  return [
+    createExam({ labelKey: "chooser.button.kyu5" }),
+    createExam({ labelKey: "chooser.button.kyu4" }),
+    createExam({ labelKey: "chooser.button.kyu3" }),
+  ];
 }
 
 function createDojoDetails(partialDetails: Partial<DojoDetails> = {}): DojoDetails {
@@ -46,11 +46,11 @@ describe("Chooser.test.tsx", async () => {
   it("renders all exams", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
-        exams: {
-          kyu5: createExam({ labelKey: "chooser.button.kyu5" }),
-          kyu4: createExam({ labelKey: "chooser.button.kyu4" }),
-          kyu3: createExam({ labelKey: "chooser.button.kyu3" }),
-        },
+        exams: [
+          createExam({ labelKey: "chooser.button.kyu5" }),
+          createExam({ labelKey: "chooser.button.kyu4" }),
+          createExam({ labelKey: "chooser.button.kyu3" }),
+        ],
       }),
     });
     render(() => <TechniqueChooser dojo={dojo} />);
@@ -62,9 +62,7 @@ describe("Chooser.test.tsx", async () => {
   it("clicking an exam selects it", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
-        exams: {
-          kyu5: createExam({ labelKey: "chooser.button.kyu5" }),
-        },
+        exams: [createExam({ labelKey: "chooser.button.kyu5" })],
       }),
     });
     render(() => <TechniqueChooser dojo={dojo} />);
@@ -78,9 +76,7 @@ describe("Chooser.test.tsx", async () => {
   it("clicking an selected exam deselects it", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
-        exams: {
-          kyu5: createExam({ labelKey: "chooser.button.kyu5" }),
-        },
+        exams: [createExam({ labelKey: "chooser.button.kyu5" })],
       }),
     });
     render(() => <TechniqueChooser dojo={dojo} />);
@@ -94,8 +90,8 @@ describe("Chooser.test.tsx", async () => {
   it("clicking an exam shows the techniques of that exam", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
-        exams: {
-          kyu5: createExam({
+        exams: [
+          createExam({
             labelKey: "chooser.button.kyu5",
             techniques: {
               "suwari waza": {
@@ -105,7 +101,7 @@ describe("Chooser.test.tsx", async () => {
               },
             },
           }),
-        },
+        ],
       }),
     });
     render(() => <TechniqueChooser dojo={dojo} />);
@@ -120,8 +116,8 @@ describe("Chooser.test.tsx", async () => {
   it("does not show 'single-direction", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
-        exams: {
-          kyu5: createExam({
+        exams: [
+          createExam({
             labelKey: "chooser.button.kyu5",
             techniques: {
               "suwari waza": {
@@ -131,7 +127,7 @@ describe("Chooser.test.tsx", async () => {
               },
             },
           }),
-        },
+        ],
       }),
     });
     render(() => <TechniqueChooser dojo={dojo} />);
@@ -142,8 +138,8 @@ describe("Chooser.test.tsx", async () => {
   it("orders executions", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
-        exams: {
-          kyu5: createExam({
+        exams: [
+          createExam({
             labelKey: "chooser.button.kyu5",
             techniques: {
               "hanmi handachi waza": {
@@ -158,7 +154,7 @@ describe("Chooser.test.tsx", async () => {
               },
             },
           }),
-        },
+        ],
       }),
     });
     render(() => <TechniqueChooser dojo={dojo} />);
@@ -171,8 +167,8 @@ describe("Chooser.test.tsx", async () => {
   it("only shows selected exams", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
-        exams: {
-          kyu5: createExam({
+        exams: [
+          createExam({
             labelKey: "chooser.button.kyu5",
             techniques: {
               "hanmi handachi waza": {
@@ -187,7 +183,7 @@ describe("Chooser.test.tsx", async () => {
               },
             },
           }),
-        },
+        ],
       }),
     });
     render(() => <TechniqueChooser dojo={dojo} />);

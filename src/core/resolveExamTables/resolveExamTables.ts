@@ -1,15 +1,14 @@
-import merge from "lodash/merge";
 import type { Technique, Exam } from "$core/model";
 
 export function resolveExamTables(examTables: Exam[]): Technique[] {
-  const emptyTable: Exam = { labelKey: "chooser.button.dan1", techniques: {} };
-  const mergedTables: Exam = merge(emptyTable, ...examTables);
   const result: Technique[] = [];
-  for (const [execution, attacks] of entries(mergedTables.techniques)) {
-    for (const [attack, defences] of entries(attacks)) {
-      for (const [defence, directions] of entries(defences)) {
-        for (const [direction, metadata] of entries(directions)) {
-          result.push({ execution, attack, defence, direction, metadata });
+  for (const exam of examTables) {
+    for (const [execution, attacks] of entries(exam.techniques)) {
+      for (const [attack, defences] of entries(attacks)) {
+        for (const [defence, directions] of entries(defences)) {
+          for (const [direction, metadata] of entries(directions)) {
+            result.push({ execution, attack, defence, direction, metadata });
+          }
         }
       }
     }

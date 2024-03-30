@@ -5,6 +5,7 @@ describe("resolve-exam-tables", () => {
   it("creates a list of techniques", () => {
     const actual = resolveExamTables([
       {
+        id: "dan2",
         labelKey: "chooser.button.dan2",
         techniques: {
           "suwari waza": {
@@ -21,6 +22,7 @@ describe("resolve-exam-tables", () => {
         },
       },
       {
+        id: "dan3",
         labelKey: "chooser.button.dan3",
         techniques: {
           "tachi waza": {

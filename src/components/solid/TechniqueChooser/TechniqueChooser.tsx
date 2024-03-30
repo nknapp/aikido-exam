@@ -11,11 +11,9 @@ export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
   const [examSelection, setExamSelection] = createSignal(new Set<string>());
 
   const selectedTechniques = createMemo(() => {
-    const exams = Object.entries(props.dojo.details.exams)
-      .filter(([key]) => examSelection().has(key))
-      .map(([, value]) => value);
-    const mergedTables = resolveExamTables(exams);
-    return groupTechniques(mergedTables, { canonicalExecutionOrder: true });
+    const exams = props.dojo.details.exams.filter((exam) => examSelection().has(exam.id));
+    const allTechniques = resolveExamTables(exams);
+    return groupTechniques(allTechniques, { canonicalExecutionOrder: true });
   });
 
   return (
@@ -35,6 +33,6 @@ export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
   );
 };
 
-function examsToOptions(exams: Record<string, Exam>): Option[] {
-  return Object.entries(exams).map(([id, exam]) => ({ id, label: t(exam.labelKey) }));
+function examsToOptions(exams: Exam[]): Option[] {
+  return exams.map((exam) => ({ id: exam.id, label: t(exam.labelKey) }));
 }

@@ -18,7 +18,7 @@ export interface DojoInfo {
 }
 
 export interface DojoDetails {
-  exams: Record<string, Exam>;
+  exams: Exam[];
   additionalText?: keyof TranslationSchema;
   sourceLink?: string;
 }
