@@ -4,7 +4,8 @@ import type { DojoDetails, DojoInfo, ResolvedDojo } from "$core/model/Dojo.ts";
 import { createExam } from "$core/model/Exam.test-helper.ts";
 import { user } from "$core/test-utils/user.ts";
 import { getCheckButton } from "@/components/solid/CheckButton.test-helper.ts";
-import { showMe } from "@/debug/showMe.ts";
+import { waitFor } from "@testing-library/react";
+import { delay } from "@/utils/delay.ts";
 
 afterEach(cleanup);
 
@@ -160,12 +161,12 @@ describe("Chooser.test.tsx", async () => {
     });
     render(() => <TechniqueChooser dojo={dojo} />);
     await user.click(screen.getByText("5th Kyu"));
-    showMe();
     expect(screen.queryAllByText(/suwari waza|hanmi handachi waza/).map((el) => el.textContent)).toEqual([
       "suwari waza",
       "hanmi handachi waza",
     ]);
   });
+
   it("only shows selected exams", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
@@ -190,5 +191,54 @@ describe("Chooser.test.tsx", async () => {
     });
     render(() => <TechniqueChooser dojo={dojo} />);
     expect(screen.queryByText("suwari waza")).toBeNull();
+  });
+
+  it("persists the exam choice", async () => {
+    const dojo = createResolvedDojo({
+      details: createDojoDetails({
+        exams: [
+          createExam({ id: "kyu5", labelKey: "chooser.button.kyu5" }),
+          createExam({ id: "kyu4", labelKey: "chooser.button.kyu4" }),
+        ],
+      }),
+    });
+    const { unmount } = render(() => <TechniqueChooser dojo={dojo} />);
+    const { checkbox, button } = getCheckButton("5th Kyu");
+    await user.click(button);
+    expect(checkbox).toBeChecked();
+    unmount();
+    render(() => <TechniqueChooser dojo={dojo} />);
+    await waitFor(() => {
+      const { checkbox: checkBoxAfterReload } = getCheckButton("5th Kyu");
+      expect(checkBoxAfterReload).toBeChecked();
+    });
+  });
+
+  it("does not load exam choice for different dojo", async () => {
+    function createTestDojo(id: string) {
+      return createResolvedDojo({
+        info: createDojoInfo({ id }),
+        details: createDojoDetails({
+          exams: [
+            createExam({ id: "kyu5", labelKey: "chooser.button.kyu5" }),
+            createExam({ id: "kyu4", labelKey: "chooser.button.kyu4" }),
+          ],
+        }),
+      });
+    }
+
+    const dojo1 = createTestDojo("dojo1");
+    const { unmount } = render(() => <TechniqueChooser dojo={dojo1} />);
+    const { checkbox, button } = getCheckButton("5th Kyu");
+    await user.click(button);
+    expect(checkbox).toBeChecked();
+    unmount();
+
+    const dojo2 = createTestDojo("dojo2");
+
+    render(() => <TechniqueChooser dojo={dojo2} />);
+    await delay(100);
+    const { checkbox: checkBoxAfterReload } = getCheckButton("5th Kyu");
+    expect(checkBoxAfterReload).not.toBeChecked();
   });
 });

@@ -9,6 +9,8 @@ vi.mock("@/i18n/index");
 
 beforeEach(() => {
   vi.clearAllMocks();
+  localStorage.clear();
+  sessionStorage.clear();
 });
 
 setupMockApi();
