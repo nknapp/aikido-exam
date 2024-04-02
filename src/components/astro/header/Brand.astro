@@ -1,8 +1,9 @@
 ---
 import logo from "@/assets/logo.svg?url"
 import {t} from "@/i18n"
+import { astroI18n, l } from "astro-i18n";
 ---
 
-<a class="flex items-center gap-2 font-bold !no-underline"  href="/">
+<a class="flex items-center gap-2 font-bold !no-underline"  href={l("/")}}>
     <img class="h-8" alt="Logo" src={logo}/> {t("app.title")}
 </a>
