@@ -30,3 +30,4 @@ youtube-api-settings.ts
 /aikido-kompendium-playlists.json
 /merged.json
 /dist
+/.vitest-preview/index.html
