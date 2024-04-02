@@ -7,7 +7,6 @@ import { getCheckButton } from "@/components/solid/CheckButton.test-helper.ts";
 import { waitFor } from "@testing-library/react";
 import { delay } from "@/utils/delay.ts";
 import { renderSolid } from "$core/test-utils/renderSolid.test-helper.tsx";
-import { showMe } from "@/debug/showMe.ts";
 
 afterEach(cleanup);
 
@@ -71,10 +70,10 @@ describe("Chooser.test.tsx", async () => {
     });
     render(() => <TechniqueChooser dojo={dojo} />);
 
-    const { button, checkbox } = getCheckButton("5th Kyu");
-    expect(checkbox).not.toBeChecked();
+    const { button, isSelected } = getCheckButton("5th Kyu");
+    expect(isSelected()).toBe(false);
     await user.click(button);
-    expect(checkbox).toBeChecked();
+    expect(isSelected()).toBe(true);
   });
 
   it("clicking an selected exam deselects it", async () => {
@@ -84,11 +83,11 @@ describe("Chooser.test.tsx", async () => {
       }),
     });
     render(() => <TechniqueChooser dojo={dojo} />);
-    const { button, checkbox } = getCheckButton("5th Kyu");
-    expect(checkbox).not.toBeChecked();
+    const { button, isSelected } = getCheckButton("5th Kyu");
+    expect(isSelected()).toBe(false);
     await user.click(button);
     await user.click(button);
-    expect(checkbox).not.toBeChecked();
+    expect(isSelected()).toBe(false);
   });
 
   it("clicking an exam shows the techniques of that exam", async () => {
@@ -205,14 +204,14 @@ describe("Chooser.test.tsx", async () => {
       }),
     });
     const { unmount } = render(() => <TechniqueChooser dojo={dojo} />);
-    const { checkbox, button } = getCheckButton("5th Kyu");
+    const { button, isSelected } = getCheckButton("5th Kyu");
     await user.click(button);
-    expect(checkbox).toBeChecked();
+    expect(isSelected()).toBe(true);
     unmount();
     render(() => <TechniqueChooser dojo={dojo} />);
     await waitFor(() => {
-      const { checkbox: checkBoxAfterReload } = getCheckButton("5th Kyu");
-      expect(checkBoxAfterReload).toBeChecked();
+      const { isSelected: isSelectedAfterReload } = getCheckButton("5th Kyu");
+      expect(isSelectedAfterReload()).toBe(true);
     });
   });
 
@@ -231,17 +230,17 @@ describe("Chooser.test.tsx", async () => {
 
     const dojo1 = createTestDojo("dojo1");
     const { unmount } = render(() => <TechniqueChooser dojo={dojo1} />);
-    const { checkbox, button } = getCheckButton("5th Kyu");
+    const { button, isSelected } = getCheckButton("5th Kyu");
     await user.click(button);
-    expect(checkbox).toBeChecked();
+    expect(isSelected()).toBe(true);
     unmount();
 
     const dojo2 = createTestDojo("dojo2");
 
     renderSolid(() => <TechniqueChooser dojo={dojo2} />);
     await delay(100);
-    const { checkbox: checkBoxAfterReload } = getCheckButton("5th Kyu");
-    expect(checkBoxAfterReload).not.toBeChecked();
+    const { isSelected: isSelectedAfterReload } = getCheckButton("5th Kyu");
+    expect(isSelectedAfterReload()).toBe(false);
   });
 
   it("renders filters", () => {
@@ -252,10 +251,10 @@ describe("Chooser.test.tsx", async () => {
     });
     renderSolid(() => <TechniqueChooser dojo={dojo} />);
 
-    expect(screen.getByText("No techniques on knees")).not.toBeNull();
+    expect(screen.getByText("Knee friendly")).not.toBeNull();
   });
 
-  it("clicking the bad-knees filter hides suwari-waza techniques", async () => {
+  it("clicking the knee-friendly filter hides suwari-waza and hanmi-handachi techniques", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
         exams: [
@@ -273,11 +272,10 @@ describe("Chooser.test.tsx", async () => {
     });
     renderSolid(() => <TechniqueChooser dojo={dojo} />);
     await user.click(screen.getByText("5th Kyu"));
-    showMe();
     expect(screen.getByText("suwari waza")).not.toBeNull();
     expect(screen.getByText("hanmi handachi waza")).not.toBeNull();
     expect(screen.getByText("tachi waza")).not.toBeNull();
-    await user.click(screen.getByText("No techniques on knees"));
+    await user.click(screen.getByText("Knee friendly"));
 
     expect(screen.queryByText("suwari waza")).toBeNull();
     expect(screen.queryByText("hanmi handachi waza")).toBeNull();

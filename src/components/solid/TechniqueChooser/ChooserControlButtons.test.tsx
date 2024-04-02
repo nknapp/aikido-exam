@@ -1,5 +1,5 @@
 import { renderSolid } from "$core/test-utils/renderSolid.test-helper.tsx";
-import { MultipleChoiceButtons, type Option } from "@/components/solid/TechniqueChooser/MultipleChoiceButtons.tsx";
+import { ChooserControlButtons, type Option } from "@/components/solid/TechniqueChooser/ChooserControlButtons.tsx";
 import { screen } from "solid-testing-library";
 import { createSignal } from "solid-js";
 import { user } from "$core/test-utils/user.ts";
@@ -8,7 +8,7 @@ import { simulateSsrEnvironment } from "$core/test-utils/simulateSsrEnvironment.
 
 function renderExamSelector(options: Array<Option>) {
   const [value, setValue] = createSignal(new Set<string>());
-  const result = renderSolid(() => <MultipleChoiceButtons options={options} value={value()} onChange={setValue} />);
+  const result = renderSolid(() => <ChooserControlButtons options={options} value={value()} onChange={setValue} />);
   return {
     ...result,
     value,
@@ -63,12 +63,9 @@ describe("ExamSelector", () => {
       { id: "2", label: "Option 2" },
     ];
     const { value } = renderExamSelector(options);
-    const { button, checkbox } = getCheckButton("Option 1");
+    const { button } = getCheckButton("Option 1");
     expect(button).toBeDisabled();
-    expect(checkbox).toBeDisabled();
     await user.click(button);
-    expect(value()).toEqual(new Set([]));
-    await user.click(checkbox);
     expect(value()).toEqual(new Set([]));
   });
 });

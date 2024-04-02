@@ -1,7 +1,13 @@
-import { screen, within } from "solid-testing-library";
+import { screen } from "solid-testing-library";
 
-export function getCheckButton(label: string) {
-  const button = screen.getByText(label);
-  const checkbox = within(button).getByRole("checkbox");
-  return { button, checkbox };
+export function getCheckButton(label: string): {
+  button: HTMLButtonElement;
+  isSelected(): boolean;
+} {
+  const button = screen.getByText<HTMLButtonElement>(label);
+  const isSelected = () => {
+    return button.getAttribute("aria-checked") === "true";
+  };
+
+  return { button, isSelected };
 }

@@ -7,7 +7,7 @@ describe("filtertechniques", () => {
       createTechnique("suwari waza", "shomen uchi", "irimi nage", "ura"),
       createTechnique("hanmi handachi waza", "shomen uchi", "irimi nage", "ura"),
       createTechnique("tachi waza", "shomen uchi", "irimi nage", "ura"),
-    ].filter(techniquePredicate({ badKnees: true }));
+    ].filter(techniquePredicate({ kneeFriendly: true }));
     expect(filtered).toEqual([createTechnique("tachi waza", "shomen uchi", "irimi nage", "ura")]);
   });
 
@@ -16,7 +16,7 @@ describe("filtertechniques", () => {
       createTechnique("suwari waza", "shomen uchi", "irimi nage", "ura"),
       createTechnique("hanmi handachi waza", "shomen uchi", "irimi nage", "ura"),
       createTechnique("tachi waza", "shomen uchi", "irimi nage", "ura"),
-    ].filter(techniquePredicate({ badKnees: false }));
+    ].filter(techniquePredicate({ kneeFriendly: false }));
     expect(filtered).toEqual([
       createTechnique("suwari waza", "shomen uchi", "irimi nage", "ura"),
       createTechnique("hanmi handachi waza", "shomen uchi", "irimi nage", "ura"),
