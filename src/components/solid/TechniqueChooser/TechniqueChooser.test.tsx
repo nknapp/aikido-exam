@@ -167,7 +167,7 @@ describe("Chooser.test.tsx", async () => {
     ]);
   });
 
-  it("only shows selected exams", async () => {
+  it("only includes techniques of selected exams", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
         exams: [
