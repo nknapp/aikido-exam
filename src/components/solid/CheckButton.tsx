@@ -13,7 +13,7 @@ export const CheckButton: Component<{
 
   const classes = createMemo(() =>
     [
-      "flex items-center gap-2 border border-primary rounded p-4 whitespace-nowrap print:p-1",
+      "flex items-center gap-2 border border-primary rounded p-4 whitespace-nowrap print:p-1 ",
       props.value ? "bg-primary-light outline-2 outline-primary outline" : "print:hidden bg-white",
       props.class ?? "",
     ].join(" "),

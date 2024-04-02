@@ -1,4 +1,4 @@
-import { type Component, createMemo, createSignal } from "solid-js";
+import { type Component, createDeferred, createSignal } from "solid-js";
 import type { ResolvedDojo } from "$core/model/Dojo.ts";
 import { t } from "@/i18n";
 import { ExamSheet } from "@/components/solid/TechniqueChooser/ExamSheet.tsx";
@@ -11,6 +11,8 @@ import { isServer } from "solid-js/web";
 import { type TechniqueFilters, techniquePredicate } from "$core/techniqueFilter/technique-filters.ts";
 import { ChooserControlContainer } from "@/components/solid/TechniqueChooser/ChooserControlContainer.tsx";
 import { ChooserControlFilters } from "@/components/solid/TechniqueChooser/ChooserControlFilters.tsx";
+import { ChooserControlOrder, type OrderOptions } from "@/components/solid/TechniqueChooser/ChooserControlOrder.tsx";
+import { shuffleTechniques } from "$core/shuffleTechniques";
 
 export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
   const [examSelection, setExamSelection] = syncToStorage(createSignal(new Set<string>()), {
@@ -25,12 +27,27 @@ export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
     storage: isServer ? global.localStorage : sessionStorage,
   });
 
-  const selectedTechniques = createMemo(() => {
+  const [order, setOrder] = syncToStorage(createSignal<OrderOptions>({ randomize: true, includePercent: 80 }), {
+    name: "orderOptions::" + props.dojo.info.id,
+    storage: isServer ? global.localStorage : sessionStorage,
+  });
+
+  const [refreshForced, setRefreshForced] = createSignal(false);
+  function forceRefresh() {
+    setRefreshForced((oldValue) => !oldValue);
+  }
+  const selectedTechniques = createDeferred(() => {
+    // Make force refresh a dependency
+    refreshForced();
     const exams = props.dojo.details.exams.filter((exam) => examSelection().has(exam.id));
     const allTechniques = resolveExamTables(exams);
 
     const filteredTechniques = allTechniques.filter(techniquePredicate(selectedFilters()));
-    return groupTechniques(filteredTechniques, { canonicalExecutionOrder: true });
+    const orderedTechniques = order().randomize
+      ? shuffleTechniques(filteredTechniques, { coverage: order().includePercent / 100 })
+      : filteredTechniques;
+
+    return groupTechniques(orderedTechniques, { orderExecutions: true });
   });
 
   return (
@@ -44,6 +61,9 @@ export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
       </ChooserControlContainer>
       <ChooserControlContainer headerLabel={t("examChooser.filters.header")}>
         <ChooserControlFilters value={selectedFilters()} onChange={setSelectedFilters} />
+      </ChooserControlContainer>
+      <ChooserControlContainer headerLabel={t("examChooser.order.header")}>
+        <ChooserControlOrder value={order()} onChange={setOrder} onForceRefresh={forceRefresh} />
       </ChooserControlContainer>
       <div>
         {examSelection().size > 0 && (

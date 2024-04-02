@@ -1,12 +1,12 @@
 import { executions, type Technique } from "$core/model";
 import _groupBy from "lodash/groupBy";
 
-interface GroupTechniquesOptions {
-  canonicalExecutionOrder?: boolean;
+export interface GroupTechniquesOptions {
+  orderExecutions?: boolean;
 }
 
-export function groupTechniques(list: Technique[], { canonicalExecutionOrder = false }: GroupTechniquesOptions = {}) {
-  const executionOrder = canonicalExecutionOrder ? executions : null;
+export function groupTechniques(list: Technique[], { orderExecutions = false }: GroupTechniquesOptions = {}) {
+  const executionOrder = orderExecutions ? executions : null;
   return regroup(list, "execution", executionOrder, (group) => {
     return regroup(group, "attack", null, (group) => {
       return regroup(group, "defence", null, (group) => {
