@@ -1,8 +1,8 @@
 ---
 import { astroI18n, l } from "astro-i18n";
-import {languageLabel} from "../../i18n/server";
-import {nanoid} from "nanoid";
-import {IconTranslate} from "@/icons";
+import { languageLabel } from "../../i18n/server";
+import { nanoid } from "nanoid";
+import { IconTranslate } from "@/icons";
 
 const params: Record<string, string> = {};
 for (const [key, value] of Object.entries(Astro.params)) {
@@ -10,24 +10,28 @@ for (const [key, value] of Object.entries(Astro.params)) {
   params[key] = String(value);
 }
 
-const links = astroI18n.locales.map((locale) => ({
-  locale,
-  href: l(Astro.url.pathname, params, {
+const links = astroI18n.locales.map((locale) => {
+  const href = l(Astro.url.pathname, params, {
     targetLocale: locale,
-  }),
-  label: languageLabel(locale)
-}));
+  });
+  return {
+    locale,
+    href: href,
+    selected: href === Astro.url.pathname,
+    label: languageLabel(locale),
+  };
+});
 
-const id = nanoid()
+const id = nanoid();
 ---
 
 <div class="flex items-center">
   <label for={id}><IconTranslate /></label>
   <select id={id} class="p-2 text-sm bg-white" onchange="window.location.href=this.value">
     {
-      links.map(({ href, label }) => (
-        <option class="bg-none" value={href} selected={href===Astro.url.pathname}>
-          <a href={href}>{label}</a>
+      links.map(({ href, label, selected }) => (
+        <option class="bg-none" value={href} selected={selected}>
+          {label}
         </option>
       ))
     }
