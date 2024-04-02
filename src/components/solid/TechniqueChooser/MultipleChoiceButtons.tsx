@@ -5,6 +5,7 @@ import { CheckButton } from "@/components/solid/CheckButton.tsx";
 export interface Option {
   id: string;
   label: string;
+  wide?: boolean;
 }
 
 export interface ExamSelectorProps {
@@ -13,7 +14,7 @@ export interface ExamSelectorProps {
   onChange: (newValue: Set<string>) => void;
 }
 
-export const ExamSelector: Component<ExamSelectorProps> = (props) => {
+export const MultipleChoiceButtons: Component<ExamSelectorProps> = (props) => {
   function setValue(id: string, selected: boolean) {
     const newValue = new Set(props.value);
     if (selected) {
@@ -25,9 +26,16 @@ export const ExamSelector: Component<ExamSelectorProps> = (props) => {
   }
 
   return (
-    <div class={"grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4 mb-4 "}>
-      {props.options.map(({ id, label }) => {
-        return <CheckButton value={props.value.has(id)} text={label} onChange={(selected) => setValue(id, selected)} />;
+    <div class={"grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-4 mb-4 "}>
+      {props.options.map(({ id, label, wide }) => {
+        return (
+          <CheckButton
+            class={wide ? "col-span-2" : ""}
+            value={props.value.has(id)}
+            text={label}
+            onChange={(selected) => setValue(id, selected)}
+          />
+        );
       })}
     </div>
   );

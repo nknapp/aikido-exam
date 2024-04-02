@@ -1,5 +1,5 @@
 import { renderSolid } from "$core/test-utils/renderSolid.test-helper.tsx";
-import { ExamSelector, type Option } from "@/components/solid/TechniqueChooser/ExamSelector.tsx";
+import { MultipleChoiceButtons, type Option } from "@/components/solid/TechniqueChooser/MultipleChoiceButtons.tsx";
 import { screen } from "solid-testing-library";
 import { createSignal } from "solid-js";
 import { user } from "$core/test-utils/user.ts";
@@ -8,7 +8,7 @@ import { simulateSsrEnvironment } from "$core/test-utils/simulateSsrEnvironment.
 
 function renderExamSelector(options: Array<Option>) {
   const [value, setValue] = createSignal(new Set<string>());
-  const result = renderSolid(() => <ExamSelector options={options} value={value()} onChange={setValue} />);
+  const result = renderSolid(() => <MultipleChoiceButtons options={options} value={value()} onChange={setValue} />);
   return {
     ...result,
     value,

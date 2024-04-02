@@ -6,6 +6,8 @@ import { user } from "$core/test-utils/user.ts";
 import { getCheckButton } from "@/components/solid/CheckButton.test-helper.ts";
 import { waitFor } from "@testing-library/react";
 import { delay } from "@/utils/delay.ts";
+import { renderSolid } from "$core/test-utils/renderSolid.test-helper.tsx";
+import { showMe } from "@/debug/showMe.ts";
 
 afterEach(cleanup);
 
@@ -236,9 +238,49 @@ describe("Chooser.test.tsx", async () => {
 
     const dojo2 = createTestDojo("dojo2");
 
-    render(() => <TechniqueChooser dojo={dojo2} />);
+    renderSolid(() => <TechniqueChooser dojo={dojo2} />);
     await delay(100);
     const { checkbox: checkBoxAfterReload } = getCheckButton("5th Kyu");
     expect(checkBoxAfterReload).not.toBeChecked();
+  });
+
+  it("renders filters", () => {
+    const dojo = createResolvedDojo({
+      details: createDojoDetails({
+        exams: [createExam({ id: "kyu5", labelKey: "chooser.button.kyu5" })],
+      }),
+    });
+    renderSolid(() => <TechniqueChooser dojo={dojo} />);
+
+    expect(screen.getByText("No techniques on knees")).not.toBeNull();
+  });
+
+  it("clicking the bad-knees filter hides suwari-waza techniques", async () => {
+    const dojo = createResolvedDojo({
+      details: createDojoDetails({
+        exams: [
+          createExam({
+            id: "kyu5",
+            labelKey: "chooser.button.kyu5",
+            techniques: {
+              "suwari waza": { "ai hanmi katate dori": { ikkyo: { omote: {} } } },
+              "hanmi handachi waza": { "ai hanmi katate dori": { ikkyo: { omote: {} } } },
+              "tachi waza": { "ai hanmi katate dori": { ikkyo: { omote: {} } } },
+            },
+          }),
+        ],
+      }),
+    });
+    renderSolid(() => <TechniqueChooser dojo={dojo} />);
+    await user.click(screen.getByText("5th Kyu"));
+    showMe();
+    expect(screen.getByText("suwari waza")).not.toBeNull();
+    expect(screen.getByText("hanmi handachi waza")).not.toBeNull();
+    expect(screen.getByText("tachi waza")).not.toBeNull();
+    await user.click(screen.getByText("No techniques on knees"));
+
+    expect(screen.queryByText("suwari waza")).toBeNull();
+    expect(screen.queryByText("hanmi handachi waza")).toBeNull();
+    expect(screen.getByText("tachi waza")).not.toBeNull();
   });
 });
