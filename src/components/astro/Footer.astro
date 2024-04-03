@@ -4,10 +4,11 @@ import { l } from "astro-i18n";
 ---
 
 <div class="md:h-full bg-secondary-light">
-  <div class="container md:flex gap-8 items-center md:h-full">
+  <div class="container flex flex-col md:flex-row gap-1 md:gap-8 items-center md:h-full">
     <div>© 2024 Nils Knappmeier</div>
     <a class="text-primary-dark underline-offset-3 hover:underline" href={l("/legal")}}>Impressum / Datenschutz</a>
-    <div class="flex-auto"></div>
-    <a href="https://github.com/nknapp/aikido-exam" title="Github repository"><IconGithub /></a>
+    <div class="md:flex-auto"></div>
+    <a class="flex gap-2 items-center text-black hover:bg-secondary p-1 rounded-xl transition-colors" href="https://github.com/nknapp/aikido-exam" title="Github repository"><IconGithub /> GitHub</a>
   </div>
+  <div class="h-16"></div>
 </div>

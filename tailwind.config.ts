@@ -25,6 +25,7 @@ export default {
       "secondary-light": colors.gray["300"],
       "secondary-dark": colors.gray["700"],
       white: "#fff",
+      black: "#000",
     },
   },
   plugins: [],
