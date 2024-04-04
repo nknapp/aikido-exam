@@ -51,11 +51,15 @@ export const ManualTest: Component = () => {
           </ul>
         </li>
       </ol>
-      <div class="d-flex gap-2 align-items-center">
+      <div class="flex gap-2 items-center py-2">
         {mp3.error && <p>Error while loading mp3: {mp3.error}</p>}
         {mp3.loading && <p>Loading mp3</p>}
-        <button onClick={() => play(mp3()!)}>{mp3.loading ? "Loading..." : "Play"}</button>
-        <button onClick={() => stop()}>Stop</button>
+        <button class="border-primary border bg-primary-light p-2 rounded" onClick={() => play(mp3()!)}>
+          {mp3.loading ? "Loading..." : "Play"}
+        </button>
+        <button class="border-primary border bg-primary-light p-2 rounded" onClick={() => stop()}>
+          Stop
+        </button>
         <div>{playing() > 0 && "Playing"}</div>
       </div>
     </div>
