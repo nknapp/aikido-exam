@@ -1,8 +1,7 @@
-/// <reference types="vitest/config" />
-
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
 import solidSvg from "vite-plugin-solid-svg";
+import { configDefaults } from "vitest/config";
 
 export default defineConfig(() => {
   return {
@@ -21,6 +20,7 @@ export default defineConfig(() => {
     test: {
       css: true,
       globals: true,
+      exclude: [...configDefaults.exclude, "e2e-tests/**"],
       setupFiles: ["src/setupTests.ts"],
       environment: "jsdom",
       environmentOptions: {

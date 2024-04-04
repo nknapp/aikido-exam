@@ -23,7 +23,8 @@
     },
     "jsxImportSource": "solid-js",
     "types": [
-      "vite-plugin-solid-svg/types"
+      "vite-plugin-solid-svg/types",
+      "node"
     ]
   },
   "include": ["src", "scripts"]

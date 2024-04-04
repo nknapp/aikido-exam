@@ -31,3 +31,7 @@ youtube-api-settings.ts
 /merged.json
 /dist
 /.vitest-preview/index.html
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
