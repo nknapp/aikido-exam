@@ -1,0 +1,1 @@
+import{c as n,F as c}from"./web.BO7jKKnc.js";function a(e){return n(c,{get each(){return Object.entries(e.object)},children:(r,t)=>t()>0?[e.separator,e.children(r[0],r[1])]:e.children(r[0],r[1])})}export{a as F};
