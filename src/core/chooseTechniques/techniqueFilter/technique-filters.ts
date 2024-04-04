@@ -12,9 +12,11 @@ const techniqueFilterSpec = {
 
 export type TechniqueFilterName = keyof typeof techniqueFilterSpec;
 
-export type TechniqueFilters = Record<TechniqueFilterName, boolean>;
+export type TechniqueFilters = Partial<Record<TechniqueFilterName, boolean>>;
 
 export function techniquePredicate(filters: TechniqueFilters): (technique: Technique) => boolean {
+  // This can be refactored to be generic based on the techniqueFilterSpec, but that does not make sense
+  // with just one filter
   return (technique) => {
     return !filters["kneeFriendly"] || techniqueFilterSpec.kneeFriendly.filter(technique);
   };

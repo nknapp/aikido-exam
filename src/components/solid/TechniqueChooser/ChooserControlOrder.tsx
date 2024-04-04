@@ -4,19 +4,19 @@ import { CheckButton } from "@/components/solid/CheckButton.tsx";
 import { nanoid } from "nanoid";
 import { IconRefresh } from "@/icons";
 
-export interface OrderOptions {
+export interface ChoosableOrderOptions {
   randomize: boolean;
   includePercent: number;
 }
 
 export interface ChooserControlOrderProps {
-  value: OrderOptions;
-  onChange: (value: OrderOptions) => void;
+  value: ChoosableOrderOptions;
+  onChange: (value: ChoosableOrderOptions) => void;
   onForceRefresh: () => void;
 }
 
 export const ChooserControlOrder: Component<ChooserControlOrderProps> = (props) => {
-  function update<T extends keyof OrderOptions>(prop: T, value: OrderOptions[T]): void {
+  function update<T extends keyof ChoosableOrderOptions>(prop: T, value: ChoosableOrderOptions[T]): void {
     props.onChange({
       ...props.value,
       [prop]: value,

@@ -27,3 +27,9 @@ export function techniqueComponentsAsString(
 export function assertEqualTechniques(actual: Technique[], expected: Technique[]) {
   expect(actual.map(techniqueAsString)).toEqual(expected.map(techniqueAsString));
 }
+
+export function techniquesAsString(techniques: Technique[]): string[] {
+  return techniques.map(techniqueAsString);
+}
+
+export const tqs = techniquesAsString;
