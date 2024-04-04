@@ -1,5 +1,5 @@
 import { createTechnique } from "$core/model/Technique.test-helper.ts";
-import { groupTechniques } from "$core/groupTechniques/groupTechniques.ts";
+import { groupTechniques } from "./groupTechniques.ts";
 
 describe("groupTechnique", () => {
   const techniques = [

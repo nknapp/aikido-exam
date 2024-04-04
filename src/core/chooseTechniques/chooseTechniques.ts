@@ -1,8 +1,8 @@
 import type { Exam, Technique } from "$core/model";
 import { resolveExamTables } from "$core/resolveExamTables";
 import { type TechniqueFilters, techniquePredicate } from "./techniqueFilter";
-import { shuffleTechniques } from "$core/shuffleTechniques";
-import { groupTechniques } from "$core/groupTechniques/groupTechniques.ts";
+import { shuffleTechniques } from "./shuffleTechniques";
+import { groupTechniques } from "./groupTechniques";
 
 export interface ChooseTechniqueOptions {
   selectedExams?: Set<string>;
