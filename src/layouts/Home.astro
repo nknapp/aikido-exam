@@ -15,8 +15,7 @@ import Footer from "@/components/astro/Footer.astro";
 
 import "@/assets/styles/styles.scss";
 import { listDojos } from "../data/dojos";
-import LinkButton from "../components/astro/LinkButton.astro";
-import Brand from "../components/astro/header/Brand.astro";
+import {LinkButton} from "@/components/solid/atoms/LinkButton.tsx"
 import LocaleSwitcher from "../components/astro/LocaleSwitcher.astro";
 import {t} from "@/i18n"
 import {l} from "astro-i18n"
@@ -32,11 +31,11 @@ const dojos = await listDojos();
   <div class="flex flex-col items-center gap-8 mt-20">
     <header class="text-3xl">{title}</header>
     <img class="w-64" alt="Hero image" src={hero} />
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8">
       {
         teaser.map((item) => {
           return (
-            <div class="bg-primary-light p-2">
+            <div class="bg-primary-lightest px-4 py-2">
               <header class="font-bold">{item.title}</header>
               <p>{item.text}</p>
             </div>
@@ -49,10 +48,7 @@ const dojos = await listDojos();
       {
         dojos.map((dojo) => {
           return (
-            <LinkButton href={l(`/${dojo.id}`)}>
-              <img class="h-4" alt="logo" src={dojo.logo} />
-              {dojo.name}
-            </LinkButton>
+            <LinkButton href={l(`/${dojo.id}`)} icon={dojo.logo} label={dojo.name} />
           );
         })
       }

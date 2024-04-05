@@ -14,13 +14,14 @@ export interface ButtonClassProps {
 }
 
 const sizeClasses: Record<NonNullable<ButtonClassProps["size"]>, string> = {
-  normal: "p-4",
-  small: "p-2 text-sm",
+  normal: "p-4 gap-2",
+  small: "p-2 text-sm gap-1",
 };
 
 const colorClasses: Record<NonNullable<ButtonClassProps["color"]>, string> = {
-  primary: "border-primary text-primary-dark outline-primary hover:bg-primary-lightest",
-  secondary: "border-secondary text-secondary-dark outline-secondary  hover:bg-secondary-lightest",
+  primary: "border-primary text-primary-dark outline-primary hover:bg-primary-lightest disabled:hover:bg-white",
+  secondary:
+    "border-secondary text-secondary-dark outline-secondary  hover:bg-secondary-lightest disabled:hover:bg-white",
 };
 
 const highlightClasses = "outline outline-4 -outline-offset-4 active:outline-1 active:outline-offset-0";
@@ -31,7 +32,7 @@ const highlightedColorClasses: Record<NonNullable<ButtonClassProps["color"]>, st
 
 const iconSize: Record<NonNullable<ButtonClassProps["size"]>, string> = {
   normal: "",
-  small: "scale-80 origin-center",
+  small: "scale-75 origin-center",
 };
 
 const iconColor: Record<NonNullable<ButtonClassProps["color"]>, string> = {
@@ -46,7 +47,7 @@ export const createButtonClasses = (props: Accessor<ButtonClassProps>) => {
   return {
     buttonClasses: createMemo(() => {
       return cls(
-        "flex items-center gap-2 border rounded whitespace-nowrap truncate print:p-1 transition-all duration-100",
+        "flex items-center border rounded whitespace-nowrap truncate print:p-1 transition-all duration-100 hover:no-underline",
         "active:outline",
         "disabled:grayscale disabled:opacity-50",
         highlighted() && highlightClasses,
