@@ -6,7 +6,7 @@ import {
 import { screen } from "solid-testing-library";
 import { createSignal } from "solid-js";
 import { user } from "$core/test-utils/user.ts";
-import { getCheckButton } from "@/components/solid/CheckButton.test-helper.ts";
+import { getCheckButton } from "@/components/solid/atoms/CheckButton.test-helper.ts";
 import { simulateSsrEnvironment } from "$core/test-utils/simulateSsrEnvironment.test-helper.ts";
 
 function renderExamSelector(options: Array<Option>) {

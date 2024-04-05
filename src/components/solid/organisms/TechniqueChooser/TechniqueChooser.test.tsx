@@ -3,7 +3,7 @@ import { TechniqueChooser } from "./TechniqueChooser.tsx";
 import type { DojoDetails, DojoInfo, ResolvedDojo } from "$core/model/Dojo.ts";
 import { createExam } from "$core/model/Exam.test-helper.ts";
 import { user } from "$core/test-utils/user.ts";
-import { getCheckButton } from "@/components/solid/CheckButton.test-helper.ts";
+import { getCheckButton } from "@/components/solid/atoms/CheckButton.test-helper.ts";
 import { waitFor } from "@testing-library/react";
 import { delay } from "@/utils/delay.ts";
 import { renderSolid } from "$core/test-utils/renderSolid.test-helper.tsx";
