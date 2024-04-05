@@ -1,32 +1,43 @@
-import { type Component, createMemo, createSignal, onMount } from "solid-js";
+import { type Component } from "solid-js";
+import {
+  type ButtonColor,
+  type ButtonSize,
+  createButtonClasses,
+} from "@/components/solid/hooks/createButtonClasses.ts";
+import { isReady } from "@/components/solid/hooks/isReady.tsx";
 
-export const CheckButton: Component<{
+export interface CheckButtonProps {
+  size?: ButtonSize;
+  color?: ButtonColor;
+  disabled?: boolean;
   value: boolean;
   onChange: (value: boolean) => void;
-  text: string;
+  /**
+   *  @deprecated Use "label" instead
+   */
+  text?: string;
+  label?: string;
   class?: string;
-}> = (props) => {
-  const [ready, setReady] = createSignal(false);
-  onMount(() => {
-    setReady(true);
-  });
+  icon?: Component<{ class?: string }>;
+}
 
-  const classes = createMemo(() =>
-    [
-      "flex items-center gap-2 border border-primary rounded p-4 whitespace-nowrap print:p-1 ",
-      props.value ? "bg-primary-light outline-2 outline-primary outline" : "print:hidden bg-white",
-      props.class ?? "",
-    ].join(" "),
-  );
+export const CheckButton: Component<CheckButtonProps> = (props) => {
+  const ready = isReady();
+  const { buttonClasses, iconClasses } = createButtonClasses(() => ({
+    ...props,
+    highlighted: props.value,
+    disabled: props.disabled || !ready(),
+  }));
 
   return (
     <button
-      class={classes()}
-      disabled={!ready()}
+      class={buttonClasses()}
       onClick={() => props.onChange(!props.value)}
       aria-checked={props.value}
+      disabled={!ready()}
     >
-      {props.text}
+      {props.icon && <props.icon class={iconClasses()} />}
+      {props.label ?? props.text}
     </button>
   );
 };

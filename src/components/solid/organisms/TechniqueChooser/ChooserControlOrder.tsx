@@ -3,6 +3,7 @@ import { t } from "@/i18n";
 import { CheckButton } from "@/components/solid/atoms/CheckButton.tsx";
 import { nanoid } from "nanoid";
 import { IconRefresh } from "@/icons";
+import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
 
 export interface ChoosableOrderOptions {
   randomize: boolean;
@@ -41,18 +42,13 @@ export const ChooserControlOrder: Component<ChooserControlOrderProps> = (props) 
         value={props.value.randomize}
         onChange={(value) => update("randomize", value)}
       />
-      <button
-        class={
-          "border border-1 border-primary flex items-center gap-2 p-4 " +
-          "rounded bg-white hover:bg-primary-light transition-colors active:bg-primary " +
-          "disabled:grayscale disabled:opacity-50"
-        }
+      <SimpleButton
+        color={"secondary"}
+        icon={IconRefresh}
+        label={t("examChooser.order.shuffle")}
         disabled={!props.value.randomize}
         onClick={props.onForceRefresh}
-      >
-        <IconRefresh />
-        {t("examChooser.order.shuffle")}
-      </button>
+      />
       <div
         classList={{
           "flex flex-col justify-center col-span-2 items-center transition-opacity duration-200": true,

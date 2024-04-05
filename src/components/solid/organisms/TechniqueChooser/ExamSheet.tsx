@@ -4,6 +4,7 @@ import { ForEntries } from "./ForEntries.tsx";
 import { buildExamTable } from "$core/buildExamTable";
 import { IconPrint } from "@/icons";
 import { t } from "@/i18n";
+import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
 
 export interface ExamSheetProps {
   techniques: Technique[];
@@ -13,12 +14,13 @@ export const ExamSheet: Component<ExamSheetProps> = (props) => {
   return (
     <div>
       <div class="flex justify-end">
-        <button
-          class={"flex items-center bg-secondary-light p-2 text-sm print:hidden hover:bg-secondary"}
+        <SimpleButton
+          size={"small"}
+          color={"secondary"}
+          icon={IconPrint}
+          label={t("examChooser.print")}
           onClick={() => window.print()}
-        >
-          <IconPrint class="me-1 " /> {t("examChooser.print")}
-        </button>
+        />
       </div>
       <ForEntries object={buildExamTable(props.techniques)}>
         {(execution, attacks) => (

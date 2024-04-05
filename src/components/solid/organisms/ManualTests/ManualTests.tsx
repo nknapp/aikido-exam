@@ -11,9 +11,12 @@ export const ManualTests: Component = () => {
     <div>
       <ForEntries object={Tests}>
         {(key, ManualTest) => {
+          const id = key.replace(/\W/g, "_");
           return (
             <div>
-              <h1>{key}</h1>
+              <a href={`#${id}`}>
+                <h1 id={id}>{key}</h1>
+              </a>
               <div>
                 <ManualTest />
               </div>
