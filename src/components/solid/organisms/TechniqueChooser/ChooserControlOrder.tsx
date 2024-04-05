@@ -1,6 +1,6 @@
 import { type Component, createEffect, createSignal, onMount } from "solid-js";
 import { t } from "@/i18n";
-import { CheckButton } from "@/components/solid/CheckButton.tsx";
+import { CheckButton } from "@/components/solid/atoms/CheckButton.tsx";
 import { nanoid } from "nanoid";
 import { IconRefresh } from "@/icons";
 

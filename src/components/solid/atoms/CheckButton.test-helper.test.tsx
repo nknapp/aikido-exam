@@ -1,6 +1,6 @@
 import { renderSolid } from "$core/test-utils/renderSolid.test-helper.tsx";
-import { CheckButton } from "@/components/solid/CheckButton.tsx";
-import { getCheckButton } from "@/components/solid/CheckButton.test-helper.ts";
+import { CheckButton } from "./CheckButton.tsx";
+import { getCheckButton } from "./CheckButton.test-helper.ts";
 
 describe("CheckButton.test-helper", () => {
   it("returns button", () => {

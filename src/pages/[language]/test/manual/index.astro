@@ -3,7 +3,7 @@ import {listDojos} from "../../../../data/dojos";
 import {multiplyParams} from "../../../../utils/multiplyParams";
 import {languages} from "../../../../i18n/server";
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
-import {ManualTests} from "@/components/solid/ManualTests/ManualTests"
+import {ManualTests} from "../../../../components/solid/organisms/ManualTests/ManualTests"
 
 export async function getStaticPaths() {
     const dojos = await listDojos();

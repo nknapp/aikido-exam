@@ -1,6 +1,6 @@
 import { type Component } from "solid-js";
 
-import { CheckButton } from "@/components/solid/CheckButton.tsx";
+import { CheckButton } from "@/components/solid/atoms/CheckButton.tsx";
 import {} from "solid-js";
 
 export interface Option {

@@ -1,5 +1,8 @@
 import { renderSolid } from "$core/test-utils/renderSolid.test-helper.tsx";
-import { ChooserControlButtons, type Option } from "@/components/solid/TechniqueChooser/ChooserControlButtons.tsx";
+import {
+  ChooserControlButtons,
+  type Option,
+} from "@/components/solid/organisms/TechniqueChooser/ChooserControlButtons.tsx";
 import { screen } from "solid-testing-library";
 import { createSignal } from "solid-js";
 import { user } from "$core/test-utils/user.ts";

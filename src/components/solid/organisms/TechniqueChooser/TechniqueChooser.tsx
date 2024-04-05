@@ -1,17 +1,20 @@
 import { type Component, createDeferred, createSignal } from "solid-js";
 import type { ResolvedDojo } from "$core/model/Dojo.ts";
 import { t } from "@/i18n";
-import { ExamSheet } from "@/components/solid/TechniqueChooser/ExamSheet.tsx";
-import { ChooserControlButtons, type Option } from "@/components/solid/TechniqueChooser/ChooserControlButtons.tsx";
+import { ExamSheet } from "@/components/solid/organisms/TechniqueChooser/ExamSheet.tsx";
+import {
+  ChooserControlButtons,
+  type Option,
+} from "@/components/solid/organisms/TechniqueChooser/ChooserControlButtons.tsx";
 import type { Exam } from "$core/model";
-import { syncToStorage } from "@/components/solid/syncToStorage.ts";
+import { syncToStorage } from "@/components/solid/hooks/syncToStorage.ts";
 import { isServer } from "solid-js/web";
-import { ChooserControlContainer } from "@/components/solid/TechniqueChooser/ChooserControlContainer.tsx";
-import { ChooserControlFilters } from "@/components/solid/TechniqueChooser/ChooserControlFilters.tsx";
+import { ChooserControlContainer } from "@/components/solid/organisms/TechniqueChooser/ChooserControlContainer.tsx";
+import { ChooserControlFilters } from "@/components/solid/organisms/TechniqueChooser/ChooserControlFilters.tsx";
 import {
   ChooserControlOrder,
   type ChoosableOrderOptions,
-} from "@/components/solid/TechniqueChooser/ChooserControlOrder.tsx";
+} from "@/components/solid/organisms/TechniqueChooser/ChooserControlOrder.tsx";
 import { chooseTechniques, type TechniqueFilters } from "$core/chooseTechniques";
 
 export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {

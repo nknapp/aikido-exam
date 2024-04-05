@@ -9,10 +9,6 @@ export interface ExamSheetProps {
   techniques: Technique[];
 }
 
-interface DirectionsProps {
-  directions: Record<string, TechniqueMetadata>;
-}
-
 export const ExamSheet: Component<ExamSheetProps> = (props) => {
   return (
     <div>
@@ -57,6 +53,10 @@ export const ExamSheet: Component<ExamSheetProps> = (props) => {
     </div>
   );
 };
+
+interface DirectionsProps {
+  directions: Record<string, TechniqueMetadata>;
+}
 
 const ShowDirections: Component<DirectionsProps> = (props) => {
   const keys = Object.keys(props.directions);

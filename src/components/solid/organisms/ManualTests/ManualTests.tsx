@@ -1,5 +1,5 @@
 import type { Component } from "solid-js";
-import { ForEntries } from "@/components/solid/TechniqueChooser/ForEntries.tsx";
+import { ForEntries } from "@/components/solid/organisms/TechniqueChooser/ForEntries.tsx";
 
 const Tests = import.meta.glob("@/**/*.manual-test.tsx", { eager: true, import: "ManualTest" }) as Record<
   string,
