@@ -2,9 +2,7 @@ import { type Component, For } from "solid-js";
 import { SINGLE_DIRECTION, type Technique, type TechniqueMetadata } from "$core/model";
 import { ForEntries } from "./ForEntries.tsx";
 import { buildExamTable } from "$core/buildExamTable";
-import { IconPrint } from "@/icons";
 import { t } from "@/i18n";
-import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
 
 export interface ExamSheetProps {
   techniques: Technique[];
@@ -13,15 +11,6 @@ export interface ExamSheetProps {
 export const ExamSheet: Component<ExamSheetProps> = (props) => {
   return (
     <div>
-      <div class="flex justify-end">
-        <SimpleButton
-          size={"small"}
-          color={"secondary"}
-          icon={IconPrint}
-          label={t("examChooser.print")}
-          onClick={() => window.print()}
-        />
-      </div>
       <ForEntries object={buildExamTable(props.techniques)}>
         {(execution, attacks) => (
           <div>

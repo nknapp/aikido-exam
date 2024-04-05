@@ -1,0 +1,24 @@
+---
+import {loadDojo} from "@/data/dojos";
+import { listDojos } from "@/data/dojos";
+import { multiplyParams } from "@/utils/multiplyParams";
+import { languages } from "@/i18n/server";
+import {Reader} from "@/components/solid/organisms/Reader"
+
+import DefaultLayout from "@/layouts/DefaultLayout.astro";
+
+export async function getStaticPaths() {
+  const dojos = await listDojos();
+  return multiplyParams({
+    language: languages,
+    dojoId: dojos.map((dojo) => dojo.id),
+  });
+}
+
+const id = Astro.params.dojoId;
+const dojo = await loadDojo(id);
+---
+
+<DefaultLayout title="Reader">
+    <Reader dojoInfo={dojo.info} client:only />
+</DefaultLayout>

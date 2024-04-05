@@ -1,6 +1,7 @@
 import { type Component, createDeferred, createSignal } from "solid-js";
 import type { ResolvedDojo } from "$core/model/Dojo.ts";
 import { t } from "@/i18n";
+import { l } from "astro-i18n";
 import { ExamSheet } from "@/components/solid/organisms/TechniqueChooser/ExamSheet.tsx";
 import {
   ChooserControlButtons,
@@ -16,6 +17,9 @@ import {
   type ChoosableOrderOptions,
 } from "@/components/solid/organisms/TechniqueChooser/ChooserControlOrder.tsx";
 import { chooseTechniques, type TechniqueFilters } from "$core/chooseTechniques";
+import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
+import { IconPrint, IconSpeak } from "@/icons";
+import { createTechniqueStore } from "$core/store";
 
 export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
   const [examSelection, setExamSelection] = syncToStorage(createSignal(new Set<string>()), {
@@ -55,6 +59,12 @@ export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
     });
   });
 
+  const readLoud = async () => {
+    const { save } = createTechniqueStore(props.dojo.info.id);
+    await save(selectedTechniques());
+    document.location.href = l(`/${props.dojo.info.id}/reader`);
+  };
+
   return (
     <div>
       <ChooserControlContainer headerLabel={t("examChooser.exams.header")}>
@@ -73,6 +83,22 @@ export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
       <div>
         {examSelection().size > 0 && (
           <div class={"my-10"}>
+            <div class="flex justify-end gap-4">
+              <SimpleButton
+                size={"small"}
+                color={"primary"}
+                icon={IconSpeak}
+                label={t("examChooser.read")}
+                onClick={readLoud}
+              />
+              <SimpleButton
+                size={"small"}
+                color={"secondary"}
+                icon={IconPrint}
+                label={t("examChooser.print")}
+                onClick={() => window.print()}
+              />
+            </div>
             <ExamSheet techniques={selectedTechniques()} />
           </div>
         )}
