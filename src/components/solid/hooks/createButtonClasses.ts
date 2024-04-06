@@ -4,7 +4,7 @@ import { cls } from "$core/utils/cls.ts";
 export const buttonColors = ["primary", "secondary"] as const;
 export type ButtonColor = (typeof buttonColors)[number];
 
-export const buttonSizes = ["normal", "small"] as const;
+export const buttonSizes = ["small", "normal", "large"] as const;
 export type ButtonSize = (typeof buttonSizes)[number];
 
 export interface ButtonClassProps {
@@ -16,6 +16,7 @@ export interface ButtonClassProps {
 const sizeClasses: Record<NonNullable<ButtonClassProps["size"]>, string> = {
   normal: "p-4 gap-2",
   small: "p-2 text-sm gap-1",
+  large: "p-8 text-xl gap-3",
 };
 
 const colorClasses: Record<NonNullable<ButtonClassProps["color"]>, string> = {
@@ -33,6 +34,7 @@ const highlightedColorClasses: Record<NonNullable<ButtonClassProps["color"]>, st
 const iconSize: Record<NonNullable<ButtonClassProps["size"]>, string> = {
   normal: "",
   small: "scale-75 origin-center",
+  large: "scale-150 origin-center",
 };
 
 const iconColor: Record<NonNullable<ButtonClassProps["color"]>, string> = {
@@ -47,7 +49,7 @@ export const createButtonClasses = (props: Accessor<ButtonClassProps>) => {
   return {
     buttonClasses: createMemo(() => {
       return cls(
-        "flex items-center border rounded whitespace-nowrap truncate print:p-1 transition-all duration-100 hover:no-underline",
+        "flex items-center justify-center border rounded whitespace-nowrap truncate print:p-1 transition-all duration-100 hover:no-underline",
         "active:outline",
         "disabled:grayscale disabled:opacity-50",
         highlighted() && highlightClasses,

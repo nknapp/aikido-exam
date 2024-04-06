@@ -17,7 +17,7 @@ export const ManualTest: Component = () => {
           <For each={buttonColors}>
             {(color) => (
               <>
-                <ShowCase size={size} color={color} />
+                <ShowCase buttonProps={{ size, color }} grid={false} />
               </>
             )}
           </For>
@@ -27,21 +27,43 @@ export const ManualTest: Component = () => {
   );
 };
 
-const ShowCase: Component<Omit<SimpleButtonProps, "children" | "icon">> = (props) => {
+interface ShowCaseProps {
+  buttonProps: Omit<SimpleButtonProps, "children" | "icon">;
+  grid: boolean;
+}
+
+const ShowCase: Component<ShowCaseProps> = (props) => {
   const [clicked, setClicked] = createSignal(false);
   const handleClick = () => {
     setClicked(true);
     setTimeout(() => setClicked(false), 100);
   };
   return (
-    <div data-testid={"SimpleButton-ShowCase"} class={"flex items-center gap-4"}>
-      <div class={cls("text-black text-xs p-1", clicked() ? "bg-primary" : "bg-black duration-1000 transition-colors")}>
-        clicked
+    <div data-testid={"SimpleButton-ShowCase"} class={"flex items-center gap-4 border-b pb-4"}>
+      <div class={"w-full"}>
+        <div class="flex gap-4 pb-4">
+          <div>{JSON.stringify(props.buttonProps)}</div>
+          <div
+            class={cls(
+              "text-black text-xs p-1 w-20 mb-4",
+              clicked() ? "bg-primary" : "bg-black duration-1000 transition-colors",
+            )}
+          >
+            clicked
+          </div>
+        </div>
+
+        <div class={"flex gap-4 items-center mb-4"}>
+          <SimpleButton {...props.buttonProps} label={"Print"} onClick={handleClick} />
+          <SimpleButton {...props.buttonProps} label={"Print"} icon={IconPrint} onClick={handleClick} />
+          <SimpleButton {...props.buttonProps} icon={IconPrint} onClick={handleClick} />
+        </div>
+        <div class={"grid grid-cols-3 gap-4"}>
+          <SimpleButton {...props.buttonProps} label={"Print"} onClick={handleClick} />
+          <SimpleButton {...props.buttonProps} label={"Print"} icon={IconPrint} onClick={handleClick} />
+          <SimpleButton {...props.buttonProps} icon={IconPrint} onClick={handleClick} />
+        </div>
       </div>
-      <SimpleButton {...props} label={"Print"} onClick={handleClick} />
-      <SimpleButton {...props} label={"Print"} icon={IconPrint} onClick={handleClick} />
-      <SimpleButton {...props} icon={IconPrint} onClick={handleClick} />
-      <div>{JSON.stringify(props)}</div>
     </div>
   );
 };

@@ -28,6 +28,8 @@
   "examTable.header.defence": "Technique",
   "examTable.header.direction": "Direction",
   "examTable.header.execution": "Execution",
+  "footer.about": "About this app",
   "home.choose-dojo": "Choose your dojo:",
-  "language.label": "English"
+  "language.label": "English",
+  "player.does.not.work": "The Player sadly does not work yet. Please try again later."
 }

@@ -1,13 +1,16 @@
-import { type Component, Suspense } from "solid-js";
+import { type Component, createSignal, Suspense } from "solid-js";
 import type { DojoInfo } from "$core/model/Dojo.ts";
 import { createResource } from "solid-js";
 import { createTechniqueStore } from "$core/store";
-import { ExamSheet } from "@/components/solid/organisms/TechniqueChooser/ExamSheet.tsx";
 import { loadSpeechPackPlayer } from "@/core";
 import { playArrayBuffer } from "@/adapters/playArrayBuffer";
 import speechPack from "@/data/speechpacks/default";
 import { SINGLE_DIRECTION, type Technique } from "$core/model";
 import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
+import { ExamScroll } from "@/components/solid/organisms/Reader/ExamScroll.tsx";
+import { IconAutoMode, IconPlay, IconSkipNext, IconSkipPrevious } from "@/icons";
+import { CheckButton } from "@/components/solid/atoms/CheckButton.tsx";
+import { type Speed, SpeedButton } from "@/components/solid/organisms/Reader/SpeedButton.tsx";
 
 export const Reader: Component<{ dojoInfo: DojoInfo }> = (props) => {
   const techniqueStore = createTechniqueStore(props.dojoInfo.id);
@@ -29,21 +32,29 @@ export const Reader: Component<{ dojoInfo: DojoInfo }> = (props) => {
   );
 
   return (
-    <div>
-      <div class="flex items-center gap-2">
-        <img class={"h-8"} src={props.dojoInfo.logo.toString()} alt="" /> {props.dojoInfo.name}
-      </div>
+    <div class={"flex flex-col gap-4"}>
       <Suspense fallback={"Loading"}>
-        <h1>This feature is not finished yet. This is just a small POC</h1>
-        <div class="grid">
-          <Player player={player()} techniques={techniques()} />
-          <ExamSheet techniques={techniques()} />
-        </div>
+        <Player player={player()} techniques={techniques()} />
+        <ExamScroll class={"h-[40vh]"} techniques={techniques()} currentTechnique={techniques()[0]} />
       </Suspense>
     </div>
   );
 };
 
 const Player: Component<{ player: (technique: Technique) => Promise<void>; techniques: Technique[] }> = (props) => {
-  return <SimpleButton onClick={() => props.player(props.techniques[0])} label={"Play"} />;
+  const [autoPlay, setAutoPlay] = createSignal(false);
+  const [speed, setSpeed] = createSignal<Speed>("normal");
+  return (
+    <>
+      <div class={"grid grid-cols-3 gap-4"}>
+        <SimpleButton size="large" icon={IconSkipPrevious} />
+        <SimpleButton size="large" onClick={() => props.player(props.techniques[0])} icon={IconPlay} />
+        <SimpleButton size="large" icon={IconSkipNext} />
+      </div>
+      <div class={"grid grid-cols-2 gap-4"}>
+        <CheckButton size="small" icon={IconAutoMode} label={"Autoplay"} value={autoPlay()} onChange={setAutoPlay} />
+        <SpeedButton disabled={!autoPlay()} value={speed()} onChange={setSpeed} />
+      </div>
+    </>
+  );
 };

@@ -16,9 +16,7 @@ export interface SimpleButtonProps {
 export const SimpleButton: Component<SimpleButtonProps> = (props) => {
   const ready = isReady();
   const disabled = createMemo(() => !ready || props.disabled);
-  const { buttonClasses, iconClasses } = createButtonClasses(() => ({
-    ...props,
-  }));
+  const { buttonClasses, iconClasses } = createButtonClasses(() => props);
 
   return (
     <button class={buttonClasses()} onClick={(event) => props.onClick?.(event)} disabled={disabled()}>

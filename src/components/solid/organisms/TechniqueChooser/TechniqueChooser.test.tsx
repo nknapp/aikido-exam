@@ -1,49 +1,14 @@
 import { cleanup, render, screen } from "solid-testing-library";
 import { TechniqueChooser } from "./TechniqueChooser.tsx";
-import type { DojoDetails, DojoInfo, ResolvedDojo } from "$core/model/Dojo.ts";
 import { createExam } from "$core/model/Exam.test-helper.ts";
 import { user } from "$core/test-utils/user.ts";
 import { getCheckButton } from "@/components/solid/atoms/CheckButton.test-helper.ts";
 import { waitFor } from "@testing-library/react";
 import { delay } from "@/utils/delay.ts";
 import { renderSolid } from "$core/test-utils/renderSolid.test-helper.tsx";
+import { createDojoDetails, createDojoInfo, createResolvedDojo } from "$core/model/Dojo.test-helper.ts";
 
 afterEach(cleanup);
-
-function createDojoInfo(partialInfo: Partial<DojoInfo> = {}): DojoInfo {
-  return {
-    logo: "logo.png",
-    name: "logo",
-    id: "my-dojo",
-    ...partialInfo,
-  };
-}
-
-function createExams() {
-  return [
-    createExam({ labelKey: "chooser.button.kyu5" }),
-    createExam({ labelKey: "chooser.button.kyu4" }),
-    createExam({ labelKey: "chooser.button.kyu3" }),
-  ];
-}
-
-function createDojoDetails(partialDetails: Partial<DojoDetails> = {}): DojoDetails {
-  return {
-    additionalText: "dojo.darmstadt.additionalText",
-    sourceLink: "https://example.com/sourceLink",
-    exams: createExams(),
-    ...partialDetails,
-  };
-}
-
-function createResolvedDojo(partialDojo: Partial<ResolvedDojo> = {}) {
-  const dojo: ResolvedDojo = {
-    info: createDojoInfo(),
-    details: createDojoDetails(),
-    ...partialDojo,
-  };
-  return dojo;
-}
 
 describe("Chooser.test.tsx", async () => {
   it("renders all exams", async () => {
