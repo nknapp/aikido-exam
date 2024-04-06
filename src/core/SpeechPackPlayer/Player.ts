@@ -8,19 +8,29 @@ export async function loadSpeechPackPlayer(speechPack: SpeechPack, playArrayBuff
 class SpeechPackPlayer {
   private readonly speechPack: Promise<ResolvedSpeechPack>;
   private readonly playArrayBuffer: PlayArrayBuffer;
+  private abortController: AbortController;
   constructor(speechPack: Promise<ResolvedSpeechPack>, playArrayBuffer: PlayArrayBuffer) {
+    this.abortController = new AbortController();
     this.speechPack = speechPack;
     this.playArrayBuffer = playArrayBuffer;
   }
 
   async play(audioFiles: SpeechFile[]): Promise<void> {
+    this.abortController.abort();
+    const abortController = new AbortController();
+    this.abortController = abortController;
     for (const file of audioFiles) {
-      await this.playSingle(file);
+      if (abortController.signal.aborted) return;
+      await this.playSingle(file, abortController);
     }
   }
 
-  private async playSingle(audioFile: SpeechFile) {
+  async stop() {
+    this.abortController.abort();
+  }
+
+  private async playSingle(audioFile: SpeechFile, abortController: AbortController) {
     const loadedSpeechPack = await this.speechPack;
-    await this.playArrayBuffer(loadedSpeechPack[audioFile]);
+    await this.playArrayBuffer(loadedSpeechPack[audioFile], { abortSignal: abortController.signal });
   }
 }
