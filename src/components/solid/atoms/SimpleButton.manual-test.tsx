@@ -28,7 +28,7 @@ export const ManualTest: Component = () => {
 };
 
 interface ShowCaseProps {
-  buttonProps: Omit<SimpleButtonProps, "children" | "icon">;
+  buttonProps: Omit<SimpleButtonProps, "icon" | "label">;
   grid: boolean;
 }
 

@@ -31,5 +31,6 @@
   "footer.about": "About this app",
   "home.choose-dojo": "Choose your dojo:",
   "language.label": "English",
-  "player.does.not.work": "The Player sadly does not work yet. Please try again later."
+  "reader.does.not.work": "The Player sadly does not work yet. Please try again later.",
+  "reader.upcoming-technique": "Upcoming"
 }

@@ -28,6 +28,7 @@
     "test:lint": "eslint --cache .",
     "test:unit": "vitest",
     "test:ts": "tsc --project tsconfig.json",
+    "test": "CI=true run-s test:*",
     "dev:unit": "vitest --ui",
     "dev:vitest-preview": "vitest-preview",
     "dev:ts": "tsc --project tsconfig.json --watch",

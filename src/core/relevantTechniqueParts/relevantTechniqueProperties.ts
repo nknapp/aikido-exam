@@ -20,5 +20,5 @@ export function relevantTechniqueProperties(
   if (technique.direction !== lastTechnique.direction) {
     return properties.slice(3);
   }
-  throw new Error("All components of the previous technique equal the current one");
+  return properties;
 }

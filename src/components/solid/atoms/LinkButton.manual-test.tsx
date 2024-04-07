@@ -23,7 +23,7 @@ export const ManualTest: Component = () => {
   );
 };
 
-const ShowCase: Component<Omit<SimpleButtonProps, "children" | "icon">> = (props) => {
+const ShowCase: Component<Omit<SimpleButtonProps, "icon" | "label">> = (props) => {
   return (
     <div data-testid={"SimpleButton-ShowCase"} class={"flex items-center gap-4"}>
       <LinkButton {...props} label={"Print"} href={"#"} />

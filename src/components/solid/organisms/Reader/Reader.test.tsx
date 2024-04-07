@@ -11,6 +11,7 @@ import { assertMock } from "$core/test-utils/assertMock.ts";
 import { loadSpeechPack } from "$core/playSpeechFile";
 import { watchPlaySpeechFile } from "$core/playSpeechFile/playSpeechFile.test-helpers.ts";
 import { SINGLE_DIRECTION, type Technique } from "$core/model";
+import { showMe } from "@/debug/showMe.ts";
 
 const speechPack = createMockSpeechPack();
 
@@ -68,11 +69,31 @@ describe("Reader", () => {
     expect(screen.queryByText(SINGLE_DIRECTION)).toBeNull();
   });
 
-  it("initially, no technique is the 'current' one", async () => {
-    await renderReader({ techniques: [createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "omote")] });
+  it("initially, no technique is the 'current'.", async () => {
+    await renderReader({
+      techniques: [
+        createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "omote"),
+        createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "ura"),
+      ],
+    });
 
-    const item = await screen.findByRole("listitem");
-    expect(item).toHaveAttribute("aria-current", "false");
+    const items = await screen.findAllByRole("listitem");
+    for (const item of items) {
+      expect.soft(item).toHaveAttribute("aria-current", "false");
+    }
+  });
+
+  it("initially, the first technique is marked as upcoming", async () => {
+    await renderReader({
+      techniques: [
+        createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "omote"),
+        createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "ura"),
+      ],
+    });
+
+    const firstItem = (await screen.findAllByRole("listitem"))[0];
+    showMe();
+    expect.soft(firstItem).toHaveTextContent(/Upcoming/);
   });
 
   it("calls loadSpeechPack on load", async () => {
