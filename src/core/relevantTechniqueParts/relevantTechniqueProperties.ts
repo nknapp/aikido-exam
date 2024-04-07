@@ -1,10 +1,10 @@
-import { SINGLE_DIRECTION, type Technique, techniqueProperties, type TechniqueProperty } from "$core/model";
+import { type BaseTechnique, SINGLE_DIRECTION, techniqueProperties, type TechniqueProperty } from "$core/model";
 
 const propsWithoutDirection: TechniqueProperty[] = ["execution", "attack", "defence"] as const;
 
 export function relevantTechniqueProperties(
-  technique: Technique,
-  lastTechnique?: Technique,
+  technique: BaseTechnique,
+  lastTechnique?: BaseTechnique,
 ): readonly TechniqueProperty[] {
   const properties = technique.direction === SINGLE_DIRECTION ? propsWithoutDirection : techniqueProperties;
   if (lastTechnique == null) return properties;

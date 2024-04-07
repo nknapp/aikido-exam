@@ -30,6 +30,7 @@ module.exports = {
     },
     {
       files: ["src/core/**/*"],
+      excludedFiles: [ "*.manual-test.tsx" ],
       rules: {
         "no-restricted-imports": [
           "error",

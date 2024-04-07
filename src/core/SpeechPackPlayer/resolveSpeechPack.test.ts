@@ -1,7 +1,7 @@
-import type { SpeechFile } from "$core/slots";
+import type { SpeechFile } from "$core/model";
 import { useMockEndpoints } from "$core/test-utils/mock-api";
 import { http } from "msw";
-import { createMockSpeechPack } from "$core/slots/SpeechPack.test-helper";
+import { createMockSpeechPack } from "$core/model/SpeechPack.test-helper.ts";
 import { type ResolvedSpeechPack, resolveSpeechPack } from "$core/SpeechPackPlayer/resolveSpeechPack";
 import { logWarn } from "$core/utils/logger";
 

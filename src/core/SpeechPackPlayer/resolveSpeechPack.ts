@@ -1,4 +1,4 @@
-import type { SpeechPack } from "$core/slots";
+import type { SpeechPack } from "$core/model";
 import { logWarn } from "$core/utils/logger.ts";
 
 export type ResolvedSpeechPack = Record<keyof SpeechPack, ArrayBuffer>;

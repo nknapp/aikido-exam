@@ -1,5 +1,5 @@
 import fixture from "./playArrayBuffer.fixture.mp3?url";
-import { playArrayBuffer } from "./playArrayBuffer";
+import { playArrayBuffer } from "./playArrayBuffer.ts";
 import { type Component, createResource, createSignal } from "solid-js";
 import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
 import { delay } from "@/utils/delay.ts";

@@ -7,10 +7,17 @@ import type { TechniqueMetadata } from "./TechniqueMetadata";
 export const techniqueProperties = ["execution", "attack", "defence", "direction"] as const;
 export type TechniqueProperty = (typeof techniqueProperties)[number];
 
-export interface Technique {
+export interface BaseTechnique {
   execution: Execution;
   attack: Attack;
   defence: Defence;
   direction: Direction;
+}
+
+export interface Technique extends BaseTechnique {
   metadata: TechniqueMetadata;
+}
+
+export function buildTechniqueId(technique: BaseTechnique) {
+  return `${technique.execution} ${technique.attack} ${technique.defence} ${technique.direction}`.replace(/\W/g, "_");
 }

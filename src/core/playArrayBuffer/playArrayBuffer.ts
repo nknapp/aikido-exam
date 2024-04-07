@@ -1,8 +1,14 @@
-import { promiseWithResolvers } from "$core/utils/promiseWithResolvers";
-import { copyArrayBuffer } from "$core/utils/copyArrayBuffer";
-import type { PlayArrayBuffer } from "$core/slots";
+import { promiseWithResolvers } from "$core/utils/promiseWithResolvers.ts";
+import { copyArrayBuffer } from "$core/utils/copyArrayBuffer.ts";
 
-export const playArrayBuffer: PlayArrayBuffer = async (arrayBuffer, options = {}) => {
+export interface PlayArrayBufferOptions {
+  abortSignal?: AbortSignal;
+}
+
+export const playArrayBuffer = async (
+  arrayBuffer: ArrayBuffer,
+  options: PlayArrayBufferOptions = {},
+): Promise<void> => {
   const context = getOrCeateContext();
 
   const { resolve, promise } = promiseWithResolvers<void>();

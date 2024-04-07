@@ -1,5 +1,5 @@
-import type { SpeechPack } from "$core/slots";
-import { attacks, defences, executions, directions } from "$core/model";
+import type { SpeechPack } from "$core/model";
+import { attacks, defences, executions, directions } from "$core/model/index.ts";
 
 export function createMockSpeechPack(partial: Partial<SpeechPack> = {}): SpeechPack {
   const keys: (keyof SpeechPack)[] = [...attacks, ...defences, ...executions, ...directions];

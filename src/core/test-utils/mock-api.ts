@@ -1,5 +1,5 @@
 import { setupServer } from "msw/node";
-import { mockSpeechPackEndpoint } from "$core/slots/SpeechPack.mock-endpoint";
+import { mockSpeechPackEndpoint } from "$core/model/SpeechPack.mock-endpoint.ts";
 import { RequestHandler } from "msw";
 
 const server = setupServer(mockSpeechPackEndpoint());

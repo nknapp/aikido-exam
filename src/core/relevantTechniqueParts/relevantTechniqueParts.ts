@@ -1,5 +1,5 @@
 import type { Technique } from "$core/model/Technique";
-import type { SpeechFile } from "$core/slots";
+import type { SpeechFile } from "$core/model";
 import { relevantTechniqueProperties } from "$core/relevantTechniqueParts/relevantTechniqueProperties.ts";
 
 export function relevantTechniqueParts(technique: Technique, lastTechnique?: Technique): SpeechFile[] {

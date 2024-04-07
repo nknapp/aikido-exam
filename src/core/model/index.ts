@@ -5,3 +5,4 @@ export * from "./Direction";
 export * from "./TechniqueMetadata";
 export * from "./Technique";
 export * from "./Exam";
+export * from "./SpeechPack";

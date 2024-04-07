@@ -3,7 +3,6 @@ import type { DojoInfo } from "$core/model/Dojo.ts";
 import { createResource } from "solid-js";
 import { createTechniqueStore } from "$core/store";
 import { loadSpeechPackPlayer } from "@/core";
-import { playArrayBuffer } from "@/adapters/playArrayBuffer";
 import speechPack from "@/data/speechpacks/default";
 import { SINGLE_DIRECTION, type Technique } from "$core/model";
 import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
@@ -18,7 +17,7 @@ export const Reader: Component<{ dojoInfo: DojoInfo }> = (props) => {
   const [playing, setPlaying] = createSignal(false);
   const [player] = createResource(
     async () => {
-      const speechPackPlayer = await loadSpeechPackPlayer(speechPack, playArrayBuffer);
+      const speechPackPlayer = await loadSpeechPackPlayer(speechPack);
       return {
         play: async (technique: Technique) => {
           setPlaying(true);
