@@ -28,8 +28,8 @@ const ShowCase: Component<Omit<SimpleButtonProps, "children" | "icon">> = (props
     <div data-testid={"SimpleButton-ShowCase"} class={"flex items-center gap-4"}>
       <LinkButton {...props} label={"Print"} href={"#"} />
       <LinkButton {...props} label={"Print"} icon={IconPrint} href={"#"} />
-      <LinkButton {...props} icon={IconPrint} href={"#"} />
-      <LinkButton {...props} icon={logo} href={"#"} />
+      <LinkButton {...props} label={"Print"} hideLabel={true} icon={IconPrint} href={"#"} />
+      <LinkButton {...props} label="Aikido" hideLabel={true} icon={logo} href={"#"} />
       <LinkButton {...props} icon={logo} label="Aikido" href={"#"} />
       <div>{JSON.stringify(props)}</div>
     </div>

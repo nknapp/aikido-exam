@@ -38,7 +38,7 @@ export const ChooserControlOrder: Component<ChooserControlOrderProps> = (props) 
   return (
     <>
       <CheckButton
-        text={t("examChooser.order.randomize")}
+        label={t("examChooser.order.randomize")}
         value={props.value.randomize}
         onChange={(value) => update("randomize", value)}
       />

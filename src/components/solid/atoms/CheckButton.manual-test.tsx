@@ -29,7 +29,7 @@ const ShowCase: Component<Omit<CheckButtonProps, "onChange" | "label" | "icon">>
     <div data-testid={"CheckButton-ShowCase"} class={"flex items-center gap-4"}>
       <CheckButton {...props} label={"5th Kyu"} onChange={setValue} value={value()} />
       <CheckButton {...props} icon={IconPrint} label={"5th Kyu"} onChange={setValue} value={value()} />
-      <CheckButton {...props} icon={IconPrint} label={"5th Kyu"} onChange={setValue} value={value()} />
+      <CheckButton {...props} icon={IconPrint} label={"5th Kyu"} hideLabel={true} onChange={setValue} value={value()} />
       <div>{JSON.stringify(props)}</div>
     </div>
   );

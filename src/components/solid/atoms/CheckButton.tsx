@@ -5,6 +5,7 @@ import {
   createButtonClasses,
 } from "@/components/solid/hooks/createButtonClasses.ts";
 import { isReady } from "@/components/solid/hooks/isReady.tsx";
+import { cls } from "$core/utils/cls.ts";
 
 export interface CheckButtonProps {
   size?: ButtonSize;
@@ -12,12 +13,9 @@ export interface CheckButtonProps {
   disabled?: boolean;
   value: boolean;
   onChange: (value: boolean) => void;
-  /**
-   *  @deprecated Use "label" instead
-   */
-  text?: string;
-  label?: string;
+  label: string;
   class?: string;
+  hideLabel?: boolean;
   icon?: Component<{ class?: string }>;
 }
 
@@ -37,7 +35,7 @@ export const CheckButton: Component<CheckButtonProps> = (props) => {
       disabled={!ready()}
     >
       {props.icon && <props.icon class={iconClasses()} />}
-      {props.label ?? props.text}
+      <span class={cls(props.hideLabel && "sr-only")}>{props.label}</span>
     </button>
   );
 };

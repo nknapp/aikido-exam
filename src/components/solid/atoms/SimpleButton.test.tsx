@@ -3,8 +3,13 @@ import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
 import { screen } from "solid-testing-library";
 
 describe("SimpleButton", () => {
-  it("...", () => {
+  it("renders the label", () => {
     renderSolid(() => <SimpleButton label={"Print"} />);
     expect(screen.getByText("Print")).toBeInTheDocument();
+  });
+
+  it("renders label only for screen-readers, if hideLabel is set to true", () => {
+    renderSolid(() => <SimpleButton label={"Print"} hideLabel={true} />);
+    expect(screen.getByText("Print")).toHaveClass("sr-only");
   });
 });

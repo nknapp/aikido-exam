@@ -11,7 +11,7 @@ export interface ChooserControlFiltersProps {
 export const ChooserControlFilters: Component<ChooserControlFiltersProps> = (props) => {
   return (
     <CheckButton
-      text={t("examChooser.filters.kneeFriendly")}
+      label={t("examChooser.filters.kneeFriendly")}
       value={props.value.kneeFriendly ?? false}
       onChange={(value) => props.onChange({ kneeFriendly: value })}
     />

@@ -1,6 +1,7 @@
 import { type Component, createMemo } from "solid-js";
 import { type ButtonColor, type ButtonSize, createButtonClasses } from "@/components/solid/hooks/createButtonClasses";
 import { isReady } from "@/components/solid/hooks/isReady.tsx";
+import { cls } from "$core/utils/cls.ts";
 
 export { buttonColors, buttonSizes } from "@/components/solid/hooks/createButtonClasses";
 
@@ -9,7 +10,8 @@ export interface SimpleButtonProps {
   color?: ButtonColor;
   disabled?: boolean;
   icon?: Component<{ class?: string }>;
-  label?: string;
+  hideLabel?: boolean;
+  label: string;
   onClick?(event: MouseEvent): void;
 }
 
@@ -21,7 +23,7 @@ export const SimpleButton: Component<SimpleButtonProps> = (props) => {
   return (
     <button class={buttonClasses()} onClick={(event) => props.onClick?.(event)} disabled={disabled()}>
       {props.icon && <props.icon class={iconClasses()} />}
-      {props.label}
+      <span class={cls(props.hideLabel && "sr-only")}>{props.label}</span>
     </button>
   );
 };

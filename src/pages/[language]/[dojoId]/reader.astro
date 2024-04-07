@@ -4,6 +4,7 @@ import { listDojos } from "@/data/dojos";
 import { multiplyParams } from "@/utils/multiplyParams";
 import { languages } from "@/i18n/server";
 import {Reader} from "@/components/solid/organisms/Reader"
+import speechPack from "@/data/speechpacks/default"
 
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
 
@@ -20,5 +21,5 @@ const dojo = await loadDojo(id);
 ---
 
 <DefaultLayout title="Reader">
-    <Reader dojoInfo={dojo.info} client:only />
+    <Reader dojoInfo={dojo.info} speechPack={speechPack} client:only />
 </DefaultLayout>

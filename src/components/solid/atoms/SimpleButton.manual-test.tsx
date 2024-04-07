@@ -56,12 +56,24 @@ const ShowCase: Component<ShowCaseProps> = (props) => {
         <div class={"flex gap-4 items-center mb-4"}>
           <SimpleButton {...props.buttonProps} label={"Print"} onClick={handleClick} />
           <SimpleButton {...props.buttonProps} label={"Print"} icon={IconPrint} onClick={handleClick} />
-          <SimpleButton {...props.buttonProps} icon={IconPrint} onClick={handleClick} />
+          <SimpleButton
+            {...props.buttonProps}
+            label={"Print"}
+            hideLabel={true}
+            icon={IconPrint}
+            onClick={handleClick}
+          />
         </div>
         <div class={"grid grid-cols-3 gap-4"}>
           <SimpleButton {...props.buttonProps} label={"Print"} onClick={handleClick} />
           <SimpleButton {...props.buttonProps} label={"Print"} icon={IconPrint} onClick={handleClick} />
-          <SimpleButton {...props.buttonProps} icon={IconPrint} onClick={handleClick} />
+          <SimpleButton
+            {...props.buttonProps}
+            label={"Print"}
+            hideLabel={true}
+            icon={IconPrint}
+            onClick={handleClick}
+          />
         </div>
       </div>
     </div>

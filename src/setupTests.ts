@@ -5,6 +5,8 @@ import { setupMockApi } from "$core/test-utils/mock-api";
 vi.mock("scripts/config");
 vi.mock("$core/utils/logger");
 vi.mock("$core/utils/shuffleList");
+vi.mock("$core/playArrayBuffer/playArrayBuffer");
+vi.mock("$core/playSpeechFile/playSpeechFile");
 vi.mock("@/i18n/index");
 // This mock creates a version of the solid-js module in which
 // the "onMount" constant can be mocked. This is only possible, because

@@ -31,7 +31,7 @@ export const ChooserControlButtons: Component<ExamSelectorProps> = (props) => {
       <CheckButton
         class={wide ? "col-span-2" : ""}
         value={props.value.has(id)}
-        text={label}
+        label={label}
         onChange={(selected) => setValue(id, selected)}
       />
     );
