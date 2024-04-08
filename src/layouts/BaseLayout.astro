@@ -23,11 +23,11 @@ const footerHeight = "48px";
     <title>{props.title}</title>
     <script defer data-domain="aikido-exam.knappi.org" src="https://plausible.io/js/script.js"></script>
   </head>
-  <body>
+  <body class={cls(props.fillScreen && "fillScreen")}>
     <header>
       <slot name="header" />
     </header>
-    <main class={cls(props.fillScreen && "fillScreen", "container pt-4 pb-4 print:pb-0 print:pt-0")}>
+    <main class={"container pt-4 pb-4 print:pb-0 print:pt-0"}>
       <slot />
     </main>
     <footer>
@@ -36,6 +36,14 @@ const footerHeight = "48px";
   </body>
 </html>
 <style define:vars={{ headerHeight, footerHeight }}>
+  body {
+    overflow-y: scroll;
+  }
+
+  body.fillScreen {
+    overflow-y: hidden;
+  }
+
   header {
     height: var(--headerHeight);
   }
@@ -44,7 +52,7 @@ const footerHeight = "48px";
     min-height: calc(100vh - var(--headerHeight) - var(--footerHeight));
   }
 
-  main.fillScreen {
+  body.fillScreen main {
     height: calc(100vh - var(--headerHeight) - var(--footerHeight));
   }
 

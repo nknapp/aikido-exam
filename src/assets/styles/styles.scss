@@ -18,10 +18,6 @@ ul {
   @apply list-disc ml-8
 }
 
-html {
- overflow-y: scroll;
-}
-
 
 @media print {
   .container {
