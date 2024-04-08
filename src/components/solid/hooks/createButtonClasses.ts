@@ -11,12 +11,13 @@ export interface ButtonClassProps {
   size?: ButtonSize;
   color?: ButtonColor;
   highlighted?: boolean;
+  class?: string;
 }
 
 const sizeClasses: Record<NonNullable<ButtonClassProps["size"]>, string> = {
-  normal: "p-4 gap-2",
-  small: "p-2 text-sm gap-1",
-  large: "p-8 text-xl gap-3",
+  small: "h-8 text-sm gap-1 px-2",
+  normal: "h-16 gap-2 px-4",
+  large: "h-48 text-xl gap-12 px-6",
 };
 
 const colorClasses: Record<NonNullable<ButtonClassProps["color"]>, string> = {
@@ -34,7 +35,7 @@ const highlightedColorClasses: Record<NonNullable<ButtonClassProps["color"]>, st
 const iconSize: Record<NonNullable<ButtonClassProps["size"]>, string> = {
   normal: "",
   small: "scale-75 origin-center",
-  large: "scale-150 origin-center",
+  large: "scale-[3] origin-center",
 };
 
 const iconColor: Record<NonNullable<ButtonClassProps["color"]>, string> = {
@@ -49,6 +50,7 @@ export const createButtonClasses = (props: Accessor<ButtonClassProps>) => {
   return {
     buttonClasses: createMemo(() => {
       return cls(
+        props().class,
         "flex items-center justify-center border rounded whitespace-nowrap truncate print:p-1 transition-all duration-100 hover:no-underline",
         "active:outline",
         "disabled:grayscale disabled:opacity-50",

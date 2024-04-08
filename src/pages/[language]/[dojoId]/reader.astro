@@ -20,6 +20,6 @@ const id = Astro.params.dojoId;
 const dojo = await loadDojo(id);
 ---
 
-<DefaultLayout title="Reader">
+<DefaultLayout title="Reader" fillScreen={true}>
     <Reader dojoInfo={dojo.info} speechPack={speechPack} client:only />
 </DefaultLayout>

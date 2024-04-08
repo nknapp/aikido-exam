@@ -13,6 +13,7 @@ export interface SimpleButtonProps {
   hideLabel?: boolean;
   label: string;
   onClick?(event: MouseEvent): void;
+  class?: string;
 }
 
 export const SimpleButton: Component<SimpleButtonProps> = (props) => {

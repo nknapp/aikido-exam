@@ -10,17 +10,19 @@ interface ExamScrollProps {
   techniques: Technique[];
   lastTechnique: Technique | null;
   nextTechnique: Technique | null;
-  class: string;
+  class?: string;
 }
 
 export const ExamScroll: Component<ExamScrollProps> = (props) => {
   const model = createMemo(() => Array.from(buildExamScroll(props.techniques)));
   return (
-    <ul class={cls("overflow-x-visible overflow-y-scroll grid gap-2 snap-y shadow-lg m-0 py-2 bg-white", props.class)}>
+    <ul
+      class={cls(
+        "overflow-y-scroll grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 shadow-lg m-0 py-2 bg-white",
+        props.class,
+      )}
+    >
       {/* TODO: Remove this when player is finished */}
-      {/*<li role={"presentation"} class={"list-none bg-info-light snap-start border-info border p-2 rounded"}>*/}
-      {/*  {t("reader.does.not.work")}*/}
-      {/*</li>*/}
       <For each={model()}>
         {(entry) => {
           return (
@@ -41,7 +43,7 @@ const Row: Component<{ entry: ExamScrollEntry; isLastTechnique: boolean; isNextT
 
   createEffect(() => {
     if (props.isNextTechnique) {
-      element.scrollIntoView?.({ block: "end", behavior: "smooth" });
+      element.scrollIntoView?.({ block: "end", inline: "start", behavior: "smooth" });
     }
   });
 

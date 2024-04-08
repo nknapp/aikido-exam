@@ -16,6 +16,7 @@ export interface SpeedButtonProps {
   icon?: Component<{ class?: string }>;
   value: Speed;
   onChange(value: Speed): void;
+  class?: string;
 }
 
 export const SpeedButton: Component<SpeedButtonProps> = (props) => {

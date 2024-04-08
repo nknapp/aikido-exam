@@ -5,9 +5,11 @@ import { createTechniqueStore } from "$core/store";
 import { buildTechniqueId, type SpeechPack, type Technique } from "$core/model";
 import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
 import { ExamScroll } from "@/components/solid/organisms/Reader/ExamScroll.tsx";
-import { IconPause, IconPlay, IconSkipNext, IconSkipPrevious } from "@/icons";
+import { IconAutoMode, IconPause, IconPlay, IconSkipNext, IconSkipPrevious } from "@/icons";
 
 import { createPlayer } from "@/components/solid/organisms/Reader/createPlayer.ts";
+import { CheckButton } from "@/components/solid/atoms/CheckButton.tsx";
+import { type Speed, SpeedButton } from "@/components/solid/organisms/Reader/SpeedButton.tsx";
 
 export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> = (props) => {
   const techniqueStore = createTechniqueStore(props.dojoInfo.id);
@@ -35,7 +37,7 @@ export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> =
   }
 
   return (
-    <div class={"flex flex-col gap-4"}>
+    <div class={"h-full flex flex-col gap-4"}>
       <Suspense fallback={"Loading"}>
         <Player
           playing={playing()}
@@ -51,12 +53,7 @@ export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> =
           onClickPrevious={() => nextTechniqueBy(-1)}
           ready={playerLoaded()}
         />
-        <ExamScroll
-          class={"h-[60vh]"}
-          techniques={techniques()}
-          lastTechnique={lastTechnique()}
-          nextTechnique={nextTechnique()}
-        />
+        <ExamScroll techniques={techniques()} lastTechnique={lastTechnique()} nextTechnique={nextTechnique()} />
       </Suspense>
     </div>
   );
@@ -70,12 +67,11 @@ const Player: Component<{
   onClickNext(): void;
   onClickPrevious(): void;
 }> = (props) => {
-  /* TODO: Implement auto-play */
-  // const [autoPlay, setAutoPlay] = createSignal(false);
-  // const [speed, setSpeed] = createSignal<Speed>("normal");
+  const [autoPlay, setAutoPlay] = createSignal(false);
+  const [speed, setSpeed] = createSignal<Speed>("normal");
   return (
     <>
-      <div class={"grid grid-cols-3 gap-4"}>
+      <div class={"grid grid-cols-4 gap-4"}>
         <SimpleButton
           label={"Previous"}
           hideLabel={true}
@@ -85,6 +81,7 @@ const Player: Component<{
           onClick={props.onClickPrevious}
         />
         <SimpleButton
+          class={"col-span-2"}
           disabled={!props.ready}
           size="large"
           onClick={() => (props.playing ? props.onClickStop() : props.onClickPlay())}
@@ -101,18 +98,18 @@ const Player: Component<{
           onClick={props.onClickNext}
         />
       </div>
-      {/* TODO: Implement auto-play */}
-      {/*<div class={"grid grid-cols-2 gap-4"}>*/}
-      {/*  <CheckButton*/}
-      {/*    size="small"*/}
-      {/*    icon={IconAutoMode}*/}
-      {/*    label={"Autoplay"}*/}
-      {/*    value={autoPlay()}*/}
-      {/*    onChange={setAutoPlay}*/}
-      {/*    disabled={!props.ready}*/}
-      {/*  />*/}
-      {/*  <SpeedButton disabled={!autoPlay() && !props.ready} value={speed()} onChange={setSpeed} />*/}
-      {/*</div>*/}
+      <div class={"grid grid-cols-2 gap-4 hidden"}>
+        TODO: Implement auto-play
+        <CheckButton
+          size="small"
+          icon={IconAutoMode}
+          label={"Autoplay"}
+          value={autoPlay()}
+          onChange={setAutoPlay}
+          disabled={!props.ready}
+        />
+        <SpeedButton size={"small"} disabled={!autoPlay() && !props.ready} value={speed()} onChange={setSpeed} />
+      </div>
     </>
   );
 };

@@ -12,6 +12,7 @@ export interface SimpleButtonProps {
   label: string;
   href: string;
   hideLabel?: boolean;
+  class?: string;
 }
 
 export const LinkButton: Component<SimpleButtonProps> = (props) => {
