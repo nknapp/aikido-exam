@@ -1,8 +1,8 @@
-import { type Component, createEffect, createSignal, Suspense } from "solid-js";
+import { type Component, createSignal, Suspense } from "solid-js";
 import type { DojoInfo } from "$core/model/Dojo.ts";
 import { createResource } from "solid-js";
 import { createTechniqueStore } from "$core/store";
-import { buildTechniqueId, type SpeechPack, type Technique } from "$core/model";
+import { type SpeechPack } from "$core/model";
 import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
 import { ExamScroll } from "@/components/solid/organisms/Reader/ExamScroll.tsx";
 import { IconAutoMode, IconPause, IconPlay, IconSkipNext, IconSkipPrevious } from "@/icons";
@@ -15,26 +15,10 @@ export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> =
   const techniqueStore = createTechniqueStore(props.dojoInfo.id);
   const [techniques] = createResource(techniqueStore.load, { initialValue: [] });
 
-  const { lastTechnique, playerLoaded, stop, play, playing } = createPlayer(() => props.speechPack);
-  const [nextTechnique, setNextTechnique] = createSignal<Technique | null>(null);
-
-  createEffect(() => {
-    setNextTechnique(techniques()[0]);
-  });
-
-  function nextTechniqueBy(step: number) {
-    const next = nextTechnique();
-    if (next == null) {
-      setNextTechnique(techniques()[0]);
-      return;
-    }
-    const nextTechniqueId = buildTechniqueId(next);
-    const currentIndex = techniques().findIndex((technique) => buildTechniqueId(technique) === nextTechniqueId);
-    const newIndex = currentIndex + step;
-    if (newIndex >= 0 && newIndex < techniques().length) {
-      setNextTechnique(techniques()[newIndex]);
-    }
-  }
+  const { lastTechnique, nextTechnique, skipNext, skipPrevious, playerLoaded, stop, play, playing } = createPlayer(
+    () => props.speechPack,
+    techniques,
+  );
 
   return (
     <div class={"h-full flex flex-col gap-4"}>
@@ -43,14 +27,12 @@ export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> =
           playing={playing()}
           onClickPlay={async () => {
             await play(nextTechnique() ?? techniques()[0]);
-            nextTechniqueBy(1);
           }}
           onClickStop={async () => {
             await stop();
-            setTimeout(() => setNextTechnique(lastTechnique()), 10);
           }}
-          onClickNext={() => nextTechniqueBy(1)}
-          onClickPrevious={() => nextTechniqueBy(-1)}
+          onClickNext={() => skipNext()}
+          onClickPrevious={() => skipPrevious()}
           ready={playerLoaded()}
         />
         <ExamScroll techniques={techniques()} lastTechnique={lastTechnique()} nextTechnique={nextTechnique()} />

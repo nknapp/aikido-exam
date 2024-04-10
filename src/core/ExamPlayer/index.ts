@@ -1,0 +1,1 @@
+export { ExamPlayer } from "./ExamPlayer";
