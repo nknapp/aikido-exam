@@ -6,7 +6,11 @@ const primaryColor = "#b6cbaa";
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue,css}"],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        mouse: { raw: "(hover: hover)" },
+      },
+    },
     container: {
       center: true,
       padding: {

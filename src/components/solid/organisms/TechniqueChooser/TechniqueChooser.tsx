@@ -83,7 +83,7 @@ export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
       <div>
         {examSelection().size > 0 && (
           <div class={"my-10"}>
-            <div class="flex justify-end gap-4">
+            <div class="flex justify-end gap-4 sticky top-0 py-2 bg-white">
               <SimpleButton
                 size={"small"}
                 color={"primary"}

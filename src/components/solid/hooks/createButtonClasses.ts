@@ -21,15 +21,15 @@ const sizeClasses: Record<NonNullable<ButtonClassProps["size"]>, string> = {
 };
 
 const colorClasses: Record<NonNullable<ButtonClassProps["color"]>, string> = {
-  primary: "border-primary text-primary-dark outline-primary hover:bg-primary-lightest disabled:hover:bg-white",
+  primary: "border-primary text-primary-dark outline-primary mouse:hover:bg-primary-lightest disabled:hover:bg-white",
   secondary:
-    "border-secondary text-secondary-dark outline-secondary  hover:bg-secondary-lightest disabled:hover:bg-white",
+    "border-secondary text-secondary-dark outline-secondary mouse:hover:bg-secondary-lightest disabled:hover:bg-white",
 };
 
 const highlightClasses = "outline outline-4 -outline-offset-4 active:outline-1 active:outline-offset-0";
 const highlightedColorClasses: Record<NonNullable<ButtonClassProps["color"]>, string> = {
-  primary: "text-primary-dark outline-primary bg-primary-lightest hover:bg-primary-light",
-  secondary: "text-secondary-dark outline-secondary bg-secondary-lightest hover:bg-secondary-light",
+  primary: "text-primary-dark outline-primary bg-primary-lightest mouse:hover:bg-primary-light",
+  secondary: "text-secondary-dark outline-secondary bg-secondary-lightest mouse:hover:bg-secondary-light",
 };
 
 const iconSize: Record<NonNullable<ButtonClassProps["size"]>, string> = {
