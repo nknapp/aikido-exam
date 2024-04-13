@@ -5,6 +5,7 @@ export { default as IconShuffle } from "@material-design-icons/svg/outlined/shuf
 export { default as IconSpeak } from "@material-design-icons/svg/outlined/record_voice_over.svg?component-solid";
 export { default as IconPlay } from "@material-design-icons/svg/filled/play_arrow.svg?component-solid";
 export { default as IconPause } from "@material-design-icons/svg/filled/pause.svg?component-solid";
+export { default as IconStop } from "@material-design-icons/svg/filled/stop.svg?component-solid";
 export { default as IconSkipNext } from "@material-design-icons/svg/filled/skip_next.svg?component-solid";
 export { default as IconSkipPrevious } from "@material-design-icons/svg/filled/skip_previous.svg?component-solid";
 export { default as IconAutoMode } from "@material-design-icons/svg/outlined/auto_mode.svg?component-solid";

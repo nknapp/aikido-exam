@@ -58,7 +58,7 @@ describe("ExamPlayer", () => {
 
   it("stops playback when stop is called", async () => {
     const { events, player, controlPlayback } = createPlayerWithEvents(defaultTechniques);
-    const done = player.playNext();
+    const done = player.play();
     await player.stop();
     controlPlayback().finish();
     await done;

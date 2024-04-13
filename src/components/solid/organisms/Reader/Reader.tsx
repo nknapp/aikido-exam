@@ -5,7 +5,7 @@ import { createTechniqueStore } from "$core/store";
 import { type SpeechPack } from "$core/model";
 import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
 import { ExamScroll } from "@/components/solid/organisms/Reader/ExamScroll.tsx";
-import { IconAutoMode, IconPause, IconPlay, IconSkipNext, IconSkipPrevious } from "@/icons";
+import { IconAutoMode, IconPlay, IconSkipNext, IconSkipPrevious, IconStop } from "@/icons";
 
 import { createPlayer } from "@/components/solid/organisms/Reader/createPlayer.ts";
 import { CheckButton } from "@/components/solid/atoms/CheckButton.tsx";
@@ -95,7 +95,7 @@ const Player: Component<{
           onClick={() => (props.playing ? props.onClickStop() : props.onClickPlay())}
           label={props.playing ? "Stop" : "Play"}
           hideLabel={true}
-          icon={props.playing ? IconPause : IconPlay}
+          icon={props.playing ? IconStop : IconPlay}
         />
         <SimpleButton
           label={"Next"}
