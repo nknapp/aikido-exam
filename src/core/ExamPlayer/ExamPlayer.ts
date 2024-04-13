@@ -8,7 +8,7 @@ interface ExamPlayerOptions {
   // It seems reasonable to outsource the waiting part to
   // the calling party, because it can then implement
   // visual feedback that is synchronized with the waiting period.
-  waitSeconds?(seconds: number): Promise<void>;
+  waitSeconds?(seconds: number, abortSignal: AbortSignal): Promise<void>;
 
   onUpdateNextTechnique?(technique: Technique | null): void;
   onUpdateLastTechnique?(technique: Technique | null): void;
@@ -21,6 +21,7 @@ export class ExamPlayer {
   private nextIndex: number;
   private lastIndex: number;
   private autoPlayEnabled: boolean;
+  private abortController = new AbortController();
 
   constructor(techniques: Technique[], options: ExamPlayerOptions = {}) {
     this.techniques = techniques;
@@ -32,6 +33,8 @@ export class ExamPlayer {
   }
 
   async play() {
+    this.abortController.abort();
+    this.abortController = new AbortController();
     this.options.onStart?.();
     try {
       await this._play();
@@ -43,8 +46,10 @@ export class ExamPlayer {
   private async _play() {
     await this.playNext();
     if (this.autoPlayEnabled && this.techniques[this.nextIndex] != null) {
-      await this.options.waitSeconds?.(20);
-      await this._play();
+      await this.options.waitSeconds?.(20, this.abortController.signal);
+      if (this.autoPlayEnabled) {
+        await this._play();
+      }
     }
   }
 
@@ -67,6 +72,8 @@ export class ExamPlayer {
 
   async stop() {
     await this.speechPackPlayer.stop();
+    this.setAutoPlay(false);
+    this.abortController.abort();
   }
 
   setAutoPlay(enabled: boolean) {

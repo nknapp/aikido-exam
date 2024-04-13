@@ -31,8 +31,8 @@ export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> =
   } = createPlayer(
     () => props.speechPack,
     techniques,
-    async (seconds) => {
-      await delayControl()?.animateDelay(seconds);
+    async (seconds, abortSignal) => {
+      await delayControl()?.animateDelay(seconds, abortSignal);
     },
   );
 

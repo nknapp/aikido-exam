@@ -9,9 +9,12 @@ export const ManualTest: Component = () => {
   });
   const [running, setRunning] = createSignal(false);
   const [disabled, setDisabled] = createSignal(false);
+  let abortController = new AbortController();
   async function animate() {
+    abortController.abort();
+    abortController = new AbortController();
     setRunning(true);
-    await delayControl().animateDelay(1);
+    await delayControl().animateDelay(1, abortController.signal);
     setRunning(false);
   }
   return (
@@ -20,6 +23,7 @@ export const ManualTest: Component = () => {
       <DelayIndicator setDelayControl={setDelayControl} disabled={disabled()} />
       <div class={"flex items-center gap-4 mt-4"}>
         <SimpleButton label={"Start animation"} onClick={() => animate()} disabled={running()} />
+        <SimpleButton label={"Stop animation"} onClick={() => abortController.abort()} disabled={!running()} />
         {running() ? "Running" : "Stopped"}
         <CheckButton value={disabled()} onChange={setDisabled} label={"Disabled"} />
       </div>

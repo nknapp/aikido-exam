@@ -20,7 +20,7 @@ interface CreatePlayerReturn {
 export function createPlayer(
   speechPack: Accessor<SpeechPack>,
   techniques: Accessor<Technique[]>,
-  waitSeconds: (seconds: number) => Promise<void>,
+  waitSeconds: (seconds: number, abortSignal: AbortSignal) => Promise<void>,
 ): CreatePlayerReturn {
   const [playerLoaded] = createResource(async () => {
     await loadSpeechPack(speechPack());

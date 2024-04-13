@@ -2,7 +2,7 @@ import { type Component, createSignal } from "solid-js";
 import { cls } from "$core/utils/cls.ts";
 
 export interface DelayControl {
-  animateDelay(seconds: number): Promise<void>;
+  animateDelay(seconds: number, abortSignal: AbortSignal): Promise<void>;
 }
 
 interface DelayIndicatorProps {
@@ -13,7 +13,7 @@ interface DelayIndicatorProps {
 export const DelayIndicator: Component<DelayIndicatorProps> = (props) => {
   const [element, setElement] = createSignal<HTMLElement>();
 
-  async function animateDelay(seconds: number) {
+  async function animateDelay(seconds: number, abortSignal: AbortSignal) {
     const el = element();
     if (el == null) return;
     const animation = el.animate([{ width: "0%" }, { width: "100%" }], {
@@ -21,9 +21,17 @@ export const DelayIndicator: Component<DelayIndicatorProps> = (props) => {
       easing: "linear",
       duration: seconds * 1000,
     });
-    await animation.finished;
-    animation.cancel();
-    el.style.width = "0";
+
+    const cancel = () => {
+      animation.cancel();
+    };
+    abortSignal.addEventListener("abort", cancel);
+    try {
+      await animation.finished;
+    } catch (ignoredError) {
+      /* ignore aborted animation */
+    }
+    abortSignal.removeEventListener("abort", cancel);
   }
   props.setDelayControl({ animateDelay });
 
