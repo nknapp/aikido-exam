@@ -15,10 +15,18 @@ export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> =
   const techniqueStore = createTechniqueStore(props.dojoInfo.id);
   const [techniques] = createResource(techniqueStore.load, { initialValue: [] });
 
-  const { lastTechnique, nextTechnique, skipNext, skipPrevious, playerLoaded, stop, play, playing } = createPlayer(
-    () => props.speechPack,
-    techniques,
-  );
+  const {
+    lastTechnique,
+    nextTechnique,
+    skipNext,
+    skipPrevious,
+    playerLoaded,
+    stop,
+    play,
+    playing,
+    setAutoPlay,
+    autoPlay,
+  } = createPlayer(() => props.speechPack, techniques);
 
   return (
     <div class={"h-full flex flex-col gap-4"}>
@@ -26,14 +34,17 @@ export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> =
         <Player
           playing={playing()}
           onClickPlay={async () => {
-            await play(nextTechnique() ?? techniques()[0]);
+            await play();
           }}
           onClickStop={async () => {
+            setAutoPlay(false);
             await stop();
           }}
           onClickNext={() => skipNext()}
           onClickPrevious={() => skipPrevious()}
           ready={playerLoaded()}
+          onClickAutoPlay={() => setAutoPlay(!autoPlay())}
+          autoPlayEnabled={autoPlay()}
         />
         <ExamScroll techniques={techniques()} lastTechnique={lastTechnique()} nextTechnique={nextTechnique()} />
       </Suspense>
@@ -48,8 +59,9 @@ const Player: Component<{
   onClickStop(): void;
   onClickNext(): void;
   onClickPrevious(): void;
+  autoPlayEnabled: boolean;
+  onClickAutoPlay(): void;
 }> = (props) => {
-  const [autoPlay, setAutoPlay] = createSignal(false);
   const [speed, setSpeed] = createSignal<Speed>("normal");
   return (
     <>
@@ -67,7 +79,7 @@ const Player: Component<{
           disabled={!props.ready}
           size="large"
           onClick={() => (props.playing ? props.onClickStop() : props.onClickPlay())}
-          label={"Play"}
+          label={props.playing ? "Stop" : "Play"}
           hideLabel={true}
           icon={props.playing ? IconPause : IconPlay}
         />
@@ -80,17 +92,23 @@ const Player: Component<{
           onClick={props.onClickNext}
         />
       </div>
-      <div class={"grid grid-cols-2 gap-4 hidden"}>
-        TODO: Implement auto-play
+      <div class={"grid grid-cols-2 gap-4"}>
         <CheckButton
           size="small"
           icon={IconAutoMode}
           label={"Autoplay"}
-          value={autoPlay()}
-          onChange={setAutoPlay}
+          value={props.autoPlayEnabled}
+          onChange={props.onClickAutoPlay}
           disabled={!props.ready}
         />
-        <SpeedButton size={"small"} disabled={!autoPlay() && !props.ready} value={speed()} onChange={setSpeed} />
+        {/*TODO: Implement speed */}
+        <SpeedButton
+          class={"hidden"}
+          size={"small"}
+          disabled={!props.autoPlayEnabled && !props.ready}
+          value={speed()}
+          onChange={setSpeed}
+        />
       </div>
     </>
   );

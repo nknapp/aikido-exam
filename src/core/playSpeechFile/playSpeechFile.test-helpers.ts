@@ -4,6 +4,7 @@ import { promiseWithResolvers } from "$core/utils/promiseWithResolvers.ts";
 
 interface Controller {
   finish: () => void;
+  finishNext: (expectedFilename: string) => void;
 }
 
 export function watchPlaySpeechFile() {

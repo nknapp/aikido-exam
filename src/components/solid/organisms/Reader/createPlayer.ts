@@ -5,11 +5,13 @@ import { loadSpeechPack } from "$core/playSpeechFile";
 import { ExamPlayer } from "$core/ExamPlayer";
 
 interface CreatePlayerReturn {
-  play(technique: Technique): Promise<void>;
+  play(): Promise<void>;
   playing: Accessor<boolean>;
   stop(): Promise<void>;
   skipNext(): Promise<void>;
   skipPrevious(): Promise<void>;
+  setAutoPlay(enabled: boolean): void;
+  autoPlay: Accessor<boolean>;
   playerLoaded: Resource<boolean>;
   lastTechnique: Accessor<Technique | null>;
   nextTechnique: Accessor<Technique | null>;
@@ -20,6 +22,7 @@ export function createPlayer(speechPack: Accessor<SpeechPack>, techniques: Acces
     await loadSpeechPack(speechPack());
     return true;
   });
+  const [autoPlay, setAutoPlay] = createSignal(false);
   const [playing, setPlaying] = createSignal(false);
 
   const [lastTechnique, setLastTechnique] = createSignal<Technique | null>(null);
@@ -29,6 +32,7 @@ export function createPlayer(speechPack: Accessor<SpeechPack>, techniques: Acces
     const examPlayer = new ExamPlayer(techniques(), {
       onStart: () => setPlaying(true),
       onStop: () => setPlaying(false),
+      onAutoPlay: setAutoPlay,
       onUpdateNextTechnique: (technique) => setNextTechnique(technique),
       onUpdateLastTechnique: (technique) => setLastTechnique(technique),
     });
@@ -37,6 +41,10 @@ export function createPlayer(speechPack: Accessor<SpeechPack>, techniques: Acces
   });
 
   return {
+    autoPlay,
+    setAutoPlay(enabled: boolean) {
+      player().setAutoPlay(enabled);
+    },
     playing,
     playerLoaded,
     lastTechnique,

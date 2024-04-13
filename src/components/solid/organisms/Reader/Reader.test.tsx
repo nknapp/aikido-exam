@@ -14,7 +14,7 @@ import { SINGLE_DIRECTION, type Technique } from "$core/model";
 
 const speechPack = createMockSpeechPack();
 
-const { playSpeechFileEvents } = watchPlaySpeechFile();
+const { playSpeechFileEvents, controlPlayback } = watchPlaySpeechFile();
 
 async function renderReader({ dojo: dojoInfo = createDojoInfo(), techniques = [] as Technique[] }) {
   const techniqueStore = createTechniqueStore(dojoInfo.id);
@@ -124,6 +124,35 @@ describe("Reader", () => {
     await user.click(await screen.findByRole("button", { name: "Play" }));
     const item = await screen.findByRole("listitem");
     expect(item).toHaveAttribute("aria-current", "true");
+  });
+
+  it("sets shows 'Stop' button while playing ", async () => {
+    await renderReader({
+      techniques: [createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "omote")],
+    });
+    const { finish } = controlPlayback();
+    await user.click(await screen.findByRole("button", { name: "Play" }));
+    expect(await screen.findByRole("button", { name: "Stop" }));
+    finish();
+    expect(await screen.findByRole("button", { name: "Play" }));
+  });
+
+  it("aborts playing when clicking 'Stop'", async () => {
+    await renderReader({
+      techniques: [createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "omote")],
+    });
+    const { finish, finishNext } = controlPlayback();
+    await user.click(await screen.findByRole("button", { name: "Play" }));
+    finishNext("suwari waza");
+    await user.click(await screen.findByRole("button", { name: "Stop" }));
+
+    finish();
+    expect(playSpeechFileEvents).toEqual([
+      "play: suwari waza",
+      "play: ai hanmi katate dori",
+      "abort: ai hanmi katate dori",
+    ]);
+    expect(await screen.findByRole("button", { name: "Play" }));
   });
 });
 
