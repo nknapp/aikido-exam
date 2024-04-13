@@ -25,8 +25,10 @@ export function watchPlaySpeechFile() {
 
 export function onPlaySpeechFile(callback: (event: string) => void) {
   let playbackFinished = Promise.resolve();
+  let currentlyPlaying = "";
   assertMock(playSpeechFile);
   playSpeechFile.mockImplementation(async (filename, abortSignal) => {
+    currentlyPlaying = filename;
     callback(`play: ${filename}`);
     const handleAbort = () => {
       callback(`abort: ${filename}`);
@@ -38,11 +40,17 @@ export function onPlaySpeechFile(callback: (event: string) => void) {
 
   return {
     controlPlayback() {
-      const { resolve, reject, promise } = promiseWithResolvers<void>();
-      playbackFinished = promise;
+      let control = promiseWithResolvers<void>();
+      playbackFinished = control.promise;
       return {
-        finish: resolve,
-        error: reject,
+        finishNext(expectedFileName: string) {
+          expect(currentlyPlaying).toEqual(expectedFileName);
+          control.resolve();
+          control = promiseWithResolvers<void>();
+          playbackFinished = control.promise;
+        },
+        finish: () => control.resolve(),
+        error: (error: Error) => control.reject(error),
       };
     },
   };

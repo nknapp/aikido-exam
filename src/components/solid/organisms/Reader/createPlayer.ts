@@ -41,9 +41,8 @@ export function createPlayer(speechPack: Accessor<SpeechPack>, techniques: Acces
     playerLoaded,
     lastTechnique,
     nextTechnique,
-    async play(technique) {
-      setLastTechnique(technique);
-      await player().playNext();
+    async play() {
+      await player().play();
     },
     async stop() {
       await player().stop();
