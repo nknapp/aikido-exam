@@ -11,7 +11,6 @@ import { assertMock } from "$core/test-utils/assertMock.ts";
 import { loadSpeechPack } from "$core/playSpeechFile";
 import { watchPlaySpeechFile } from "$core/playSpeechFile/playSpeechFile.test-helpers.ts";
 import { SINGLE_DIRECTION, type Technique } from "$core/model";
-import { showMe } from "@/debug/showMe.ts";
 
 const speechPack = createMockSpeechPack();
 
@@ -92,7 +91,7 @@ describe("Reader", () => {
     });
 
     const firstItem = (await screen.findAllByRole("listitem"))[0];
-    showMe();
+
     expect.soft(firstItem).toHaveTextContent(/Upcoming/);
   });
 

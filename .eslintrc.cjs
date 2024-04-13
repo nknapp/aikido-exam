@@ -6,6 +6,14 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   rules: {
     "no-console": "warn",
+    "no-restricted-imports": ["error", "vitest-preview"],
+    "no-restricted-syntax": [
+      "error",
+      {
+        selector: "CallExpression[callee.name='showMe']",
+        message: "Remove 'showMe' before commit",
+      },
+    ],
   },
   overrides: [
     {
@@ -30,7 +38,7 @@ module.exports = {
     },
     {
       files: ["src/core/**/*"],
-      excludedFiles: [ "*.manual-test.tsx" ],
+      excludedFiles: ["*.manual-test.tsx"],
       rules: {
         "no-restricted-imports": [
           "error",
