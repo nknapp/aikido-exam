@@ -1,0 +1,24 @@
+---
+import DefaultLayout from "@/layouts/DefaultLayout.astro";
+import { Donations } from "@/components/solid/molecules/Donations";
+---
+
+<DefaultLayout>
+  <h2>Support this project</h2>
+
+  <p>
+    Since starting this project, I have invested a considerable amount of my free time to build this app. If it helped
+    you pass an exam, I would appreciate a small donation.
+  </p>
+  <p>It's also OK, not to give anything. I built this app primarily for myself.</p>
+
+  <Donations />
+
+  <p>
+    I do have ideas for new features that I am more likely to implement, if I know that people gain value from this app.
+  </p>
+  <ul>
+    <li>offline support</li>
+    <li>integrate videos from the <a href="http://www.aikido-kompendium.de/">Aikido-Kompendium</a></li>
+  </ul>
+</DefaultLayout>

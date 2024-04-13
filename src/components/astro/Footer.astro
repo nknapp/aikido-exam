@@ -7,6 +7,14 @@ import { t } from "@/i18n";
 <div class="h-full bg-secondary-light">
   <div class="container flex justify-between flex-row gap-0 md:gap-8 items-center h-full">
     <div>© 2024 Nils Knappmeier</div>
-    <a class="text-primary-dark underline-offset-3 hover:underline" href={l("/about")} }>{t("footer.about")}</a>
+    <div class="">
+      <a class="text-primary-dark underline-offset-3 hover:underline" href={l("/about")} }>{t("footer.about")}</a>
+      <span class="hidden sm:inline">
+        |
+        <a class="text-primary-dark underline-offset-3 hover:underline" href={l("/donations")} }
+          >{t("footer.donations")}</a
+        >
+      </span>
+    </div>
   </div>
 </div>

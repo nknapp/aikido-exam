@@ -20,6 +20,7 @@ import { chooseTechniques, type TechniqueFilters } from "$core/chooseTechniques"
 import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
 import { IconPrint, IconSpeak } from "@/icons";
 import { createTechniqueStore } from "$core/store";
+import { LinkButton } from "@/components/solid/atoms/LinkButton.tsx";
 
 export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
   const [examSelection, setExamSelection] = syncToStorage(createSignal(new Set<string>()), {
@@ -100,6 +101,10 @@ export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
               />
             </div>
             <ExamSheet techniques={selectedTechniques()} />
+            <div class={"flex items-center justify-end mt-16 gap-4"}>
+              <span>{t("donations.question")}</span>
+              <LinkButton size="small" label={t("donations.action")} href={l("/donations")} />
+            </div>
           </div>
         )}
       </div>

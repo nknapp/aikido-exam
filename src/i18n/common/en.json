@@ -12,6 +12,10 @@
   "chooser.button.kyu5": "5th Kyu",
   "dojo.aikido-foederation.additionalText": "+X are technique from my (Nils) memory that are not part of the official Aikido-Föderation program.",
   "dojo.darmstadt.additionalText": "The techniques in the 1st DAN group appear in the Aikido-Föderation program, but not in the Aikido Dojo Darmstadt",
+  "donations.action": "Consider donating!",
+  "donations.liberapay.label": "Support me at Liberapay",
+  "donations.paypal.label": "Buy me a coffee at PayPal",
+  "donations.question": "Did this app help you?",
   "examChooser.created-by": "This exam table was created with \"Aikido-Exam\" at {# url #}",
   "examChooser.exams-from": "Exams from",
   "examChooser.exams.header": "Exams",
@@ -29,6 +33,7 @@
   "examTable.header.direction": "Direction",
   "examTable.header.execution": "Execution",
   "footer.about": "About this app",
+  "footer.donations": "Donations",
   "home.choose-dojo": "Choose your dojo:",
   "language.label": "English",
   "reader.upcoming-technique": "Upcoming"

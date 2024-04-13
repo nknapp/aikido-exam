@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom";
 import { customMatchers } from "$core/test-utils/matchers";
 import { setupMockApi } from "$core/test-utils/mock-api";
+import { astroI18n } from "astro-i18n";
 
 vi.mock("scripts/config");
 vi.mock("$core/utils/logger");
@@ -15,6 +16,10 @@ vi.mock("solid-js", async (importOriginal) => {
   return {
     ...((await importOriginal()) as Record<string, unknown>),
   };
+});
+
+beforeAll(async () => {
+  await astroI18n.initialize({});
 });
 
 beforeEach(() => {

@@ -1,9 +1,10 @@
 ---
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
+import { Donations } from "@/components/solid/molecules/Donations";
 ---
 
 <DefaultLayout>
-  <h1>Impressum</h1>
+  <h2>Impressum</h2>
   <p>Verantwortlich für Inhalte laut § 5 TMG ist:</p>
   <canvas id="impress"></canvas>
   <h1>Datenschutz / Cookies</h1>
@@ -40,7 +41,6 @@ import DefaultLayout from "@/layouts/DefaultLayout.astro";
     Bugs können dort als Issue geöffnet werden. Falls Ihr Github nicht benutzen möchtet, könnt ihr mir eine Mail schreiben.
     Bitte <strong>seht davon ab</strong>, mich wegen Fehlern anzurufen.
   </p>
-
 
   <script>
     import { createImpress } from "@/utils/impressed";

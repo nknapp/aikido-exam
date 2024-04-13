@@ -12,6 +12,10 @@
   "chooser.button.kyu5": "5.Kyu",
   "dojo.aikido-foederation.additionalText": "+X sind Techniken, an die ich (Nils) mich erinnere, die aber nicht im Program der Aikido Föderation vorkommen.",
   "dojo.darmstadt.additionalText": "Die Techniken in der Gruppe 1.DAN sind Techniken, die im Programm der Aikido-Föderation vorkommen, aber nicht im Programm des Aikido-Dojo Darmstadt.",
+  "donations.action": "Spendier mir einen Kaffee!",
+  "donations.liberapay.label": "Unterstütze mich mit Liberapay",
+  "donations.paypal.label": "Spendiere einen Kaffee per Paypal",
+  "donations.question": "Hat diese App dir geholfen?",
   "examChooser.created-by": "Diese Prüfungstabelle wurde mit \"Aikido-Prüfung\" ({# url #}) erzeugt.",
   "examChooser.exams-from": "Prüfungen von",
   "examChooser.exams.header": "Prüfungen",
@@ -29,6 +33,7 @@
   "examTable.header.direction": "Richtung",
   "examTable.header.execution": "Auführung",
   "footer.about": "Über diese App",
+  "footer.donations": "Spenden",
   "home.choose-dojo": "Wähle dein Dojo aus:",
   "language.label": "Deutsch",
   "reader.upcoming-technique": "Nächste"

@@ -1,6 +1,7 @@
 ---
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
 import { IconGithub } from "../../../icons";
+import {Donations} from "@/components/solid/molecules/Donations"
 ---
 
 <DefaultLayout>
@@ -40,6 +41,8 @@ import { IconGithub } from "../../../icons";
     For bug reports, please open issues there, or contact me via the mail from the impress.
     Please <strong>do not</strong> call me via phone because of bugs.
   </p>
+
+  <Donations />
 
   <script>
     import { createImpress } from "@/utils/impressed";
