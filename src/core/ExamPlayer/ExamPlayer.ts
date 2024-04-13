@@ -17,7 +17,6 @@ interface ExamPlayerOptions {
 export class ExamPlayer {
   private readonly techniques: Array<Technique>;
   private readonly options: ExamPlayerOptions;
-  private alive: boolean = true;
   private speechPackPlayer = new SpeechPackPlayer();
   private nextIndex: number;
   private lastIndex: number;
@@ -33,29 +32,33 @@ export class ExamPlayer {
   }
 
   async play() {
+    this.options.onStart?.();
+    try {
+      await this._play();
+    } finally {
+      this.options.onStop?.();
+    }
+  }
+
+  private async _play() {
     await this.playNext();
     if (this.autoPlayEnabled && this.techniques[this.nextIndex] != null) {
       await this.options.waitSeconds?.(20);
-      await this.play();
+      await this._play();
     }
   }
 
   private async playNext() {
-    this.options.onStart?.();
-    try {
-      this.updateLastFromNext();
-      const nextTechnique = this.getNextTechnique();
-      if (nextTechnique == null) return;
-      await this.speechPackPlayer.playTechnique(nextTechnique);
-    } finally {
-      this.options.onStop?.();
-    }
+    this.updateLastFromNext();
+    const nextTechnique = this.getNextTechnique();
+    if (nextTechnique == null) return;
+    await this.speechPackPlayer.playTechnique(nextTechnique);
     await this.skipNext();
   }
 
   private updateLastFromNext() {
-    this.options.onUpdateLastTechnique?.(this.getNextTechnique());
     this.lastIndex = this.nextIndex;
+    this.options.onUpdateLastTechnique?.(this.techniques[this.lastIndex]);
   }
 
   private getNextTechnique(): Technique | null {
@@ -81,7 +84,5 @@ export class ExamPlayer {
     this.options.onUpdateNextTechnique?.(this.techniques[this.nextIndex]);
   }
 
-  destroy() {
-    this.alive = false;
-  }
+  destroy() {}
 }

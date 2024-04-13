@@ -51,53 +51,47 @@ describe("ExamPlayer", () => {
       "play: ai hanmi katate dori",
       "play: ikkyo",
       "play: omote",
-      "stop",
       "next: suwari waza ai hanmi katate dori ikkyo ura",
+      "stop",
     ]);
   });
 
   it("stops playback when stop is called", async () => {
     const { events, player, controlPlayback } = createPlayerWithEvents(defaultTechniques);
+    const control = controlPlayback();
     const done = player.play();
     await player.stop();
-    controlPlayback().finish();
+
+    control.finish();
     await done;
     expect(events.filter((event) => event.match(/^(play|abort)/))).toEqual(["play: suwari waza", "abort: suwari waza"]);
   });
 
-  it("skipnext goes to the next technique without playing", async () => {
-    const { events, player, clearEvents } = createPlayerWithEvents();
+  it("skipNext goes to the next technique without playing", async () => {
+    const { filteredEvents, player, clearEvents } = createPlayerWithEvents(defaultTechniques);
     clearEvents();
     await player.skipNext();
     await player.play();
 
-    expect(events).toEqual([
-      "next: suwari waza ai hanmi katate dori ikkyo ura",
-      "start",
-      "last: suwari waza ai hanmi katate dori ikkyo ura",
+    expect(filteredEvents("play")).toEqual([
       "play: suwari waza",
       "play: ai hanmi katate dori",
       "play: ikkyo",
       "play: ura",
-      "stop",
-      "next: tachi waza ai hanmi katate dori ikkyo omote",
     ]);
   });
 
   it("skipPrevious goes to the previous technique", async () => {
-    const { events, player, clearEvents } = createPlayerWithEvents();
+    const { filteredEvents, player, clearEvents } = createPlayerWithEvents();
     clearEvents();
     await player.play();
     await player.skipPrevious();
 
-    expect(events).toEqual([
-      "start",
-      "last: suwari waza ai hanmi katate dori ikkyo omote",
+    expect(filteredEvents("play", "next")).toEqual([
       "play: suwari waza",
       "play: ai hanmi katate dori",
       "play: ikkyo",
       "play: omote",
-      "stop",
       "next: suwari waza ai hanmi katate dori ikkyo ura",
       "next: suwari waza ai hanmi katate dori ikkyo omote",
     ]);
@@ -151,6 +145,26 @@ describe("ExamPlayer", () => {
       "play: ai hanmi katate dori",
       "play: ikkyo",
       "play: omote",
+    ]);
+  });
+
+  it("calls onStart and and onStop around the complete autoplay session", async () => {
+    const { filteredEvents, player } = createPlayerWithEvents([
+      createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "omote"),
+      createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "ura"),
+    ]);
+
+    player.setAutoPlay(true);
+    await player.play();
+
+    expect(filteredEvents("play", "abort", "start", "stop")).toEqual([
+      "start",
+      "play: suwari waza",
+      "play: ai hanmi katate dori",
+      "play: ikkyo",
+      "play: omote",
+      "play: ura",
+      "stop",
     ]);
   });
 });
