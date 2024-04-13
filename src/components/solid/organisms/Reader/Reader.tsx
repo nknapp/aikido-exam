@@ -10,10 +10,12 @@ import { IconAutoMode, IconPause, IconPlay, IconSkipNext, IconSkipPrevious } fro
 import { createPlayer } from "@/components/solid/organisms/Reader/createPlayer.ts";
 import { CheckButton } from "@/components/solid/atoms/CheckButton.tsx";
 import { type Speed, SpeedButton } from "@/components/solid/organisms/Reader/SpeedButton.tsx";
+import { type DelayControl, DelayIndicator } from "@/components/solid/atoms/DelayIndicator.tsx";
 
 export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> = (props) => {
   const techniqueStore = createTechniqueStore(props.dojoInfo.id);
   const [techniques] = createResource(techniqueStore.load, { initialValue: [] });
+  const [delayControl, setDelayControl] = createSignal<DelayControl>();
 
   const {
     lastTechnique,
@@ -26,7 +28,13 @@ export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> =
     playing,
     setAutoPlay,
     autoPlay,
-  } = createPlayer(() => props.speechPack, techniques);
+  } = createPlayer(
+    () => props.speechPack,
+    techniques,
+    async (seconds) => {
+      await delayControl()?.animateDelay(seconds);
+    },
+  );
 
   return (
     <div class={"h-full flex flex-col gap-4"}>
@@ -46,7 +54,13 @@ export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> =
           onClickAutoPlay={() => setAutoPlay(!autoPlay())}
           autoPlayEnabled={autoPlay()}
         />
-        <ExamScroll techniques={techniques()} lastTechnique={lastTechnique()} nextTechnique={nextTechnique()} />
+        <DelayIndicator setDelayControl={setDelayControl} disabled={!autoPlay()} />
+        <ExamScroll
+          class={"flex-1"}
+          techniques={techniques()}
+          lastTechnique={lastTechnique()}
+          nextTechnique={nextTechnique()}
+        />
       </Suspense>
     </div>
   );

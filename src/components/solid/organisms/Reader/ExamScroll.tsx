@@ -18,7 +18,7 @@ export const ExamScroll: Component<ExamScrollProps> = (props) => {
   return (
     <ul
       class={cls(
-        "overflow-y-scroll grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 shadow-lg m-0 py-2 bg-white",
+        "overflow-y-scroll grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 shadow-lg m-0 bg-white",
         props.class,
       )}
     >

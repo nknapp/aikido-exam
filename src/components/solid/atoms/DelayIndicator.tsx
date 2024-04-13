@@ -1,10 +1,16 @@
 import { type Component, createSignal } from "solid-js";
+import { cls } from "$core/utils/cls.ts";
 
 export interface DelayControl {
   animateDelay(seconds: number): Promise<void>;
 }
 
-export const DelayIndicator: Component<{ setDelayControl: (fn: DelayControl) => void }> = (props) => {
+interface DelayIndicatorProps {
+  setDelayControl: (fn: DelayControl) => void;
+  disabled: boolean;
+}
+
+export const DelayIndicator: Component<DelayIndicatorProps> = (props) => {
   const [element, setElement] = createSignal<HTMLElement>();
 
   async function animateDelay(seconds: number) {
@@ -16,11 +22,14 @@ export const DelayIndicator: Component<{ setDelayControl: (fn: DelayControl) => 
       duration: seconds * 1000,
     });
     await animation.finished;
+    animation.cancel();
+    el.style.width = "0";
   }
   props.setDelayControl({ animateDelay });
+
   return (
-    <div class={"w-full h-1 bg-primary-lightest"}>
-      <div class={"bg-primary h-full"} ref={setElement}></div>
+    <div class={cls("w-full h-1", props.disabled ? "bg-secondary-lightest" : "bg-primary-lightest")}>
+      <div class={"bg-primary h-full w-0"} ref={setElement}></div>
     </div>
   );
 };

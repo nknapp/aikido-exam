@@ -40,10 +40,7 @@ export class ExamPlayer {
     }
   }
 
-  /**
-   * @deprecated use "play" instead
-   */
-  async playNext() {
+  private async playNext() {
     this.options.onStart?.();
     try {
       this.updateLastFromNext();

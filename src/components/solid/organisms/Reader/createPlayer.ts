@@ -17,7 +17,11 @@ interface CreatePlayerReturn {
   nextTechnique: Accessor<Technique | null>;
 }
 
-export function createPlayer(speechPack: Accessor<SpeechPack>, techniques: Accessor<Technique[]>): CreatePlayerReturn {
+export function createPlayer(
+  speechPack: Accessor<SpeechPack>,
+  techniques: Accessor<Technique[]>,
+  waitSeconds: (seconds: number) => Promise<void>,
+): CreatePlayerReturn {
   const [playerLoaded] = createResource(async () => {
     await loadSpeechPack(speechPack());
     return true;
@@ -35,6 +39,7 @@ export function createPlayer(speechPack: Accessor<SpeechPack>, techniques: Acces
       onAutoPlay: setAutoPlay,
       onUpdateNextTechnique: (technique) => setNextTechnique(technique),
       onUpdateLastTechnique: (technique) => setLastTechnique(technique),
+      waitSeconds,
     });
     onCleanup(() => examPlayer.destroy());
     return examPlayer;
