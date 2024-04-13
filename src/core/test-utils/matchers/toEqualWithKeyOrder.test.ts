@@ -1,3 +1,5 @@
+import { getAssertionError } from "$core/test-utils/matchers/getAssertionError.test-helper.ts";
+
 describe("toEqualWithKeyOrder", () => {
   it("fails for object with different key order", () => {
     expect({ a: "b", c: "d" }).not.toEqualWithKeyOrder({ c: "d", a: "b" });
@@ -51,18 +53,3 @@ describe("toEqualWithKeyOrder", () => {
     expect(() => expect(received).toEqualWithKeyOrder(expected)).toThrow();
   });
 });
-
-interface JestExtendError {
-  message: string;
-  actual: unknown;
-  expected: unknown;
-}
-
-function getAssertionError(callback: () => void): JestExtendError {
-  try {
-    callback();
-  } catch (error) {
-    return error as JestExtendError;
-  }
-  throw new Error("Callback did not throw");
-}
