@@ -11,7 +11,8 @@ export { default as IconSkipPrevious } from "@material-design-icons/svg/filled/s
 export { default as IconAutoMode } from "@material-design-icons/svg/outlined/auto_mode.svg?component-solid";
 export { default as IconSpeed } from "@material-design-icons/svg/outlined/speed.svg?component-solid";
 export { default as IconArrowRightAlt } from "@material-design-icons/svg/outlined/arrow_right_alt.svg?component-solid";
-export { default as IconNextPlan } from "@material-design-icons/svg/outlined/next_plan.svg?component-solid";
+export { default as IconVideoLibrary } from "@material-design-icons/svg/outlined/video_library.svg?component-solid";
 
+export { default as IconNextPlan } from "@material-design-icons/svg/outlined/next_plan.svg?component-solid";
 export { default as IconGithub } from "./custom/github-mark.svg?component-solid";
 export { default as IconGithubWhite } from "./custom/github-mark-white.svg?component-solid";

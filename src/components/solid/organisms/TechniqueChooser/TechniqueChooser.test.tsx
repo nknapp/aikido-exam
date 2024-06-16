@@ -77,8 +77,8 @@ describe("Chooser.test.tsx", async () => {
 
     expect(screen.getByText("suwari waza")).toBeInTheDocument();
     expect(screen.getByText("ai hanmi katate dori")).toBeInTheDocument();
-    expect(screen.getByText("omote")).toBeInTheDocument();
-    expect(screen.getByText("ura")).toBeInTheDocument();
+    expect(screen.getByText("omote", { exact: false })).toBeInTheDocument();
+    expect(screen.getByText("ura", { exact: false })).toBeInTheDocument();
   });
 
   it("does not show 'single-direction", async () => {

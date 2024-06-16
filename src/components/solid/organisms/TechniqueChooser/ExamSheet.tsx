@@ -3,6 +3,8 @@ import { SINGLE_DIRECTION, type Technique, type TechniqueMetadata } from "$core/
 import { ForEntries } from "./ForEntries.tsx";
 import { buildExamTable } from "$core/buildExamTable";
 import { t } from "@/i18n";
+import { insertBetweenElements } from "@/utils/insertBetweenElements.ts";
+import { IconVideoLibrary } from "@/icons";
 
 export interface ExamSheetProps {
   techniques: Technique[];
@@ -50,13 +52,40 @@ interface DirectionsProps {
 }
 
 const ShowDirections: Component<DirectionsProps> = (props) => {
-  const keys = Object.keys(props.directions);
-  if (keys.length === 1 && keys[0] === SINGLE_DIRECTION) {
+  const names = Object.keys(props.directions);
+  if (names.length === 1 && names[0] === SINGLE_DIRECTION) {
     return null;
   }
+  const withVideos = names.map((item) => {
+    return (
+      <span>
+        {item}
+        {isFeatureEnabled("youtube") && <YoutubeLink metadata={props.directions[item]} />}
+      </span>
+    );
+  });
+  return <span class={"text-sm text-secondary"}>( {insertBetweenElements(withVideos, ", ").flat()} )</span>;
+};
+
+// WIP
+const YoutubeLink: Component<{ metadata: TechniqueMetadata }> = (props) => {
+  const youtube =
+    props.metadata.youtube == null
+      ? []
+      : Array.isArray(props.metadata.youtube)
+        ? props.metadata.youtube
+        : [props.metadata.youtube];
   return (
-    <span class={"text-sm text-secondary"}>
-      ( <For each={keys}>{(key, index) => (index() > 0 ? [", ", <span>{key}</span>] : <span>{key}</span>)}</For> )
-    </span>
+    <For each={youtube}>
+      {(video) => (
+        <a href={"https://www.youtube.com/watch?v=" + video.videoId + "&t=6"} title={video.title}>
+          <IconVideoLibrary class={"inline scale-50"} />
+        </a>
+      )}
+    </For>
   );
 };
+
+function isFeatureEnabled(name: string): boolean {
+  return localStorage.getItem("feature__" + name) === "true";
+}
