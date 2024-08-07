@@ -103,7 +103,9 @@ export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
             <ExamSheet techniques={selectedTechniques()} />
             <div class={"flex items-center justify-end mt-16 gap-4"}>
               <span>{t("donations.question")}</span>
-              <LinkButton size="small" label={t("donations.action")} href={l("/donations")} />
+              <span>
+                <LinkButton size="small" label={t("donations.action")} href={l("/donations")} />
+              </span>
             </div>
           </div>
         )}

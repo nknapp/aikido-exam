@@ -76,13 +76,15 @@ const YoutubeLink: Component<{ metadata: TechniqueMetadata }> = (props) => {
         ? props.metadata.youtube
         : [props.metadata.youtube];
   return (
-    <For each={youtube}>
-      {(video) => (
-        <a href={"https://www.youtube.com/watch?v=" + video.videoId + "&t=6"} title={video.title}>
-          <IconVideoLibrary class={"inline scale-50"} />
-        </a>
-      )}
-    </For>
+    <span class={"print:hidden"}>
+      <For each={youtube}>
+        {(video) => (
+          <a href={"https://www.youtube.com/watch?v=" + video.videoId + "&t=6"} title={video.title}>
+            <IconVideoLibrary class={"inline scale-50"} />
+          </a>
+        )}
+      </For>
+    </span>
   );
 };
 

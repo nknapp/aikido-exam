@@ -3,7 +3,6 @@ import { buttonColors, buttonSizes } from "@/components/solid/atoms/SimpleButton
 import { CheckButton, type CheckButtonProps } from "@/components/solid/atoms/CheckButton.tsx";
 import { IconPrint } from "@/icons";
 
-// {(color) => <ShowCase size={size} color={color} />}
 export const ManualTest: Component = () => {
   return (
     <div class={"flex flex-col gap-4"}>
