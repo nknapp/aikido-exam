@@ -28,7 +28,8 @@ export const LinkButton: Component<LinkButtonProps> = (props) => {
         <span class={cls(props.hideLabel && "sr-only")}>{props.label}</span>
       </a>
       <img
-        alt={"hidden print:inline"}
+        class={"hidden print:inline"}
+        alt=""
         src={"https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=" + encodeURIComponent(props.href)}
       />
     </span>
