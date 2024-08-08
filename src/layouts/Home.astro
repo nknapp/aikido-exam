@@ -1,58 +1,53 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-interface Props {
-  title: string;
-  hero: string;
-  teaser: Array<{
-    title: string;
-    text: string;
-  }>;
-}
-
-const { title, hero, teaser = [] } = Astro.props;
 
 import Footer from "@/components/astro/Footer.astro";
 
 import "@/assets/styles/styles.scss";
 import { listDojos } from "../data/dojos";
-import {LinkButton} from "@/components/solid/atoms/LinkButton.tsx"
+import { LinkButton } from "@/components/solid/atoms/LinkButton.tsx";
 import LocaleSwitcher from "../components/astro/LocaleSwitcher.astro";
-import {t} from "@/i18n"
-import {l} from "astro-i18n"
+import { t } from "@/i18n";
+import { l } from "astro-i18n";
+import logo from "@/assets/logo.svg?url";
 
 const dojos = await listDojos();
 ---
 
-<BaseLayout title={title}>
-    <div slot="header" class="container flex justify-end items-center h-full">
-      <LocaleSwitcher />
+<BaseLayout title={t("app.title")}>
+  <div slot="header" class="container flex justify-end items-center h-full">
+    <LocaleSwitcher />
   </div>
 
   <div class="flex flex-col items-center gap-8 mt-20">
-    <header class="text-3xl">{title}</header>
-    <img class="w-64" alt="Hero image" src={hero} />
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8">
-      {
-        teaser.map((item) => {
-          return (
-            <div class="bg-primary-lightest px-4 py-2">
-              <header class="font-bold">{item.title}</header>
-              <p>{item.text}</p>
-            </div>
-          );
-        })
-      }
-    </div>
+    <header class="text-3xl">{t("app.title")}</header>
+    <img class="w-64" alt="Hero image" src={logo} />
+    <slot />
     <header>{t("home.choose-dojo")}</header>
     <div class="flex flex-col sm:flex-row flex-wrap gap-4 items-stretch">
       {
         dojos.map((dojo) => {
-          return (
-            <LinkButton href={l(`/${dojo.id}`)} icon={dojo.logo} label={dojo.name} />
-          );
+          return <LinkButton href={l(`/${dojo.id}`)} icon={dojo.logo} label={dojo.name} />;
         })
       }
     </div>
   </div>
   <Footer slot="footer" />
 </BaseLayout>
+<style is:global>
+  .teaser-list {
+    @apply grid grid-cols-1 lg:grid-cols-3 gap-2;
+  }
+  .teaser > :first-child {
+    @apply mt-0;
+  }
+  .teaser {
+    @apply bg-secondary-lightest p-2;
+    h2 {
+      @apply text-base font-bold;
+    }
+    p {
+      @apply text-sm;
+    }
+  }
+</style>

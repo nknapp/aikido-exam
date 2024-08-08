@@ -1,9 +1,10 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-
 import solidJs from "@astrojs/solid-js";
 import { languages } from "./src/i18n/server";
 import solidSvg from "vite-plugin-solid-svg";
+
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,14 +12,18 @@ export default defineConfig({
     enabled: false,
   },
   vite: {
-    plugins: [solidSvg({ defaultAsComponent: false })],
+    plugins: [
+      solidSvg({
+        defaultAsComponent: false,
+      }),
+    ],
     server: {
       watch: {
         ignored: ["**/*.test.ts", "**/*.test-helper.ts", "src/core/test-utils"],
       },
     },
   },
-  integrations: [tailwind(), solidJs()],
+  integrations: [tailwind(), solidJs(), mdx()],
   i18n: {
     defaultLocale: "de",
     locales: languages,

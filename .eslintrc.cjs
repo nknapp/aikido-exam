@@ -14,6 +14,13 @@ module.exports = {
         message: "Remove 'showMe' before commit",
       },
     ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        varsIgnorePattern: "^[iI]gnored",
+        caughtErrorsIgnorePattern: "^[iI]gnored",
+      },
+    ],
   },
   overrides: [
     {
@@ -51,6 +58,12 @@ module.exports = {
             ],
           },
         ],
+      },
+    },
+    {
+      files: ["src/core/test-utils/matchers/*.types.d.ts"],
+      rules: {
+        "@typescript-eslint/no-empty-object-type": ["off"],
       },
     },
   ],

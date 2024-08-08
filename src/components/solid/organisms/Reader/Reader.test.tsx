@@ -99,7 +99,7 @@ describe("Reader", () => {
     await renderReader({ techniques: [createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "omote")] });
     assertMock(loadSpeechPack);
     await waitFor(() => {
-      expect(loadSpeechPack).toHaveBeenCalled;
+      expect(loadSpeechPack).toHaveBeenCalled();
     });
   });
 

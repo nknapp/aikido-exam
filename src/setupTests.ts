@@ -19,7 +19,9 @@ vi.mock("solid-js", async (importOriginal) => {
 });
 
 beforeAll(async () => {
-  await astroI18n.initialize({});
+  if (!astroI18n.isInitialized) {
+    await astroI18n.initialize({});
+  }
 });
 
 beforeEach(() => {
