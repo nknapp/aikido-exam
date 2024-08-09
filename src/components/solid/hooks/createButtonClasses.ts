@@ -54,6 +54,7 @@ export const createButtonClasses = (props: Accessor<ButtonClassProps>) => {
         "flex items-center justify-center border rounded whitespace-nowrap truncate print:p-1 transition-all duration-100 hover:no-underline",
         "active:outline",
         "disabled:grayscale disabled:opacity-50",
+        "bg-white",
         highlighted() && highlightClasses,
         highlighted() ? highlightedColorClasses[color()] : colorClasses[color()],
         sizeClasses[size()],

@@ -1,8 +1,8 @@
-import { type Component, createSignal, Suspense } from "solid-js";
+import { type Component, createSignal, For, lazy, Suspense } from "solid-js";
 import type { DojoInfo } from "$core/model/Dojo.ts";
 import { createResource } from "solid-js";
 import { createTechniqueStore } from "$core/store";
-import { type SpeechPack } from "$core/model";
+import { type SpeechPack, type YoutubeLink } from "$core/model";
 import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
 import { ExamScroll } from "@/components/solid/organisms/Reader/ExamScroll.tsx";
 import { IconAutoMode, IconPlay, IconSkipNext, IconSkipPrevious, IconStop } from "@/icons";
@@ -11,6 +11,12 @@ import { createPlayer } from "@/components/solid/organisms/Reader/createPlayer.t
 import { CheckButton } from "@/components/solid/atoms/CheckButton.tsx";
 import { type Speed, SpeedButton } from "@/components/solid/organisms/Reader/SpeedButton.tsx";
 import { type DelayControl, DelayIndicator } from "@/components/solid/atoms/DelayIndicator.tsx";
+import { useStore } from "@nanostores/solid";
+import { youtubeEnabled } from "$core/store/youtube.ts";
+
+const YoutubePlayer = lazy(() =>
+  import("@/components/solid/atoms/YoutubePlayer.tsx").then(({ YoutubePlayer }) => ({ default: YoutubePlayer })),
+);
 
 export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> = (props) => {
   const techniqueStore = createTechniqueStore(props.dojoInfo.id);
@@ -53,6 +59,7 @@ export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> =
           ready={playerLoaded()}
           onClickAutoPlay={() => setAutoPlay(!autoPlay())}
           autoPlayEnabled={autoPlay()}
+          youtube={youtubeLinks(lastTechnique()?.metadata?.youtube)}
         />
         <DelayIndicator setDelayControl={setDelayControl} disabled={!autoPlay()} />
         <ExamScroll
@@ -75,8 +82,10 @@ const Player: Component<{
   onClickPrevious(): void;
   autoPlayEnabled: boolean;
   onClickAutoPlay(): void;
+  youtube: YoutubeLink[];
 }> = (props) => {
   const [speed, setSpeed] = createSignal<Speed>("normal");
+  const showYoutube = useStore(youtubeEnabled);
   return (
     <>
       <div class={"grid grid-cols-4 gap-4"}>
@@ -115,6 +124,15 @@ const Player: Component<{
           onChange={props.onClickAutoPlay}
           disabled={!props.ready}
         />
+        {showYoutube() && (
+          <div class={"h-8 w-full flex"}>
+            <For each={props.youtube}>
+              {(link) => {
+                return <YoutubePlayer class={"flex-1"} link={link} />;
+              }}
+            </For>
+          </div>
+        )}
         {/*TODO: Implement speed */}
         <SpeedButton
           class={"hidden"}
@@ -127,3 +145,8 @@ const Player: Component<{
     </>
   );
 };
+
+function youtubeLinks(links: YoutubeLink[] | YoutubeLink | undefined): YoutubeLink[] {
+  if (Array.isArray(links)) return links;
+  return links ? [links] : [];
+}

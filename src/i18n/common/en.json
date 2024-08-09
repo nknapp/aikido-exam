@@ -36,5 +36,7 @@
   "footer.donations": "Donations",
   "home.choose-dojo": "Choose your dojo:",
   "language.label": "English",
-  "reader.upcoming-technique": "Upcoming"
+  "reader.upcoming-technique": "Upcoming",
+  "button.play-video.label": "Play video",
+  "video.stop": "Play video"
 }

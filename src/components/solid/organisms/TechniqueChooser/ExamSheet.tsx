@@ -5,6 +5,8 @@ import { buildExamTable } from "$core/buildExamTable";
 import { t } from "@/i18n";
 import { insertBetweenElements } from "@/utils/insertBetweenElements.ts";
 import { IconVideoLibrary } from "@/icons";
+import { youtubeEnabled } from "$core/store/youtube.ts";
+import { useStore } from "@nanostores/solid";
 
 export interface ExamSheetProps {
   techniques: Technique[];
@@ -52,6 +54,7 @@ interface DirectionsProps {
 }
 
 const ShowDirections: Component<DirectionsProps> = (props) => {
+  const showYoutube = useStore(youtubeEnabled);
   const names = Object.keys(props.directions);
   if (names.length === 1 && names[0] === SINGLE_DIRECTION) {
     return null;
@@ -60,7 +63,7 @@ const ShowDirections: Component<DirectionsProps> = (props) => {
     return (
       <span>
         {item}
-        {isFeatureEnabled("youtube") && <YoutubeLink metadata={props.directions[item]} />}
+        {showYoutube() && <YoutubeLink metadata={props.directions[item]} />}
       </span>
     );
   });
@@ -87,7 +90,3 @@ const YoutubeLink: Component<{ metadata: TechniqueMetadata }> = (props) => {
     </span>
   );
 };
-
-function isFeatureEnabled(name: string): boolean {
-  return localStorage.getItem("feature__" + name) === "true";
-}

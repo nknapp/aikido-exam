@@ -12,4 +12,9 @@ describe("SimpleButton", () => {
     renderSolid(() => <SimpleButton label={"Print"} hideLabel={true} />);
     expect(screen.getByText("Print")).toHaveClass("sr-only");
   });
+
+  it("renders children ", () => {
+    renderSolid(() => <SimpleButton label={"Print"}>abc</SimpleButton>);
+    expect(screen.getByText("abc")).toBeInTheDocument();
+  });
 });
