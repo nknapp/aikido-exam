@@ -1,6 +1,6 @@
 ---
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
-import { Donations } from "@/components/solid/molecules/Donations";
+import { Donations } from "../../../components/solid/molecules/Donations";
 ---
 
 <DefaultLayout>
@@ -10,9 +10,8 @@ import { Donations } from "@/components/solid/molecules/Donations";
     Since starting this project, I have invested a considerable amount of my free time to build this app. If it helped
     you pass an exam, I would appreciate a small donation.
   </p>
+  <p class="italic m-8">Don't pay me for the contents of the videos. I did not create them.</p>
   <p>It's also OK, not to give anything. I built this app primarily for myself.</p>
-
-  <Donations />
 
   <p>
     I do have ideas for new features that I am more likely to implement, if I know that people gain value from this app.
@@ -21,4 +20,7 @@ import { Donations } from "@/components/solid/molecules/Donations";
     <li>offline support</li>
     <li>integrate videos from the <a href="http://www.aikido-kompendium.de/">Aikido-Kompendium</a></li>
   </ul>
+  <div class="py-4">
+    <Donations />
+  </div>
 </DefaultLayout>

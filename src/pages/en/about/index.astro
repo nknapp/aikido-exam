@@ -1,7 +1,8 @@
 ---
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
 import { IconGithub } from "../../../icons";
-import {Donations} from "@/components/solid/molecules/Donations"
+import { Alert } from "../../../components/solid/atoms/Alert";
+import { YoutubeActivator } from "../../../components/solid/atoms/YoutubeActivator";
 ---
 
 <DefaultLayout>
@@ -38,11 +39,26 @@ import {Donations} from "@/components/solid/molecules/Donations"
   <p>
     The source-code of this app is hosted on GitHub at
     <a href="https://github.com/nknapp/aikido-exam" title="Github repository">https://github.com/nknapp/aikido-exam</a>
-    For bug reports, please open issues there, or contact me via the mail from the impress.
-    Please <strong>do not</strong> call my phone because of bugs.
+    For bug reports, please open issues there, or contact me via the mail from the impress. Please <strong
+      >do not</strong
+    > call my phone because of bugs.
   </p>
 
-  <Donations />
+  <h1>Experiments</h1>
+
+  <h2>YouTube videos</h2>
+
+  <p>
+    <b>Aikido-Exam</b> can show a YouTube video of the current technique. I did not make the videos myself. They are from
+    the <a href="https://aikidokomponendium.de">Aikido Kompendium</a>
+  </p>
+  <Alert type="warning">
+    If this option is enabled, data will be sent to YouTube. See <a
+      href="https://www.youtube.com/howyoutubeworks/our-commitments/protecting-user-data/#privacy-guidelines"
+      >YouTubes data privacy guidelines</a
+    >.
+  </Alert>
+  <YoutubeActivator class="my-2" client:load />
 
   <script>
     import { createImpress } from "@/utils/impressed";
