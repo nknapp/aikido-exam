@@ -1,1 +1,0 @@
-import{g as r,s,r as a,t as n}from"./web.CzWjSvCR.js";var o=n('<svg xmlns=http://www.w3.org/2000/svg width=24 height=24><path d="M6 6h12v12H6z">');const g=(e={})=>(()=>{var t=r(o);return s(t,e,!0,!0),a(),t})();export{g as I};
