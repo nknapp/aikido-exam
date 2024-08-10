@@ -101,6 +101,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js}": "eslint --cache --fix --max-warnings=0",
-    "*.{ts,tsx,js,css,md}": "prettier --write"
+    "*.{ts,tsx,js,css,md}": "prettier --write",
+    "src/i18n/common/*.json": "vite-node scripts/sort-translations.ts"
   }
 }

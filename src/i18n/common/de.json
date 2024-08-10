@@ -1,6 +1,7 @@
 {
   "app.button.chooseExamTable.label": "Techniken auswählen",
   "app.title": "Aikido-Prüfung",
+  "button.play-video.label": "Video zeigen",
   "chooser.button.additional": "+X",
   "chooser.button.dan1": "1.DAN",
   "chooser.button.dan2": "2.DAN",
@@ -37,6 +38,5 @@
   "home.choose-dojo": "Wähle dein Dojo aus:",
   "language.label": "Deutsch",
   "reader.upcoming-technique": "Nächste",
-  "button.play-video.label": "Video zeigen",
   "video.stop": "Stop"
 }
