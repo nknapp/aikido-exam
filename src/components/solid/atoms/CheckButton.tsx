@@ -32,7 +32,7 @@ export const CheckButton: Component<CheckButtonProps> = (props) => {
       class={buttonClasses()}
       onClick={() => props.onChange(!props.value)}
       aria-checked={props.value}
-      disabled={!ready()}
+      disabled={props.disabled || !ready()}
     >
       {props.icon && <props.icon class={iconClasses()} />}
       <span class={cls(props.hideLabel && "sr-only")}>{props.label}</span>

@@ -1,4 +1,4 @@
-import { type Component, createSignal, onCleanup, onMount } from "solid-js";
+import { type Component, createSignal, Match, onCleanup, Switch } from "solid-js";
 import type { YoutubeLink } from "$core/model";
 import { Portal } from "solid-js/web";
 import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
@@ -11,6 +11,7 @@ import { t } from "@/i18n";
 
 export interface YoutubePlayerProps {
   link: YoutubeLink;
+  type: "button" | "icon";
   class?: string;
 }
 
@@ -20,18 +21,6 @@ export const YoutubePlayer: Component<YoutubePlayerProps> = (props) => {
 
   const [showPlayer, setShowPlayer] = createSignal(false);
   let player: ReturnType<typeof Player> | null = null;
-  onMount(() => {
-    player = Player(notNull(playerElement()), {
-      host: "https://www.youtube-nocookie.com",
-      playerVars: {
-        rel: 0,
-        autoplay: 0,
-        modestbranding: 1,
-      },
-    });
-    window.addEventListener("resize", updatePlayerSize);
-    updatePlayerSize();
-  });
 
   function updatePlayerSize() {
     player?.setSize(window.innerWidth, window.innerHeight);
@@ -47,6 +36,18 @@ export const YoutubePlayer: Component<YoutubePlayerProps> = (props) => {
   }
 
   async function play() {
+    if (player == null) {
+      player = Player(notNull(playerElement()), {
+        host: "https://www.youtube-nocookie.com",
+        playerVars: {
+          rel: 0,
+          autoplay: 0,
+          modestbranding: 1,
+        },
+      });
+      window.addEventListener("resize", updatePlayerSize);
+      updatePlayerSize();
+    }
     setShowPlayer(true);
     await delay(0);
     const requiredPlayer = notNull(player);
@@ -72,15 +73,9 @@ export const YoutubePlayer: Component<YoutubePlayerProps> = (props) => {
   }
 
   return (
-    <SimpleButton
-      class={props.class}
-      size={"small"}
-      icon={IconVideoLibrary}
-      label={t("button.play-video.label")}
-      onClick={play}
-    >
+    <>
       <Portal>
-        <div class={cls("absolute inset-0", showPlayer() || "hidden")}>
+        <div class={cls("fixed inset-0", showPlayer() || "hidden")}>
           <SimpleButton
             class={"absolute top-1 right-1 z-10"}
             size={"small"}
@@ -91,6 +86,22 @@ export const YoutubePlayer: Component<YoutubePlayerProps> = (props) => {
           <div id={id} class="absolute inset-0 z-0" ref={setPlayerElement}></div>
         </div>
       </Portal>
-    </SimpleButton>
+      <Switch>
+        <Match when={props.type === "icon"}>
+          <button onClick={play}>
+            <IconVideoLibrary class={props.class} />
+          </button>
+        </Match>
+        <Match when={props.type === "button"}>
+          <SimpleButton
+            class={props.class}
+            size={"small"}
+            icon={IconVideoLibrary}
+            label={t("button.play-video.label")}
+            onClick={play}
+          ></SimpleButton>
+        </Match>
+      </Switch>
+    </>
   );
 };

@@ -1,6 +1,8 @@
 ---
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
 import { Donations } from "@/components/solid/molecules/Donations";
+import { Alert } from "@/components/solid/atoms/Alert";
+import {YoutubeActivator} from "@/components/solid/atoms/YoutubeActivator"
 ---
 
 <DefaultLayout>
@@ -36,7 +38,9 @@ import { Donations } from "@/components/solid/molecules/Donations";
   <h2>QR-Codes</h2>
 
   <p>
-    QR-Codes werden mit Hilfe der API von goqr.me erzeugt. (<a href="https://goqr.me/de/api/doc/create-qr-code/">Nutzungsbedindungen siehe hier</a>)
+    QR-Codes werden mit Hilfe der API von goqr.me erzeugt. (<a href="https://goqr.me/de/api/doc/create-qr-code/"
+      >Nutzungsbedindungen siehe hier</a
+    >)
   </p>
 
   <h2>Source-Code / Fehler</h2>
@@ -48,6 +52,19 @@ import { Donations } from "@/components/solid/molecules/Donations";
     Bitte <strong>seht davon ab</strong>, mich wegen Fehlern anzurufen.
   </p>
 
+  <h1>Experimente</h1>
+
+  <h2>YouTube Videos</h2>
+
+  <p>
+    <b>Aikido-Prüfung</b> kann zur aktuellen Technik ein YouTube Video aus dem <a href="https://aikidokomponendium.de"
+      >Aikido Kompendium</a> anzeigen.
+  </p>
+  <Alert type="warning">
+    Wenn diese Option angeschaltet ist, werden Daten an YouTube gesendet.
+    Siehe auch <a href="https://www.youtube.com/howyoutubeworks/our-commitments/protecting-user-data/#privacy-guidelines">YouTubes Datenschutzrichtlinien</a>.
+  </Alert>
+  <YoutubeActivator class="my-2" client:load/>
 
   <script>
     import { createImpress } from "@/utils/impressed";

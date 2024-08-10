@@ -11,8 +11,8 @@ import { createPlayer } from "@/components/solid/organisms/Reader/createPlayer.t
 import { CheckButton } from "@/components/solid/atoms/CheckButton.tsx";
 import { type Speed, SpeedButton } from "@/components/solid/organisms/Reader/SpeedButton.tsx";
 import { type DelayControl, DelayIndicator } from "@/components/solid/atoms/DelayIndicator.tsx";
-import { useStore } from "@nanostores/solid";
 import { youtubeEnabled } from "$core/store/youtube.ts";
+import { usePersistentStore } from "@/components/solid/hooks/usePersistentStore.ts";
 
 const YoutubePlayer = lazy(() =>
   import("@/components/solid/atoms/YoutubePlayer.tsx").then(({ YoutubePlayer }) => ({ default: YoutubePlayer })),
@@ -85,7 +85,7 @@ const Player: Component<{
   youtube: YoutubeLink[];
 }> = (props) => {
   const [speed, setSpeed] = createSignal<Speed>("normal");
-  const showYoutube = useStore(youtubeEnabled);
+  const showYoutube = usePersistentStore(youtubeEnabled, false);
   return (
     <>
       <div class={"grid grid-cols-4 gap-4"}>
@@ -128,7 +128,7 @@ const Player: Component<{
           <div class={"h-8 w-full flex"}>
             <For each={props.youtube}>
               {(link) => {
-                return <YoutubePlayer class={"flex-1"} link={link} />;
+                return <YoutubePlayer type="button" class={"flex-1"} link={link} />;
               }}
             </For>
           </div>

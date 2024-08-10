@@ -1,12 +1,15 @@
-import { type Component, For } from "solid-js";
+import { type Component, For, lazy } from "solid-js";
 import { SINGLE_DIRECTION, type Technique, type TechniqueMetadata } from "$core/model";
 import { ForEntries } from "./ForEntries.tsx";
 import { buildExamTable } from "$core/buildExamTable";
 import { t } from "@/i18n";
 import { insertBetweenElements } from "@/utils/insertBetweenElements.ts";
-import { IconVideoLibrary } from "@/icons";
 import { youtubeEnabled } from "$core/store/youtube.ts";
-import { useStore } from "@nanostores/solid";
+import { usePersistentStore } from "@/components/solid/hooks/usePersistentStore.ts";
+
+const YoutubePlayer = lazy(() =>
+  import("@/components/solid/atoms/YoutubePlayer.tsx").then(({ YoutubePlayer }) => ({ default: YoutubePlayer })),
+);
 
 export interface ExamSheetProps {
   techniques: Technique[];
@@ -54,7 +57,7 @@ interface DirectionsProps {
 }
 
 const ShowDirections: Component<DirectionsProps> = (props) => {
-  const showYoutube = useStore(youtubeEnabled);
+  const showYoutube = usePersistentStore(youtubeEnabled, false);
   const names = Object.keys(props.directions);
   if (names.length === 1 && names[0] === SINGLE_DIRECTION) {
     return null;
@@ -80,13 +83,7 @@ const YoutubeLink: Component<{ metadata: TechniqueMetadata }> = (props) => {
         : [props.metadata.youtube];
   return (
     <span class={"print:hidden"}>
-      <For each={youtube}>
-        {(video) => (
-          <a href={"https://www.youtube.com/watch?v=" + video.videoId + "&t=6"} title={video.title}>
-            <IconVideoLibrary class={"inline scale-50"} />
-          </a>
-        )}
-      </For>
+      <For each={youtube}>{(video) => <YoutubePlayer type={"icon"} class={"inline mx-2"} link={video} />}</For>
     </span>
   );
 };
