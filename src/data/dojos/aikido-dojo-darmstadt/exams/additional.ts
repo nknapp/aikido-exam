@@ -8,6 +8,9 @@ export const additional: Exam = {
       "chudan tsuki": {
         "shiho nage": { omote: {}, ura: {} },
       },
+      "kata dori": {
+        "soto kaiten nage": { "single-direction": {} },
+      },
     },
   },
 };
