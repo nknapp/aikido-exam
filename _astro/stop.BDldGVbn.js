@@ -1,1 +1,0 @@
-import{g as r,s as a,a as s,t as n}from"./web.BIMYL5Qf.js";var o=n('<svg xmlns=http://www.w3.org/2000/svg width=24 height=24><path d="M6 6h12v12H6z">');const g=(e={})=>(()=>{var t=r(o);return a(t,e,!0,!0),s(),t})();export{g as I};
