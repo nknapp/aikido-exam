@@ -15,6 +15,9 @@ export const additional: Exam = {
       "ai hanmi katate dori": {
         "uchi kaiten sankyo": { "single-direction": {} },
       },
+      "kata dori": {
+        "soto kaiten nage": { "single-direction": {} },
+      },
     },
   },
 };
