@@ -1,9 +1,8 @@
-import { type Component, For, lazy } from "solid-js";
-import { SINGLE_DIRECTION, type Technique, type TechniqueMetadata } from "$core/model";
+import { type Component, createMemo, For, lazy, Match, Show, Switch } from "solid-js";
+import { SINGLE_DIRECTION, type Technique, type TechniqueMetadata, type YoutubeLink } from "$core/model";
 import { ForEntries } from "./ForEntries.tsx";
 import { buildExamTable } from "$core/buildExamTable";
 import { t } from "@/i18n";
-import { insertBetweenElements } from "@/utils/insertBetweenElements.ts";
 import { youtubeEnabled } from "$core/store/youtube.ts";
 import { usePersistentStore } from "@/components/solid/hooks/usePersistentStore.ts";
 
@@ -57,24 +56,33 @@ interface DirectionsProps {
 }
 
 const ShowDirections: Component<DirectionsProps> = (props) => {
-  const showYoutube = usePersistentStore(youtubeEnabled, false);
-  const names = Object.keys(props.directions);
-  if (names.length === 1 && names[0] === SINGLE_DIRECTION) {
-    return null;
-  }
-  const withVideos = names.map((item) => {
-    return (
-      <span>
-        {item}
-        {showYoutube() && <YoutubeLink metadata={props.directions[item]} />}
-      </span>
-    );
+  const names = createMemo(() => Object.keys(props.directions));
+  const singleDirection = createMemo(() => {
+    return names().length === 1 && names()[0] === SINGLE_DIRECTION;
   });
-  return <span class={"text-sm text-secondary"}>( {insertBetweenElements(withVideos, ", ").flat()} )</span>;
+  return (
+    <Switch>
+      <Match when={singleDirection()}>
+        <YoutubeLink metadata={props.directions[SINGLE_DIRECTION]} />
+      </Match>
+      <Match when={!singleDirection()}>
+        <ForEntries object={props.directions} separator={","}>
+          {(direction, metadata) => {
+            return (
+              <span>
+                {direction}
+                <YoutubeLink metadata={metadata} />
+              </span>
+            );
+          }}
+        </ForEntries>
+      </Match>
+    </Switch>
+  );
 };
 
-// WIP
 const YoutubeLink: Component<{ metadata: TechniqueMetadata }> = (props) => {
+  const showYoutube = usePersistentStore(youtubeEnabled, false);
   const youtube =
     props.metadata.youtube == null
       ? []
@@ -82,8 +90,10 @@ const YoutubeLink: Component<{ metadata: TechniqueMetadata }> = (props) => {
         ? props.metadata.youtube
         : [props.metadata.youtube];
   return (
-    <span class={"print:hidden"}>
-      <For each={youtube}>{(video) => <YoutubePlayer type={"icon"} class={"inline mx-2"} link={video} />}</For>
-    </span>
+    <Show when={showYoutube()}>
+      <span class={"print:hidden"}>
+        <For each={youtube}>{(video) => <YoutubePlayer type={"icon"} class={"inline mx-2"} link={video} />}</For>
+      </span>
+    </Show>
   );
 };
