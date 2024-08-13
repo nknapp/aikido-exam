@@ -13,7 +13,7 @@ export const Donations: Component = () => {
         color={"primary"}
         icon={coffee}
         label={t("donations.paypal.label")}
-        href={"https://www.paypal.com/donate/?hosted_button_id=GB656ZSAEQEXN"}
+        href={"https://www.paypal.com/donate/?hosted_button_id=QQCVDKJ2TZLMN"}
       />
       <LinkButton
         size={"small"}
