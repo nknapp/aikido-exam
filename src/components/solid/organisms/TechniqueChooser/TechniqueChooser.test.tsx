@@ -15,9 +15,24 @@ describe("Chooser.test.tsx", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
         exams: [
-          createExam({ labelKey: "chooser.button.kyu5" }),
-          createExam({ labelKey: "chooser.button.kyu4" }),
-          createExam({ labelKey: "chooser.button.kyu3" }),
+          createExam({
+            label: {
+              type: "wellknown",
+              key: "kyu5",
+            },
+          }),
+          createExam({
+            label: {
+              type: "wellknown",
+              key: "kyu4",
+            },
+          }),
+          createExam({
+            label: {
+              type: "wellknown",
+              key: "kyu3",
+            },
+          }),
         ],
       }),
     });
@@ -30,7 +45,14 @@ describe("Chooser.test.tsx", async () => {
   it("clicking an exam selects it", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
-        exams: [createExam({ labelKey: "chooser.button.kyu5" })],
+        exams: [
+          createExam({
+            label: {
+              type: "wellknown",
+              key: "kyu5",
+            },
+          }),
+        ],
       }),
     });
     render(() => <TechniqueChooser dojo={dojo} />);
@@ -44,7 +66,14 @@ describe("Chooser.test.tsx", async () => {
   it("clicking an selected exam deselects it", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
-        exams: [createExam({ labelKey: "chooser.button.kyu5" })],
+        exams: [
+          createExam({
+            label: {
+              type: "wellknown",
+              key: "kyu5",
+            },
+          }),
+        ],
       }),
     });
     render(() => <TechniqueChooser dojo={dojo} />);
@@ -60,7 +89,10 @@ describe("Chooser.test.tsx", async () => {
       details: createDojoDetails({
         exams: [
           createExam({
-            labelKey: "chooser.button.kyu5",
+            label: {
+              type: "wellknown",
+              key: "kyu5",
+            },
             techniques: {
               "suwari waza": {
                 "ai hanmi katate dori": {
@@ -86,7 +118,10 @@ describe("Chooser.test.tsx", async () => {
       details: createDojoDetails({
         exams: [
           createExam({
-            labelKey: "chooser.button.kyu5",
+            label: {
+              type: "wellknown",
+              key: "kyu5",
+            },
             techniques: {
               "suwari waza": {
                 "ai hanmi katate dori": {
@@ -108,7 +143,10 @@ describe("Chooser.test.tsx", async () => {
       details: createDojoDetails({
         exams: [
           createExam({
-            labelKey: "chooser.button.kyu5",
+            label: {
+              type: "wellknown",
+              key: "kyu5",
+            },
             techniques: {
               "hanmi handachi waza": {
                 "ai hanmi katate dori": {
@@ -138,7 +176,10 @@ describe("Chooser.test.tsx", async () => {
       details: createDojoDetails({
         exams: [
           createExam({
-            labelKey: "chooser.button.kyu5",
+            label: {
+              type: "wellknown",
+              key: "kyu5",
+            },
             techniques: {
               "hanmi handachi waza": {
                 "ai hanmi katate dori": {
@@ -163,8 +204,20 @@ describe("Chooser.test.tsx", async () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
         exams: [
-          createExam({ id: "kyu5", labelKey: "chooser.button.kyu5" }),
-          createExam({ id: "kyu4", labelKey: "chooser.button.kyu4" }),
+          createExam({
+            id: "kyu5",
+            label: {
+              type: "wellknown",
+              key: "kyu5",
+            },
+          }),
+          createExam({
+            id: "kyu4",
+            label: {
+              type: "wellknown",
+              key: "kyu4",
+            },
+          }),
         ],
       }),
     });
@@ -186,8 +239,20 @@ describe("Chooser.test.tsx", async () => {
         info: createDojoInfo({ id }),
         details: createDojoDetails({
           exams: [
-            createExam({ id: "kyu5", labelKey: "chooser.button.kyu5" }),
-            createExam({ id: "kyu4", labelKey: "chooser.button.kyu4" }),
+            createExam({
+              id: "kyu5",
+              label: {
+                type: "wellknown",
+                key: "kyu5",
+              },
+            }),
+            createExam({
+              id: "kyu4",
+              label: {
+                type: "wellknown",
+                key: "kyu4",
+              },
+            }),
           ],
         }),
       });
@@ -211,7 +276,15 @@ describe("Chooser.test.tsx", async () => {
   it("renders filters", () => {
     const dojo = createResolvedDojo({
       details: createDojoDetails({
-        exams: [createExam({ id: "kyu5", labelKey: "chooser.button.kyu5" })],
+        exams: [
+          createExam({
+            id: "kyu5",
+            label: {
+              type: "wellknown",
+              key: "kyu5",
+            },
+          }),
+        ],
       }),
     });
     renderSolid(() => <TechniqueChooser dojo={dojo} />);
@@ -225,7 +298,10 @@ describe("Chooser.test.tsx", async () => {
         exams: [
           createExam({
             id: "kyu5",
-            labelKey: "chooser.button.kyu5",
+            label: {
+              type: "wellknown",
+              key: "kyu5",
+            },
             techniques: {
               "suwari waza": { "ai hanmi katate dori": { ikkyo: { omote: {} } } },
               "hanmi handachi waza": { "ai hanmi katate dori": { ikkyo: { omote: {} } } },

@@ -2,7 +2,10 @@ import type { Exam } from "$core/model";
 
 export const dan2: Exam = {
   id: "dan2",
-  labelKey: "chooser.button.dan2",
+  label: {
+    type: "wellknown",
+    key: "dan2",
+  },
   techniques: {
     "jo dori": {
       "chudan tsuki": {

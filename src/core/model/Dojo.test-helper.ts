@@ -12,9 +12,24 @@ export function createDojoInfo(partialInfo: Partial<DojoInfo> = {}): DojoInfo {
 
 export function createExams() {
   return [
-    createExam({ labelKey: "chooser.button.kyu5" }),
-    createExam({ labelKey: "chooser.button.kyu4" }),
-    createExam({ labelKey: "chooser.button.kyu3" }),
+    createExam({
+      label: {
+        type: "wellknown",
+        key: "kyu5",
+      },
+    }),
+    createExam({
+      label: {
+        type: "wellknown",
+        key: "kyu4",
+      },
+    }),
+    createExam({
+      label: {
+        type: "wellknown",
+        key: "kyu3",
+      },
+    }),
   ];
 }
 

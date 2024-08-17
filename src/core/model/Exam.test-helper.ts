@@ -4,7 +4,10 @@ import { nanoid } from "nanoid";
 export function createExam(exam: Partial<Exam>): Exam {
   return {
     id: nanoid(),
-    labelKey: "chooser.button.kyu5",
+    label: {
+      type: "wellknown",
+      key: "kyu5",
+    },
     techniques: {},
     ...exam,
   };

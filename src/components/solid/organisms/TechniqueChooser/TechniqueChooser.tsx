@@ -1,13 +1,13 @@
 import { type Component, createDeferred, createSignal } from "solid-js";
 import type { ResolvedDojo } from "$core/model/Dojo.ts";
-import { t } from "@/i18n";
+import { t, tx } from "@/i18n";
 import { l } from "astro-i18n";
 import { ExamSheet } from "@/components/solid/organisms/TechniqueChooser/ExamSheet.tsx";
 import {
   ChooserControlButtons,
   type Option,
 } from "@/components/solid/organisms/TechniqueChooser/ChooserControlButtons.tsx";
-import type { Exam } from "$core/model";
+import type { Exam, ExamLabel, WellKnownExam } from "$core/model";
 import { syncToStorage } from "@/components/solid/hooks/syncToStorage.ts";
 import { isServer } from "solid-js/web";
 import { ChooserControlContainer } from "@/components/solid/organisms/TechniqueChooser/ChooserControlContainer.tsx";
@@ -21,6 +21,7 @@ import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
 import { IconPrint, IconSpeak } from "@/icons";
 import { createTechniqueStore } from "$core/store";
 import { LinkButton } from "@/components/solid/atoms/LinkButton.tsx";
+import type { TranslationSchema } from "@/i18n/TranslationSchema.ts";
 
 export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
   const [examSelection, setExamSelection] = syncToStorage(createSignal(new Set<string>()), {
@@ -115,5 +116,26 @@ export const TechniqueChooser: Component<{ dojo: ResolvedDojo }> = (props) => {
 };
 
 function examsToOptions(exams: Exam[]): Option[] {
-  return exams.map((exam) => ({ id: exam.id, label: t(exam.labelKey) }));
+  return exams.map((exam) => ({ id: exam.id, label: resoveExamLabel(exam.label) }));
+}
+
+const wellknownLabels: Record<WellKnownExam, keyof TranslationSchema> = {
+  kyu5: "chooser.button.kyu5",
+  kyu4: "chooser.button.kyu4",
+  kyu3: "chooser.button.kyu3",
+  kyu2: "chooser.button.kyu2",
+  kyu1: "chooser.button.kyu1",
+  dan1: "chooser.button.dan1",
+  dan2: "chooser.button.dan2",
+  dan3: "chooser.button.dan3",
+  dan4: "chooser.button.dan4",
+};
+
+function resoveExamLabel(label: ExamLabel): string {
+  switch (label.type) {
+    case "wellknown":
+      return t(wellknownLabels[label.key]);
+    case "free":
+      return tx(label.text);
+  }
 }

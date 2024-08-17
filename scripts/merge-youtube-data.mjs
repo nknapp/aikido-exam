@@ -10,7 +10,7 @@ for (const exam of Object.values(tables.exams)) {
       metadata.youtube = findVideo(technique);
     }
   }
-  result[exam.labelKey] = exam;
+  result[exam.id] = exam;
 }
 
 console.log(JSON.stringify(result, 0, 2));
