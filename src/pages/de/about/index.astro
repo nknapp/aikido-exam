@@ -2,6 +2,13 @@
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
 import { Alert } from "@/components/solid/atoms/Alert";
 import {YoutubeActivator} from "@/components/solid/atoms/YoutubeActivator"
+
+const lastUpdate = new Intl.DateTimeFormat("de-DE", {
+  dateStyle: "short",
+  timeStyle: "short",
+}).format(new Date(process.env.VITE_BUILD_DATE));
+
+
 ---
 
 <DefaultLayout>
@@ -64,6 +71,7 @@ import {YoutubeActivator} from "@/components/solid/atoms/YoutubeActivator"
     Siehe auch <a href="https://www.youtube.com/howyoutubeworks/our-commitments/protecting-user-data/#privacy-guidelines">YouTubes Datenschutzrichtlinien</a>.
   </Alert>
   <YoutubeActivator class="my-2" client:load/>
+  <small>Letztes Update: {lastUpdate}</small>
 
   <script>
     import { createImpress } from "@/utils/impressed";
