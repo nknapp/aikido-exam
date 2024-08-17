@@ -20,7 +20,9 @@ export function createExams() {
 
 export function createDojoDetails(partialDetails: Partial<DojoDetails> = {}): DojoDetails {
   return {
-    additionalText: "dojo.darmstadt.additionalText",
+    additionalText: {
+      en: "additionalText",
+    },
     sourceLink: "https://example.com/sourceLink",
     exams: createExams(),
     ...partialDetails,

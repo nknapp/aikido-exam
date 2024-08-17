@@ -11,6 +11,9 @@ import type { DojoDetails } from "$core/model/Dojo";
 
 export default {
   exams: [kyu5, kyu4, kyu3, kyu2, kyu1, additional, dan1, dan2, dan3],
-  additionalText: "dojo.aikido-foederation.additionalText",
+  additionalText: {
+    de: "+X sind Techniken, die nicht im Program der Aikido Föderation vorkommen.",
+    en: "+X are techniques that are not part of the official Aikido-Föderation program.",
+  },
   sourceLink: "https://www.aikido-foederation.de/wp-content/uploads/AFD-Pruefungsordnung-052014.pdf",
 } satisfies DojoDetails;
