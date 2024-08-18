@@ -22,6 +22,17 @@ const footerHeight = "48px";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{props.title}</title>
     <script defer data-domain="aikido-exam.knappi.org" src="https://plausible.io/js/script.js"></script>
+    <script type="application/ecmascript">
+      Promise.withResolvers = Promise.withResolvers ?? function withResolvers () {
+        let resolve = null
+        let reject = null
+        const promise = new Promise((res, rej) => {
+          resolve = res
+          reject = rej
+        })
+        return {resolve, reject, promise}
+      }
+    </script>
   </head>
   <body class={cls(props.fillScreen && "fillScreen")}>
     <header>
