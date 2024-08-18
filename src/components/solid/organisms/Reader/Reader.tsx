@@ -14,6 +14,7 @@ import { type DelayControl, DelayIndicator } from "@/components/solid/atoms/Dela
 import { youtubeEnabled } from "$core/store/youtube.ts";
 import { usePersistentStore } from "@/components/solid/hooks/usePersistentStore.ts";
 import { YoutubePlayButton } from "@/components/solid/atoms/YoutubePlayButton.tsx";
+import { coerceToArray } from "$core/utils/coerceToArray.ts";
 
 export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> = (props) => {
   const techniqueStore = createTechniqueStore(props.dojoInfo.id);
@@ -56,7 +57,7 @@ export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> =
           ready={playerLoaded()}
           onClickAutoPlay={() => setAutoPlay(!autoPlay())}
           autoPlayEnabled={autoPlay()}
-          youtube={youtubeLinks(lastTechnique()?.metadata?.youtube)}
+          youtube={coerceToArray(lastTechnique()?.metadata?.youtube)}
         />
         <DelayIndicator setDelayControl={setDelayControl} disabled={!autoPlay()} />
         <ExamScroll
@@ -142,8 +143,3 @@ const Player: Component<{
     </>
   );
 };
-
-function youtubeLinks(links: YoutubeLink[] | YoutubeLink | undefined): YoutubeLink[] {
-  if (Array.isArray(links)) return links;
-  return links ? [links] : [];
-}

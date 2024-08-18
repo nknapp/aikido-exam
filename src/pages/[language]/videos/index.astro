@@ -1,0 +1,29 @@
+---
+import { listVideoPacks } from "../../../data/videopacks";
+import DefaultLayout from "@/layouts/DefaultLayout.astro";
+import Header from "@/components/astro/Header.astro";
+import { t, tx } from "@/i18n";
+import { LinkButton } from "@/components/solid/atoms/LinkButton";
+
+import { multiplyParams } from "@/utils/multiplyParams";
+import { languages } from "@/i18n/server";
+
+export async function getStaticPaths() {
+  return multiplyParams({
+    language: languages,
+  });
+}
+
+const videoPacks = await listVideoPacks();
+---
+
+<DefaultLayout>
+  <Header slot="header">VideoPacks</Header>
+  <div>
+    {
+      videoPacks.map((videoPack) => {
+        return <LinkButton label={videoPack.name} href={`./${videoPack.id}`} />;
+      })
+    }
+  </div>
+</DefaultLayout>

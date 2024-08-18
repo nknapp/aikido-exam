@@ -1,6 +1,7 @@
 import type { YoutubeLink } from "$core/model";
 import { renderPlayerContainer } from "@/YoutubePlayer/PlayerContainer.tsx";
 import { youtubeEnabled } from "$core/store/youtube.ts";
+import { loadYoutubeAdapter } from "@/YoutubePlayer/adapter.ts";
 
 export interface YoutubePlayer {
   loadVideo(videoId: string): Promise<void>;
@@ -32,15 +33,7 @@ youtubeEnabled.subscribe((value) => {
 
 async function createPlayer(): Promise<YoutubePlayer> {
   const container = await renderPlayerContainer();
-  const { default: Player } = await import("youtube-player");
-  const player = Player(container.htmlElement, {
-    host: "https://www.youtube-nocookie.com",
-    playerVars: {
-      rel: 0,
-      autoplay: 0,
-      modestbranding: 1,
-    },
-  });
+  const player = await loadYoutubeAdapter(container.htmlElement);
 
   function updatePlayerSize() {
     player?.setSize(window.innerWidth, window.innerHeight);
@@ -51,7 +44,7 @@ async function createPlayer(): Promise<YoutubePlayer> {
 
   const result = {
     loadVideo(videoId: string) {
-      return player.loadVideoById({ videoId });
+      return player.loadVideoById(videoId);
     },
     async play() {
       await player.playVideo();
@@ -62,14 +55,7 @@ async function createPlayer(): Promise<YoutubePlayer> {
       container.setVisible(false);
     },
     async waitForStop() {
-      return new Promise<void>((resolve) => {
-        player.on("stateChange", (event) => {
-          if (event.data === 0) {
-            // Video has ended
-            resolve();
-          }
-        });
-      });
+      await player.waitForStop();
     },
   };
   container.addEventListener("stop", () => {

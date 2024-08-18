@@ -6,3 +6,4 @@ export * from "./TechniqueMetadata";
 export * from "./Technique";
 export * from "./Exam";
 export * from "./SpeechPack";
+export * from "./TechniqueTree";

@@ -1,13 +1,23 @@
-import type { Technique, Exam } from "$core/model";
+import type { Technique, Exam, TechniqueTree, BaseTechnique } from "$core/model";
 
 export function resolveExamTables(examTables: Exam[]): Technique[] {
-  const result: Technique[] = [];
-  for (const exam of examTables) {
-    for (const [execution, attacks] of entries(exam.techniques)) {
+  return resolveTechniqueTrees(
+    examTables.map((exam) => exam.techniques),
+    (technique, metadata) => ({ ...technique, metadata }),
+  );
+}
+
+export function resolveTechniqueTrees<T extends BaseTechnique, M>(
+  trees: TechniqueTree<M>[],
+  mapFn: (technique: BaseTechnique, metadata: M) => T,
+): T[] {
+  const result: T[] = [];
+  for (const tree of trees) {
+    for (const [execution, attacks] of entries(tree)) {
       for (const [attack, defences] of entries(attacks)) {
         for (const [defence, directions] of entries(defences)) {
           for (const [direction, metadata] of entries(directions)) {
-            result.push({ execution, attack, defence, direction, metadata });
+            result.push(mapFn({ execution, attack, defence, direction }, metadata));
           }
         }
       }

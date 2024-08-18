@@ -1,0 +1,30 @@
+---
+import { listVideoPacks, loadVideoPack } from "@/data/videopacks";
+
+import DefaultLayout from "@/layouts/DefaultLayout.astro";
+import Header from "@/components/astro/Header.astro";
+import { t, tx } from "@/i18n";
+
+import { multiplyParams } from "@/utils/multiplyParams";
+import { languages } from "@/i18n/server";
+import { VideoPackEditor } from "@/components/solid/organisms/VideoPackEditor";
+
+export async function getStaticPaths() {
+  const videoPacks = await listVideoPacks();
+  return multiplyParams({
+    language: languages,
+    videoPackId: videoPacks.map((pack) => pack.id),
+  });
+}
+
+const id = Astro.params.videoPackId;
+const videoPack = await loadVideoPack(id);
+---
+
+<DefaultLayout>
+  <Header slot="header" />
+
+  <h1>{t("editVideoPack.title")}</h1>
+
+  <VideoPackEditor videoPack={videoPack} client:only="solid-js"/></DefaultLayout
+>
