@@ -122,7 +122,7 @@ const Player: Component<{
           disabled={!props.ready}
         />
         {showYoutube() && (
-          <div class={"h-8 w-full flex"}>
+          <div class={"h-8 w-full flex gap-2"}>
             <For each={props.youtube}>
               {(link) => {
                 return <YoutubePlayButton type={"button"} class={"flex-1"} link={link} />;
