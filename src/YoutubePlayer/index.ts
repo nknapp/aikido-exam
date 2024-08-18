@@ -1,5 +1,6 @@
 import type { YoutubeLink } from "$core/model";
 import { renderPlayerContainer } from "@/YoutubePlayer/PlayerContainer.tsx";
+import { youtubeEnabled } from "$core/store/youtube.ts";
 
 export interface YoutubePlayer {
   loadVideo(videoId: string): Promise<void>;
@@ -22,6 +23,12 @@ export function getOrCreatePlayer(): Promise<YoutubePlayer> {
   cachedPlayer = cachedPlayer ?? createPlayer();
   return cachedPlayer;
 }
+
+youtubeEnabled.subscribe((value) => {
+  if (value) {
+    getOrCreatePlayer();
+  }
+});
 
 async function createPlayer(): Promise<YoutubePlayer> {
   const container = await renderPlayerContainer();
