@@ -1,1 +1,0 @@
-const s="single-direction";function n(e,r){return{async save(t){localStorage.setItem(e,JSON.stringify(t))},async load(){const t=localStorage.getItem(e);return t==null?r:Promise.resolve(JSON.parse(t))}}}function c(e){return n(`currentTechniques:${e}`,[])}export{s as S,c};
