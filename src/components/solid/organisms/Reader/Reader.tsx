@@ -1,4 +1,4 @@
-import { type Component, createSignal, For, lazy, Suspense } from "solid-js";
+import { type Component, createSignal, For, Suspense } from "solid-js";
 import type { DojoInfo } from "$core/model/Dojo.ts";
 import { createResource } from "solid-js";
 import { createTechniqueStore } from "$core/store";
@@ -13,10 +13,7 @@ import { type Speed, SpeedButton } from "@/components/solid/organisms/Reader/Spe
 import { type DelayControl, DelayIndicator } from "@/components/solid/atoms/DelayIndicator.tsx";
 import { youtubeEnabled } from "$core/store/youtube.ts";
 import { usePersistentStore } from "@/components/solid/hooks/usePersistentStore.ts";
-
-const YoutubePlayer = lazy(() =>
-  import("@/components/solid/atoms/YoutubePlayer.tsx").then(({ YoutubePlayer }) => ({ default: YoutubePlayer })),
-);
+import { YoutubePlayButton } from "@/components/solid/atoms/YoutubePlayButton.tsx";
 
 export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> = (props) => {
   const techniqueStore = createTechniqueStore(props.dojoInfo.id);
@@ -128,7 +125,7 @@ const Player: Component<{
           <div class={"h-8 w-full flex"}>
             <For each={props.youtube}>
               {(link) => {
-                return <YoutubePlayer type="button" class={"flex-1"} link={link} />;
+                return <YoutubePlayButton type="button" class={"flex-1"} link={link} />;
               }}
             </For>
           </div>

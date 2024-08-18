@@ -1,14 +1,11 @@
-import { type Component, createMemo, For, lazy, Match, Show, Switch } from "solid-js";
+import { type Component, createMemo, For, Match, Show, Switch } from "solid-js";
 import { SINGLE_DIRECTION, type Technique, type TechniqueMetadata, type YoutubeLink } from "$core/model";
 import { ForEntries } from "./ForEntries.tsx";
 import { buildExamTable } from "$core/buildExamTable";
 import { t } from "@/i18n";
 import { youtubeEnabled } from "$core/store/youtube.ts";
 import { usePersistentStore } from "@/components/solid/hooks/usePersistentStore.ts";
-
-const YoutubePlayer = lazy(() =>
-  import("@/components/solid/atoms/YoutubePlayer.tsx").then(({ YoutubePlayer }) => ({ default: YoutubePlayer })),
-);
+import { YoutubePlayButton } from "@/components/solid/atoms/YoutubePlayButton.tsx";
 
 export interface ExamSheetProps {
   techniques: Technique[];
@@ -92,7 +89,7 @@ const YoutubeLink: Component<{ metadata: TechniqueMetadata }> = (props) => {
   return (
     <Show when={showYoutube()}>
       <span class={"print:hidden"}>
-        <For each={youtube}>{(video) => <YoutubePlayer type={"icon"} class={"inline mx-2"} link={video} />}</For>
+        <For each={youtube}>{(video) => <YoutubePlayButton type={"icon"} class={"inline mx-2"} link={video} />}</For>
       </span>
     </Show>
   );
