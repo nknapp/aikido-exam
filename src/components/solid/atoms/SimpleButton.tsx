@@ -20,12 +20,12 @@ export interface SimpleButtonProps {
 export const SimpleButton: Component<SimpleButtonProps> = (props) => {
   const ready = isReady();
   const disabled = createMemo(() => !ready || props.disabled);
-  const { buttonClasses, iconClasses } = createButtonClasses(() => props);
+  const { buttonClasses, iconClasses, labelClasses } = createButtonClasses(() => props);
 
   return (
     <button class={buttonClasses()} onClick={(event) => props.onClick?.(event)} disabled={disabled()}>
       {props.icon && <props.icon class={iconClasses()} />}
-      <span class={cls(props.hideLabel && "sr-only")}>{props.label}</span>
+      <span class={cls(props.hideLabel && "sr-only", labelClasses())}>{props.label}</span>
       {props.children}
     </button>
   );

@@ -125,7 +125,7 @@ const Player: Component<{
           <div class={"h-8 w-full flex"}>
             <For each={props.youtube}>
               {(link) => {
-                return <YoutubePlayButton type="button" class={"flex-1"} link={link} />;
+                return <YoutubePlayButton type={"button"} class={"flex-1"} link={link} />;
               }}
             </For>
           </div>

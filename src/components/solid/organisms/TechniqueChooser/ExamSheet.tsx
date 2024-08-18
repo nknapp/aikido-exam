@@ -63,16 +63,20 @@ const ShowDirections: Component<DirectionsProps> = (props) => {
         <YoutubeLink metadata={props.directions[SINGLE_DIRECTION]} />
       </Match>
       <Match when={!singleDirection()}>
-        <ForEntries object={props.directions} separator={","}>
-          {(direction, metadata) => {
-            return (
-              <span>
-                {direction}
-                <YoutubeLink metadata={metadata} />
-              </span>
-            );
-          }}
-        </ForEntries>
+        <span class={"text-sm"}>
+          (
+          <ForEntries object={props.directions} separator={", "}>
+            {(direction, metadata) => {
+              return (
+                <span>
+                  {direction}
+                  <YoutubeLink metadata={metadata} />
+                </span>
+              );
+            }}
+          </ForEntries>
+          )
+        </span>
       </Match>
     </Switch>
   );

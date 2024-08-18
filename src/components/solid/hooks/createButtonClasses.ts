@@ -51,17 +51,21 @@ export const createButtonClasses = (props: Accessor<ButtonClassProps>) => {
     buttonClasses: createMemo(() => {
       return cls(
         props().class,
-        "flex items-center justify-center border rounded whitespace-nowrap truncate print:p-1 transition-all duration-100 hover:no-underline",
+        "flex items-center justify-center border rounded whitespace-nowrap print:p-1 transition-all duration-100 hover:no-underline",
         "active:outline",
         "disabled:grayscale disabled:opacity-50",
         "bg-white",
+        "truncate",
         highlighted() && highlightClasses,
         highlighted() ? highlightedColorClasses[color()] : colorClasses[color()],
         sizeClasses[size()],
       );
     }),
     iconClasses: createMemo(() => {
-      return cls(iconSize[size()], iconColor[color()]);
+      return cls(iconSize[size()], iconColor[color()], "flex-shrink-0");
+    }),
+    labelClasses: createMemo(() => {
+      return cls("flex-shrink", "truncate");
     }),
   };
 };
