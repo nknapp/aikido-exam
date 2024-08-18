@@ -4,7 +4,7 @@ import { youtubeEnabled } from "$core/store/youtube.ts";
 import { loadYoutubeAdapter } from "@/YoutubePlayer/adapter.ts";
 
 export interface YoutubePlayer {
-  loadVideo(videoId: string): Promise<void>;
+  loadVideo(videoId: string, startSeconds?: number, endSeconds?: number): Promise<void>;
   play(): Promise<void>;
   stop(): Promise<void>;
   waitForStop(): Promise<void>;
@@ -12,7 +12,7 @@ export interface YoutubePlayer {
 
 export async function playVideo(youtubeLink: YoutubeLink): Promise<void> {
   const player = await getOrCreatePlayer();
-  await player.loadVideo(youtubeLink.videoId);
+  await player.loadVideo(youtubeLink.videoId, youtubeLink.startSeconds, youtubeLink.endSeconds);
   await player.play();
   await player.waitForStop();
   await player.stop();
@@ -43,8 +43,8 @@ async function createPlayer(): Promise<YoutubePlayer> {
   updatePlayerSize();
 
   const result = {
-    loadVideo(videoId: string) {
-      return player.loadVideoById(videoId);
+    loadVideo(videoId: string, startSeconds?: number, endSeconds?: number) {
+      return player.loadVideoById(videoId, startSeconds, endSeconds);
     },
     async play() {
       await player.playVideo();
