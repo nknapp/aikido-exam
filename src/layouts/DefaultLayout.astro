@@ -13,6 +13,7 @@ const props = Astro.props;
 
 <BaseLayout title={props.title} fillScreen={props.fillScreen}>
   <Header slot="header" />
+  <slot name="head" slot="head"></slot>
   <slot />
   <Footer slot="footer" />
 </BaseLayout>

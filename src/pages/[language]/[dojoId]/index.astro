@@ -21,8 +21,10 @@ const dojo = await loadDojo(id);
 ---
 
 <DefaultLayout>
+  <Fragment slot="head">
+    <meta name="description" content={t("meta.description.dojo", { dojo: dojo.info.name})}>
+  </Fragment>
   <Header slot="header" />
-
   <h1>{t("app.button.chooseExamTable.label")}</h1>
   <p>{t("examChooser.exams-from")} <img class="inline h-[1.2em] me-2" alt="logo" src={dojo.info.logo} />{dojo.info.name}</p>
   <p>{t("examChooser.source")}: <a href={dojo.details.sourceLink} ">{dojo.details.sourceLink}</a></p>

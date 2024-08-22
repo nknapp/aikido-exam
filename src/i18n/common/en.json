@@ -37,6 +37,8 @@
   "footer.donations": "Donations",
   "home.choose-dojo": "Choose your dojo:",
   "language.label": "English",
+  "meta.description.dojo": "Create random lists of techniques for Aikido Exams in {# dojo #}",
+  "meta.description.home": "Learn for your Aikido exam with technique lists and videos",
   "reader.upcoming-technique": "Upcoming",
   "video.stop": "Play video"
 }

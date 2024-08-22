@@ -37,6 +37,8 @@
   "footer.donations": "Spenden",
   "home.choose-dojo": "Wähle dein Dojo aus:",
   "language.label": "Deutsch",
+  "meta.description.dojo": "Zufällige Technik-Listen für Aikido-Prüfungen erstellen: {# dojo #}",
+  "meta.description.home": "Bereite dich auf deine Aikido-Prüfung vor, mit Technik-Listen und Videos",
   "reader.upcoming-technique": "Nächste",
   "video.stop": "Stop"
 }

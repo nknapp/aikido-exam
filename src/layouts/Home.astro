@@ -15,6 +15,9 @@ const dojos = await listDojos();
 ---
 
 <BaseLayout title={t("app.title")}>
+  <Fragment slot="head">
+    <meta name="description" content={t("meta.description.home")} />
+  </Fragment>
   <div slot="header" class="container flex justify-end items-center h-full">
     <LocaleSwitcher />
   </div>
