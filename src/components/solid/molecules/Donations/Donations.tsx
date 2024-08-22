@@ -7,7 +7,7 @@ import { t } from "@/i18n";
 
 export const Donations: Component = () => {
   return (
-    <div class={"flex gap-4"}>
+    <div class={"flex gap-4 flex-wrap"}>
       <LinkButton
         size={"small"}
         color={"primary"}
