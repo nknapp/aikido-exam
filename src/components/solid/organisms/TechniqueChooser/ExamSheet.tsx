@@ -19,7 +19,7 @@ export const ExamSheet: Component<ExamSheetProps> = (props) => {
     }),
   );
   return (
-    <div>
+    <div class={"break-before-page"}>
       <ForEntries object={examTable()}>
         {(execution, attacks) => (
           <div>
@@ -29,7 +29,7 @@ export const ExamSheet: Component<ExamSheetProps> = (props) => {
                 {(attack, defences) => (
                   <div class={"grid grid-cols-3 mt-4 break-inside-avoid"}>
                     <div>{attack}</div>
-                    <div class={"col-span-2 md:flex flex-wrap"}>
+                    <div class={"col-span-2"}>
                       <ForEntries object={defences}>
                         {(defence, directions) => (
                           <div class={"md:me-6"}>

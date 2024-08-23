@@ -16,11 +16,11 @@ export const VideoPackEditor: Component<{
 }> = (props) => {
   const [selectedVideo, setSelectedVideo] = createSignal<TechniqueVideo | null>(null);
   const [updatedVideos, setUpdatedVideos] = createSignal<Record<string, TechniqueVideo>>(
-    JSON.parse(localStorage.getItem(`videoPack-${props.videoPack.name}`) ?? "{}"),
+    JSON.parse(localStorage.getItem(`videoPack-${props.videoPack.metadata.name}`) ?? "{}"),
   );
 
   createEffect(() => {
-    localStorage.setItem(`videoPack-${props.videoPack.name}`, JSON.stringify(updatedVideos()));
+    localStorage.setItem(`videoPack-${props.videoPack.metadata.name}`, JSON.stringify(updatedVideos()));
   });
 
   const resolvedVideos: TechniqueVideo[] = resolveTechniqueTrees([props.videoPack.videos], (technique, videos) => ({
@@ -57,10 +57,10 @@ export const VideoPackEditor: Component<{
 
   return (
     <div>
-      <h2>{props.videoPack.name}</h2>
+      <h2>{props.videoPack.metadata.name}</h2>
       <p>
-        <a target="_blank" href={props.videoPack.source}>
-          {props.videoPack.source}
+        <a target="_blank" href={props.videoPack.metadata.source}>
+          {props.videoPack.metadata.source}
         </a>
       </p>
       <div class={"relative flex flex-col gap-2"}>
@@ -152,11 +152,13 @@ const VideoEditor: Component<{ video: TechniqueVideo; onChange: (video: Techniqu
   useKeyboard("KeyS", async () => {
     if (player) {
       setStart(await player.getCurrentTime());
+      updateVideo();
     }
   });
   useKeyboard("KeyE", async () => {
     if (player) {
       setEnd(await player.getCurrentTime());
+      updateVideo();
     }
   });
 

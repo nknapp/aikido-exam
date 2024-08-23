@@ -1,8 +1,11 @@
 import type { VideoPack } from "$core/model/VideoPack";
 
 export default {
-  name: "Aikido Kompendium",
-  source: "https://www.aikido-kompendium.de",
+  metadata: {
+    name: "Aikido Kompendium",
+    copyright: "Aikido Dojo Darmstadt",
+    source: "https://www.aikido-kompendium.de",
+  },
   videos: {
     "suwari waza": {
       "ryote dori": {

@@ -14,8 +14,8 @@ export async function listVideoPacks(): Promise<VideoPackInfo[]> {
       const pack = await videoPack();
       return {
         id,
-        name: pack.name,
-        source: pack.source,
+        name: pack.metadata.name,
+        source: pack.metadata.source,
       };
     }),
   );

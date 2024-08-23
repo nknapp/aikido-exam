@@ -20,8 +20,11 @@ for (const technique of allTechniques) {
 }
 
 const pack: VideoPack = {
-  name: "Aikido Kompendium",
-  source: "https://www.aikido-kompendium.de",
+  metadata: {
+    name: "Aikido Kompendium",
+    copyright: "Aikido Dojo Darmstadt",
+    source: "https://www.aikido-kompendium.de",
+  },
   videos: buildTechniqueTree(allTechniques, (technique) => coerceToArray(technique.metadata.youtube)),
 };
 

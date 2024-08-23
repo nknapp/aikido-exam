@@ -1,12 +1,12 @@
 import { type Component, Match, Switch } from "solid-js";
-import type { YoutubeLink } from "$core/model";
 import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
 import { IconVideoLibrary } from "@/icons";
 import { t } from "@/i18n";
 import { playVideo } from "@/YoutubePlayer";
+import type { ResolvedYoutubeLink } from "@/utils/resolveYoutubeLinks.ts";
 
 export interface YoutubePlayerProps {
-  link: YoutubeLink;
+  link: ResolvedYoutubeLink;
   type: "button" | "icon";
   class?: string;
 }

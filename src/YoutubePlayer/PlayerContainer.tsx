@@ -4,6 +4,7 @@ import { render } from "solid-js/web";
 import { t } from "@/i18n";
 import { IconStop } from "@/icons";
 import { cls } from "$core/utils/cls.ts";
+import type { ResolvedYoutubeLink } from "@/utils/resolveYoutubeLinks.ts";
 
 export async function renderPlayerContainer() {
   const container = document.createElement("div");
@@ -17,6 +18,7 @@ export class PlayerContainerRef extends EventTarget {
   constructor(
     public htmlElement: HTMLDivElement,
     public setVisible: (visible: boolean) => void,
+    public setVideo: (metadata: ResolvedYoutubeLink) => void,
   ) {
     super();
   }
@@ -27,9 +29,10 @@ const PlayerContainer: Component<{
 }> = (props) => {
   let playerContainerRef: PlayerContainerRef | null = null;
   const [visible, setVisible] = createSignal(false);
+  const [youtubeLink, setYoutubeLink] = createSignal<ResolvedYoutubeLink | null>(null);
 
   function onPlayerElement(el: HTMLDivElement) {
-    playerContainerRef = new PlayerContainerRef(el, setVisible);
+    playerContainerRef = new PlayerContainerRef(el, setVisible, setYoutubeLink);
     props.setPlayer(playerContainerRef);
   }
 
@@ -46,7 +49,24 @@ const PlayerContainer: Component<{
         icon={IconStop}
         onClick={stop}
       />
-      <div ref={onPlayerElement} class="absolute inset-0 z-0"></div>
+      <div ref={onPlayerElement} class="absolute inset-0 z-0 pb-25"></div>
+
+      {youtubeLink() != null && (
+        <div
+          class={
+            "absolute bottom-0 left-0 right-0 z-10 bg-secondary-darkest h-24 border-t-4 border-secondary-light flex flex-col text-secondary-light"
+          }
+        >
+          <div class={"h-8 p-1 truncate"}>
+            {t("video.source")}{" "}
+            <a href={youtubeLink()?.videoPackMetadata.source}>{youtubeLink()?.videoPackMetadata.name}</a>
+          </div>
+          <div class={"h-8 p-1 truncate"} title={youtubeLink()?.title}>
+            Video: <a href={"https://youtu.be/" + youtubeLink()?.videoId}>{youtubeLink()?.title}</a>
+          </div>
+          <div class={"h-8 p-1"}>© {youtubeLink()?.videoPackMetadata.copyright}</div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,18 +1,18 @@
-import type { YoutubeLink } from "$core/model";
 import { renderPlayerContainer } from "@/YoutubePlayer/PlayerContainer.tsx";
 import { youtubeEnabled } from "$core/store/youtube.ts";
 import { loadYoutubeAdapter } from "@/YoutubePlayer/adapter.ts";
+import type { ResolvedYoutubeLink } from "@/utils/resolveYoutubeLinks.ts";
 
 export interface YoutubePlayer {
-  loadVideo(videoId: string, startSeconds?: number, endSeconds?: number): Promise<void>;
+  loadVideo(video: ResolvedYoutubeLink): Promise<void>;
   play(): Promise<void>;
   stop(): Promise<void>;
   waitForStop(): Promise<void>;
 }
 
-export async function playVideo(youtubeLink: YoutubeLink): Promise<void> {
+export async function playVideo(youtubeLink: ResolvedYoutubeLink): Promise<void> {
   const player = await getOrCreatePlayer();
-  await player.loadVideo(youtubeLink.videoId, youtubeLink.startSeconds, youtubeLink.endSeconds);
+  await player.loadVideo(youtubeLink);
   await player.play();
   await player.waitForStop();
   await player.stop();
@@ -42,9 +42,10 @@ async function createPlayer(): Promise<YoutubePlayer> {
   window.addEventListener("resize", updatePlayerSize);
   updatePlayerSize();
 
-  const result = {
-    loadVideo(videoId: string, startSeconds?: number, endSeconds?: number) {
-      return player.loadVideoById(videoId, startSeconds, endSeconds);
+  const result: YoutubePlayer = {
+    loadVideo(video: ResolvedYoutubeLink) {
+      container.setVideo(video);
+      return player.loadVideoById(video.videoId, video.startSeconds, video.endSeconds);
     },
     async play() {
       await player.playVideo();

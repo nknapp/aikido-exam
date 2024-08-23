@@ -2,7 +2,7 @@ import { type Component, createSignal, For, Suspense } from "solid-js";
 import type { DojoInfo } from "$core/model/Dojo.ts";
 import { createResource } from "solid-js";
 import { createTechniqueStore } from "$core/store";
-import { type SpeechPack, type YoutubeLink } from "$core/model";
+import { type SpeechPack } from "$core/model";
 import { SimpleButton } from "@/components/solid/atoms/SimpleButton.tsx";
 import { ExamScroll } from "@/components/solid/organisms/Reader/ExamScroll.tsx";
 import { IconAutoMode, IconPlay, IconSkipNext, IconSkipPrevious, IconStop } from "@/icons";
@@ -14,7 +14,7 @@ import { type DelayControl, DelayIndicator } from "@/components/solid/atoms/Dela
 import { youtubeEnabled } from "$core/store/youtube.ts";
 import { usePersistentStore } from "@/components/solid/hooks/usePersistentStore.ts";
 import { YoutubePlayButton } from "@/components/solid/atoms/YoutubePlayButton.tsx";
-import { resolveYoutubeLinks } from "@/utils/resolveYoutubeLinks.ts";
+import { type ResolvedYoutubeLink, resolveYoutubeLinks } from "@/utils/resolveYoutubeLinks.ts";
 
 export const Reader: Component<{ dojoInfo: DojoInfo; speechPack: SpeechPack }> = (props) => {
   const techniqueStore = createTechniqueStore(props.dojoInfo.id);
@@ -80,7 +80,7 @@ const Player: Component<{
   onClickPrevious(): void;
   autoPlayEnabled: boolean;
   onClickAutoPlay(): void;
-  youtube: YoutubeLink[];
+  youtube: ResolvedYoutubeLink[];
 }> = (props) => {
   const [speed, setSpeed] = createSignal<Speed>("normal");
   const showYoutube = usePersistentStore(youtubeEnabled, false);
