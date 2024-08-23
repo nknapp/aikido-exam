@@ -4,14 +4,12 @@ import { IconGithub } from "../../../icons";
 import { Alert } from "../../../components/solid/atoms/Alert";
 import { YoutubeActivator } from "../../../components/solid/atoms/YoutubeActivator";
 
-
 const lastUpdate = new Intl.DateTimeFormat("en-US", {
   dateStyle: "short",
   timeStyle: "short",
 }).format(new Date(process.env.VITE_BUILD_DATE));
-
-
 ---
+
 <DefaultLayout>
   <h1>Impress</h1>
   <p>Responsible for content according to (german) § 5 TMG:</p>
@@ -57,7 +55,9 @@ const lastUpdate = new Intl.DateTimeFormat("en-US", {
 
   <p>
     <b>Aikido-Exam</b> can show a YouTube video of the current technique. I did not make the videos myself. They are from
-    the <a href="https://aikidokomponendium.de">Aikido Kompendium</a>
+    the <a href="https://aikidokomponendium.de">Aikido Kompendium</a> and from the <a
+      href="https://www.aikido-schule.de/aikido/filme/">Aikido-School Cologne</a
+    >.
   </p>
   <Alert type="warning">
     If this option is enabled, data will be sent to YouTube. See <a
@@ -74,5 +74,4 @@ const lastUpdate = new Intl.DateTimeFormat("en-US", {
     const canvas = document.getElementById("impress") as HTMLCanvasElement;
     createImpress(canvas);
   </script>
-
 </DefaultLayout>

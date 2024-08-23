@@ -1,14 +1,12 @@
 ---
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
 import { Alert } from "@/components/solid/atoms/Alert";
-import {YoutubeActivator} from "@/components/solid/atoms/YoutubeActivator"
+import { YoutubeActivator } from "@/components/solid/atoms/YoutubeActivator";
 
 const lastUpdate = new Intl.DateTimeFormat("de-DE", {
   dateStyle: "short",
   timeStyle: "short",
 }).format(new Date(process.env.VITE_BUILD_DATE));
-
-
 ---
 
 <DefaultLayout>
@@ -64,13 +62,16 @@ const lastUpdate = new Intl.DateTimeFormat("de-DE", {
 
   <p>
     <b>Aikido-Prüfung</b> kann zur aktuellen Technik ein YouTube Video aus dem <a href="https://aikidokomponendium.de"
-      >Aikido Kompendium</a> anzeigen.
+      >Aikido Kompendium</a
+    > und von der <a href="https://www.aikido-schule.de/aikido/filme/">Aikido-Schule Köln</a>anzeigen.
   </p>
   <Alert type="warning">
-    Wenn diese Option angeschaltet ist, werden Daten an YouTube gesendet.
-    Siehe auch <a href="https://www.youtube.com/howyoutubeworks/our-commitments/protecting-user-data/#privacy-guidelines">YouTubes Datenschutzrichtlinien</a>.
+    Wenn diese Option angeschaltet ist, werden Daten an YouTube gesendet. Siehe auch <a
+      href="https://www.youtube.com/howyoutubeworks/our-commitments/protecting-user-data/#privacy-guidelines"
+      >YouTubes Datenschutzrichtlinien</a
+    >.
   </Alert>
-  <YoutubeActivator class="my-2" client:load/>
+  <YoutubeActivator class="my-2" client:load />
   <small>Letztes Update: {lastUpdate}</small>
 
   <script>
