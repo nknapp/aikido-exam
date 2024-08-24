@@ -41,22 +41,18 @@ const PlayerContainer: Component<{
   }
 
   return (
-    <div class={cls("fixed inset-0 bg-primary-dark", visible() ? "visible" : "hidden")}>
-      <SimpleButton
-        class={"absolute top-1 right-1 z-10"}
-        size={"small"}
-        label={t("video.stop")}
-        icon={IconStop}
-        onClick={stop}
-      />
-      <div ref={onPlayerElement} class="absolute inset-0 z-0 pb-32"></div>
+    <div class={cls("fixed inset-0 bg-primary-dark flex flex-col", visible() ? "visible" : "hidden")}>
+      <div ref={onPlayerElement} class="flex-1"></div>
 
       {youtubeLink() != null && (
-        <div
-          class={
-            "absolute bottom-0 left-0 right-0 z-10 bg-secondary-darkest h-32 border-t-4 border-secondary-light text-secondary-light p-4"
-          }
-        >
+        <div class={"bg-secondary-darkest border-t-4 border-secondary-light text-secondary-light p-4 relative"}>
+          <SimpleButton
+            class={"absolute top-1 right-1 z-10"}
+            size={"small"}
+            label={t("video.stop")}
+            icon={IconStop}
+            onClick={stop}
+          />
           <div class={"h-8 p-1 truncate"}>
             {t("video.source")}{" "}
             <a href={youtubeLink()?.videoPackMetadata.source}>{youtubeLink()?.videoPackMetadata.name}</a>
