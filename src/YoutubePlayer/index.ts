@@ -1,7 +1,8 @@
 import { renderPlayerContainer } from "@/YoutubePlayer/PlayerContainer.tsx";
-import { youtubeEnabled } from "$core/store/youtube.ts";
+import { setYoutubeEnabled, youtubeEnabled } from "$core/store/youtube.ts";
 import { loadYoutubeAdapter } from "@/YoutubePlayer/adapter.ts";
 import type { ResolvedYoutubeLink } from "@/utils/resolveYoutubeLinks.ts";
+import { askYoutubeConsent } from "@/YoutubePlayer/askYoutubeConsent.tsx";
 
 export interface YoutubePlayer {
   loadVideo(video: ResolvedYoutubeLink): Promise<void>;
@@ -11,6 +12,9 @@ export interface YoutubePlayer {
 }
 
 export async function playVideo(youtubeLink: ResolvedYoutubeLink): Promise<void> {
+  const consent = youtubeEnabled.get() || (await askYoutubeConsent());
+  if (!consent) return;
+  setYoutubeEnabled(consent);
   const player = await getOrCreatePlayer();
   await player.loadVideo(youtubeLink);
   await player.play();

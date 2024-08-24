@@ -40,6 +40,12 @@
   "meta.description.dojo": "Create random lists of techniques for Aikido Exams in {# dojo #}",
   "meta.description.home": "Learn for your Aikido exam with technique lists and videos",
   "reader.upcoming-technique": "Upcoming",
+  "video.consent.link-text": "Read Youtube's privacy policy",
+  "video.consent.no": "No, disable YouTube videos",
+  "video.consent.suffix": "Your choice will be saved. You can change it any time by click 'About this app' at the very bottom of each page.",
+  "video.consent.text": "You are about to watch a Youtube video. The video will be loaded directly from Youtube's servers and Youtube may collect personal information about you.",
+  "video.consent.title": "Show Youtube videos?",
+  "video.consent.yes": "Yes, enable YouTube videos",
   "video.source": "Source:",
-  "video.stop": "Play video"
+  "video.stop": "Stop"
 }

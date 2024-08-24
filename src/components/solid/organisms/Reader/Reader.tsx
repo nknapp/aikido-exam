@@ -11,8 +11,6 @@ import { createPlayer } from "@/components/solid/organisms/Reader/createPlayer.t
 import { CheckButton } from "@/components/solid/atoms/CheckButton.tsx";
 import { type Speed, SpeedButton } from "@/components/solid/organisms/Reader/SpeedButton.tsx";
 import { type DelayControl, DelayIndicator } from "@/components/solid/atoms/DelayIndicator.tsx";
-import { youtubeEnabled } from "$core/store/youtube.ts";
-import { usePersistentStore } from "@/components/solid/hooks/usePersistentStore.ts";
 import { YoutubePlayButton } from "@/components/solid/atoms/YoutubePlayButton.tsx";
 import { type ResolvedYoutubeLink, resolveYoutubeLinks } from "@/utils/resolveYoutubeLinks.ts";
 
@@ -83,7 +81,6 @@ const Player: Component<{
   youtube: ResolvedYoutubeLink[];
 }> = (props) => {
   const [speed, setSpeed] = createSignal<Speed>("normal");
-  const showYoutube = usePersistentStore(youtubeEnabled, false);
   return (
     <>
       <div class={"grid grid-cols-4 gap-4"}>
@@ -122,15 +119,13 @@ const Player: Component<{
           onChange={props.onClickAutoPlay}
           disabled={!props.ready}
         />
-        {showYoutube() && (
-          <div class={"h-8 w-full flex gap-2"}>
-            <For each={props.youtube}>
-              {(link) => {
-                return <YoutubePlayButton type={"button"} class={"flex-1"} link={link} />;
-              }}
-            </For>
-          </div>
-        )}
+        <div class={"h-8 w-full flex gap-2"}>
+          <For each={props.youtube}>
+            {(link) => {
+              return <YoutubePlayButton type={"button"} class={"flex-1"} link={link} />;
+            }}
+          </For>
+        </div>
         {/*TODO: Implement speed */}
         <SpeedButton
           class={"hidden"}

@@ -17,3 +17,4 @@ export { default as IconCheckBoxOutlineBlank } from "@material-design-icons/svg/
 export { default as IconNextPlan } from "@material-design-icons/svg/outlined/next_plan.svg?component-solid";
 export { default as IconGithub } from "./custom/github-mark.svg?component-solid";
 export { default as IconGithubWhite } from "./custom/github-mark-white.svg?component-solid";
+export { default as IconYoutubeWhite } from "./custom/youtube-white-square.svg?component-solid";

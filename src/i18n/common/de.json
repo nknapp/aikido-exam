@@ -40,6 +40,12 @@
   "meta.description.dojo": "Zufällige Technik-Listen für Aikido-Prüfungen erstellen: {# dojo #}",
   "meta.description.home": "Bereite dich auf deine Aikido-Prüfung vor, mit Technik-Listen und Videos",
   "reader.upcoming-technique": "Nächste",
+  "video.consent.link-text": "YouTubes Datenschutzrichtlinien lesen",
+  "video.consent.no": "Nein, Youtube Videos nicht anzeigen",
+  "video.consent.suffix": "Deine Auswahl wird gespeichert. Du kannst sie jederzeit ändern. Klicke dafür am Ende dieser Seite auf 'Über diese App'.",
+  "video.consent.text": "Du bist dabei, ein Video von Youtube abzuspielen. Das Video wird direkt von den Youtube-Servern geladen und Youtube kann dadurch Daten über dich sammeln. Möchtest du weitermachen?",
+  "video.consent.title": "Anzeige von Youtube Videos erlauben?",
+  "video.consent.yes": "Ja, Youtube Videos anzeigen",
   "video.source": "Quelle:",
   "video.stop": "Stop"
 }

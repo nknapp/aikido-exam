@@ -1,9 +1,7 @@
-import { type Component, createMemo, For, Match, Show, Switch } from "solid-js";
+import { type Component, createMemo, For, Match, Switch } from "solid-js";
 import { type BaseTechnique, SINGLE_DIRECTION, type Technique, type YoutubeLink } from "$core/model";
 import { ForEntries } from "./ForEntries.tsx";
 import { t } from "@/i18n";
-import { youtubeEnabled } from "$core/store/youtube.ts";
-import { usePersistentStore } from "@/components/solid/hooks/usePersistentStore.ts";
 import { YoutubePlayButton } from "@/components/solid/atoms/YoutubePlayButton.tsx";
 import { resolveYoutubeLinks } from "@/utils/resolveYoutubeLinks.ts";
 import { buildTechniqueTree } from "$core/buildExamTable/buildExamTable.ts";
@@ -89,13 +87,10 @@ const ShowDirections: Component<DirectionsProps> = (props) => {
 };
 
 const YoutubeLink: Component<{ technique: BaseTechnique }> = (props) => {
-  const showYoutube = usePersistentStore(youtubeEnabled, false);
   const youtube = resolveYoutubeLinks(props.technique);
   return (
-    <Show when={showYoutube()}>
-      <span class={"print:hidden"}>
-        <For each={youtube}>{(video) => <YoutubePlayButton type={"icon"} class={"inline mx-2"} link={video} />}</For>
-      </span>
-    </Show>
+    <span class={"print:hidden"}>
+      <For each={youtube}>{(video) => <YoutubePlayButton type={"icon"} class={"inline mx-2"} link={video} />}</For>
+    </span>
   );
 };
