@@ -1,7 +1,7 @@
 import type { BaseTechnique, YoutubeLink, VideoPack, VideoPackMetadata } from "$core/model";
 
 import aikidoKompendium from "@/data/videopacks/aikido-kompendium";
-import bodoRoedelVideos from "@/data/videopacks/bodo-roedel";
+import aikidoSchuleKoeln from "src/data/videopacks/aikido-schule-koeln";
 
 export interface ResolvedYoutubeLink extends YoutubeLink {
   videoPackMetadata: VideoPackMetadata;
@@ -11,7 +11,7 @@ export function resolveYoutubeLinks(technique: BaseTechnique | null): ResolvedYo
   if (technique == null) return [];
   return (
     resolveYoutubeLinksFromPack(aikidoKompendium, technique) ??
-    resolveYoutubeLinksFromPack(bodoRoedelVideos, technique) ??
+    resolveYoutubeLinksFromPack(aikidoSchuleKoeln, technique) ??
     []
   );
 }

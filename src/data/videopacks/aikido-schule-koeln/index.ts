@@ -2,8 +2,8 @@ import type { VideoPack } from "$core/model/VideoPack.ts";
 
 export default {
   metadata: {
-    name: "Aikido-Schule Bodo Rödel",
-    copyright: "Bodo Rödel",
+    name: "Aikido Schule Köln",
+    copyright: "Aikido Schule Köln",
     source: "https://www.aikido-schule.de/aikido/filme/",
   },
   videos: {
