@@ -20,7 +20,7 @@ export async function loadYoutubeAdapter(container: HTMLDivElement): Promise<You
     playerVars: {
       rel: 0,
       autoplay: 0,
-      modestbranding: 1,
+      //       modestbranding: 1,
       controls: 1,
     },
   });

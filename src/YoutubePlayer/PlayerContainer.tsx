@@ -49,12 +49,12 @@ const PlayerContainer: Component<{
         icon={IconStop}
         onClick={stop}
       />
-      <div ref={onPlayerElement} class="absolute inset-0 z-0 pb-25"></div>
+      <div ref={onPlayerElement} class="absolute inset-0 z-0 pb-32"></div>
 
       {youtubeLink() != null && (
         <div
           class={
-            "absolute bottom-0 left-0 right-0 z-10 bg-secondary-darkest h-24 border-t-4 border-secondary-light flex flex-col text-secondary-light"
+            "absolute bottom-0 left-0 right-0 z-10 bg-secondary-darkest h-32 border-t-4 border-secondary-light text-secondary-light p-4"
           }
         >
           <div class={"h-8 p-1 truncate"}>
