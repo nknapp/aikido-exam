@@ -2,7 +2,9 @@ import type { Dojo, DojoInfo, ResolvedDojo } from "$core/model/Dojo";
 
 export async function listDojos(): Promise<DojoInfo[]> {
   const dojos = import.meta.glob<Dojo>("./*/index.ts", { eager: true, import: "default" });
-  return Object.values(dojos).map((dojo) => dojo.info);
+  return Object.values(dojos)
+    .filter((dojo) => !dojo.draft)
+    .map((dojo) => dojo.info);
 }
 
 export async function loadDojo(id: string): Promise<ResolvedDojo> {

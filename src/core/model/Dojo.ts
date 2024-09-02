@@ -5,6 +5,7 @@ export type TranslatedText = {
 } & Record<string, string>;
 
 export interface Dojo {
+  draft?: boolean;
   info: DojoInfo;
   details: () => Promise<{ default: DojoDetails }>;
 }
@@ -17,7 +18,7 @@ export interface ResolvedDojo {
 export interface DojoInfo {
   id: string;
   name: string;
-  logo: string | URL;
+  logo?: string | URL;
 }
 
 export interface DojoDetails {
