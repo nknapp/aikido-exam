@@ -1,10 +1,11 @@
 import type { Dojo } from "$core/model/Dojo";
+import logo from "./logo_150.png?url";
 
 export default {
-  draft: true,
   info: {
-    id: "goerlitz",
-    name: "Görlitz",
+    id: "kenkokan",
+    name: "Kenkokan Görlitz",
+    logo,
   },
   details: () => import("./details"),
 } satisfies Dojo;

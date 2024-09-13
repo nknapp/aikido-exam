@@ -1,26 +1,6 @@
 import type { Directions, Exam, TechniqueMetadata } from "$core/model";
-import { goerlitzTree } from "@/data/dojos/goerlitz/exams/utils/goerlitzTree.ts";
+import { goerlitzTree } from "./utils/goerlitzTree.ts";
 
-function pinAttacksTachiWaza(directions: Directions<TechniqueMetadata>) {
-  return {
-    "ai hanmi katate dori": directions,
-    "shomen uchi": directions,
-    "gyuako hanmi katate dori": directions,
-    "ryote dori": directions,
-    "kata dori": directions,
-    "yokomen uchi": directions,
-    "ushiro ryote dori": directions,
-    "katate ryote dori": directions,
-    "kata dori men uchi": directions,
-    "ushiro ryo kata dori": directions,
-    "mae ryo kata dori": directions,
-    "jodan tsuki": directions,
-    "chudan tsuki": directions,
-    "ushiro ryo hiji dori": directions,
-    "ushiro eri dori": directions,
-    "ushiro katate dori kubi shime": directions,
-  };
-}
 export const kyu1: Exam = {
   id: "kyu1",
   label: {
@@ -167,7 +147,28 @@ export const kyu1: Exam = {
         "jodan tsuki": { "single-direction": {} },
         "chudan tsuki": { "single-direction": {} },
       },
-      // "aiki nage": { shomen uchi: { "single-direction: {}} },
+      "aiki nage": { "shomen uchi": { "single-direction": {} } },
     },
   }),
 };
+
+function pinAttacksTachiWaza(directions: Directions<TechniqueMetadata>) {
+  return {
+    "ai hanmi katate dori": directions,
+    "shomen uchi": directions,
+    "gyuako hanmi katate dori": directions,
+    "ryote dori": directions,
+    "kata dori": directions,
+    "yokomen uchi": directions,
+    "ushiro ryote dori": directions,
+    "katate ryote dori": directions,
+    "kata dori men uchi": directions,
+    "ushiro ryo kata dori": directions,
+    "mae ryo kata dori": directions,
+    "jodan tsuki": directions,
+    "chudan tsuki": directions,
+    "ushiro ryo hiji dori": directions,
+    "ushiro eri dori": directions,
+    "ushiro katate dori kubi shime": directions,
+  };
+}

@@ -5,7 +5,7 @@ import { buildExamTable } from "$core/buildExamTable";
 import type { DojoDetails } from "$core/model/Dojo";
 import { techniqueAsString } from "$core/model/Technique.test-helper";
 
-const dojos = (await listDojos()).filter((dojo) => dojo.id !== "aifd");
+const dojos = (await listDojos()).filter((dojo) => dojo.compareToAifd);
 
 test.each(dojos)("no AiFD techniques are missing in $name", async ({ id }) => {
   const dojo = await loadDojo(id);

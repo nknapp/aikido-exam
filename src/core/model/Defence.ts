@@ -21,6 +21,7 @@ export const defences = [
   "juji garami",
   "hiji kimo osae",
   "uchi kaiten sankyo",
+  "aiki nage",
 ] as const;
 
 export type Defence = (typeof defences)[number];

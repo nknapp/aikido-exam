@@ -1,5 +1,5 @@
 import type { Exam } from "$core/model";
-import { goerlitzTree } from "@/data/dojos/goerlitz/exams/utils/goerlitzTree.ts";
+import { goerlitzTree } from "./utils/goerlitzTree.ts";
 
 export const kyu2: Exam = {
   id: "kyu2",

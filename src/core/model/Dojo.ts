@@ -18,6 +18,7 @@ export interface ResolvedDojo {
 export interface DojoInfo {
   id: string;
   name: string;
+  compareToAifd?: boolean;
   logo?: string | URL;
 }
 

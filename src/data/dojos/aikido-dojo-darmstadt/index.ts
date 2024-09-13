@@ -6,6 +6,7 @@ export default {
     id: "aikido-dojo-darmstadt",
     name: "Aikido Dojo Darmstadt",
     logo: logo,
+    compareToAifd: true,
   },
   details: () => import("./details"),
 } as Dojo;

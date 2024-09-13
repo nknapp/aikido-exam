@@ -7,4 +7,9 @@ import type { DojoDetails } from "$core/model/Dojo";
 
 export default {
   exams: [kyu5, kyu4, kyu3, kyu2, kyu1],
+  sourceLink: "https://www.kenkokan.de/",
+  additionalText: {
+    en: "The exam tables have not been verified by the dojo yet.",
+    de: "The Prüfungsordnung wurde noch nicht vom Dojo geprüft und kann Fehler enthalten",
+  },
 } satisfies DojoDetails;
