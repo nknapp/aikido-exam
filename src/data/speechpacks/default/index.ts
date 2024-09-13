@@ -1,6 +1,6 @@
 import type { SpeechPack } from "$core/model";
 import ai_hanmi_katate_dori from "./audio/ai-hanmi-katate-dori.mp3";
-import aiki_nage from "./audio/aiki-nage.mp3.mp3";
+import aiki_nage from "./audio/aiki-nage.mp3";
 import chudan_tsuki from "./audio/chudan-tsuki.mp3";
 import gokyo from "./audio/gokyo.mp3";
 import gyuako_hanmi_katate_dori from "./audio/gyuako-hanmi-katate-dori.mp3";
