@@ -1,6 +1,6 @@
 export const attacks = [
   "ai hanmi katate dori",
-  "gyako hanmi katate dori",
+  "gyaku hanmi katate dori",
   "kata dori",
   "ryote dori",
   "katate ryote dori",

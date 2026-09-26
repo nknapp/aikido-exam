@@ -64,7 +64,7 @@ export const kyu5: Exam = {
           },
         },
       },
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         "shiho nage": {
           omote: {
             youtube: {

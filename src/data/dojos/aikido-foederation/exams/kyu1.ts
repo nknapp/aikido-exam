@@ -18,7 +18,7 @@ export const kyu1: Exam = {
       },
     },
     "hanmi handachi waza": {
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         ikkyo: { omote: {}, ura: {} },
         nikyo: { omote: {}, ura: {} },
         sankyo: { omote: {}, ura: {} },
@@ -41,7 +41,7 @@ export const kyu1: Exam = {
       },
     },
     "tachi waza": {
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         "sumi otoshi": { "single-direction": {} },
       },
       "mae ryo kata dori": {

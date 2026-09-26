@@ -14,7 +14,7 @@ export const kyu1: Exam = {
         "ai hanmi katate dori": { omote: {}, ura: {} },
         "kata dori": { omote: {}, ura: {} },
         "shomen uchi": { omote: {}, ura: {} },
-        "gyako hanmi katate dori": { omote: {}, ura: {} },
+        "gyaku hanmi katate dori": { omote: {}, ura: {} },
         "yokomen uchi": { omote: {}, ura: {} },
         "mae ryo kata dori": { omote: {}, ura: {} },
       },
@@ -22,7 +22,7 @@ export const kyu1: Exam = {
         "ai hanmi katate dori": { omote: {}, ura: {} },
         "kata dori": { omote: {}, ura: {} },
         "shomen uchi": { omote: {}, ura: {} },
-        "gyako hanmi katate dori": { omote: {}, ura: {} },
+        "gyaku hanmi katate dori": { omote: {}, ura: {} },
         "yokomen uchi": { omote: {}, ura: {} },
         "mae ryo kata dori": { omote: {}, ura: {} },
       },
@@ -30,7 +30,7 @@ export const kyu1: Exam = {
         "ai hanmi katate dori": { omote: {}, ura: {} },
         "kata dori": { omote: {}, ura: {} },
         "shomen uchi": { omote: {}, ura: {} },
-        "gyako hanmi katate dori": { omote: {}, ura: {} },
+        "gyaku hanmi katate dori": { omote: {}, ura: {} },
         "yokomen uchi": { omote: {}, ura: {} },
         "mae ryo kata dori": { omote: {}, ura: {} },
       },
@@ -38,7 +38,7 @@ export const kyu1: Exam = {
         "ai hanmi katate dori": { omote: {}, ura: {} },
         "kata dori": { omote: {}, ura: {} },
         "shomen uchi": { omote: {}, ura: {} },
-        "gyako hanmi katate dori": { omote: {}, ura: {} },
+        "gyaku hanmi katate dori": { omote: {}, ura: {} },
         "yokomen uchi": { omote: {}, ura: {} },
         "mae ryo kata dori": { omote: {}, ura: {} },
       },
@@ -55,7 +55,7 @@ export const kyu1: Exam = {
     },
     "hanmi handachi waza": {
       ikkyo: {
-        "gyako hanmi katate dori": { omote: {}, ura: {} },
+        "gyaku hanmi katate dori": { omote: {}, ura: {} },
         "ryote dori": { omote: {}, ura: {} },
         "shomen uchi": { omote: {}, ura: {} },
         "yokomen uchi": { omote: {}, ura: {} },
@@ -65,14 +65,14 @@ export const kyu1: Exam = {
         "yokomen uchi": { "single-direction": {} },
       },
       "kote gaeshi": {
-        "gyako hanmi katate dori": { "single-direction": {} },
+        "gyaku hanmi katate dori": { "single-direction": {} },
         "yokomen uchi": { "single-direction": {} },
       },
       "shiho nage": {
         "yokomen uchi": { omote: {}, ura: {} },
       },
       "kokyu nage": {
-        "gyako hanmi katate dori": { "single-direction": {} },
+        "gyaku hanmi katate dori": { "single-direction": {} },
         "ryote dori": { "single-direction": {} },
         "ushiro ryo kata dori": { "single-direction": {} },
       },
@@ -127,7 +127,7 @@ export const kyu1: Exam = {
       "koshi nage": {
         "ai hanmi katate dori": { "single-direction": {} },
         "shomen uchi": { "single-direction": {} },
-        "gyako hanmi katate dori": { "single-direction": {} },
+        "gyaku hanmi katate dori": { "single-direction": {} },
         "ryote dori": { "single-direction": {} },
         "yokomen uchi": { "single-direction": {} },
         "ushiro ryote dori": { "single-direction": {} },
@@ -135,7 +135,7 @@ export const kyu1: Exam = {
       "kokyu nage": {
         "ai hanmi katate dori": { "single-direction": {} },
         "shomen uchi": { "single-direction": {} },
-        "gyako hanmi katate dori": { "single-direction": {} },
+        "gyaku hanmi katate dori": { "single-direction": {} },
         "ryote dori": { "single-direction": {} },
         "kata dori": { "single-direction": {} },
         "yokomen uchi": { "single-direction": {} },
@@ -156,7 +156,7 @@ function pinAttacksTachiWaza(directions: Directions<TechniqueMetadata>) {
   return {
     "ai hanmi katate dori": directions,
     "shomen uchi": directions,
-    "gyako hanmi katate dori": directions,
+    "gyaku hanmi katate dori": directions,
     "ryote dori": directions,
     "kata dori": directions,
     "yokomen uchi": directions,

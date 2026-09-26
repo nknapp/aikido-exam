@@ -184,7 +184,7 @@ export default {
           ],
         },
       },
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         ikkyo: {
           omote: [
             {
@@ -634,7 +634,7 @@ export default {
           ],
         },
       },
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         "shiho nage": {
           omote: [
             {
@@ -2366,7 +2366,7 @@ export default {
       },
     },
     "hanmi handachi waza": {
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         "shiho nage": {
           omote: [
             {

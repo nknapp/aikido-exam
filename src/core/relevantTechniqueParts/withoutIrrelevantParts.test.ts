@@ -24,7 +24,7 @@ describe("withoutIrrelevantParts", () => {
     expect(
       withoutIrrelevantParts(
         createTechnique("suwari waza", "kata dori", "ikkyo", "ura"),
-        createTechnique("suwari waza", "gyako hanmi katate dori", "ikkyo", "omote"),
+        createTechnique("suwari waza", "gyaku hanmi katate dori", "ikkyo", "omote"),
       ),
     ).toEqual({ attack: "kata dori", defence: "ikkyo", direction: "ura" });
   });
@@ -33,7 +33,7 @@ describe("withoutIrrelevantParts", () => {
     expect(
       withoutIrrelevantParts(
         createTechnique("tachi waza", "kata dori", "ikkyo", "ura"),
-        createTechnique("suwari waza", "gyako hanmi katate dori", "ikkyo", "omote"),
+        createTechnique("suwari waza", "gyaku hanmi katate dori", "ikkyo", "omote"),
       ),
     ).toEqual({ execution: "tachi waza", attack: "kata dori", defence: "ikkyo", direction: "ura" });
   });

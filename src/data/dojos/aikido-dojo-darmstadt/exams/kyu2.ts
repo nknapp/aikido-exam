@@ -133,7 +133,7 @@ export const kyu2: Exam = {
           },
         },
       },
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         sankyo: {
           omote: {
             youtube: {
@@ -216,7 +216,7 @@ export const kyu2: Exam = {
           },
         },
       },
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         "soto kaiten nage": {
           omote: {
             youtube: {
@@ -441,7 +441,7 @@ export const kyu2: Exam = {
           },
         },
       },
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         sankyo: {
           omote: {
             youtube: {

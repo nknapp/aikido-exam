@@ -65,7 +65,7 @@ export default {
   "tachi dori": tachi_dori,
   // attacks
   "ai hanmi katate dori": ai_hanmi_katate_dori,
-  "gyako hanmi katate dori": gyuako_hanmi_katate_dori,
+  "gyaku hanmi katate dori": gyuako_hanmi_katate_dori,
   "kata dori": kata_dori,
   "ryote dori": ryote_dori,
   "katate ryote dori": katate_ryote_dori,

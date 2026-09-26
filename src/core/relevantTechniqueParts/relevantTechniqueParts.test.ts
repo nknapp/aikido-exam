@@ -24,7 +24,7 @@ describe("relevantTechniqueParts", () => {
     expect(
       relevantTechniqueParts(
         createTechnique("suwari waza", "kata dori", "ikkyo", "ura"),
-        createTechnique("suwari waza", "gyako hanmi katate dori", "ikkyo", "omote"),
+        createTechnique("suwari waza", "gyaku hanmi katate dori", "ikkyo", "omote"),
       ),
     ).toEqual(["kata dori", "ikkyo", "ura"]);
   });
@@ -33,7 +33,7 @@ describe("relevantTechniqueParts", () => {
     expect(
       relevantTechniqueParts(
         createTechnique("tachi waza", "kata dori", "ikkyo", "ura"),
-        createTechnique("suwari waza", "gyako hanmi katate dori", "ikkyo", "omote"),
+        createTechnique("suwari waza", "gyaku hanmi katate dori", "ikkyo", "omote"),
       ),
     ).toEqual(["tachi waza", "kata dori", "ikkyo", "ura"]);
   });

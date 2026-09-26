@@ -8,7 +8,7 @@ export const dan1: Exam = {
   },
   techniques: {
     "hanmi handachi waza": {
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         "kote gaeshi": { "single-direction": {} },
         sankyo: { omote: {}, ura: {} },
         yonkyo: { omote: {}, ura: {} },
@@ -20,7 +20,7 @@ export const dan1: Exam = {
       },
     },
     "tachi waza": {
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         "ude garami": { "single-direction": {} },
       },
       "jodan tsuki": {

@@ -8,7 +8,7 @@ export const kyu3: Exam = {
   },
   techniques: {
     "suwari waza": {
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         ikkyo: {
           omote: {
             youtube: {
@@ -137,7 +137,7 @@ export const kyu3: Exam = {
       },
     },
     "hanmi handachi waza": {
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         "shiho nage": {
           omote: {
             youtube: {
@@ -630,7 +630,7 @@ export const kyu3: Exam = {
           },
         },
       },
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         "kokyu nage": {
           "single-direction": {
             youtube: [

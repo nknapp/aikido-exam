@@ -9,7 +9,7 @@ export const kyu2: Exam = {
 
   techniques: {
     "suwari waza": {
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         yonkyo: { omote: {}, ura: {} },
       },
       "shomen uchi": {
@@ -24,7 +24,7 @@ export const kyu2: Exam = {
       },
     },
     "hanmi handachi waza": {
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         "kote gaeshi": { "single-direction": {} },
         "soto kaiten nage": { omote: {}, ura: {} },
       },
@@ -37,7 +37,7 @@ export const kyu2: Exam = {
     },
     "tachi waza": {
       "ai hanmi katate dori": { "koshi nage": { "single-direction": {} } },
-      "gyako hanmi katate dori": {
+      "gyaku hanmi katate dori": {
         yonkyo: { omote: {}, ura: {} },
         "koshi nage": { "single-direction": {} },
         "kokyu nage": { "single-direction": {} },
