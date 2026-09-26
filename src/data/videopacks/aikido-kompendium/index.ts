@@ -184,7 +184,7 @@ export default {
           ],
         },
       },
-      "gyuako hanmi katate dori": {
+      "gyako hanmi katate dori": {
         ikkyo: {
           omote: [
             {
@@ -634,7 +634,7 @@ export default {
           ],
         },
       },
-      "gyuako hanmi katate dori": {
+      "gyako hanmi katate dori": {
         "shiho nage": {
           omote: [
             {
@@ -2083,7 +2083,7 @@ export default {
         },
       },
       "jodan tsuki": {
-        "hiji kimo osae": {
+        "hiji kime osae": {
           "single-direction": [
             {
               title: "tachi waza jodan tsuki hiji kime osae",
@@ -2366,7 +2366,7 @@ export default {
       },
     },
     "hanmi handachi waza": {
-      "gyuako hanmi katate dori": {
+      "gyako hanmi katate dori": {
         "shiho nage": {
           omote: [
             {

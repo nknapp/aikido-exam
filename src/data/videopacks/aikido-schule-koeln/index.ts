@@ -43,7 +43,7 @@ export default {
             },
           ],
         },
-        "hiji kimo osae": {
+        "hiji kime osae": {
           "single-direction": [
             {
               id: "lWGZQzp5LuM-4",
@@ -93,7 +93,7 @@ export default {
             },
           ],
         },
-        "hiji kimo osae": {
+        "hiji kime osae": {
           "single-direction": [
             {
               id: "lWGZQzp5LuM-8",
@@ -305,7 +305,7 @@ export default {
             },
           ],
         },
-        "hiji kimo osae": {
+        "hiji kime osae": {
           "single-direction": [
             {
               videoId: "y5Q2R73z-Y0",

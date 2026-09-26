@@ -14,7 +14,7 @@ export const additional: Exam = {
         "shiho nage": { omote: {}, ura: {} },
         "kokyu nage": { "single-direction": {} },
       },
-      "gyuako hanmi katate dori": {
+      "gyako hanmi katate dori": {
         "aiki otoshi": { "single-direction": {} },
       },
       "ai hanmi katate dori": {

@@ -8,9 +8,9 @@ describe("toExamTable", () => {
       createTechnique("tachi waza", "ai hanmi katate dori", "ikkyo", "ura"),
       createTechnique("suwari waza", "ai hanmi katate dori", "ikkyo", "ura"),
       createTechnique("tachi waza", "ai hanmi katate dori", "ikkyo", "omote"),
-      createTechnique("tachi waza", "gyuako hanmi katate dori", "ikkyo", "omote"),
-      createTechnique("tachi waza", "gyuako hanmi katate dori", "ikkyo", "ura"),
-      createTechnique("tachi waza", "gyuako hanmi katate dori", "irimi nage", "single-direction"),
+      createTechnique("tachi waza", "gyako hanmi katate dori", "ikkyo", "omote"),
+      createTechnique("tachi waza", "gyako hanmi katate dori", "ikkyo", "ura"),
+      createTechnique("tachi waza", "gyako hanmi katate dori", "irimi nage", "single-direction"),
     ];
     const expectedOutput: Table = {
       "suwari waza": {
@@ -22,7 +22,7 @@ describe("toExamTable", () => {
         "ai hanmi katate dori": {
           ikkyo: { ura: {}, omote: {} },
         },
-        "gyuako hanmi katate dori": {
+        "gyako hanmi katate dori": {
           ikkyo: { omote: {}, ura: {} },
           "irimi nage": { "single-direction": {} },
         },

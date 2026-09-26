@@ -30,10 +30,10 @@ export const kyu2: Exam = {
         "shomen uchi": { "single-direction": {} },
       },
       "irimi nage": {
-        "gyuako hanmi katate dori": { "single-direction": {} },
+        "gyako hanmi katate dori": { "single-direction": {} },
       },
       "kote gaeshi": {
-        "gyuako hanmi katate dori": { "single-direction": {} },
+        "gyako hanmi katate dori": { "single-direction": {} },
         "kata dori": { "single-direction": {} },
       },
     },
@@ -42,10 +42,10 @@ export const kyu2: Exam = {
         "ryote dori": { "single-direction": {} },
       },
       "uchi kaiten nage": {
-        "gyuako hanmi katate dori": { omote: {}, ura: {} },
+        "gyako hanmi katate dori": { omote: {}, ura: {} },
       },
       "soto kaiten nage": {
-        "gyuako hanmi katate dori": { omote: {}, ura: {} },
+        "gyako hanmi katate dori": { omote: {}, ura: {} },
       },
       "kote gaeshi": {
         "shomen uchi": { "single-direction": {} },
@@ -67,11 +67,11 @@ export const kyu2: Exam = {
         "ushiro ryo kata dori": { omote: {}, ura: {} },
         "chudan tsuki": { omote: {}, ura: {} },
       },
-      "hiji kimo osae": {
+      "hiji kime osae": {
         "shomen uchi": { "single-direction": {} },
       },
       sankyo: {
-        "gyuako hanmi katate dori": { omote: {}, ura: {} },
+        "gyako hanmi katate dori": { omote: {}, ura: {} },
         "kata dori": { omote: {}, ura: {} },
         "yokomen uchi": { omote: {}, ura: {} },
       },
@@ -103,7 +103,7 @@ export const kyu2: Exam = {
       "uchi kaiten nage": { "shomen uchi": { omote: {}, ura: {} } },
       "soto kaiten nage": { "chudan tsuki": { omote: {}, ura: {} } },
       "sokumen irimi nage": { "ushiro ryote dori": { omote: {}, ura: {} } },
-      "sumi otoshi": { "gyuako hanmi katate dori": { "single-direction": {} } },
+      "sumi otoshi": { "gyako hanmi katate dori": { "single-direction": {} } },
       "juji garami": { "ushiro ryote dori": { "single-direction": {} } },
       "koshi nage": { "kata dori": { "single-direction": {} } },
       "kokyu nage": {

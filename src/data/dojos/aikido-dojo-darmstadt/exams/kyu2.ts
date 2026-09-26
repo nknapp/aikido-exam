@@ -133,7 +133,7 @@ export const kyu2: Exam = {
           },
         },
       },
-      "gyuako hanmi katate dori": {
+      "gyako hanmi katate dori": {
         sankyo: {
           omote: {
             youtube: {
@@ -216,7 +216,7 @@ export const kyu2: Exam = {
           },
         },
       },
-      "gyuako hanmi katate dori": {
+      "gyako hanmi katate dori": {
         "soto kaiten nage": {
           omote: {
             youtube: {
@@ -441,7 +441,7 @@ export const kyu2: Exam = {
           },
         },
       },
-      "gyuako hanmi katate dori": {
+      "gyako hanmi katate dori": {
         sankyo: {
           omote: {
             youtube: {
@@ -754,7 +754,7 @@ export const kyu2: Exam = {
         },
       },
       "jodan tsuki": {
-        "hiji kimo osae": {
+        "hiji kime osae": {
           "single-direction": {
             youtube: {
               title: "tachi waza jodan tsuki hiji kime osae",

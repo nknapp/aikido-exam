@@ -23,7 +23,7 @@ export const kyu4: Exam = {
         nikyo: { omote: {}, ura: {} },
         "ude kime nage": { omote: {}, ura: {} },
       },
-      "gyuako hanmi katate dori": {
+      "gyako hanmi katate dori": {
         ikkyo: { omote: {}, ura: {} },
         nikyo: { omote: {}, ura: {} },
         "shiho nage": { omote: {}, ura: {} },

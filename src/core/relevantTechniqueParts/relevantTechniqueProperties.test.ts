@@ -30,7 +30,7 @@ describe("relevantTechniqueParts", () => {
     expect(
       relevantTechniqueProperties(
         createTechnique("suwari waza", "kata dori", "ikkyo", "ura"),
-        createTechnique("suwari waza", "gyuako hanmi katate dori", "ikkyo", "omote"),
+        createTechnique("suwari waza", "gyako hanmi katate dori", "ikkyo", "omote"),
       ),
     ).toEqual(["attack", "defence", "direction"]);
   });

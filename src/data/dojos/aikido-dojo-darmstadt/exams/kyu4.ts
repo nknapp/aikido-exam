@@ -64,7 +64,7 @@ export const kyu4: Exam = {
       },
     },
     "tachi waza": {
-      "gyuako hanmi katate dori": {
+      "gyako hanmi katate dori": {
         ikkyo: {
           omote: {
             youtube: {

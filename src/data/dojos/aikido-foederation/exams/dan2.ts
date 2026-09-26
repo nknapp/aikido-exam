@@ -12,7 +12,7 @@ export const dan2: Exam = {
         ikkyo: { omote: {} },
         // TODO: sankyo omote, ura?
         sankyo: { "single-direction": {} },
-        "hiji kimo osae": { "single-direction": {} },
+        "hiji kime osae": { "single-direction": {} },
         "kote gaeshi": { "single-direction": {} },
         "shiho nage": { omote: {} },
         "irimi nage": { "single-direction": {} },

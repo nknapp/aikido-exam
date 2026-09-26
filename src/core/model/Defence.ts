@@ -19,7 +19,7 @@ export const defences = [
   "sumi otoshi",
   "aiki otoshi",
   "juji garami",
-  "hiji kimo osae",
+  "hiji kime osae",
   "uchi kaiten sankyo",
   "aiki nage",
 ] as const;

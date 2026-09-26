@@ -65,7 +65,7 @@ export default {
   "tachi dori": tachi_dori,
   // attacks
   "ai hanmi katate dori": ai_hanmi_katate_dori,
-  "gyuako hanmi katate dori": gyuako_hanmi_katate_dori,
+  "gyako hanmi katate dori": gyuako_hanmi_katate_dori,
   "kata dori": kata_dori,
   "ryote dori": ryote_dori,
   "katate ryote dori": katate_ryote_dori,
@@ -107,7 +107,7 @@ export default {
   "sumi otoshi": sumi_otoshi,
   "aiki otoshi": aiki_otoshi,
   "juji garami": juji_garami,
-  "hiji kimo osae": hiji_kime_osae,
+  "hiji kime osae": hiji_kime_osae,
   "uchi kaiten sankyo": uchi_kaiten_sankyo,
   // directions
   omote: omote,
