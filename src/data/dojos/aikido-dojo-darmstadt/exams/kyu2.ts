@@ -749,9 +749,6 @@ export const kyu2: Exam = {
             },
           },
         },
-        "kokyu nage": {
-          "single-direction": {},
-        },
       },
       "jodan tsuki": {
         "hiji kime osae": {
@@ -762,9 +759,6 @@ export const kyu2: Exam = {
               durationSeconds: 23,
             },
           },
-        },
-        "kokyu nage": {
-          "single-direction": {},
         },
       },
       "ushiro ryo hiji dori": {
@@ -783,9 +777,6 @@ export const kyu2: Exam = {
               durationSeconds: 32,
             },
           },
-        },
-        "kokyu nage": {
-          "single-direction": {},
         },
       },
       "mae ryo kata dori": {

@@ -329,6 +329,9 @@ export const kyu1: Exam = {
         "koshi nage": {
           "single-direction": {},
         },
+        "kokyu nage": {
+          "single-direction": {},
+        },
       },
       "chudan tsuki": {
         nikyo: {
@@ -423,6 +426,9 @@ export const kyu1: Exam = {
         "koshi nage": {
           "single-direction": {},
         },
+        "kokyu nage": {
+          "single-direction": {},
+        },
       },
       "shomen uchi": {
         gokyo: {
@@ -465,6 +471,9 @@ export const kyu1: Exam = {
               durationSeconds: 8,
             },
           },
+        },
+        "kokyu nage": {
+          "single-direction": {},
         },
       },
       "ushiro katate dori kubi shime": {
