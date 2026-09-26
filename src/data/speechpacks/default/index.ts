@@ -3,7 +3,7 @@ import ai_hanmi_katate_dori from "./audio/ai-hanmi-katate-dori.mp3";
 import aiki_nage from "./audio/aiki-nage.mp3";
 import chudan_tsuki from "./audio/chudan-tsuki.mp3";
 import gokyo from "./audio/gokyo.mp3";
-import gyuako_hanmi_katate_dori from "./audio/gyuako-hanmi-katate-dori.mp3";
+import gyaku_hanmi_katate_dori from "./audio/gyaku-hanmi-katate-dori.mp3";
 import hanmi_handachi_waza from "./audio/hanmi-handachi-waza.mp3";
 import ikkyo from "./audio/ikkyo.mp3";
 import irimi_nage from "./audio/irimi-nage.mp3";
@@ -65,7 +65,7 @@ export default {
   "tachi dori": tachi_dori,
   // attacks
   "ai hanmi katate dori": ai_hanmi_katate_dori,
-  "gyaku hanmi katate dori": gyuako_hanmi_katate_dori,
+  "gyaku hanmi katate dori": gyaku_hanmi_katate_dori,
   "kata dori": kata_dori,
   "ryote dori": ryote_dori,
   "katate ryote dori": katate_ryote_dori,
