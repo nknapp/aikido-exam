@@ -543,6 +543,11 @@ export const kyu1: Exam = {
           "single-direction": {},
         },
       },
+      "mae ryo kata dori": {
+        "kokyu nage": {
+          "single-direction": {},
+        },
+      },
       "ushiro ryote dori": {
         "koshi nage": {
           "single-direction": {},
