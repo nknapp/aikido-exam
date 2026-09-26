@@ -156,6 +156,42 @@ export const kyu4: Exam = {
             },
           },
         },
+        "kokyu nage": {
+          "single-direction": {
+            youtube: [
+              {
+                title: "tachi waza katate dori kokyu nage 01",
+                videoId: "sIMCbchcTbA",
+                durationSeconds: 16,
+              },
+              {
+                title: "tachi waza katate dori kokyu nage 02",
+                videoId: "N3WOhF74QGI",
+                durationSeconds: 14,
+              },
+              {
+                title: "tachi waza katate dori kokyu nage 03",
+                videoId: "hJP_KOU8zMI",
+                durationSeconds: 16,
+              },
+              {
+                title: "tachi waza katate dori kokyu nage 04",
+                videoId: "OreDX3cRAIQ",
+                durationSeconds: 17,
+              },
+              {
+                title: "tachi waza katate dori kokyu nage 05",
+                videoId: "RgI-Unqavgs",
+                durationSeconds: 14,
+              },
+              {
+                title: "tachi waza katate dori kokyu nage 06",
+                videoId: "6WYY66TtI3Q",
+                durationSeconds: 14,
+              },
+            ],
+          },
+        },
       },
       "kata dori": {
         ikkyo: {
